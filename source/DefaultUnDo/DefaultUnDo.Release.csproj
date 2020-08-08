@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="DefaultUnDo.targets" />
+
+  <PropertyGroup Label="Sign">
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\..\ds.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <PropertyGroup Label="DefaultDocumentation">
+    <DefaultDocumentationFolder>..\..\documentation\api</DefaultDocumentationFolder>
+  </PropertyGroup>
+  <ItemGroup Label="Documentation">
+    <PackageReference Include="DefaultDocumentation" Version="0.6.11" PrivateAssets="all" />
+  </ItemGroup>
+
+  <PropertyGroup Label="Package">
+    <Version>0.0.1</Version>
+    <PackageReleaseNotes>
+    </PackageReleaseNotes>
+  </PropertyGroup>
+</Project>

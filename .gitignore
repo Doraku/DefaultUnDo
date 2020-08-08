@@ -1,0 +1,7 @@
+﻿/**/obj
+/**/bin
+/**/.vs
+/**/*.vspscc
+/**/*.user
+/package
+.idea/

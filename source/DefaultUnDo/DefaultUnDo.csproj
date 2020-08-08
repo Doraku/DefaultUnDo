@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="DefaultUnDo.targets" />
+
+  <PropertyGroup Label="Debug" Condition="'$(Configuration)'=='Debug'">
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Package">
+    <Version>0-ci$([System.DateTime]::UtcNow.ToString("yyyyMMddHHmmss"))</Version>
+  </PropertyGroup>
+</Project>

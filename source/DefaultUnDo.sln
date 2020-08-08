@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30330.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DefaultUnDo", "DefaultUnDo\DefaultUnDo.csproj", "{0F70E1F5-23EE-4A2C-B948-14E418389C6D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4DDF1652-99A1-48C7-8D5E-BA31CFFAE956}"
+	ProjectSection(SolutionItems) = preProject
+		..\.gitignore = ..\.gitignore
+		DefaultUnDo\DefaultUnDo.Release.csproj = DefaultUnDo\DefaultUnDo.Release.csproj
+		DefaultUnDo\DefaultUnDo.targets = DefaultUnDo\DefaultUnDo.targets
+		..\LICENSE.md = ..\LICENSE.md
+		..\README.md = ..\README.md
+		..\Release.bat = ..\Release.bat
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{1C194496-09AD-47C3-BE59-1C66146AB694}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\CodeCoverage.yml = ..\.github\workflows\CodeCoverage.yml
+		..\.github\workflows\ContinuousIntegration.yml = ..\.github\workflows\ContinuousIntegration.yml
+		..\.github\workflows\PullRequest.yml = ..\.github\workflows\PullRequest.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DefaultUnDo.Test", "DefaultUnDo.Test\DefaultUnDo.Test.csproj", "{B13DB434-5B94-415A-81DF-027E6BFED632}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F70E1F5-23EE-4A2C-B948-14E418389C6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F70E1F5-23EE-4A2C-B948-14E418389C6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F70E1F5-23EE-4A2C-B948-14E418389C6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F70E1F5-23EE-4A2C-B948-14E418389C6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B13DB434-5B94-415A-81DF-027E6BFED632}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B13DB434-5B94-415A-81DF-027E6BFED632}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B13DB434-5B94-415A-81DF-027E6BFED632}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B13DB434-5B94-415A-81DF-027E6BFED632}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1C194496-09AD-47C3-BE59-1C66146AB694} = {4DDF1652-99A1-48C7-8D5E-BA31CFFAE956}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5878D0D1-1E65-4783-A9A6-8CA3695EA6B8}
+	EndGlobalSection
+EndGlobal

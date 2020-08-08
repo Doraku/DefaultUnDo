@@ -1,0 +1,29 @@
+﻿<Project>
+  <PropertyGroup Label="Compilation">
+    <LangVersion>latest</LangVersion>
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <Optimize>true</Optimize>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Configurations>Debug;Release</Configurations>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="DefaultUnDo.targets" />
+    <None Include="..\..\image\logo.png" Pack="true" PackagePath="\" Visible="false"/>
+  </ItemGroup>
+
+  <PropertyGroup Label="Package">
+    <Authors>Paillat Laszlo</Authors>
+    <AssemblyName>DefaultUnDo</AssemblyName>
+    <AssemblyTitle>DefaultUnDo</AssemblyTitle>
+    <PackageId>DefaultUnDo</PackageId>
+    <Description></Description>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/Doraku/DefaultUnDo</PackageProjectUrl>
+    <PackageLicenseExpression>MIT-0</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/Doraku/DefaultUnDo.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags></PackageTags>
+  </PropertyGroup>
+</Project>
