@@ -1,7 +1,10 @@
 ﻿<Project>
   <PropertyGroup Label="Compilation">
     <LangVersion>latest</LangVersion>
-    <TargetFramework>netstandard1.0</TargetFramework>
+    <TargetFrameworks>
+      netstandard1.0;
+      netstandard2.0;
+    </TargetFrameworks>
     <Optimize>true</Optimize>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Configurations>Debug;Release</Configurations>
@@ -18,12 +21,12 @@
     <AssemblyName>DefaultUnDo</AssemblyName>
     <AssemblyTitle>DefaultUnDo</AssemblyTitle>
     <PackageId>DefaultUnDo</PackageId>
-    <Description></Description>
+    <Description>Undo/redo library aiming for ease of integration and usage simplicity.</Description>
     <PackageIcon>logo.png</PackageIcon>
     <PackageProjectUrl>https://github.com/Doraku/DefaultUnDo</PackageProjectUrl>
     <PackageLicenseExpression>MIT-0</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/Doraku/DefaultUnDo.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags></PackageTags>
+    <PackageTags>command-pattern memento-pattern undo-redo</PackageTags>
   </PropertyGroup>
 </Project>
