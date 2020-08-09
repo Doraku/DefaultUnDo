@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using NFluent;
 using NSubstitute;
 using Xunit;
@@ -118,6 +119,42 @@ namespace DefaultUnDo.Test
             unDoList[index] = value;
 
             Check.That(done).IsTrue();
+        }
+
+        [Fact]
+        public void Move_Should_move_item()
+        {
+            List<int> items = new List<int> { 1, 2 };
+
+            items.Move(0, 1);
+
+            Check.That(items).ContainsExactly(2, 1);
+        }
+
+        [Fact]
+        public void Move_Should_move_item_as_UnDo_operation_When_UnDoList()
+        {
+            IUnDoManager manager = new UnDoManager();
+
+            IList<int> items = new List<int> { 1, 2 }.AsUnDo(manager);
+
+            items.Move(0, 1);
+
+            Check.That(items).ContainsExactly(2, 1);
+
+            manager.Undo();
+
+            Check.That(items).ContainsExactly(1, 2);
+
+            items = new ObservableCollection<int> { 1, 2 }.AsUnDo(manager);
+
+            items.Move(0, 1);
+
+            Check.That(items).ContainsExactly(2, 1);
+
+            manager.Undo();
+
+            Check.That(items).ContainsExactly(1, 2);
         }
 
         #endregion

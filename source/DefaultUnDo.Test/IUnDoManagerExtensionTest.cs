@@ -60,6 +60,25 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
+        public void DoAdd_ICollection_Should_keep_index_When_source_is_IList()
+        {
+            IUnDoManager manager = new UnDoManager();
+            ICollection<int> source = new List<int> { 0, 1 };
+
+            manager.DoAdd(source, 2);
+
+            source.Add(3);
+
+            manager.Undo();
+
+            Check.That(source).ContainsExactly(0, 1, 3);
+
+            manager.Redo();
+
+            Check.That(source).ContainsExactly(0, 1, 2, 3);
+        }
+
+        [Fact]
         public void DoClear_Should_throw_ArgumentNullException_When_manager_is_null()
         {
             IUnDoManager manager = null;
@@ -133,6 +152,19 @@ namespace DefaultUnDo.Test
                 .ThatCode(() => manager.DoRemove(source, null))
                 .Throws<ArgumentNullException>()
                 .WithProperty("ParamName", "source");
+        }
+
+        [Fact]
+        public void DRemove_ICollection_Should_keep_index_When_source_is_IList()
+        {
+            IUnDoManager manager = new UnDoManager();
+            ICollection<int> source = new List<int> { 0, 1 };
+
+            manager.DoRemove(source, 0);
+
+            manager.Undo();
+
+            Check.That(source).ContainsExactly(0, 1);
         }
 
         [Fact]

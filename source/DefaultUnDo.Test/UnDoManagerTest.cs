@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NFluent;
 using NSubstitute;
 using Xunit;
@@ -289,6 +290,24 @@ namespace DefaultUnDo.Test
             manager.Redo();
 
             Check.That(done).IsTrue();
+        }
+
+        [Fact]
+        public void PropertyChanged_Should_be_called()
+        {
+            IUnDoManager manager = new UnDoManager();
+            List<string> properties = new List<string>();
+            manager.PropertyChanged += (_, e) => properties.Add(e.PropertyName);
+
+            manager.Do(null, null);
+
+            Check.That(properties).Contains(nameof(manager.Version), nameof(manager.CanUndo), nameof(manager.CanRedo));
+
+            properties.Clear();
+
+            manager.Clear();
+
+            Check.That(properties).Contains(nameof(manager.CanUndo), nameof(manager.CanRedo));
         }
 
         #endregion
