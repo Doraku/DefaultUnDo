@@ -208,6 +208,27 @@ namespace DefaultUnDo.Test
             Check.That(items).ContainsExactly(1, 2);
         }
 
+        [Fact]
+        public void Move_Should_set_description_as_Move()
+        {
+            IUnDoManager manager = Substitute.For<IUnDoManager>();
+            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+            string description = null;
+
+            IList<int> items = new ObservableCollection<int> { 1, 2 }.AsUnDo(manager, a => description ??= a);
+
+            items.Move(0, 1);
+
+            Check.That(description).IsEqualTo(nameof(ObservableCollection<int>.Move));
+
+            description = null;
+            items = Substitute.For<IList<int>>().AsUnDo(manager, a => description ??= a);
+
+            items.Move(0, 1);
+
+            Check.That(description).IsEqualTo(nameof(ObservableCollection<int>.Move));
+        }
+
         #endregion
     }
 }
