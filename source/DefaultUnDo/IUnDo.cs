@@ -6,6 +6,11 @@
     public interface IUnDo
     {
         /// <summary>
+        /// Gets a description of what this <see cref="IUnDo"/> perform.
+        /// </summary>
+        string Description { get; }
+
+        /// <summary>
         /// Does an action.
         /// </summary>
         void Do();

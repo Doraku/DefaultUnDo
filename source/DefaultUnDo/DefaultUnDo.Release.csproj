@@ -14,8 +14,9 @@
   </ItemGroup>
 
   <PropertyGroup Label="Package">
-    <Version>0.0.1</Version>
+    <Version>0.1.0</Version>
     <PackageReleaseNotes>
+added Description property on IUnDo
     </PackageReleaseNotes>
   </PropertyGroup>
 </Project>

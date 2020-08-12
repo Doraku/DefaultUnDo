@@ -62,6 +62,23 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
+        public void UnDoDictionary_Add_Should_generate_Add_description()
+        {
+            IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
+            IUnDoManager manager = Substitute.For<IUnDoManager>();
+
+            string description = null;
+
+            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+            IDictionary<object, object> unDoCollection = source.AsUnDo(manager, d => description = d);
+
+            unDoCollection.Add(new object(), default);
+
+            Check.That(description).IsEqualTo(nameof(source.Add));
+        }
+
+        [Fact]
         public void UnDoDictionary_ContainsKey_Should_return_ContainsKey()
         {
             IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
@@ -90,6 +107,23 @@ namespace DefaultUnDo.Test
             IDictionary<object, object> unDoDictionary = source.AsUnDo(manager);
 
             Check.That(unDoDictionary.Remove(key)).IsEqualTo(source.Remove(key));
+        }
+
+        [Fact]
+        public void UnDoDictionary_Remove_Should_generate_Remove_description()
+        {
+            IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
+            IUnDoManager manager = Substitute.For<IUnDoManager>();
+
+            string description = null;
+
+            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+            IDictionary<object, object> unDoCollection = source.AsUnDo(manager, d => description = d);
+
+            unDoCollection.Remove(new object());
+
+            Check.That(description).IsEqualTo(nameof(source.Remove));
         }
 
         [Fact]
@@ -164,6 +198,23 @@ namespace DefaultUnDo.Test
             unDoDictionary[key] = value;
 
             Check.That(done).IsTrue();
+        }
+
+        [Fact]
+        public void UnDoDictionary_this_key_set_Should_generate_this_description()
+        {
+            IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
+            IUnDoManager manager = Substitute.For<IUnDoManager>();
+
+            string description = null;
+
+            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+            IDictionary<object, object> unDoCollection = source.AsUnDo(manager, d => description = d);
+
+            unDoCollection[new object()] = default;
+
+            Check.That(description).IsEqualTo("this");
         }
 
         [Fact]

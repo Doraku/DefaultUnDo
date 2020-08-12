@@ -11,9 +11,10 @@ namespace DefaultUnDo
     {
         #region Fields
 
+        private readonly string _description;
         private readonly IList<T> _source;
         private readonly int _index;
-        private readonly T _element;
+        private readonly T _item;
         private readonly bool _isAdd;
 
         #endregion
@@ -23,18 +24,32 @@ namespace DefaultUnDo
         /// <summary>
         /// Initialises an instance of <see cref="ListUnDo{T}"/>.
         /// </summary>
+        /// <param name="description">The description of this <see cref="IUnDo"/></param>
         /// <param name="source">The <see cref="IList{T}"/> on which the operation is performed.</param>
         /// <param name="index">The index of the operation.</param>
-        /// <param name="element">The argument of the operation.</param>
+        /// <param name="item">The argument of the operation.</param>
         /// <param name="isAdd">true if the operation is an <see cref="IList{T}.IndexOf(T)"/>, else false for a <see cref="IList{T}.RemoveAt(int)"/>.</param>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
-        public ListUnDo(IList<T> source, int index, T element, bool isAdd)
+        public ListUnDo(string description, IList<T> source, int index, T item, bool isAdd)
         {
+            _description = description ?? string.Empty;
             _source = source ?? throw new ArgumentNullException(nameof(source));
             _index = index;
-            _element = element;
+            _item = item;
             _isAdd = isAdd;
         }
+
+        /// <summary>
+        /// Initialises an instance of <see cref="ListUnDo{T}"/>.
+        /// </summary>
+        /// <param name="source">The <see cref="IList{T}"/> on which the operation is performed.</param>
+        /// <param name="index">The index of the operation.</param>
+        /// <param name="item">The argument of the operation.</param>
+        /// <param name="isAdd">true if the operation is an <see cref="IList{T}.IndexOf(T)"/>, else false for a <see cref="IList{T}.RemoveAt(int)"/>.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
+        public ListUnDo(IList<T> source, int index, T item, bool isAdd)
+            : this(null, source, index, item, isAdd)
+        { }
 
         #endregion
 
@@ -44,7 +59,7 @@ namespace DefaultUnDo
         {
             if (isAdd)
             {
-                _source.Insert(_index, _element);
+                _source.Insert(_index, _item);
             }
             else
             {
@@ -55,6 +70,8 @@ namespace DefaultUnDo
         #endregion
 
         #region IUnDo
+
+        string IUnDo.Description => _description;
 
         void IUnDo.Do() => Action(_isAdd);
 

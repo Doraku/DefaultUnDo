@@ -181,15 +181,18 @@ namespace DefaultUnDo.Test
         {
             IUnDoManager manager = new UnDoManager();
             IUnDo undo = Substitute.For<IUnDo>();
+            undo.Description.Returns("dummy");
             int version = manager.Version;
 
-            using (manager.BeginGroup())
+            using (manager.BeginGroup("first"))
+            using (manager.BeginGroup("second"))
             {
                 manager.Do(undo);
                 manager.Do(undo);
             }
 
             Check.That(manager.Version).IsStrictlyGreaterThan(version);
+            Check.That(manager.UndoDescriptions).ContainsExactly("first");
 
             manager.Undo();
 
@@ -301,13 +304,55 @@ namespace DefaultUnDo.Test
 
             manager.Do(null, null);
 
-            Check.That(properties).Contains(nameof(manager.Version), nameof(manager.CanUndo), nameof(manager.CanRedo));
+            Check.That(properties).Contains(nameof(manager.Version), nameof(manager.CanUndo), nameof(manager.CanRedo), nameof(manager.UndoDescriptions), nameof(manager.RedoDescriptions));
 
             properties.Clear();
 
             manager.Clear();
 
-            Check.That(properties).Contains(nameof(manager.CanUndo), nameof(manager.CanRedo));
+            Check.That(properties).Contains(nameof(manager.CanUndo), nameof(manager.CanRedo), nameof(manager.UndoDescriptions), nameof(manager.RedoDescriptions));
+        }
+
+        [Fact]
+        public void UndoDescriptions_Should_return_descriptions_of_undoable_operations()
+        {
+            IUnDoManager manager = new UnDoManager();
+            IUnDo operation1 = Substitute.For<IUnDo>();
+            IUnDo operation2 = Substitute.For<IUnDo>();
+
+            operation1.Description.Returns("kikoo");
+            operation2.Description.Returns("lol");
+
+            manager.Do(operation1);
+            manager.Do(operation2);
+
+            Check.That(manager.UndoDescriptions).ContainsExactly("lol", "kikoo");
+
+            manager.Undo();
+            manager.Undo();
+
+            Check.That(manager.UndoDescriptions).IsEmpty();
+        }
+
+        [Fact]
+        public void RedoDescriptions_Should_return_descriptions_of_redoable_operations()
+        {
+            IUnDoManager manager = new UnDoManager();
+            IUnDo operation1 = Substitute.For<IUnDo>();
+            IUnDo operation2 = Substitute.For<IUnDo>();
+
+            operation1.Description.Returns("kikoo");
+            operation2.Description.Returns("lol");
+
+            manager.Do(operation1);
+            manager.Do(operation2);
+
+            Check.That(manager.RedoDescriptions).IsEmpty();
+
+            manager.Undo();
+            manager.Undo();
+
+            Check.That(manager.RedoDescriptions).ContainsExactly("kikoo", "lol");
         }
 
         #endregion

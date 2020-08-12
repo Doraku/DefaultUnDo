@@ -64,6 +64,23 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
+        public void UnDoCollection_Add_Should_generate_Add_description()
+        {
+            ICollection<object> source = Substitute.For<ICollection<object>>();
+            IUnDoManager manager = Substitute.For<IUnDoManager>();
+
+            string description = null;
+
+            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+            ICollection<object> unDoCollection = source.AsUnDo(manager, d => description = d);
+
+            unDoCollection.Add(default);
+
+            Check.That(description).IsEqualTo(nameof(source.Add));
+        }
+
+        [Fact]
         public void UnDoCollection_Clear_Should_Clear()
         {
             ICollection<object> source = Substitute.For<ICollection<object>>();
@@ -79,6 +96,23 @@ namespace DefaultUnDo.Test
             unDoCollection.Clear();
 
             Check.That(done).IsTrue();
+        }
+
+        [Fact]
+        public void UnDoCollection_Clear_Should_generate_Clear_description()
+        {
+            ICollection<object> source = Substitute.For<ICollection<object>>();
+            IUnDoManager manager = Substitute.For<IUnDoManager>();
+
+            string description = null;
+
+            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+            ICollection<object> unDoCollection = source.AsUnDo(manager, d => description = d);
+
+            unDoCollection.Clear();
+
+            Check.That(description).IsEqualTo(nameof(source.Clear));
         }
 
         [Fact]
@@ -154,6 +188,23 @@ namespace DefaultUnDo.Test
             ICollection<object> unDoCollection = source.AsUnDo(manager);
 
             Check.That(unDoCollection.Remove(value)).IsEqualTo(source.Remove(value));
+        }
+
+        [Fact]
+        public void UnDoCollection_Remove_Should_generate_Remove_description()
+        {
+            ICollection<object> source = Substitute.For<ICollection<object>>();
+            IUnDoManager manager = Substitute.For<IUnDoManager>();
+
+            string description = null;
+
+            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+            ICollection<object> unDoCollection = source.AsUnDo(manager, d => description = d);
+
+            unDoCollection.Remove(default);
+
+            Check.That(description).IsEqualTo(nameof(source.Remove));
         }
 
         [Fact]

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace DefaultUnDo
 {
@@ -11,7 +12,7 @@ namespace DefaultUnDo
     {
         #region Types
 
-        private sealed class Linker : IDisposable
+        private sealed class Group : IDisposable
         {
             #region Fields
 
@@ -23,12 +24,15 @@ namespace DefaultUnDo
 
             #region Initialisation
 
-            public Linker(UnDoManager manager)
+            public Group(UnDoManager manager, string description)
             {
                 _manager = manager;
                 _isDisposed = false;
 
-                ++_manager._linkerCount;
+                if (++_manager._groupCount == 1)
+                {
+                    manager._groupDescription = description;
+                }
             }
 
             #endregion
@@ -39,10 +43,10 @@ namespace DefaultUnDo
             {
                 if (!_isDisposed)
                 {
-                    if (--_manager._linkerCount == 0 && _manager._linkedCommands.Count > 0)
+                    if (--_manager._groupCount == 0 && _manager._groupCommands.Count > 0)
                     {
-                        _manager.Push(_manager._linkedCommands.Count == 1 ? _manager._linkedCommands[0] : new GroupUnDo(_manager._linkedCommands.ToArray()));
-                        _manager._linkedCommands.Clear();
+                        _manager.Push(new GroupUnDo(_manager._groupDescription, _manager._groupCommands.ToArray()));
+                        _manager._groupCommands.Clear();
                     }
 
                     _isDisposed = true;
@@ -59,12 +63,13 @@ namespace DefaultUnDo
 
         private readonly Stack<IUnDo> _doneActions;
         private readonly Stack<IUnDo> _undoneActions;
-        private readonly List<IUnDo> _linkedCommands;
         private readonly Stack<int> _doneVersions;
         private readonly Stack<int> _undoneVersions;
+        private readonly List<IUnDo> _groupCommands;
         private int _version;
         private int _lastVersion;
-        private int _linkerCount;
+        private int _groupCount;
+        private string _groupDescription;
 
         #endregion
 
@@ -77,9 +82,9 @@ namespace DefaultUnDo
         {
             _doneActions = new Stack<IUnDo>();
             _undoneActions = new Stack<IUnDo>();
-            _linkedCommands = new List<IUnDo>();
             _doneVersions = new Stack<int>();
             _undoneVersions = new Stack<int>();
+            _groupCommands = new List<IUnDo>();
 
             Version = 0;
             _lastVersion = 0;
@@ -116,6 +121,8 @@ namespace DefaultUnDo
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Version)));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CanUndo)));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CanRedo)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(UndoDescriptions)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RedoDescriptions)));
             }
         }
 
@@ -132,11 +139,22 @@ namespace DefaultUnDo
         public bool CanRedo => _undoneActions.Count > 0;
 
         /// <summary>
+        /// Gets the descriptions in order of all the <see cref="IUnDo"/> which can be undone.
+        /// </summary>
+        public IEnumerable<string> UndoDescriptions => _doneActions.Select(a => a.Description);
+
+        /// <summary>
+        /// Gets the descriptions in order of all the <see cref="IUnDo"/> which can be redone.
+        /// </summary>
+        public IEnumerable<string> RedoDescriptions => _undoneActions.Select(a => a.Description);
+
+        /// <summary>
         /// Starts a group of operation and return an <see cref="IDisposable"/> to stop the group.
         /// If multiple calls to this method are made, the group will be stoped once each <see cref="IDisposable"/> returned are disposed.
         /// </summary>
+        /// <param name="description">The description of the group operation.</param>
         /// <returns>An <see cref="IDisposable"/> to stop the group operation.</returns>
-        public IDisposable BeginGroup() => new Linker(this);
+        public IDisposable BeginGroup(string description = null) => new Group(this, description);
 
         /// <summary>
         /// Clears the history of <see cref="IUnDo"/> operations.
@@ -150,6 +168,8 @@ namespace DefaultUnDo
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CanUndo)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CanRedo)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(UndoDescriptions)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RedoDescriptions)));
         }
 
         /// <summary>
@@ -166,9 +186,9 @@ namespace DefaultUnDo
 
             command.Do();
 
-            if (_linkerCount > 0)
+            if (_groupCount > 0)
             {
-                _linkedCommands.Add(command);
+                _groupCommands.Add(command);
             }
             else
             {
@@ -183,7 +203,7 @@ namespace DefaultUnDo
         /// <exception cref="InvalidOperationException">There is no action to undo.</exception>
         public void Undo()
         {
-            if (_linkerCount > 0)
+            if (_groupCount > 0)
             {
                 throw new InvalidOperationException("Cannot perform Undo while a group operation is going on.");
             }
@@ -206,7 +226,7 @@ namespace DefaultUnDo
         /// <exception cref="InvalidOperationException">There is no action to redo.</exception>
         public void Redo()
         {
-            if (_linkerCount > 0)
+            if (_groupCount > 0)
             {
                 throw new InvalidOperationException("Cannot perform Redo while a group operation is going on.");
             }

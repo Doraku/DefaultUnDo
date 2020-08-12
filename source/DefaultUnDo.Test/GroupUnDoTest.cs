@@ -14,7 +14,7 @@ namespace DefaultUnDo.Test
         public void GroupUnDo_Should_throw_ArgumentNullException_When_commands_is_null()
         {
             Check
-                .ThatCode(() => new GroupUnDo(null))
+                .ThatCode(() => new GroupUnDo(default(IUnDo[])))
                 .Throws<ArgumentNullException>()
                 .WithProperty("ParamName", "commands");
         }
@@ -66,6 +66,14 @@ namespace DefaultUnDo.Test
             undo.Undo();
 
             Check.That(done).ContainsExactly(undo2, undo1);
+        }
+
+        [Fact]
+        public void Description_Should_return_description()
+        {
+            IUnDo undo = new GroupUnDo("test");
+
+            Check.That(undo.Description).IsEqualTo("test");
         }
 
         #endregion

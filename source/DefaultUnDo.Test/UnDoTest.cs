@@ -49,6 +49,14 @@ namespace DefaultUnDo.Test
             Check.That(done).IsTrue();
         }
 
+        [Fact]
+        public void Description_Should_return_description()
+        {
+            IUnDo undo = new UnDo("test", null, null);
+
+            Check.That(undo.Description).IsEqualTo("test");
+        }
+
         #endregion
     }
 }

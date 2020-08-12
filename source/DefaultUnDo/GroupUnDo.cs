@@ -10,6 +10,7 @@ namespace DefaultUnDo
     {
         #region Fields
 
+        private readonly string _description;
         private readonly IUnDo[] _commands;
 
         #endregion
@@ -19,11 +20,13 @@ namespace DefaultUnDo
         /// <summary>
         /// Initialise an instance of <see cref="GroupUnDo"/>.
         /// </summary>
+        /// <param name="description">The description of this <see cref="IUnDo"/></param>
         /// <param name="commands">The sequence of <see cref="IUnDo"/> contained by the instance.</param>
         /// <exception cref="ArgumentNullException"><paramref name="commands"/> is null.</exception>
         /// <exception cref="ArgumentException"><paramref name="commands"/> contains null elements.</exception>
-        public GroupUnDo(params IUnDo[] commands)
+        public GroupUnDo(string description, params IUnDo[] commands)
         {
+            _description = description ?? string.Empty;
             _commands = commands ?? throw new ArgumentNullException(nameof(commands));
 
             if (_commands.Any(i => i is null))
@@ -32,9 +35,21 @@ namespace DefaultUnDo
             }
         }
 
+        /// <summary>
+        /// Initialise an instance of <see cref="GroupUnDo"/>.
+        /// </summary>
+        /// <param name="commands">The sequence of <see cref="IUnDo"/> contained by the instance.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="commands"/> is null.</exception>
+        /// <exception cref="ArgumentException"><paramref name="commands"/> contains null elements.</exception>
+        public GroupUnDo(params IUnDo[] commands)
+            : this(null, commands)
+        { }
+
         #endregion
 
         #region IUnDo
+
+        string IUnDo.Description => _description;
 
         void IUnDo.Do()
         {

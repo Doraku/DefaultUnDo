@@ -20,24 +20,26 @@ namespace DefaultUnDo
             private readonly ICollection<T> _source;
 
             protected readonly IUnDoManager _manager;
+            protected readonly Func<string, string> _descriptionFactory;
 
             #endregion
 
             #region Initialisation
 
-            public UnDoCollection(IUnDoManager manager, ICollection<T> source)
+            public UnDoCollection(IUnDoManager manager, ICollection<T> source, Func<string, string> descriptionFactory)
             {
-                _manager = manager;
                 _source = source;
+                _manager = manager;
+                _descriptionFactory = descriptionFactory;
             }
 
             #endregion
 
             #region ICollection
 
-            void ICollection<T>.Add(T item) => _manager.DoAdd(_source, item);
+            void ICollection<T>.Add(T item) => _manager.DoAdd(_source, item, _descriptionFactory?.Invoke(nameof(ICollection<T>.Add)));
 
-            void ICollection<T>.Clear() => _manager.DoClear(_source);
+            void ICollection<T>.Clear() => _manager.DoClear(_source, _descriptionFactory?.Invoke(nameof(ICollection<T>.Clear)));
 
             bool ICollection<T>.Contains(T item) => _source.Contains(item);
 
@@ -47,7 +49,7 @@ namespace DefaultUnDo
 
             bool ICollection<T>.IsReadOnly => _source.IsReadOnly;
 
-            bool ICollection<T>.Remove(T item) => _manager.DoRemove(_source, item);
+            bool ICollection<T>.Remove(T item) => _manager.DoRemove(_source, item, _descriptionFactory?.Invoke(nameof(ICollection<T>.Remove)));
 
             #endregion
 
@@ -114,11 +116,13 @@ namespace DefaultUnDo
         /// <typeparam name="T">The type of element in the <see cref="ICollection{T}"/>.</typeparam>
         /// <param name="source">The <see cref="ICollection{T}"/>.</param>
         /// <param name="manager">The <see cref="IUnDoManager"/>.</param>
+        /// <param name="descriptionFactory">Factory used to create the description of the generated <see cref="IUnDo"/>, the name of the method called is passed as a parameter.</param>
         /// <returns>A wrapped <see cref="ICollection{T}"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="manager"/> is null.</exception>
-        public static ICollection<T> AsUnDo<T>(this ICollection<T> source, IUnDoManager manager) => new UnDoCollection<T>(
+        public static ICollection<T> AsUnDo<T>(this ICollection<T> source, IUnDoManager manager, Func<string, string> descriptionFactory = null) => new UnDoCollection<T>(
             manager ?? throw new ArgumentNullException(nameof(manager)),
-            source ?? throw new ArgumentNullException(nameof(source)));
+            source ?? throw new ArgumentNullException(nameof(source)),
+            descriptionFactory);
 
         #endregion
     }

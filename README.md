@@ -53,7 +53,7 @@ IList<int> myList = new List<int>().AsUnDo(manager);
 ICollection<int> myCollection = new ObservableCollection<int>().AsUnDo(manager);
 
 // use myDictionary as you would use your dictionary normaly
-Dictionary<int, string> myDictionary = new Dictionary<int, string>().AsUnDo(manager);
+IDictionary<int, string> myDictionary = new Dictionary<int, string>().AsUnDo(manager);
 
 // use mySet as you would use your set normaly
 ISet<int> mySet = new HashSet<int>().AsUnDo(manager);

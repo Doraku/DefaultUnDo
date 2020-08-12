@@ -98,6 +98,15 @@ namespace DefaultUnDo.Test
             Check.That(done).IsTrue();
         }
 
+        [Fact]
+        public void Description_Should_return_description()
+        {
+            object key = new object();
+            IUnDo undo = new DictionaryUnDo<object, object>("test", Substitute.For<IDictionary<object, object>>(), key, null, true);
+
+            Check.That(undo.Description).IsEqualTo("test");
+        }
+
         #endregion
     }
 }

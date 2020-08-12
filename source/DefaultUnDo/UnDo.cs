@@ -9,6 +9,7 @@ namespace DefaultUnDo
     {
         #region Fields
 
+        private readonly string _description;
         private readonly Action _doAction;
         private readonly Action _undoAction;
 
@@ -19,17 +20,30 @@ namespace DefaultUnDo
         /// <summary>
         /// Initialises an instance of <see cref="UnDo"/>.
         /// </summary>
+        /// <param name="description">The description of this <see cref="IUnDo"/></param>
         /// <param name="doAction">The action called by <see cref="IUnDo.Do"/>.</param>
         /// <param name="undoAction">The action called by <see cref="IUnDo.Undo"/>.</param>
-        public UnDo(Action doAction, Action undoAction)
+        public UnDo(string description, Action doAction, Action undoAction)
         {
+            _description = description ?? string.Empty;
             _doAction = doAction;
             _undoAction = undoAction;
         }
 
+        /// <summary>
+        /// Initialises an instance of <see cref="UnDo"/>.
+        /// </summary>
+        /// <param name="doAction">The action called by <see cref="IUnDo.Do"/>.</param>
+        /// <param name="undoAction">The action called by <see cref="IUnDo.Undo"/>.</param>
+        public UnDo(Action doAction, Action undoAction)
+            : this(null, doAction, undoAction)
+        { }
+
         #endregion
 
         #region IUnDo
+
+        string IUnDo.Description => _description;
 
         void IUnDo.Do() => _doAction?.Invoke();
 

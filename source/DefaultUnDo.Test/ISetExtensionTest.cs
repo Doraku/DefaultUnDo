@@ -55,7 +55,24 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
-        public void UnDoSet_ExceptWith_Should_()
+        public void UnDoSet_Add_Should_generate_Add_description()
+        {
+            ISet<object> source = Substitute.For<ISet<object>>();
+            IUnDoManager manager = Substitute.For<IUnDoManager>();
+
+            string description = null;
+
+            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+            ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
+
+            unDoCollection.Add(default);
+
+            Check.That(description).IsEqualTo(nameof(source.Add));
+        }
+
+        [Fact]
+        public void UnDoSet_ExceptWith_Should_work()
         {
             IUnDoManager manager = new UnDoManager();
             ISet<int> unDoSet = new HashSet<int> { 1, 2, 3 }.AsUnDo(manager);
@@ -70,7 +87,25 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
-        public void UnDoSet_IntersectWith_Should_()
+        public void UnDoSet_ExceptWith_Should_generate_ExceptWith_description()
+        {
+            ISet<object> source = Substitute.For<ISet<object>>();
+            IUnDoManager manager = Substitute.For<IUnDoManager>();
+
+            string description = null;
+
+            source.Count.Returns(42);
+            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+            ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
+
+            unDoCollection.ExceptWith(Enumerable.Empty<object>());
+
+            Check.That(description).IsEqualTo(nameof(source.ExceptWith));
+        }
+
+        [Fact]
+        public void UnDoSet_IntersectWith_Should_work()
         {
             IUnDoManager manager = new UnDoManager();
             ISet<int> unDoSet = new HashSet<int> { 1, 2, 3 }.AsUnDo(manager);
@@ -82,6 +117,24 @@ namespace DefaultUnDo.Test
             manager.Undo();
 
             Check.That(unDoSet.OrderBy(i => i)).ContainsExactly(1, 2, 3);
+        }
+
+        [Fact]
+        public void UnDoSet_IntersectWith_Should_generate_IntersectWith_description()
+        {
+            ISet<object> source = Substitute.For<ISet<object>>();
+            IUnDoManager manager = Substitute.For<IUnDoManager>();
+
+            string description = null;
+
+            source.Count.Returns(42);
+            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+            ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
+
+            unDoCollection.IntersectWith(Enumerable.Empty<object>());
+
+            Check.That(description).IsEqualTo(nameof(source.IntersectWith));
         }
 
         [Fact]
@@ -187,7 +240,7 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
-        public void UnDoSet_SymmetricExceptWith_Should_()
+        public void UnDoSet_SymmetricExceptWith_Should_work()
         {
             IUnDoManager manager = new UnDoManager();
             ISet<int> unDoSet = new HashSet<int> { 1, 2, 3 }.AsUnDo(manager);
@@ -202,7 +255,24 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
-        public void UnDoSet_UnionWith_Should_()
+        public void UnDoSet_SymmetricExceptWith_Should_generate_SymmetricExceptWith_description()
+        {
+            ISet<object> source = Substitute.For<ISet<object>>();
+            IUnDoManager manager = Substitute.For<IUnDoManager>();
+
+            string description = null;
+
+            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+            ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
+
+            unDoCollection.SymmetricExceptWith(Enumerable.Empty<object>());
+
+            Check.That(description).IsEqualTo(nameof(source.SymmetricExceptWith));
+        }
+
+        [Fact]
+        public void UnDoSet_UnionWith_Should_work()
         {
             IUnDoManager manager = new UnDoManager();
             ISet<int> unDoSet = new HashSet<int> { 1, 2, 3 }.AsUnDo(manager);
@@ -214,6 +284,23 @@ namespace DefaultUnDo.Test
             manager.Undo();
 
             Check.That(unDoSet.OrderBy(i => i)).ContainsExactly(1, 2, 3);
+        }
+
+        [Fact]
+        public void UnDoSet_UnionWith_Should_generate_UnionWith_description()
+        {
+            ISet<object> source = Substitute.For<ISet<object>>();
+            IUnDoManager manager = Substitute.For<IUnDoManager>();
+
+            string description = null;
+
+            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+            ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
+
+            unDoCollection.UnionWith(Enumerable.Empty<object>());
+
+            Check.That(description).IsEqualTo(nameof(source.UnionWith));
         }
 
         #endregion

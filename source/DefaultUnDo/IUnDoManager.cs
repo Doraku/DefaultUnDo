@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace DefaultUnDo
@@ -26,11 +28,22 @@ namespace DefaultUnDo
         bool CanRedo { get; }
 
         /// <summary>
+        /// Gets the descriptions in order of all the <see cref="IUnDo"/> which can be undone.
+        /// </summary>
+        IEnumerable<string> UndoDescriptions { get; }
+
+        /// <summary>
+        /// Gets the descriptions in order of all the <see cref="IUnDo"/> which can be redone.
+        /// </summary>
+        IEnumerable<string> RedoDescriptions { get; }
+
+        /// <summary>
         /// Starts a group of operation and return an <see cref="IDisposable"/> to stop the group.
         /// If multiple calls to this method are made, the group will be stoped once each <see cref="IDisposable"/> returned are disposed.
         /// </summary>
+        /// <param name="description">The description of the group operation.</param>
         /// <returns>An <see cref="IDisposable"/> to stop the group operation.</returns>
-        IDisposable BeginGroup();
+        IDisposable BeginGroup(string description = null);
 
         /// <summary>
         /// Clears the history of <see cref="IUnDo"/> operations.

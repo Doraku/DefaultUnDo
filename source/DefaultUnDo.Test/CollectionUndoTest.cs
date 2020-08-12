@@ -83,6 +83,14 @@ namespace DefaultUnDo.Test
             Check.That(done).IsTrue();
         }
 
+        [Fact]
+        public void Description_Should_return_description()
+        {
+            IUnDo undo = new CollectionUnDo<object>("test", Substitute.For<ICollection<object>>(), null, true);
+
+            Check.That(undo.Description).IsEqualTo("test");
+        }
+
         #endregion
     }
 }

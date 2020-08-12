@@ -68,6 +68,23 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
+        public void UnDoList_Insert_Should_generate_Insert_description()
+        {
+            IList<object> source = Substitute.For<IList<object>>();
+            IUnDoManager manager = Substitute.For<IUnDoManager>();
+
+            string description = null;
+
+            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+            IList<object> unDoCollection = source.AsUnDo(manager, d => description = d);
+
+            unDoCollection.Insert(0, default);
+
+            Check.That(description).IsEqualTo(nameof(source.Insert));
+        }
+
+        [Fact]
         public void UnDoList_RemoveAt_Should_RemoveAt()
         {
             IList<object> source = Substitute.For<IList<object>>();
@@ -84,6 +101,23 @@ namespace DefaultUnDo.Test
             unDoList.RemoveAt(index);
 
             Check.That(done).IsTrue();
+        }
+
+        [Fact]
+        public void UnDoList_RemoveAt_Should_generate_RemoveAt_description()
+        {
+            IList<object> source = Substitute.For<IList<object>>();
+            IUnDoManager manager = Substitute.For<IUnDoManager>();
+
+            string description = null;
+
+            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+            IList<object> unDoCollection = source.AsUnDo(manager, d => description = d);
+
+            unDoCollection.RemoveAt(0);
+
+            Check.That(description).IsEqualTo(nameof(source.RemoveAt));
         }
 
         [Fact]
@@ -119,6 +153,23 @@ namespace DefaultUnDo.Test
             unDoList[index] = value;
 
             Check.That(done).IsTrue();
+        }
+
+        [Fact]
+        public void UnDoList_this_index_set_Should_generate_this_description()
+        {
+            IList<object> source = Substitute.For<IList<object>>();
+            IUnDoManager manager = Substitute.For<IUnDoManager>();
+
+            string description = null;
+
+            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+            IList<object> unDoCollection = source.AsUnDo(manager, d => description = d);
+
+            unDoCollection[0] = default;
+
+            Check.That(description).IsEqualTo("this");
         }
 
         [Fact]
