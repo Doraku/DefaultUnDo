@@ -324,7 +324,10 @@ namespace DefaultUnDo
                 throw new ArgumentNullException(nameof(manager));
             }
 
-            manager.Do(new UnDo(description, doAction, undoAction));
+            if (doAction != null || undoAction != null)
+            {
+                manager.Do(new UnDo(description, doAction, undoAction));
+            }
         }
 
         /// <summary>

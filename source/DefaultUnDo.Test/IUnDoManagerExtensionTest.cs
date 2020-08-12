@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NFluent;
 using NSubstitute;
+using NSubstitute.ExceptionExtensions;
 using Xunit;
 
 namespace DefaultUnDo.Test
@@ -390,6 +391,18 @@ namespace DefaultUnDo.Test
                 .ThatCode(() => manager.Do(doAction, undoAction))
                 .Throws<ArgumentNullException>()
                 .WithProperty("ParamName", "manager");
+        }
+
+        [Fact]
+        public void Do_Should_no_do_anything_When_both_actions_are_null()
+        {
+            IUnDoManager manager = new UnDoManager();
+            Action doAction = null;
+            Action undoAction = null;
+
+            manager.Do(doAction, undoAction);
+            
+            Check.That(manager.CanUndo).IsFalse();
         }
 
         [Fact]
