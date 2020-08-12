@@ -88,6 +88,7 @@ namespace DefaultUnDo.Test
 
             bool done = false;
 
+            source.Count.Returns(42);
             source.When(s => s.Clear()).Do(_ => done = true);
             manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 

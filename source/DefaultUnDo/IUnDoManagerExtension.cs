@@ -91,9 +91,12 @@ namespace DefaultUnDo
                 throw new ArgumentNullException(nameof(source));
             }
 
-            T[] oldValues = source.ToArray();
+            if (source.Count > 0)
+            {
+                T[] oldValues = source.ToArray();
 
-            manager.Do(source.Clear, () => { foreach (T oldValue in oldValues) { source.Add(oldValue); } }, description);
+                manager.Do(source.Clear, () => { foreach (T oldValue in oldValues) { source.Add(oldValue); } }, description);
+            }
         }
 
         /// <summary>

@@ -302,7 +302,7 @@ namespace DefaultUnDo.Test
             List<string> properties = new List<string>();
             manager.PropertyChanged += (_, e) => properties.Add(e.PropertyName);
 
-            manager.Do(null, null);
+            manager.Do(() => { }, () => { });
 
             Check.That(properties).Contains(nameof(manager.Version), nameof(manager.CanUndo), nameof(manager.CanRedo), nameof(manager.UndoDescriptions), nameof(manager.RedoDescriptions));
 
