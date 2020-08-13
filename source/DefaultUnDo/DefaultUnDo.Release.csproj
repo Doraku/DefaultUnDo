@@ -17,6 +17,7 @@
     <Version>0.1.0</Version>
     <PackageReleaseNotes>
 added Description property on IUnDo
+added maxCapacity on UnDoManager constructor
     </PackageReleaseNotes>
   </PropertyGroup>
 </Project>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
+using DefaultUnDo.Technical;
 
 namespace DefaultUnDo
 {
@@ -61,10 +61,7 @@ namespace DefaultUnDo
 
         #region Fields
 
-        private readonly Stack<IUnDo> _doneActions;
-        private readonly Stack<IUnDo> _undoneActions;
-        private readonly Stack<int> _doneVersions;
-        private readonly Stack<int> _undoneVersions;
+        private readonly IUnDoStack _stack;
         private readonly List<IUnDo> _groupCommands;
         private int _version;
         private int _lastVersion;
@@ -78,32 +75,33 @@ namespace DefaultUnDo
         /// <summary>
         /// Initialises an instance of <see cref="UnDoManager"/>.
         /// </summary>
-        public UnDoManager()
+        /// <param name="maxCapacity">The maximum number of operation this <see cref="UnDoManager"/> can record before errasing oldest ones.</param>
+        public UnDoManager(int maxCapacity)
         {
-            _doneActions = new Stack<IUnDo>();
-            _undoneActions = new Stack<IUnDo>();
-            _doneVersions = new Stack<int>();
-            _undoneVersions = new Stack<int>();
+            if (maxCapacity <= 0)
+            {
+                throw new ArgumentException("maxCapacity must be superior to zero", nameof(maxCapacity));
+            }
+
+            _stack = maxCapacity == int.MaxValue ? (IUnDoStack)new UnDoStack() : new UnDoBuffer(maxCapacity);
             _groupCommands = new List<IUnDo>();
 
             Version = 0;
             _lastVersion = 0;
         }
 
+        /// <summary>
+        /// Initialises an instance of <see cref="UnDoManager"/>.
+        /// </summary>
+        public UnDoManager()
+            : this(int.MaxValue)
+        { }
+
         #endregion
 
         #region Methods
 
-        private void Push(IUnDo command)
-        {
-            _doneActions.Push(command);
-            _doneVersions.Push(Version);
-
-            _undoneActions.Clear();
-            _undoneVersions.Clear();
-
-            Version = ++_lastVersion;
-        }
+        private void Push(IUnDo command) => Version = _stack.Push(command, ++_lastVersion, Version);
 
         #endregion
 
@@ -130,23 +128,23 @@ namespace DefaultUnDo
         /// Returns a boolean to express if the method <see cref="Undo"/> can be executed.
         /// </summary>
         /// <returns>true if <see cref="Undo"/> can be executed, else false.</returns>
-        public bool CanUndo => _doneActions.Count > 0;
+        public bool CanUndo => _stack.CanUndo;
 
         /// <summary>
         /// Returns a boolean to express if the method <see cref="Redo"/> can be executed.
         /// </summary>
         /// <returns>true if <see cref="Redo"/> can be executed, else false.</returns>
-        public bool CanRedo => _undoneActions.Count > 0;
+        public bool CanRedo => _stack.CanRedo;
 
         /// <summary>
         /// Gets the descriptions in order of all the <see cref="IUnDo"/> which can be undone.
         /// </summary>
-        public IEnumerable<string> UndoDescriptions => _doneActions.Select(a => a.Description);
+        public IEnumerable<string> UndoDescriptions => _stack.UndoDescriptions;
 
         /// <summary>
         /// Gets the descriptions in order of all the <see cref="IUnDo"/> which can be redone.
         /// </summary>
-        public IEnumerable<string> RedoDescriptions => _undoneActions.Select(a => a.Description);
+        public IEnumerable<string> RedoDescriptions => _stack.RedoDescription;
 
         /// <summary>
         /// Starts a group of operation and return an <see cref="IDisposable"/> to stop the group.
@@ -161,10 +159,7 @@ namespace DefaultUnDo
         /// </summary>
         public void Clear()
         {
-            _doneActions.Clear();
-            _doneVersions.Clear();
-            _undoneActions.Clear();
-            _undoneVersions.Clear();
+            _stack.Clear();
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CanUndo)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CanRedo)));
@@ -207,16 +202,12 @@ namespace DefaultUnDo
             {
                 throw new InvalidOperationException("Cannot perform Undo while a group operation is going on.");
             }
+            if (!CanUndo)
+            {
+                throw new InvalidOperationException("No operation to undo.");
+            }
 
-            IUnDo command = _doneActions.Pop();
-            int version = _doneVersions.Pop();
-
-            command.Undo();
-
-            _undoneActions.Push(command);
-            _undoneVersions.Push(Version);
-
-            Version = version;
+            Version = _stack.Undo();
         }
 
         /// <summary>
@@ -230,16 +221,12 @@ namespace DefaultUnDo
             {
                 throw new InvalidOperationException("Cannot perform Redo while a group operation is going on.");
             }
+            if (!CanRedo)
+            {
+                throw new InvalidOperationException("No operation to redo.");
+            }
 
-            IUnDo command = _undoneActions.Pop();
-            int version = _undoneVersions.Pop();
-
-            command.Do();
-
-            _doneActions.Push(command);
-            _doneVersions.Push(Version);
-
-            Version = version;
+            Version = _stack.Redo();
         }
 
         #endregion

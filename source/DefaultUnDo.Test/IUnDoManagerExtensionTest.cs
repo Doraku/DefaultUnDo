@@ -401,7 +401,7 @@ namespace DefaultUnDo.Test
             Action undoAction = null;
 
             manager.Do(doAction, undoAction);
-            
+
             Check.That(manager.CanUndo).IsFalse();
         }
 

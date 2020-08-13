@@ -10,11 +10,25 @@ namespace DefaultUnDo.Test
     {
         #region Methods
 
-        [Fact]
-        public void Version_Should_incremente_When_a_command_is_done()
+        public static IEnumerable<object[]> UnDoManagers
         {
-            IUnDoManager manager = new UnDoManager();
+            get
+            {
+                yield return new object[] { new UnDoManager() };
+                yield return new object[] { new UnDoManager(10) };
+            }
+        }
 
+        [Fact]
+        public void UnDoManager_maxCapacity_Should_throw_ArgumentException_When_maxCapacity_is_inferior_or_equal_to_zero()
+        {
+            Check.ThatCode(() => new UnDoManager(-1)).Throws<ArgumentException>();
+        }
+
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void Version_Should_incremente_When_a_command_is_done(IUnDoManager manager)
+        {
             int oldVersion = manager.Version;
 
             manager.Do(Substitute.For<IUnDo>());
@@ -22,11 +36,10 @@ namespace DefaultUnDo.Test
             Check.That(manager.Version).IsStrictlyGreaterThan(oldVersion);
         }
 
-        [Fact]
-        public void Version_Should_return_old_value_When_a_command_is_undone()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void Version_Should_return_old_value_When_a_command_is_undone(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
-
             int oldVersion = manager.Version;
 
             manager.Do(Substitute.For<IUnDo>());
@@ -35,11 +48,10 @@ namespace DefaultUnDo.Test
             Check.That(manager.Version).IsEqualTo(oldVersion);
         }
 
-        [Fact]
-        public void Version_Should_return_last_value_When_a_command_is_redone()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void Version_Should_return_last_value_When_a_command_is_redone(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
-
             manager.Do(Substitute.For<IUnDo>());
 
             int lastVersion = manager.Version;
@@ -50,59 +62,53 @@ namespace DefaultUnDo.Test
             Check.That(manager.Version).IsEqualTo(lastVersion);
         }
 
-        [Fact]
-        public void CanUndo_Should_return_false_When_no_command_has_been_done()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void CanUndo_Should_return_false_When_no_command_has_been_done(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
-
             Check.That(manager.CanUndo).IsFalse();
         }
 
-        [Fact]
-        public void CanUndo_Should_return_true_When_a_command_has_been_done()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void CanUndo_Should_return_true_When_a_command_has_been_done(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
-
             manager.Do(Substitute.For<IUnDo>());
 
             Check.That(manager.CanUndo).IsTrue();
         }
 
-        [Fact]
-        public void CanUndo_Should_return_false_When_all_commands_have_been_undone()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void CanUndo_Should_return_false_When_all_commands_have_been_undone(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
-
             manager.Do(Substitute.For<IUnDo>());
             manager.Undo();
 
             Check.That(manager.CanUndo).IsFalse();
         }
 
-        [Fact]
-        public void CanRedo_Should_return_false_When_no_command_has_been_done()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void CanRedo_Should_return_false_When_no_command_has_been_done(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
-
             Check.That(manager.CanRedo).IsFalse();
         }
 
-        [Fact]
-        public void CanRedo_Should_return_true_When_a_command_has_been_undone()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void CanRedo_Should_return_true_When_a_command_has_been_undone(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
-
             manager.Do(Substitute.For<IUnDo>());
             manager.Undo();
 
             Check.That(manager.CanRedo).IsTrue();
         }
 
-        [Fact]
-        public void CanRedo_Should_return_false_When_all_commands_have_been_redone()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void CanRedo_Should_return_false_When_all_commands_have_been_redone(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
-
             manager.Do(Substitute.For<IUnDo>());
             manager.Undo();
             manager.Redo();
@@ -110,11 +116,10 @@ namespace DefaultUnDo.Test
             Check.That(manager.CanRedo).IsFalse();
         }
 
-        [Fact]
-        public void Clear_Should_clear_undone_and_done_history()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void Clear_Should_clear_undone_and_done_history(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
-
             manager.Do(Substitute.For<IUnDo>());
             manager.Do(Substitute.For<IUnDo>());
             manager.Undo();
@@ -128,21 +133,20 @@ namespace DefaultUnDo.Test
             Check.That(manager.CanRedo).IsFalse();
         }
 
-        [Fact]
-        public void Do_Should_throw_ArgumentNullException_When_command_is_null()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void Do_Should_throw_ArgumentNullException_When_command_is_null(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
-
             Check
                 .ThatCode(() => manager.Do(null))
                 .Throws<ArgumentNullException>()
                 .WithProperty("ParamName", "command");
         }
 
-        [Fact]
-        public void Do_Should_Do()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void Do_Should_Do(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
             IUnDo undo = Substitute.For<IUnDo>();
 
             bool done = false;
@@ -153,10 +157,10 @@ namespace DefaultUnDo.Test
             Check.That(done).IsTrue();
         }
 
-        [Fact]
-        public void Do_Should_not_add_command_in_history_when_a_group_is_going_on()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void Do_Should_not_add_command_in_history_when_a_group_is_going_on(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
             IUnDo undo = Substitute.For<IUnDo>();
             int version = manager.Version;
 
@@ -168,18 +172,17 @@ namespace DefaultUnDo.Test
             }
         }
 
-        [Fact]
-        public void BeginGroup_Should_return_an_IDisposable()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void BeginGroup_Should_return_an_IDisposable(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
-
             Check.That(manager.BeginGroup()).IsNotNull();
         }
 
-        [Fact]
-        public void BeginGroup_Should_add_commands_as_one_operation_in_history_once_disposed()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void BeginGroup_Should_add_commands_as_one_operation_in_history_once_disposed(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
             IUnDo undo = Substitute.For<IUnDo>();
             undo.Description.Returns("dummy");
             int version = manager.Version;
@@ -199,11 +202,10 @@ namespace DefaultUnDo.Test
             Check.That(manager.Version).IsEqualTo(version);
         }
 
-        [Fact]
-        public void Do_Should_clear_undone_history()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void Do_Should_clear_undone_history(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
-
             manager.Do(Substitute.For<IUnDo>());
             manager.Do(Substitute.For<IUnDo>());
             manager.Undo();
@@ -215,21 +217,19 @@ namespace DefaultUnDo.Test
             Check.That(manager.CanRedo).IsFalse();
         }
 
-        [Fact]
-        public void Undo_Should_throw_InvalidOperationException_When_CanUndo_is_false()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void Undo_Should_throw_InvalidOperationException_When_CanUndo_is_false(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
-
             Check
                 .ThatCode(() => manager.Undo())
                 .Throws<InvalidOperationException>();
         }
 
-        [Fact]
-        public void Undo_Should_throw_InvalidOperationException_When_a_group_operation_is_going_on()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void Undo_Should_throw_InvalidOperationException_When_a_group_operation_is_going_on(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
-
             using (manager.BeginGroup())
             {
                 Check
@@ -239,10 +239,10 @@ namespace DefaultUnDo.Test
             }
         }
 
-        [Fact]
-        public void Undo_Should_Undo()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void Undo_Should_Undo(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
             IUnDo undo = Substitute.For<IUnDo>();
 
             bool done = false;
@@ -254,21 +254,19 @@ namespace DefaultUnDo.Test
             Check.That(done).IsTrue();
         }
 
-        [Fact]
-        public void Redo_Should_throw_InvalidOperationException_When_CanRedo_is_false()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void Redo_Should_throw_InvalidOperationException_When_CanRedo_is_false(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
-
             Check
                 .ThatCode(() => manager.Redo())
                 .Throws<InvalidOperationException>();
         }
 
-        [Fact]
-        public void Redo_Should_throw_InvalidOperationException_When_a_group_operation_is_going_on()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void Redo_Should_throw_InvalidOperationException_When_a_group_operation_is_going_on(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
-
             using (manager.BeginGroup())
             {
                 Check
@@ -278,10 +276,10 @@ namespace DefaultUnDo.Test
             }
         }
 
-        [Fact]
-        public void Redo_Should_Redo()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void Redo_Should_Redo(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
             IUnDo undo = Substitute.For<IUnDo>();
 
             manager.Do(undo);
@@ -295,10 +293,10 @@ namespace DefaultUnDo.Test
             Check.That(done).IsTrue();
         }
 
-        [Fact]
-        public void PropertyChanged_Should_be_called()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void PropertyChanged_Should_be_called(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
             List<string> properties = new List<string>();
             manager.PropertyChanged += (_, e) => properties.Add(e.PropertyName);
 
@@ -313,10 +311,10 @@ namespace DefaultUnDo.Test
             Check.That(properties).Contains(nameof(manager.CanUndo), nameof(manager.CanRedo), nameof(manager.UndoDescriptions), nameof(manager.RedoDescriptions));
         }
 
-        [Fact]
-        public void UndoDescriptions_Should_return_descriptions_of_undoable_operations()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void UndoDescriptions_Should_return_descriptions_of_undoable_operations(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
             IUnDo operation1 = Substitute.For<IUnDo>();
             IUnDo operation2 = Substitute.For<IUnDo>();
 
@@ -334,10 +332,10 @@ namespace DefaultUnDo.Test
             Check.That(manager.UndoDescriptions).IsEmpty();
         }
 
-        [Fact]
-        public void RedoDescriptions_Should_return_descriptions_of_redoable_operations()
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
+        public void RedoDescriptions_Should_return_descriptions_of_redoable_operations(IUnDoManager manager)
         {
-            IUnDoManager manager = new UnDoManager();
             IUnDo operation1 = Substitute.For<IUnDo>();
             IUnDo operation2 = Substitute.For<IUnDo>();
 
@@ -353,6 +351,49 @@ namespace DefaultUnDo.Test
             manager.Undo();
 
             Check.That(manager.RedoDescriptions).ContainsExactly("kikoo", "lol");
+        }
+
+        [Fact]
+        public void Do_Should_override_oldest_operation_When_max_capacity()
+        {
+            IUnDoManager manager = new UnDoManager(2);
+
+            IUnDo operation1 = Substitute.For<IUnDo>();
+            IUnDo operation2 = Substitute.For<IUnDo>();
+            IUnDo operation3 = Substitute.For<IUnDo>();
+
+            operation1.Description.Returns("un");
+            operation2.Description.Returns("dos");
+            operation3.Description.Returns("tres");
+
+            manager.Do(operation1);
+            manager.Do(operation2);
+            manager.Do(operation3);
+
+            Check.That(manager.UndoDescriptions).ContainsExactly("tres", "dos");
+        }
+
+        [Fact]
+        public void Do_Should_operation_When_max_capacity_is_one()
+        {
+            IUnDoManager manager = new UnDoManager(1);
+
+            IUnDo operation1 = Substitute.For<IUnDo>();
+            IUnDo operation2 = Substitute.For<IUnDo>();
+
+            operation1.Description.Returns("kikoo");
+            operation2.Description.Returns("lol");
+
+            manager.Do(operation1);
+            manager.Do(operation2);
+
+            Check.That(manager.UndoDescriptions).ContainsExactly("lol");
+            Check.That(manager.RedoDescriptions).IsEmpty();
+
+            manager.Undo();
+
+            Check.That(manager.UndoDescriptions).IsEmpty();
+            Check.That(manager.RedoDescriptions).ContainsExactly("lol");
         }
 
         #endregion
