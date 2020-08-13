@@ -371,6 +371,16 @@ namespace DefaultUnDo.Test
             manager.Do(operation3);
 
             Check.That(manager.UndoDescriptions).ContainsExactly("tres", "dos");
+
+            manager.Undo();
+            manager.Undo();
+
+            Check.That(manager.RedoDescriptions).ContainsExactly("dos", "tres");
+
+            manager.Redo();
+            manager.Redo();
+
+            Check.That(manager.UndoDescriptions).ContainsExactly("tres", "dos");
         }
 
         [Fact]

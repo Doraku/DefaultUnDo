@@ -156,7 +156,7 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
-        public void DRemove_ICollection_Should_keep_index_When_source_is_IList()
+        public void DoRemove_ICollection_Should_keep_index_When_source_is_IList()
         {
             IUnDoManager manager = new UnDoManager();
             ICollection<int> source = new List<int> { 0, 1 };
