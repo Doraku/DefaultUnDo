@@ -41,6 +41,89 @@ if (Manager.CanRedo)
 manager.Clear();
 ```
 
+Example of how to set a value
+```csharp
+IUnDoManager manager = new UnDoManager();
+
+int field = 42;
+
+manager.Do(v => field = v, 1337, field);
+
+// In mvvm we all have some kind of base type
+public abstract class ANotifyPropertyChanged : INotifyPropertyChanged
+{
+    // needed for mergeable action
+    private readonly Dictionary<Delegate, Delegate> _setters = new Dictionary<Delegate, Delegate>();
+
+    public delegate ref T FieldGetter<T>();
+
+    protected void NotifyPropertyChanged([CallerMemberName] string propertyName = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+    protected bool SetProperty<T>(ref T field, T value, [CallerMemberName] string propertyName = null, bool forceSet = false)
+    {
+        if (!forceSet
+            && ((field is IEquatable<T> equatable && equatable.Equals(value))
+                || (typeof(T).IsValueType && Equals(field, value))
+                || ReferenceEquals(field, value)))
+        {
+            return false;
+        }
+
+        field = value;
+
+        NotifyPropertyChanged(propertyName);
+
+        return true;
+    }
+
+    protected bool SetProperty<T>(IUnDoManager unDoManager, FieldGetter<T> fieldGetter, T value, [CallerMemberName] string propertyName = null)
+    {
+        ref T field = ref fieldGetter();
+
+        if ((field is IEquatable<T> equatable && equatable.Equals(value))
+            || (typeof(T).IsValueType && Equals(field, value))
+            || ReferenceEquals(field, value))
+        {
+            return false;
+        }
+
+        // since the lambda need to capture the fieldGetter parameter the framework can't reuse the same instance on its own so we help him with our own cache
+        // this is needed so ValueUnDo<T> can be merge, else the setter delegate will be different between multiple call on the same property and no merge would be possible 
+        if (!_setters.TryGetValue(fieldGetter, out Delegate setter))
+        {
+            setter = new Action<T>(v => SetProperty(ref fieldGetter(), v, propertyName, true));
+            _setters.Add(fieldGetter, setter);
+        }
+
+        unDoManager.Do(setter as Action<T>, value, fieldGetter(), $"Changed {typeof(T).GetFriendlyShortName()} {propertyName}");
+
+        return true;
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+}
+
+// usage in derrived types
+private string _field;
+
+public string Field
+{
+    get => _field;
+    set => SetProperty(manager, () => ref _field, value);
+}
+
+// events interraction
+manager.Do(
+    () => PropertyChanged += OnPropertyChanged,  // executed on Do/Redo
+    () => PropertyChanged -= OnPropertyChanged); // executed on Undo
+
+// Need something to only happen in Do/Redo
+manager.DoOnDo(() => NotifyPropertyChanged(nameof(MyProperty)));
+
+// Or only on Undo
+manager.DoOnUndo(() => NotifyPropertyChanged(nameof(MyProperty)));
+```
+
 `ICollection<T>`, `IList<T>`, `IDictionary<TKey, TValue>` and `ISet<T>` can be coverterted to an undo instance so that any action performed on them will generate a `IUnDo` action on the manager.
 ```csharp
 IUnDoManager manager = new UnDoManager();

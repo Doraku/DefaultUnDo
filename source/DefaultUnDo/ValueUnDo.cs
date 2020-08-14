@@ -6,11 +6,11 @@ namespace DefaultUnDo
     /// Provides an implementation of the <see cref="IUnDo"/> interface for setting value.
     /// </summary>
     /// <typeparam name="T">The type of value.</typeparam>
-    public sealed class ValueUnDo<T> : IUnDo
+    public sealed class ValueUnDo<T> : IMergeableUnDo
     {
         #region Fields
 
-        //private readonly DateTime _timeStamp;
+        private readonly DateTime _timeStamp;
         private readonly string _description;
         private readonly Action<T> _setter;
         private readonly T _newValue;
@@ -30,7 +30,7 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentNullException"><paramref name="setter"/> is null.</exception>
         public ValueUnDo(string description, Action<T> setter, T newValue, T oldValue)
         {
-            //_timeStamp = DateTime.Now;
+            _timeStamp = DateTime.Now;
             _description = description ?? string.Empty;
             _setter = setter ?? throw new ArgumentNullException(nameof(setter));
             _newValue = newValue;
@@ -50,21 +50,32 @@ namespace DefaultUnDo
 
         #endregion
 
-        //#region Methods
+        #region IMergeableUnDo
 
-        //public static bool TryMerge(ValueUnDo<T> unDo1, ValueUnDo<T> unDo2, TimeSpan mergePeriod, out ValueUnDo<T> mergedUnDo)
-        //{
-        //    mergedUnDo =
-        //        unDo1._description == unDo2._description
-        //        && unDo1._setter == unDo2._setter
-        //        && Equals(unDo1._newValue, unDo2._oldValue)
-        //        && (unDo2._timeStamp - unDo1._timeStamp) < mergePeriod
-        //        ? new ValueUnDo<T>(unDo1._description, unDo1._setter, unDo2._newValue, unDo1._oldValue) : null;
+        bool IMergeableUnDo.TryMerge(IUnDo command, out IUnDo mergedCommand)
+        {
+            if (command is GroupUnDo group
+                && !group.IsSingle(out command))
+            {
+                mergedCommand = null;
+                return false;
+            }
 
-        //    return mergedUnDo != null;
-        //}
+            if (command is ValueUnDo<T> value
+                && _description == value._description
+                && _setter == value._setter
+                && Equals(_newValue, value._oldValue)
+                && (value._timeStamp - _timeStamp) < TimeSpan.FromMilliseconds(500))
+            {
+                mergedCommand = new ValueUnDo<T>(_description, _setter, value._newValue, _oldValue);
+                return true;
+            }
 
-        //#endregion
+            mergedCommand = default;
+            return false;
+        }
+
+        #endregion
 
         #region IUnDo
 

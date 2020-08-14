@@ -6,7 +6,7 @@ namespace DefaultUnDo
     /// <summary>
     /// Provides an implementation of the <see cref="IUnDo"/> interface for a group of operations.
     /// </summary>
-    public sealed class GroupUnDo : IUnDo
+    public sealed class GroupUnDo : IMergeableUnDo
     {
         #region Fields
 
@@ -44,6 +44,35 @@ namespace DefaultUnDo
         public GroupUnDo(params IUnDo[] commands)
             : this(null, commands)
         { }
+
+        #endregion
+
+        public bool IsSingle(out IUnDo command)
+        {
+            command = _commands.Length is 1 ? _commands[0] : null;
+
+            return command != null;
+        }
+
+        #region IMergeableUnDo
+
+        bool IMergeableUnDo.TryMerge(IUnDo command, out IUnDo mergedCommand)
+        {
+            if (_description == command.Description && _commands.Length is 1 && _commands[0] is IMergeableUnDo mergeable)
+            {
+                if (mergeable.TryMerge(command, out mergedCommand))
+                {
+                    mergedCommand = new GroupUnDo(_description, mergedCommand);
+                    return true;
+                }
+            }
+            else
+            {
+                mergedCommand = default;
+            }
+
+            return false;
+        }
 
         #endregion
 

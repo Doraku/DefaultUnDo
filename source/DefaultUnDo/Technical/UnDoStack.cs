@@ -26,7 +26,16 @@ namespace DefaultUnDo.Technical
 
         public int Push(IUnDo command, int doVersion, int undoVersion)
         {
-            _doneOperations.Push(new Operation(command, doVersion, undoVersion));
+            if (_doneOperations.Count > 0
+                && _doneOperations.Peek().Command is IMergeableUnDo mergeable
+                && mergeable.TryMerge(command, out IUnDo mergedCommand))
+            {
+                _doneOperations.Push(new Operation(mergedCommand, doVersion, _doneOperations.Pop().UndoVersion));
+            }
+            else
+            {
+                _doneOperations.Push(new Operation(command, doVersion, undoVersion));
+            }
 
             _undoneOperations.Clear();
 
