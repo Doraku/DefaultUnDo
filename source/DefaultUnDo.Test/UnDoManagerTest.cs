@@ -159,6 +159,27 @@ namespace DefaultUnDo.Test
 
         [Theory]
         [MemberData(nameof(UnDoManagers))]
+        public void Do_Should_merge_When_possible(IUnDoManager manager)
+        {
+            IMergeableUnDo mergeable = Substitute.For<IMergeableUnDo>();
+            IUnDo undo = Substitute.For<IUnDo>();
+            IUnDo merged = Substitute.For<IUnDo>();
+            merged.Description.Returns("yay");
+
+            mergeable.TryMerge(undo, out Arg.Any<IUnDo>()).Returns(x =>
+            {
+                x[1] = merged;
+                return true;
+            });
+
+            manager.Do(mergeable);
+            manager.Do(undo);
+
+            Check.That(manager.UndoDescriptions).ContainsExactly("yay");
+        }
+
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
         public void Do_Should_not_add_command_in_history_when_a_group_is_going_on(IUnDoManager manager)
         {
             IUnDo undo = Substitute.For<IUnDo>();

@@ -18,6 +18,7 @@
     <PackageReleaseNotes>
 added Description property on IUnDo
 added maxCapacity on UnDoManager constructor
+added IMergeableUnDo interface for mergeable operation
     </PackageReleaseNotes>
   </PropertyGroup>
 </Project>

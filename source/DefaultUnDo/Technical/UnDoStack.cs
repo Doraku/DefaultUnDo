@@ -30,13 +30,11 @@ namespace DefaultUnDo.Technical
                 && _doneOperations.Peek().Command is IMergeableUnDo mergeable
                 && mergeable.TryMerge(command, out IUnDo mergedCommand))
             {
-                _doneOperations.Push(new Operation(mergedCommand, doVersion, _doneOperations.Pop().UndoVersion));
-            }
-            else
-            {
-                _doneOperations.Push(new Operation(command, doVersion, undoVersion));
+                command = mergedCommand;
+                undoVersion = _doneOperations.Pop().UndoVersion;
             }
 
+            _doneOperations.Push(new Operation(command, doVersion, undoVersion));
             _undoneOperations.Clear();
 
             return doVersion;

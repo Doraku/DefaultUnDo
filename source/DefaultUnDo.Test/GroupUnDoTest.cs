@@ -20,6 +20,15 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
+        public void GroupUnDo_Should_throw_ArgumentNullException_When_commands_empty()
+        {
+            Check
+                .ThatCode(() => new GroupUnDo())
+                .Throws<ArgumentException>()
+                .WithProperty("ParamName", "commands");
+        }
+
+        [Fact]
         public void GroupUnDo_Should_throw_ArgumentNullException_When_commands_contains_null()
         {
             Check
@@ -71,9 +80,89 @@ namespace DefaultUnDo.Test
         [Fact]
         public void Description_Should_return_description()
         {
-            IUnDo undo = new GroupUnDo("test");
+            IUnDo undo = new GroupUnDo("test", Substitute.For<IUnDo>());
 
             Check.That(undo.Description).IsEqualTo("test");
+        }
+
+        [Fact]
+        public void TryGetSingle_Should_return_false_When_multile_children()
+        {
+            GroupUnDo group = new GroupUnDo(
+                Substitute.For<IUnDo>(),
+                Substitute.For<IUnDo>());
+
+            Check.That(group.TryGetSingle<IUnDo>(out _)).IsFalse();
+        }
+
+        [Fact]
+        public void TryGetSingle_Should_return_false_When_single_child_is_not_T()
+        {
+            GroupUnDo group = new GroupUnDo(Substitute.For<IUnDo>());
+
+            Check.That(group.TryGetSingle<IMergeableUnDo>(out _)).IsFalse();
+        }
+
+        [Fact]
+        public void TryGetSingle_Should_return_true_When_single_child_is_T()
+        {
+            IUnDo undo = Substitute.For<IUnDo>();
+            GroupUnDo group = new GroupUnDo(undo);
+
+            Check.That(group.TryGetSingle(out IUnDo found)).IsTrue();
+            Check.That(found).IsEqualTo(undo);
+        }
+
+        [Fact]
+        public void TryMerge_Should_return_false_When_description_are_different()
+        {
+            IMergeableUnDo group = new GroupUnDo("kikoo", Substitute.For<IUnDo>());
+            IUnDo undo = Substitute.For<IUnDo>();
+            undo.Description.Returns("lol");
+
+            Check.That(group.TryMerge(undo, out _)).IsFalse();
+        }
+
+        [Fact]
+        public void TryMerge_Should_return_false_When_group_is_not_single_IMergeableUnDo()
+        {
+            IMergeableUnDo group = new GroupUnDo("test", Substitute.For<IUnDo>());
+            IUnDo undo = Substitute.For<IUnDo>();
+            undo.Description.Returns("test");
+
+            Check.That(group.TryMerge(undo, out _)).IsFalse();
+        }
+
+        [Fact]
+        public void TryMerge_Should_return_false_When_single_IMergeableUnDo_do_not_merge()
+        {
+            IUnDo undo = Substitute.For<IUnDo>();
+            IMergeableUnDo group = new GroupUnDo("test", Substitute.For<IMergeableUnDo>());
+            undo.Description.Returns("test");
+
+            Check.That(group.TryMerge(undo, out _)).IsFalse();
+        }
+
+        [Fact]
+        public void TryMerge_Should_return_true_When_merged()
+        {
+            IMergeableUnDo mergeable = Substitute.For<IMergeableUnDo>();
+            IUnDo undo = Substitute.For<IUnDo>();
+            IMergeableUnDo group = new GroupUnDo("test", mergeable);
+            undo.Description.Returns("test");
+            mergeable.TryMerge(undo, out Arg.Any<IUnDo>()).Returns(x =>
+            {
+                x[1] = undo;
+                return true;
+            });
+
+            Check.That(group.TryMerge(undo, out IUnDo merged)).IsTrue();
+            Check.That(merged.Description).IsEqualTo(group.Description);
+
+            IUnDo newUndo = null;
+            (merged as GroupUnDo)?.TryGetSingle(out newUndo);
+
+            Check.That(newUndo).IsEqualTo(undo);
         }
 
         #endregion

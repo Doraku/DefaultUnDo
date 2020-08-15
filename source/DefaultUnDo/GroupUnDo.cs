@@ -29,6 +29,10 @@ namespace DefaultUnDo
             _description = description ?? string.Empty;
             _commands = commands ?? throw new ArgumentNullException(nameof(commands));
 
+            if (_commands.Length is 0)
+            {
+                throw new ArgumentException("IUnDo sequence contains no elements.", nameof(commands));
+            }
             if (_commands.Any(i => i is null))
             {
                 throw new ArgumentException("IUnDo sequence contains null elements.", nameof(commands));
@@ -47,31 +51,37 @@ namespace DefaultUnDo
 
         #endregion
 
-        public bool IsSingle(out IUnDo command)
+        #region Method
+
+        /// <summary>
+        /// Gets the single <typeparamref name="T"/> of this instance.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="command">When this method returns, the single <typeparamref name="T"/> of this instance, if it was its only command; otherwise, the default value for the type <typeparamref name="T"/>.
+        /// This parameter is passed uninitialized.</param>
+        /// <returns>true if the current instance contains exactly one <typeparamref name="T"/>; otherwise false.</returns>
+        public bool TryGetSingle<T>(out T command)
+            where T : IUnDo
         {
-            command = _commands.Length is 1 ? _commands[0] : null;
+            command = _commands.Length is 1 && _commands[0] is T t ? t : default;
 
             return command != null;
         }
 
+        #endregion
+
         #region IMergeableUnDo
 
-        bool IMergeableUnDo.TryMerge(IUnDo command, out IUnDo mergedCommand)
+        bool IMergeableUnDo.TryMerge(IUnDo other, out IUnDo mergedCommand)
         {
-            if (_description == command.Description && _commands.Length is 1 && _commands[0] is IMergeableUnDo mergeable)
-            {
-                if (mergeable.TryMerge(command, out mergedCommand))
-                {
-                    mergedCommand = new GroupUnDo(_description, mergedCommand);
-                    return true;
-                }
-            }
-            else
-            {
-                mergedCommand = default;
-            }
+            mergedCommand =
+                _description == other.Description
+                    && TryGetSingle(out IMergeableUnDo mergeable)
+                    && mergeable.TryMerge(other, out mergedCommand)
+                ? new GroupUnDo(_description, mergedCommand)
+                : null;
 
-            return false;
+            return mergedCommand != null;
         }
 
         #endregion

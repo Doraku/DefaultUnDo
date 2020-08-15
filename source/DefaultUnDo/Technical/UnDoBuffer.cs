@@ -96,25 +96,24 @@ namespace DefaultUnDo.Technical
                 if (_buffer[_current].Command is IMergeableUnDo mergeable
                     && mergeable.TryMerge(command, out IUnDo mergedCommand))
                 {
-                    _buffer[_current] = new Operation(mergedCommand, doVersion, _buffer[_current].UndoVersion);
-                    return doVersion;
+                    command = mergedCommand;
+                    undoVersion = _buffer[_current].UndoVersion;
                 }
-
-                if (++_current >= _buffer.Length)
+                else
                 {
-                    _current -= _buffer.Length;
-                }
+                    if (++_current >= _buffer.Length)
+                    {
+                        _current -= _buffer.Length;
+                    }
 
-                if (_tail == _current && ++_tail >= _buffer.Length)
-                {
-                    _tail -= _buffer.Length;
+                    if (_tail == _current && ++_tail >= _buffer.Length)
+                    {
+                        _tail -= _buffer.Length;
+                    }
                 }
             }
-            else
-            {
-                _hasOperation = true;
-            }
 
+            _hasOperation = true;
             _currentState = true;
             _buffer[_current] = new Operation(command, doVersion, undoVersion);
             _head = _current;

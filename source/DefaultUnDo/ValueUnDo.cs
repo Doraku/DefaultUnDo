@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DefaultUnDo
 {
@@ -9,6 +10,13 @@ namespace DefaultUnDo
     public sealed class ValueUnDo<T> : IMergeableUnDo
     {
         #region Fields
+
+        /// <summary>
+        /// The <see cref="TimeSpan"/> interval equivalent <see cref="ValueUnDo{T}"/> instances should respect to be mergeable.
+        /// Default value is 500ms.
+        /// </summary>
+        [SuppressMessage("Design", "RCS1158:Static member in generic type should use a type parameter.")]
+        public static readonly TimeSpan MergeInterval = TimeSpan.FromMilliseconds(500);
 
         private readonly DateTime _timeStamp;
         private readonly string _description;
@@ -52,27 +60,18 @@ namespace DefaultUnDo
 
         #region IMergeableUnDo
 
-        bool IMergeableUnDo.TryMerge(IUnDo command, out IUnDo mergedCommand)
+        bool IMergeableUnDo.TryMerge(IUnDo other, out IUnDo mergedCommand)
         {
-            if (command is GroupUnDo group
-                && !group.IsSingle(out command))
-            {
-                mergedCommand = null;
-                return false;
-            }
+            mergedCommand =
+                _description == other.Description
+                    && (other is ValueUnDo<T> value || (other is GroupUnDo group && group.TryGetSingle(out value)))
+                    && _setter == value._setter
+                    && Equals(_newValue, value._oldValue)
+                    && (value._timeStamp - _timeStamp) < MergeInterval
+                ? new ValueUnDo<T>(_description, _setter, value._newValue, _oldValue)
+                : null;
 
-            if (command is ValueUnDo<T> value
-                && _description == value._description
-                && _setter == value._setter
-                && Equals(_newValue, value._oldValue)
-                && (value._timeStamp - _timeStamp) < TimeSpan.FromMilliseconds(500))
-            {
-                mergedCommand = new ValueUnDo<T>(_description, _setter, value._newValue, _oldValue);
-                return true;
-            }
-
-            mergedCommand = default;
-            return false;
+            return mergedCommand != null;
         }
 
         #endregion
