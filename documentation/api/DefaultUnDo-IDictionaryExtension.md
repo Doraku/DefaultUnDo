@@ -6,4 +6,4 @@ public static class IDictionaryExtension
 ```
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; IDictionaryExtension  
 ### Methods
-- [AsUnDo&lt;TKey,TValue&gt;(System.Collections.Generic.IDictionary&lt;TKey,TValue&gt;, DefaultUnDo.IUnDoManager)](./DefaultUnDo-IDictionaryExtension-AsUnDo-TKey_TValue-(System-Collections-Generic-IDictionary-TKey_TValue-_DefaultUnDo-IUnDoManager).md 'DefaultUnDo.IDictionaryExtension.AsUnDo&lt;TKey,TValue&gt;(System.Collections.Generic.IDictionary&lt;TKey,TValue&gt;, DefaultUnDo.IUnDoManager)')
+- [AsUnDo&lt;TKey,TValue&gt;(System.Collections.Generic.IDictionary&lt;TKey,TValue&gt;, DefaultUnDo.IUnDoManager, System.Func&lt;string,string&gt;)](./DefaultUnDo-IDictionaryExtension-AsUnDo-TKey_TValue-(System-Collections-Generic-IDictionary-TKey_TValue-_DefaultUnDo-IUnDoManager_System-Func-string_string-).md 'DefaultUnDo.IDictionaryExtension.AsUnDo&lt;TKey,TValue&gt;(System.Collections.Generic.IDictionary&lt;TKey,TValue&gt;, DefaultUnDo.IUnDoManager, System.Func&lt;string,string&gt;)')

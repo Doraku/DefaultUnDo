@@ -12,9 +12,11 @@ Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft
 ### Properties
 - [CanRedo](./DefaultUnDo-IUnDoManager-CanRedo.md 'DefaultUnDo.IUnDoManager.CanRedo')
 - [CanUndo](./DefaultUnDo-IUnDoManager-CanUndo.md 'DefaultUnDo.IUnDoManager.CanUndo')
+- [RedoDescriptions](./DefaultUnDo-IUnDoManager-RedoDescriptions.md 'DefaultUnDo.IUnDoManager.RedoDescriptions')
+- [UndoDescriptions](./DefaultUnDo-IUnDoManager-UndoDescriptions.md 'DefaultUnDo.IUnDoManager.UndoDescriptions')
 - [Version](./DefaultUnDo-IUnDoManager-Version.md 'DefaultUnDo.IUnDoManager.Version')
 ### Methods
-- [BeginGroup()](./DefaultUnDo-IUnDoManager-BeginGroup().md 'DefaultUnDo.IUnDoManager.BeginGroup()')
+- [BeginGroup(string)](./DefaultUnDo-IUnDoManager-BeginGroup(string).md 'DefaultUnDo.IUnDoManager.BeginGroup(string)')
 - [Clear()](./DefaultUnDo-IUnDoManager-Clear().md 'DefaultUnDo.IUnDoManager.Clear()')
 - [Do(DefaultUnDo.IUnDo)](./DefaultUnDo-IUnDoManager-Do(DefaultUnDo-IUnDo).md 'DefaultUnDo.IUnDoManager.Do(DefaultUnDo.IUnDo)')
 - [Redo()](./DefaultUnDo-IUnDoManager-Redo().md 'DefaultUnDo.IUnDoManager.Redo()')

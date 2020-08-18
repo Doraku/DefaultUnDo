@@ -10,3 +10,4 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Implements [IUnDo](./DefaultUnDo-IUnDo.md 'DefaultUnDo.IUnDo')  
 ### Constructors
 - [UnDo(System.Action, System.Action)](./DefaultUnDo-UnDo-UnDo(System-Action_System-Action).md 'DefaultUnDo.UnDo.UnDo(System.Action, System.Action)')
+- [UnDo(string, System.Action, System.Action)](./DefaultUnDo-UnDo-UnDo(string_System-Action_System-Action).md 'DefaultUnDo.UnDo.UnDo(string, System.Action, System.Action)')

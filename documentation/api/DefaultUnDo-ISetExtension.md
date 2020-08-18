@@ -6,4 +6,4 @@ public static class ISetExtension
 ```
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ISetExtension  
 ### Methods
-- [AsUnDo&lt;T&gt;(System.Collections.Generic.ISet&lt;T&gt;, DefaultUnDo.IUnDoManager)](./DefaultUnDo-ISetExtension-AsUnDo-T-(System-Collections-Generic-ISet-T-_DefaultUnDo-IUnDoManager).md 'DefaultUnDo.ISetExtension.AsUnDo&lt;T&gt;(System.Collections.Generic.ISet&lt;T&gt;, DefaultUnDo.IUnDoManager)')
+- [AsUnDo&lt;T&gt;(System.Collections.Generic.ISet&lt;T&gt;, DefaultUnDo.IUnDoManager, System.Func&lt;string,string&gt;)](./DefaultUnDo-ISetExtension-AsUnDo-T-(System-Collections-Generic-ISet-T-_DefaultUnDo-IUnDoManager_System-Func-string_string-).md 'DefaultUnDo.ISetExtension.AsUnDo&lt;T&gt;(System.Collections.Generic.ISet&lt;T&gt;, DefaultUnDo.IUnDoManager, System.Func&lt;string,string&gt;)')

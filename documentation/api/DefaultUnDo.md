@@ -13,5 +13,6 @@
 - [UnDoManager](./DefaultUnDo-UnDoManager.md 'DefaultUnDo.UnDoManager')
 - [ValueUnDo&lt;T&gt;](./DefaultUnDo-ValueUnDo-T-.md 'DefaultUnDo.ValueUnDo&lt;T&gt;')
 ### Interfaces
+- [IMergeableUnDo](./DefaultUnDo-IMergeableUnDo.md 'DefaultUnDo.IMergeableUnDo')
 - [IUnDo](./DefaultUnDo-IUnDo.md 'DefaultUnDo.IUnDo')
 - [IUnDoManager](./DefaultUnDo-IUnDoManager.md 'DefaultUnDo.IUnDoManager')

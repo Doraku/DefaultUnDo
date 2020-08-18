@@ -6,4 +6,4 @@ public static class ICollectionExtension
 ```
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ICollectionExtension  
 ### Methods
-- [AsUnDo&lt;T&gt;(System.Collections.Generic.ICollection&lt;T&gt;, DefaultUnDo.IUnDoManager)](./DefaultUnDo-ICollectionExtension-AsUnDo-T-(System-Collections-Generic-ICollection-T-_DefaultUnDo-IUnDoManager).md 'DefaultUnDo.ICollectionExtension.AsUnDo&lt;T&gt;(System.Collections.Generic.ICollection&lt;T&gt;, DefaultUnDo.IUnDoManager)')
+- [AsUnDo&lt;T&gt;(System.Collections.Generic.ICollection&lt;T&gt;, DefaultUnDo.IUnDoManager, System.Func&lt;string,string&gt;)](./DefaultUnDo-ICollectionExtension-AsUnDo-T-(System-Collections-Generic-ICollection-T-_DefaultUnDo-IUnDoManager_System-Func-string_string-).md 'DefaultUnDo.ICollectionExtension.AsUnDo&lt;T&gt;(System.Collections.Generic.ICollection&lt;T&gt;, DefaultUnDo.IUnDoManager, System.Func&lt;string,string&gt;)')
