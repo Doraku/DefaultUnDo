@@ -3,7 +3,7 @@
 The [System.TimeSpan](https://docs.microsoft.com/en-us/dotnet/api/System.TimeSpan 'System.TimeSpan') interval equivalent [ValueUnDo&lt;T&gt;](./DefaultUnDo-ValueUnDo-T-.md 'DefaultUnDo.ValueUnDo&lt;T&gt;') instances should respect to be mergeable.  
 Default value is 500ms.  
 ```csharp
-public static readonly MergeInterval;
+public static readonly TimeSpan MergeInterval;
 ```
 #### Field Value
 [System.TimeSpan](https://docs.microsoft.com/en-us/dotnet/api/System.TimeSpan 'System.TimeSpan')  

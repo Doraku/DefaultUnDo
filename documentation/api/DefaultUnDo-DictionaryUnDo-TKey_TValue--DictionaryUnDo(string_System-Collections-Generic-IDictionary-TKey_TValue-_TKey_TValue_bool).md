@@ -23,7 +23,7 @@ The value of the operation.
   
 <a name='DefaultUnDo-DictionaryUnDo-TKey_TValue--DictionaryUnDo(string_System-Collections-Generic-IDictionary-TKey_TValue-_TKey_TValue_bool)-isAdd'></a>
 `isAdd` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
-true if the operation is [System.Collections.Generic.IDictionary&lt;&gt;.Add(`0,`1)](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2.Add#System_Collections_Generic_IDictionary_2_Add__0,_1_ 'System.Collections.Generic.IDictionary`2.Add(`0,`1)'), false for [System.Collections.Generic.IDictionary&lt;&gt;.Remove(`0)](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2.Remove#System_Collections_Generic_IDictionary_2_Remove__0_ 'System.Collections.Generic.IDictionary`2.Remove(`0)').  
+true if the operation is [System.Collections.Generic.IDictionary&lt;&gt;.Add(@0,@1)](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2.Add#System_Collections_Generic_IDictionary_2_Add__0,_1_ 'System.Collections.Generic.IDictionary`2.Add(`0,`1)'), false for [System.Collections.Generic.IDictionary&lt;&gt;.Remove(@0)](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2.Remove#System_Collections_Generic_IDictionary_2_Remove__0_ 'System.Collections.Generic.IDictionary`2.Remove(`0)').  
   
 #### Exceptions
 [System.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System.ArgumentNullException')  

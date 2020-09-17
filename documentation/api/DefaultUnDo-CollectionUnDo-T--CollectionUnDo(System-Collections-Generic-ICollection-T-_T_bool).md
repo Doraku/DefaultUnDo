@@ -15,7 +15,7 @@ The argument of the operation.
   
 <a name='DefaultUnDo-CollectionUnDo-T--CollectionUnDo(System-Collections-Generic-ICollection-T-_T_bool)-isAdd'></a>
 `isAdd` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
-true if the operation is an [System.Collections.Generic.ICollection&lt;&gt;.Add(`0)](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.ICollection-1.Add#System_Collections_Generic_ICollection_1_Add__0_ 'System.Collections.Generic.ICollection`1.Add(`0)'), false for a [System.Collections.Generic.ICollection&lt;&gt;.Remove(`0)](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.ICollection-1.Remove#System_Collections_Generic_ICollection_1_Remove__0_ 'System.Collections.Generic.ICollection`1.Remove(`0)').  
+true if the operation is an [System.Collections.Generic.ICollection&lt;&gt;.Add(@0)](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.ICollection-1.Add#System_Collections_Generic_ICollection_1_Add__0_ 'System.Collections.Generic.ICollection`1.Add(`0)'), false for a [System.Collections.Generic.ICollection&lt;&gt;.Remove(@0)](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.ICollection-1.Remove#System_Collections_Generic_ICollection_1_Remove__0_ 'System.Collections.Generic.ICollection`1.Remove(`0)').  
   
 #### Exceptions
 [System.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System.ArgumentNullException')  
