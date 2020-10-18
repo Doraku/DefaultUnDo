@@ -12,7 +12,7 @@ namespace DefaultUnDo
     {
         #region Fields
 
-        private readonly string _description;
+        private readonly object _description;
         private readonly IDictionary<TKey, TValue> _source;
         private readonly TKey _key;
         private readonly TValue _element;
@@ -31,9 +31,9 @@ namespace DefaultUnDo
         /// <param name="value">The value of the operation.</param>
         /// <param name="isAdd">true if the operation is <see cref="IDictionary{TKey, TValue}.Add(TKey, TValue)"/>, false for <see cref="IDictionary{TKey, TValue}.Remove(TKey)"/>.</param>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="key"/> is null.</exception>
-        public DictionaryUnDo(string description, IDictionary<TKey, TValue> source, TKey key, TValue value, bool isAdd)
+        public DictionaryUnDo(object description, IDictionary<TKey, TValue> source, TKey key, TValue value, bool isAdd)
         {
-            _description = description ?? string.Empty;
+            _description = description;
             _source = source ?? throw new ArgumentNullException(nameof(source));
             _key = key ?? throw new ArgumentNullException(nameof(key));
             _element = value;
@@ -72,7 +72,7 @@ namespace DefaultUnDo
 
         #region IUnDo
 
-        string IUnDo.Description => _description;
+        object IUnDo.Description => _description;
 
         void IUnDo.Do() => Action(_isAdd);
 

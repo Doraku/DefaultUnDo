@@ -11,7 +11,7 @@ namespace DefaultUnDo
     {
         #region Fields
 
-        private readonly string _description;
+        private readonly object _description;
         private readonly IList<T> _source;
         private readonly int _index;
         private readonly T _item;
@@ -30,9 +30,9 @@ namespace DefaultUnDo
         /// <param name="item">The argument of the operation.</param>
         /// <param name="isAdd">true if the operation is an <see cref="IList{T}.IndexOf(T)"/>, else false for a <see cref="IList{T}.RemoveAt(int)"/>.</param>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
-        public ListUnDo(string description, IList<T> source, int index, T item, bool isAdd)
+        public ListUnDo(object description, IList<T> source, int index, T item, bool isAdd)
         {
-            _description = description ?? string.Empty;
+            _description = description;
             _source = source ?? throw new ArgumentNullException(nameof(source));
             _index = index;
             _item = item;
@@ -71,7 +71,7 @@ namespace DefaultUnDo
 
         #region IUnDo
 
-        string IUnDo.Description => _description;
+        object IUnDo.Description => _description;
 
         void IUnDo.Do() => Action(_isAdd);
 

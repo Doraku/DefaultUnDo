@@ -30,12 +30,12 @@ namespace DefaultUnDo
         /// <summary>
         /// Gets the descriptions in order of all the <see cref="IUnDo"/> which can be undone.
         /// </summary>
-        IEnumerable<string> UndoDescriptions { get; }
+        IEnumerable<object> UndoDescriptions { get; }
 
         /// <summary>
         /// Gets the descriptions in order of all the <see cref="IUnDo"/> which can be redone.
         /// </summary>
-        IEnumerable<string> RedoDescriptions { get; }
+        IEnumerable<object> RedoDescriptions { get; }
 
         /// <summary>
         /// Starts a group of operation and return an <see cref="IDisposable"/> to stop the group.
@@ -43,7 +43,7 @@ namespace DefaultUnDo
         /// </summary>
         /// <param name="description">The description of the group operation.</param>
         /// <returns>An <see cref="IDisposable"/> to stop the group operation.</returns>
-        IDisposable BeginGroup(string description = null);
+        IDisposable BeginGroup(object description = null);
 
         /// <summary>
         /// Clears the history of <see cref="IUnDo"/> operations.

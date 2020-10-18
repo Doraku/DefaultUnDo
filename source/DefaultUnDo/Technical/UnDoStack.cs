@@ -20,9 +20,9 @@ namespace DefaultUnDo.Technical
 
         public bool CanRedo => _undoneOperations.Count > 0;
 
-        public IEnumerable<string> UndoDescriptions => _doneOperations.Select(o => o.Command.Description);
+        public IEnumerable<object> UndoDescriptions => _doneOperations.Select(o => o.Command.Description);
 
-        public IEnumerable<string> RedoDescription => _undoneOperations.Select(o => o.Command.Description);
+        public IEnumerable<object> RedoDescription => _undoneOperations.Select(o => o.Command.Description);
 
         public int Push(IUnDo command, int doVersion, int undoVersion)
         {

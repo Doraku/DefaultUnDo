@@ -19,7 +19,7 @@ namespace DefaultUnDo
         public static readonly TimeSpan MergeInterval = TimeSpan.FromMilliseconds(500);
 
         private readonly DateTime _timeStamp;
-        private readonly string _description;
+        private readonly object _description;
         private readonly Action<T> _setter;
         private readonly T _newValue;
         private readonly T _oldValue;
@@ -36,10 +36,10 @@ namespace DefaultUnDo
         /// <param name="newValue">The new value.</param>
         /// <param name="oldValue">The old value.</param>
         /// <exception cref="ArgumentNullException"><paramref name="setter"/> is null.</exception>
-        public ValueUnDo(string description, Action<T> setter, T newValue, T oldValue)
+        public ValueUnDo(object description, Action<T> setter, T newValue, T oldValue)
         {
             _timeStamp = DateTime.Now;
-            _description = description ?? string.Empty;
+            _description = description;
             _setter = setter ?? throw new ArgumentNullException(nameof(setter));
             _newValue = newValue;
             _oldValue = oldValue;
@@ -63,7 +63,7 @@ namespace DefaultUnDo
         bool IMergeableUnDo.TryMerge(IUnDo other, out IUnDo mergedCommand)
         {
             mergedCommand =
-                _description == other.Description
+                Equals(_description, other.Description)
                     && (other is ValueUnDo<T> value || (other is GroupUnDo group && group.TryGetSingle(out value)))
                     && _setter == value._setter
                     && Equals(_newValue, value._oldValue)
@@ -78,7 +78,7 @@ namespace DefaultUnDo
 
         #region IUnDo
 
-        string IUnDo.Description => _description;
+        object IUnDo.Description => _description;
 
         void IUnDo.Do() => _setter.Invoke(_newValue);
 

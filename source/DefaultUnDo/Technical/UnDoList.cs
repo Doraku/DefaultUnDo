@@ -14,7 +14,7 @@ namespace DefaultUnDo.Technical
 
         #region Initialisation
 
-        public UnDoList(IUnDoManager manager, IList<T> source, Func<string, string> descriptionFactory)
+        public UnDoList(IUnDoManager manager, IList<T> source, Func<string, object> descriptionFactory)
             : base(manager, source, descriptionFactory)
         {
             _source = source;

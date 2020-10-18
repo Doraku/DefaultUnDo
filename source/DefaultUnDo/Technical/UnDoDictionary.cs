@@ -13,7 +13,7 @@ namespace DefaultUnDo.Technical
 
         #region Initialisation
 
-        public UnDoDictionary(IUnDoManager manager, IDictionary<TKey, TValue> source, Func<string, string> descriptionFactory)
+        public UnDoDictionary(IUnDoManager manager, IDictionary<TKey, TValue> source, Func<string, object> descriptionFactory)
             : base(manager, source, descriptionFactory)
         {
             _source = source;

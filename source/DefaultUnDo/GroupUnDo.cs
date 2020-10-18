@@ -10,7 +10,7 @@ namespace DefaultUnDo
     {
         #region Fields
 
-        private readonly string _description;
+        private readonly object _description;
         private readonly IUnDo[] _commands;
 
         #endregion
@@ -24,9 +24,9 @@ namespace DefaultUnDo
         /// <param name="commands">The sequence of <see cref="IUnDo"/> contained by the instance.</param>
         /// <exception cref="ArgumentNullException"><paramref name="commands"/> is null.</exception>
         /// <exception cref="ArgumentException"><paramref name="commands"/> contains null elements.</exception>
-        public GroupUnDo(string description, params IUnDo[] commands)
+        public GroupUnDo(object description, params IUnDo[] commands)
         {
-            _description = description ?? string.Empty;
+            _description = description;
             _commands = commands ?? throw new ArgumentNullException(nameof(commands));
 
             if (_commands.Length is 0)
@@ -75,7 +75,7 @@ namespace DefaultUnDo
         bool IMergeableUnDo.TryMerge(IUnDo other, out IUnDo mergedCommand)
         {
             mergedCommand =
-                _description == other.Description
+                Equals(_description, other.Description)
                     && TryGetSingle(out IMergeableUnDo mergeable)
                     && mergeable.TryMerge(other, out mergedCommand)
                 ? new GroupUnDo(_description, mergedCommand)
@@ -88,7 +88,7 @@ namespace DefaultUnDo
 
         #region IUnDo
 
-        string IUnDo.Description => _description;
+        object IUnDo.Description => _description;
 
         void IUnDo.Do()
         {

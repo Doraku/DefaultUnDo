@@ -10,15 +10,14 @@
     <DefaultDocumentationFolder>..\..\documentation\api</DefaultDocumentationFolder>
   </PropertyGroup>
   <ItemGroup Label="Documentation" Condition="'$(TargetFramework)'=='netstandard1.0'">
-    <PackageReference Include="DefaultDocumentation" Version="0.6.12" PrivateAssets="all" />
+    <PackageReference Include="DefaultDocumentation" Version="0.6.13" PrivateAssets="all" />
   </ItemGroup>
 
   <PropertyGroup Label="Package">
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
     <PackageReleaseNotes>
-added Description property on IUnDo
-added maxCapacity on UnDoManager constructor
-added IMergeableUnDo interface for mergeable operation
+breaking changes:
+changed description from string to object
     </PackageReleaseNotes>
   </PropertyGroup>
 </Project>

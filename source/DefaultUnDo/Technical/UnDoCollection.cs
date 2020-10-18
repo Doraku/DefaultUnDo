@@ -13,13 +13,13 @@ namespace DefaultUnDo.Technical
         private readonly ICollection<T> _source;
 
         protected readonly IUnDoManager _manager;
-        protected readonly Func<string, string> _descriptionFactory;
+        protected readonly Func<string, object> _descriptionFactory;
 
         #endregion
 
         #region Initialisation
 
-        public UnDoCollection(IUnDoManager manager, ICollection<T> source, Func<string, string> descriptionFactory)
+        public UnDoCollection(IUnDoManager manager, ICollection<T> source, Func<string, object> descriptionFactory)
         {
             _source = source;
             _manager = manager;

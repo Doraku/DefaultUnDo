@@ -24,7 +24,7 @@ namespace DefaultUnDo
 
             #region Initialisation
 
-            public Group(UnDoManager manager, string description)
+            public Group(UnDoManager manager, object description)
             {
                 _manager = manager;
                 _isDisposed = false;
@@ -66,7 +66,7 @@ namespace DefaultUnDo
         private int _version;
         private int _lastVersion;
         private int _groupCount;
-        private string _groupDescription;
+        private object _groupDescription;
 
         #endregion
 
@@ -139,12 +139,12 @@ namespace DefaultUnDo
         /// <summary>
         /// Gets the descriptions in order of all the <see cref="IUnDo"/> which can be undone.
         /// </summary>
-        public IEnumerable<string> UndoDescriptions => _stack.UndoDescriptions;
+        public IEnumerable<object> UndoDescriptions => _stack.UndoDescriptions;
 
         /// <summary>
         /// Gets the descriptions in order of all the <see cref="IUnDo"/> which can be redone.
         /// </summary>
-        public IEnumerable<string> RedoDescriptions => _stack.RedoDescription;
+        public IEnumerable<object> RedoDescriptions => _stack.RedoDescription;
 
         /// <summary>
         /// Starts a group of operation and return an <see cref="IDisposable"/> to stop the group.
@@ -152,7 +152,7 @@ namespace DefaultUnDo
         /// </summary>
         /// <param name="description">The description of the group operation.</param>
         /// <returns>An <see cref="IDisposable"/> to stop the group operation.</returns>
-        public IDisposable BeginGroup(string description = null) => new Group(this, description);
+        public IDisposable BeginGroup(object description = null) => new Group(this, description);
 
         /// <summary>
         /// Clears the history of <see cref="IUnDo"/> operations.

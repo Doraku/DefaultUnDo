@@ -8,9 +8,9 @@ namespace DefaultUnDo.Technical
 
         bool CanRedo { get; }
 
-        IEnumerable<string> UndoDescriptions { get; }
+        IEnumerable<object> UndoDescriptions { get; }
 
-        IEnumerable<string> RedoDescription { get; }
+        IEnumerable<object> RedoDescription { get; }
 
         int Push(IUnDo command, int doVersion, int undoVersion);
 

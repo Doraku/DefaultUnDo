@@ -21,7 +21,7 @@ namespace DefaultUnDo
         /// <param name="descriptionFactory">Factory used to create the description of the generated <see cref="IUnDo"/>, the name of the method called is passed as a parameter.</param>
         /// <returns>A wrapped <see cref="IDictionary{TKey, TValue}"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="manager"/> is null.</exception>
-        public static IDictionary<TKey, TValue> AsUnDo<TKey, TValue>(this IDictionary<TKey, TValue> source, IUnDoManager manager, Func<string, string> descriptionFactory = null) => new UnDoDictionary<TKey, TValue>(
+        public static IDictionary<TKey, TValue> AsUnDo<TKey, TValue>(this IDictionary<TKey, TValue> source, IUnDoManager manager, Func<string, object> descriptionFactory = null) => new UnDoDictionary<TKey, TValue>(
             manager ?? throw new ArgumentNullException(nameof(manager)),
             source ?? throw new ArgumentNullException(nameof(source)),
             descriptionFactory);

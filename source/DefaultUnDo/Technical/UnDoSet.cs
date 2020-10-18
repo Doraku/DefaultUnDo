@@ -14,7 +14,7 @@ namespace DefaultUnDo.Technical
 
         #region Initialisation
 
-        public UnDoSet(IUnDoManager manager, ISet<T> source, Func<string, string> descriptionFactory)
+        public UnDoSet(IUnDoManager manager, ISet<T> source, Func<string, object> descriptionFactory)
             : base(manager, source, descriptionFactory)
         {
             _source = source;

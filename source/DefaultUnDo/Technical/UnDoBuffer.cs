@@ -25,7 +25,7 @@ namespace DefaultUnDo.Technical
 
         public bool CanRedo => _hasOperation && (_current != _head || _currentState != true);
 
-        public IEnumerable<string> UndoDescriptions
+        public IEnumerable<object> UndoDescriptions
         {
             get
             {
@@ -52,7 +52,7 @@ namespace DefaultUnDo.Technical
                 }
             }
         }
-        public IEnumerable<string> RedoDescription
+        public IEnumerable<object> RedoDescription
         {
             get
             {

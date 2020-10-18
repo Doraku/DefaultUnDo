@@ -9,7 +9,7 @@ namespace DefaultUnDo
     {
         #region Fields
 
-        private readonly string _description;
+        private readonly object _description;
         private readonly Action _doAction;
         private readonly Action _undoAction;
 
@@ -23,9 +23,9 @@ namespace DefaultUnDo
         /// <param name="description">The description of this <see cref="IUnDo"/></param>
         /// <param name="doAction">The action called by <see cref="IUnDo.Do"/>.</param>
         /// <param name="undoAction">The action called by <see cref="IUnDo.Undo"/>.</param>
-        public UnDo(string description, Action doAction, Action undoAction)
+        public UnDo(object description, Action doAction, Action undoAction)
         {
-            _description = description ?? string.Empty;
+            _description = description;
             _doAction = doAction;
             _undoAction = undoAction;
         }
@@ -43,7 +43,7 @@ namespace DefaultUnDo
 
         #region IUnDo
 
-        string IUnDo.Description => _description;
+        object IUnDo.Description => _description;
 
         void IUnDo.Do() => _doAction?.Invoke();
 

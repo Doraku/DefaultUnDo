@@ -21,7 +21,7 @@ namespace DefaultUnDo
         /// <param name="description">The description of the operation.</param>
         /// <returns>true if the command has been created, false if not because <paramref name="source"/> already contained <paramref name="item"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> or <paramref name="source"/> is null.</exception>
-        public static bool DoAdd<T>(this IUnDoManager manager, ISet<T> source, T item, string description = null)
+        public static bool DoAdd<T>(this IUnDoManager manager, ISet<T> source, T item, object description = null)
         {
             if (manager is null)
             {
@@ -51,7 +51,7 @@ namespace DefaultUnDo
         /// <param name="item">The item to add.</param>
         /// <param name="description">The description of the operation.</param>
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> or <paramref name="source"/> is null.</exception>
-        public static void DoAdd<T>(this IUnDoManager manager, ICollection<T> source, T item, string description = null)
+        public static void DoAdd<T>(this IUnDoManager manager, ICollection<T> source, T item, object description = null)
         {
             if (manager is null)
             {
@@ -80,7 +80,7 @@ namespace DefaultUnDo
         /// <param name="source">The <see cref="ICollection{T}"/>.</param>
         /// <param name="description">The description of the operation.</param>
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> or <paramref name="source"/> is null.</exception>
-        public static void DoClear<T>(this IUnDoManager manager, ICollection<T> source, string description = null)
+        public static void DoClear<T>(this IUnDoManager manager, ICollection<T> source, object description = null)
         {
             if (manager is null)
             {
@@ -109,7 +109,7 @@ namespace DefaultUnDo
         /// <param name="description">The description of the operation.</param>
         /// <returns>true if the command has been created, false if not because <paramref name="source"/> did not contained <paramref name="item"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> or <paramref name="source"/> is null.</exception>
-        public static bool DoRemove<T>(this IUnDoManager manager, ICollection<T> source, T item, string description = null)
+        public static bool DoRemove<T>(this IUnDoManager manager, ICollection<T> source, T item, object description = null)
         {
             if (manager is null)
             {
@@ -151,7 +151,7 @@ namespace DefaultUnDo
         /// <param name="value">The value to add.</param>
         /// <param name="description">The description of the operation.</param>
         /// <exception cref="ArgumentNullException"><paramref name="manager"/>, <paramref name="source"/> or <paramref name="key"/> is null.</exception>
-        public static void DoAdd<TKey, TValue>(this IUnDoManager manager, IDictionary<TKey, TValue> source, TKey key, TValue value, string description = null)
+        public static void DoAdd<TKey, TValue>(this IUnDoManager manager, IDictionary<TKey, TValue> source, TKey key, TValue value, object description = null)
         {
             if (manager is null)
             {
@@ -180,7 +180,7 @@ namespace DefaultUnDo
         /// <param name="description">The description of the operation.</param>
         /// <returns>true if the command has been created, false if not because <paramref name="source"/> did not contained <paramref name="key"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="manager"/>, <paramref name="source"/> or <paramref name="key"/> is null.</exception>
-        public static bool DoRemove<TKey, TValue>(this IUnDoManager manager, IDictionary<TKey, TValue> source, TKey key, string description = null)
+        public static bool DoRemove<TKey, TValue>(this IUnDoManager manager, IDictionary<TKey, TValue> source, TKey key, object description = null)
         {
             if (manager is null)
             {
@@ -216,7 +216,7 @@ namespace DefaultUnDo
         /// <param name="value">The value to add.</param>
         /// <param name="description">The description of the operation.</param>
         /// <exception cref="ArgumentNullException"><paramref name="manager"/>, <paramref name="source"/> or <paramref name="key"/> is null.</exception>
-        public static void Do<TKey, TValue>(this IUnDoManager manager, IDictionary<TKey, TValue> source, TKey key, TValue value, string description = null)
+        public static void Do<TKey, TValue>(this IUnDoManager manager, IDictionary<TKey, TValue> source, TKey key, TValue value, object description = null)
         {
             if (manager is null)
             {
@@ -251,7 +251,7 @@ namespace DefaultUnDo
         /// <param name="item">The item to insert into the <see cref="IList{T}"/>.</param>
         /// <param name="description">The description of the operation.</param>
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> or <paramref name="source"/> is null.</exception>
-        public static void DoInsert<T>(this IUnDoManager manager, IList<T> source, int index, T item, string description = null)
+        public static void DoInsert<T>(this IUnDoManager manager, IList<T> source, int index, T item, object description = null)
         {
             if (manager is null)
             {
@@ -274,7 +274,7 @@ namespace DefaultUnDo
         /// <param name="index">The zero-based index at which item should be removed.</param>
         /// <param name="description">The description of the operation.</param>
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> or <paramref name="source"/> is null.</exception>
-        public static void DoRemoveAt<T>(this IUnDoManager manager, IList<T> source, int index, string description = null)
+        public static void DoRemoveAt<T>(this IUnDoManager manager, IList<T> source, int index, object description = null)
         {
             if (manager is null)
             {
@@ -298,7 +298,7 @@ namespace DefaultUnDo
         /// <param name="item">The new item.</param>
         /// <param name="description">The description of the operation.</param>
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> or <paramref name="source"/> is null.</exception>
-        public static void Do<T>(this IUnDoManager manager, IList<T> source, int index, T item, string description = null)
+        public static void Do<T>(this IUnDoManager manager, IList<T> source, int index, T item, object description = null)
         {
             if (manager is null)
             {
@@ -320,7 +320,7 @@ namespace DefaultUnDo
         /// <param name="undoAction">The <see cref="Action"/> performed by the <see cref="IUnDo.Undo"/>.</param>
         /// <param name="description">The description of the operation.</param>
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> is null.</exception>
-        public static void Do(this IUnDoManager manager, Action doAction, Action undoAction, string description = null)
+        public static void Do(this IUnDoManager manager, Action doAction, Action undoAction, object description = null)
         {
             if (manager is null)
             {
@@ -340,7 +340,7 @@ namespace DefaultUnDo
         /// <param name="action">The <see cref="Action"/> performed by <see cref="IUnDo.Do"/>.</param>
         /// <param name="description">The description of the operation.</param>
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> is null.</exception>
-        public static void DoOnDo(this IUnDoManager manager, Action action, string description = null) => manager.Do(action, null, description);
+        public static void DoOnDo(this IUnDoManager manager, Action action, object description = null) => manager.Do(action, null, description);
 
         /// <summary>
         /// Does a <see cref="IUnDo"/> operation on the manager with the specified action with no do.
@@ -349,7 +349,7 @@ namespace DefaultUnDo
         /// <param name="action">The <see cref="Action"/> performed by <see cref="IUnDo.Undo"/>.</param>
         /// <param name="description">The description of the operation.</param>
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> is null.</exception>
-        public static void DoOnUndo(this IUnDoManager manager, Action action, string description = null) => manager.Do(null, action, description);
+        public static void DoOnUndo(this IUnDoManager manager, Action action, object description = null) => manager.Do(null, action, description);
 
         /// <summary>
         /// Sets a value as a <see cref="IUnDo"/> operation.
@@ -361,7 +361,7 @@ namespace DefaultUnDo
         /// <param name="oldValue">The old value.</param>
         /// <param name="description">The description of the operation.</param>
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> or <paramref name="setter"/> is null.</exception>
-        public static void Do<T>(this IUnDoManager manager, Action<T> setter, T newValue, T oldValue, string description = null)
+        public static void Do<T>(this IUnDoManager manager, Action<T> setter, T newValue, T oldValue, object description = null)
         {
             if (manager is null)
             {

@@ -11,7 +11,7 @@ namespace DefaultUnDo
     {
         #region Fields
 
-        private readonly string _description;
+        private readonly object _description;
         private readonly ICollection<T> _source;
         private readonly T _item;
         private readonly bool _isAdd;
@@ -28,9 +28,9 @@ namespace DefaultUnDo
         /// <param name="item">The argument of the operation.</param>
         /// <param name="isAdd">true if the operation is an <see cref="ICollection{T}.Add(T)"/>, false for a <see cref="ICollection{T}.Remove(T)"/>.</param>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
-        public CollectionUnDo(string description, ICollection<T> source, T item, bool isAdd)
+        public CollectionUnDo(object description, ICollection<T> source, T item, bool isAdd)
         {
-            _description = description ?? string.Empty;
+            _description = description;
             _source = source ?? throw new ArgumentNullException(nameof(source));
             _item = item;
             _isAdd = isAdd;
@@ -67,7 +67,7 @@ namespace DefaultUnDo
 
         #region IUnDo
 
-        string IUnDo.Description => _description;
+        object IUnDo.Description => _description;
 
         void IUnDo.Undo() => Action(!_isAdd);
 

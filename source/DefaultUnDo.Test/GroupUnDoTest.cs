@@ -14,7 +14,7 @@ namespace DefaultUnDo.Test
         public void GroupUnDo_Should_throw_ArgumentNullException_When_commands_is_null()
         {
             Check
-                .ThatCode(() => new GroupUnDo(default(IUnDo[])))
+                .ThatCode(() => new GroupUnDo(default))
                 .Throws<ArgumentNullException>()
                 .WithProperty("ParamName", "commands");
         }
