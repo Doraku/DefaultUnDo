@@ -54,7 +54,7 @@ namespace DefaultUnDo
         /// </summary>
         IListRemoveAt,
         /// <summary>
-        /// <see cref="P:System.Collections.Generic.IList`1.Item(``0)"/> will be performed.
+        /// <see cref="P:System.Collections.Generic.IList`1.Item(System.Int32)"/> will be performed.
         /// </summary>
         IListIndexer,
 

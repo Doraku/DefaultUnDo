@@ -142,7 +142,9 @@ IDictionary<int, string> myDictionary = new Dictionary<int, string>().AsUnDo(man
 ISet<int> mySet = new HashSet<int>().AsUnDo(manager);
 ```
 
-It is possible to declare a group scope for you operations so a single undo/redo will execute all the contained operations.
+To generate a custom description when changes occure on those undo collection, the `AsUnDo` extension method can take a `Func<UnDoCollectionOperation, object> descriptionFactory` parameter.
+
+It is possible to declare a group scope for your operations so a single undo/redo will execute all the contained operations.
 ```csharp
 IUnDoManager manager = new UnDoManager();
 
