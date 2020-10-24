@@ -66,11 +66,14 @@ namespace DefaultUnDo.Test
 
             ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            unDoCollection.Add(default);
+            object item = new object();
+            unDoCollection.Add(item);
 
             Check.That(description.HasValue).IsTrue();
             Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
             Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetAdd);
+            Check.That(description.Value.Parameters.Length).IsEqualTo(1);
+            Check.That(description.Value.Parameters[0]).IsEqualTo(item);
         }
 
         [Fact]
@@ -101,11 +104,14 @@ namespace DefaultUnDo.Test
 
             ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            unDoCollection.ExceptWith(Enumerable.Empty<object>());
+            IEnumerable<object> other = new object[0];
+            unDoCollection.ExceptWith(other);
 
             Check.That(description.HasValue).IsTrue();
             Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
             Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetExceptWith);
+            Check.That(description.Value.Parameters.Length).IsEqualTo(1);
+            Check.That(description.Value.Parameters[0]).IsEqualTo(other);
         }
 
         [Fact]
@@ -136,11 +142,14 @@ namespace DefaultUnDo.Test
 
             ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
+            IEnumerable<object> other = new object[0];
             unDoCollection.IntersectWith(Enumerable.Empty<object>());
 
             Check.That(description.HasValue).IsTrue();
             Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
             Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetIntersectWith);
+            Check.That(description.Value.Parameters.Length).IsEqualTo(1);
+            Check.That(description.Value.Parameters[0]).IsEqualTo(other);
         }
 
         [Fact]
@@ -272,11 +281,14 @@ namespace DefaultUnDo.Test
 
             ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            unDoCollection.SymmetricExceptWith(Enumerable.Empty<object>());
+            IEnumerable<object> other = new object[0];
+            unDoCollection.SymmetricExceptWith(other);
 
             Check.That(description.HasValue).IsTrue();
             Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
             Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetSymmetricExceptWith);
+            Check.That(description.Value.Parameters.Length).IsEqualTo(1);
+            Check.That(description.Value.Parameters[0]).IsEqualTo(other);
         }
 
         [Fact]
@@ -306,11 +318,14 @@ namespace DefaultUnDo.Test
 
             ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            unDoCollection.UnionWith(Enumerable.Empty<object>());
+            IEnumerable<object> other = new object[0];
+            unDoCollection.UnionWith(other);
 
             Check.That(description.HasValue).IsTrue();
             Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
             Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetUnionWith);
+            Check.That(description.Value.Parameters.Length).IsEqualTo(1);
+            Check.That(description.Value.Parameters[0]).IsEqualTo(other);
         }
 
         #endregion

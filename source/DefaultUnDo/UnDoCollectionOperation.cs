@@ -15,14 +15,21 @@
         public UnDoCollectionAction Action { get; }
 
         /// <summary>
+        /// Gets the parameters of the action performed.
+        /// </summary>
+        public object[] Parameters { get; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="UnDoCollectionOperation"/> class.
         /// </summary>
-        /// <param name="collection"></param>
-        /// <param name="action"></param>
-        public UnDoCollectionOperation(object collection, UnDoCollectionAction action)
+        /// <param name="collection">The collection on which the action is performed.</param>
+        /// <param name="action">The action performed.</param>
+        /// <param name="parameters">The parameters of the action performed.</param>
+        public UnDoCollectionOperation(object collection, UnDoCollectionAction action, params object[] parameters)
         {
             Collection = collection;
             Action = action;
+            Parameters = parameters;
         }
     }
 }

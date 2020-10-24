@@ -79,11 +79,16 @@ namespace DefaultUnDo.Test
 
             IList<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            unDoCollection.Insert(0, default);
+            const int index = 42;
+            object item = new object();
+            unDoCollection.Insert(index, item);
 
             Check.That(description.HasValue).IsTrue();
             Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
             Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IListInsert);
+            Check.That(description.Value.Parameters.Length).IsEqualTo(2);
+            Check.That(description.Value.Parameters[0]).IsEqualTo(index);
+            Check.That(description.Value.Parameters[1]).IsEqualTo(item);
         }
 
         [Fact]
@@ -117,11 +122,14 @@ namespace DefaultUnDo.Test
 
             IList<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            unDoCollection.RemoveAt(0);
+            const int index = 42;
+            unDoCollection.RemoveAt(index);
 
             Check.That(description.HasValue).IsTrue();
             Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
             Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IListRemoveAt);
+            Check.That(description.Value.Parameters.Length).IsEqualTo(1);
+            Check.That(description.Value.Parameters[0]).IsEqualTo(index);
         }
 
         [Fact]
@@ -171,11 +179,16 @@ namespace DefaultUnDo.Test
 
             IList<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            unDoCollection[0] = default;
+            const int index = 42;
+            object item = new object();
+            unDoCollection[index] = item;
 
             Check.That(description.HasValue).IsTrue();
             Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
             Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IListIndexer);
+            Check.That(description.Value.Parameters.Length).IsEqualTo(2);
+            Check.That(description.Value.Parameters[0]).IsEqualTo(index);
+            Check.That(description.Value.Parameters[1]).IsEqualTo(item);
         }
 
         [Fact]
@@ -228,15 +241,21 @@ namespace DefaultUnDo.Test
             Check.That(description.HasValue).IsTrue();
             Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
             Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IListMove);
+            Check.That(description.Value.Parameters.Length).IsEqualTo(2);
+            Check.That(description.Value.Parameters[0]).IsEqualTo(0);
+            Check.That(description.Value.Parameters[1]).IsEqualTo(1);
 
             description = null;
             unDoCollection = Substitute.For<IList<int>>().AsUnDo(manager, a => description ??= a);
 
-            unDoCollection.Move(0, 1);
+            unDoCollection.Move(42, 43);
 
             Check.That(description.HasValue).IsTrue();
             Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
             Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IListMove);
+            Check.That(description.Value.Parameters.Length).IsEqualTo(2);
+            Check.That(description.Value.Parameters[0]).IsEqualTo(42);
+            Check.That(description.Value.Parameters[1]).IsEqualTo(43);
         }
 
         #endregion

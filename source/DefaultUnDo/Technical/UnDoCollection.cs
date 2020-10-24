@@ -30,7 +30,7 @@ namespace DefaultUnDo.Technical
 
         #region ICollection
 
-        void ICollection<T>.Add(T item) => _manager.DoAdd(_source, item, _descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ICollectionAdd)));
+        void ICollection<T>.Add(T item) => _manager.DoAdd(_source, item, _descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ICollectionAdd, item)));
 
         void ICollection<T>.Clear() => _manager.DoClear(_source, _descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ICollectionClear)));
 
@@ -42,7 +42,7 @@ namespace DefaultUnDo.Technical
 
         bool ICollection<T>.IsReadOnly => _source.IsReadOnly;
 
-        bool ICollection<T>.Remove(T item) => _manager.DoRemove(_source, item, _descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ICollectionRemove)));
+        bool ICollection<T>.Remove(T item) => _manager.DoRemove(_source, item, _descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ICollectionRemove, item)));
 
         #endregion
 

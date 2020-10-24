@@ -73,11 +73,16 @@ namespace DefaultUnDo.Test
 
             IDictionary<object, object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            unDoCollection.Add(new object(), default);
+            object key = new object();
+            object value = new object();
+            unDoCollection.Add(key, value);
 
             Check.That(description.HasValue).IsTrue();
             Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
             Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IDictionaryAdd);
+            Check.That(description.Value.Parameters.Length).IsEqualTo(2);
+            Check.That(description.Value.Parameters[0]).IsEqualTo(key);
+            Check.That(description.Value.Parameters[1]).IsEqualTo(value);
         }
 
         [Fact]
@@ -123,11 +128,14 @@ namespace DefaultUnDo.Test
 
             IDictionary<object, object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            unDoCollection.Remove(new object());
+            object key = new object();
+            unDoCollection.Remove(key);
 
             Check.That(description.HasValue).IsTrue();
             Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
             Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IDictionaryRemove);
+            Check.That(description.Value.Parameters.Length).IsEqualTo(1);
+            Check.That(description.Value.Parameters[0]).IsEqualTo(key);
         }
 
         [Fact]
@@ -216,11 +224,16 @@ namespace DefaultUnDo.Test
 
             IDictionary<object, object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            unDoCollection[new object()] = default;
+            object key = new object();
+            object value = new object();
+            unDoCollection[key] = value;
 
             Check.That(description.HasValue).IsTrue();
             Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
             Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IDictionaryIndexer);
+            Check.That(description.Value.Parameters.Length).IsEqualTo(2);
+            Check.That(description.Value.Parameters[0]).IsEqualTo(key);
+            Check.That(description.Value.Parameters[1]).IsEqualTo(value);
         }
 
         [Fact]

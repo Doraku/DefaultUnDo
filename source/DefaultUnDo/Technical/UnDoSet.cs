@@ -24,13 +24,13 @@ namespace DefaultUnDo.Technical
 
         #region ISet
 
-        bool ISet<T>.Add(T item) => _manager.DoAdd(_source, item, _descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ISetAdd)));
+        bool ISet<T>.Add(T item) => _manager.DoAdd(_source, item, _descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ISetAdd, item)));
 
         void ISet<T>.ExceptWith(IEnumerable<T> other)
         {
             if (_source.Count > 0)
             {
-                using (_manager.BeginGroup(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ISetExceptWith))))
+                using (_manager.BeginGroup(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ISetExceptWith, other))))
                 {
                     foreach (T item in other)
                     {
@@ -46,7 +46,7 @@ namespace DefaultUnDo.Technical
             {
                 List<T> items = other.Where(_source.Contains).ToList();
 
-                using (_manager.BeginGroup(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ISetIntersectWith))))
+                using (_manager.BeginGroup(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ISetIntersectWith, other))))
                 {
                     _manager.DoClear(_source);
                     foreach (T item in items)
@@ -71,7 +71,7 @@ namespace DefaultUnDo.Technical
 
         void ISet<T>.SymmetricExceptWith(IEnumerable<T> other)
         {
-            using (_manager.BeginGroup(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ISetSymmetricExceptWith))))
+            using (_manager.BeginGroup(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ISetSymmetricExceptWith, other))))
             {
                 foreach (T item in other)
                 {
@@ -85,7 +85,7 @@ namespace DefaultUnDo.Technical
 
         void ISet<T>.UnionWith(IEnumerable<T> other)
         {
-            using (_manager.BeginGroup(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ISetUnionWith))))
+            using (_manager.BeginGroup(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ISetUnionWith, other))))
             {
                 foreach (T item in other)
                 {

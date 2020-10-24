@@ -75,11 +75,14 @@ namespace DefaultUnDo.Test
 
             ICollection<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            unDoCollection.Add(default);
+            object item = new object();
+            unDoCollection.Add(item);
 
             Check.That(description.HasValue).IsTrue();
             Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
             Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ICollectionAdd);
+            Check.That(description.Value.Parameters.Length).IsEqualTo(1);
+            Check.That(description.Value.Parameters[0]).IsEqualTo(item);
         }
 
         [Fact]
@@ -118,6 +121,7 @@ namespace DefaultUnDo.Test
             Check.That(description.HasValue).IsTrue();
             Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
             Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ICollectionClear);
+            Check.That(description.Value.Parameters.Length).IsZero();
         }
 
         [Fact]
@@ -207,11 +211,14 @@ namespace DefaultUnDo.Test
 
             ICollection<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            unDoCollection.Remove(default);
+            object item = new object();
+            unDoCollection.Remove(item);
 
             Check.That(description.HasValue).IsTrue();
             Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
             Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ICollectionRemove);
+            Check.That(description.Value.Parameters.Length).IsEqualTo(1);
+            Check.That(description.Value.Parameters[0]).IsEqualTo(item);
         }
 
         [Fact]
