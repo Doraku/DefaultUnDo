@@ -13,13 +13,13 @@ namespace DefaultUnDo.Technical
         private readonly ICollection<T> _source;
 
         protected readonly IUnDoManager _manager;
-        protected readonly Func<string, object> _descriptionFactory;
+        protected readonly Func<UnDoCollectionOperation, object> _descriptionFactory;
 
         #endregion
 
         #region Initialisation
 
-        public UnDoCollection(IUnDoManager manager, ICollection<T> source, Func<string, object> descriptionFactory)
+        public UnDoCollection(IUnDoManager manager, ICollection<T> source, Func<UnDoCollectionOperation, object> descriptionFactory)
         {
             _source = source;
             _manager = manager;
@@ -30,9 +30,9 @@ namespace DefaultUnDo.Technical
 
         #region ICollection
 
-        void ICollection<T>.Add(T item) => _manager.DoAdd(_source, item, _descriptionFactory?.Invoke(nameof(ICollection<T>.Add)));
+        void ICollection<T>.Add(T item) => _manager.DoAdd(_source, item, _descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ICollectionAdd)));
 
-        void ICollection<T>.Clear() => _manager.DoClear(_source, _descriptionFactory?.Invoke(nameof(ICollection<T>.Clear)));
+        void ICollection<T>.Clear() => _manager.DoClear(_source, _descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ICollectionClear)));
 
         bool ICollection<T>.Contains(T item) => _source.Contains(item);
 
@@ -42,7 +42,7 @@ namespace DefaultUnDo.Technical
 
         bool ICollection<T>.IsReadOnly => _source.IsReadOnly;
 
-        bool ICollection<T>.Remove(T item) => _manager.DoRemove(_source, item, _descriptionFactory?.Invoke(nameof(ICollection<T>.Remove)));
+        bool ICollection<T>.Remove(T item) => _manager.DoRemove(_source, item, _descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ICollectionRemove)));
 
         #endregion
 

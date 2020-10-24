@@ -14,7 +14,7 @@ namespace DefaultUnDo.Technical
 
         #region Initialisation
 
-        public UnDoList(IUnDoManager manager, IList<T> source, Func<string, object> descriptionFactory)
+        public UnDoList(IUnDoManager manager, IList<T> source, Func<UnDoCollectionOperation, object> descriptionFactory)
             : base(manager, source, descriptionFactory)
         {
             _source = source;
@@ -31,11 +31,11 @@ namespace DefaultUnDo.Technical
                 _manager.Do(
                     () => collection.Move(oldIndex, newIndex),
                     () => collection.Move(newIndex, oldIndex),
-                    _descriptionFactory?.Invoke(nameof(Move)));
+                    _descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.IListMove)));
             }
             else
             {
-                using (_manager.BeginGroup(_descriptionFactory?.Invoke(nameof(Move))))
+                using (_manager.BeginGroup(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.IListMove))))
                 {
                     T item = _source[oldIndex];
                     IList<T> list = this;
@@ -51,14 +51,14 @@ namespace DefaultUnDo.Technical
 
         int IList<T>.IndexOf(T item) => _source.IndexOf(item);
 
-        void IList<T>.Insert(int index, T item) => _manager.DoInsert(_source, index, item, _descriptionFactory?.Invoke(nameof(IList<T>.Insert)));
+        void IList<T>.Insert(int index, T item) => _manager.DoInsert(_source, index, item, _descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.IListInsert)));
 
-        void IList<T>.RemoveAt(int index) => _manager.DoRemoveAt(_source, index, _descriptionFactory?.Invoke(nameof(IList<T>.RemoveAt)));
+        void IList<T>.RemoveAt(int index) => _manager.DoRemoveAt(_source, index, _descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.IListRemoveAt)));
 
         T IList<T>.this[int index]
         {
             get => _source[index];
-            set => _manager.Do(_source, index, value, _descriptionFactory?.Invoke("this"));
+            set => _manager.Do(_source, index, value, _descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.IList_this)));
         }
 
         #endregion

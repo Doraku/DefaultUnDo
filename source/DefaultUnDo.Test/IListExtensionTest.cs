@@ -73,7 +73,7 @@ namespace DefaultUnDo.Test
             IList<object> source = Substitute.For<IList<object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
 
-            string description = null;
+            UnDoCollectionOperation? description = null;
 
             manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
@@ -81,7 +81,9 @@ namespace DefaultUnDo.Test
 
             unDoCollection.Insert(0, default);
 
-            Check.That(description).IsEqualTo(nameof(source.Insert));
+            Check.That(description.HasValue).IsTrue();
+            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IListInsert);
         }
 
         [Fact]
@@ -109,7 +111,7 @@ namespace DefaultUnDo.Test
             IList<object> source = Substitute.For<IList<object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
 
-            string description = null;
+            UnDoCollectionOperation? description = null;
 
             manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
@@ -117,7 +119,9 @@ namespace DefaultUnDo.Test
 
             unDoCollection.RemoveAt(0);
 
-            Check.That(description).IsEqualTo(nameof(source.RemoveAt));
+            Check.That(description.HasValue).IsTrue();
+            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IListRemoveAt);
         }
 
         [Fact]
@@ -161,7 +165,7 @@ namespace DefaultUnDo.Test
             IList<object> source = Substitute.For<IList<object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
 
-            string description = null;
+            UnDoCollectionOperation? description = null;
 
             manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
@@ -169,7 +173,9 @@ namespace DefaultUnDo.Test
 
             unDoCollection[0] = default;
 
-            Check.That(description).IsEqualTo("this");
+            Check.That(description.HasValue).IsTrue();
+            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IList_this);
         }
 
         [Fact]
@@ -213,20 +219,24 @@ namespace DefaultUnDo.Test
         {
             IUnDoManager manager = Substitute.For<IUnDoManager>();
             manager.Do(Arg.Do<IUnDo>(i => i.Do()));
-            string description = null;
+            UnDoCollectionOperation? description = null;
 
-            IList<int> items = new ObservableCollection<int> { 1, 2 }.AsUnDo(manager, a => description ??= a);
+            IList<int> unDoCollection = new ObservableCollection<int> { 1, 2 }.AsUnDo(manager, a => description ??= a);
 
-            items.Move(0, 1);
+            unDoCollection.Move(0, 1);
 
-            Check.That(description).IsEqualTo(nameof(ObservableCollection<int>.Move));
+            Check.That(description.HasValue).IsTrue();
+            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IListMove);
 
             description = null;
-            items = Substitute.For<IList<int>>().AsUnDo(manager, a => description ??= a);
+            unDoCollection = Substitute.For<IList<int>>().AsUnDo(manager, a => description ??= a);
 
-            items.Move(0, 1);
+            unDoCollection.Move(0, 1);
 
-            Check.That(description).IsEqualTo(nameof(ObservableCollection<int>.Move));
+            Check.That(description.HasValue).IsTrue();
+            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IListMove);
         }
 
         #endregion

@@ -17,10 +17,10 @@ namespace DefaultUnDo
         /// <typeparam name="T">The type of element in the <see cref="ISet{T}"/>.</typeparam>
         /// <param name="source">The <see cref="ISet{T}"/>.</param>
         /// <param name="manager">The <see cref="IUnDoManager"/>.</param>
-        /// <param name="descriptionFactory">Factory used to create the description of the generated <see cref="IUnDo"/>, the name of the method called is passed as a parameter.</param>
+        /// <param name="descriptionFactory">Factory used to create the description of the generated <see cref="IUnDo"/>.</param>
         /// <returns>A wrapped <see cref="ISet{T}"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="manager"/> is null.</exception>
-        public static ISet<T> AsUnDo<T>(this ISet<T> source, IUnDoManager manager, Func<string, object> descriptionFactory = null) => new UnDoSet<T>(
+        public static ISet<T> AsUnDo<T>(this ISet<T> source, IUnDoManager manager, Func<UnDoCollectionOperation, object> descriptionFactory = null) => new UnDoSet<T>(
             manager ?? throw new ArgumentNullException(nameof(manager)),
             source ?? throw new ArgumentNullException(nameof(source)),
             descriptionFactory);

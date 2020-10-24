@@ -18,6 +18,7 @@
     <PackageReleaseNotes>
 breaking changes:
 changed description from string to object
+changed AsUnDo extension methods description factory to take an UnDoCollectionOperation
     </PackageReleaseNotes>
   </PropertyGroup>
 </Project>

@@ -67,7 +67,7 @@ namespace DefaultUnDo.Test
             IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
 
-            string description = null;
+            UnDoCollectionOperation? description = null;
 
             manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
@@ -75,7 +75,9 @@ namespace DefaultUnDo.Test
 
             unDoCollection.Add(new object(), default);
 
-            Check.That(description).IsEqualTo(nameof(source.Add));
+            Check.That(description.HasValue).IsTrue();
+            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IDictionaryAdd);
         }
 
         [Fact]
@@ -115,7 +117,7 @@ namespace DefaultUnDo.Test
             IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
 
-            string description = null;
+            UnDoCollectionOperation? description = null;
 
             manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
@@ -123,7 +125,9 @@ namespace DefaultUnDo.Test
 
             unDoCollection.Remove(new object());
 
-            Check.That(description).IsEqualTo(nameof(source.Remove));
+            Check.That(description.HasValue).IsTrue();
+            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IDictionaryRemove);
         }
 
         [Fact]
@@ -206,7 +210,7 @@ namespace DefaultUnDo.Test
             IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
 
-            string description = null;
+            UnDoCollectionOperation? description = null;
 
             manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
@@ -214,7 +218,9 @@ namespace DefaultUnDo.Test
 
             unDoCollection[new object()] = default;
 
-            Check.That(description).IsEqualTo("this");
+            Check.That(description.HasValue).IsTrue();
+            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IDictionary_this);
         }
 
         [Fact]

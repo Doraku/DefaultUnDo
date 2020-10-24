@@ -69,7 +69,7 @@ namespace DefaultUnDo.Test
             ICollection<object> source = Substitute.For<ICollection<object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
 
-            string description = null;
+            UnDoCollectionOperation? description = null;
 
             manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
@@ -77,7 +77,9 @@ namespace DefaultUnDo.Test
 
             unDoCollection.Add(default);
 
-            Check.That(description).IsEqualTo(nameof(source.Add));
+            Check.That(description.HasValue).IsTrue();
+            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ICollectionAdd);
         }
 
         [Fact]
@@ -105,7 +107,7 @@ namespace DefaultUnDo.Test
             ICollection<object> source = Substitute.For<ICollection<object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
 
-            string description = null;
+            UnDoCollectionOperation? description = null;
 
             manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
@@ -113,7 +115,9 @@ namespace DefaultUnDo.Test
 
             unDoCollection.Clear();
 
-            Check.That(description).IsEqualTo(nameof(source.Clear));
+            Check.That(description.HasValue).IsTrue();
+            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ICollectionClear);
         }
 
         [Fact]
@@ -197,7 +201,7 @@ namespace DefaultUnDo.Test
             ICollection<object> source = Substitute.For<ICollection<object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
 
-            string description = null;
+            UnDoCollectionOperation? description = null;
 
             manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
@@ -205,7 +209,9 @@ namespace DefaultUnDo.Test
 
             unDoCollection.Remove(default);
 
-            Check.That(description).IsEqualTo(nameof(source.Remove));
+            Check.That(description.HasValue).IsTrue();
+            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ICollectionRemove);
         }
 
         [Fact]

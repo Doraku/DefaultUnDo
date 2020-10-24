@@ -60,7 +60,7 @@ namespace DefaultUnDo.Test
             ISet<object> source = Substitute.For<ISet<object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
 
-            string description = null;
+            UnDoCollectionOperation? description = null;
 
             manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
@@ -68,7 +68,9 @@ namespace DefaultUnDo.Test
 
             unDoCollection.Add(default);
 
-            Check.That(description).IsEqualTo(nameof(source.Add));
+            Check.That(description.HasValue).IsTrue();
+            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetAdd);
         }
 
         [Fact]
@@ -92,7 +94,7 @@ namespace DefaultUnDo.Test
             ISet<object> source = Substitute.For<ISet<object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
 
-            string description = null;
+            UnDoCollectionOperation? description = null;
 
             source.Count.Returns(42);
             manager.Do(Arg.Do<IUnDo>(i => i.Do()));
@@ -101,7 +103,9 @@ namespace DefaultUnDo.Test
 
             unDoCollection.ExceptWith(Enumerable.Empty<object>());
 
-            Check.That(description).IsEqualTo(nameof(source.ExceptWith));
+            Check.That(description.HasValue).IsTrue();
+            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetExceptWith);
         }
 
         [Fact]
@@ -125,7 +129,7 @@ namespace DefaultUnDo.Test
             ISet<object> source = Substitute.For<ISet<object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
 
-            string description = null;
+            UnDoCollectionOperation? description = null;
 
             source.Count.Returns(42);
             manager.Do(Arg.Do<IUnDo>(i => i.Do()));
@@ -134,7 +138,9 @@ namespace DefaultUnDo.Test
 
             unDoCollection.IntersectWith(Enumerable.Empty<object>());
 
-            Check.That(description).IsEqualTo(nameof(source.IntersectWith));
+            Check.That(description.HasValue).IsTrue();
+            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetIntersectWith);
         }
 
         [Fact]
@@ -260,7 +266,7 @@ namespace DefaultUnDo.Test
             ISet<object> source = Substitute.For<ISet<object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
 
-            string description = null;
+            UnDoCollectionOperation? description = null;
 
             manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
@@ -268,7 +274,9 @@ namespace DefaultUnDo.Test
 
             unDoCollection.SymmetricExceptWith(Enumerable.Empty<object>());
 
-            Check.That(description).IsEqualTo(nameof(source.SymmetricExceptWith));
+            Check.That(description.HasValue).IsTrue();
+            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetSymmetricExceptWith);
         }
 
         [Fact]
@@ -292,7 +300,7 @@ namespace DefaultUnDo.Test
             ISet<object> source = Substitute.For<ISet<object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
 
-            string description = null;
+            UnDoCollectionOperation? description = null;
 
             manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
@@ -300,7 +308,9 @@ namespace DefaultUnDo.Test
 
             unDoCollection.UnionWith(Enumerable.Empty<object>());
 
-            Check.That(description).IsEqualTo(nameof(source.UnionWith));
+            Check.That(description.HasValue).IsTrue();
+            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetUnionWith);
         }
 
         #endregion
