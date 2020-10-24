@@ -58,7 +58,7 @@ namespace DefaultUnDo.Technical
         T IList<T>.this[int index]
         {
             get => _source[index];
-            set => _manager.Do(_source, index, value, _descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.IList_this)));
+            set => _manager.Do(_source, index, value, _descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.IListIndexer)));
         }
 
         #endregion

@@ -56,7 +56,7 @@ namespace DefaultUnDo
         /// <summary>
         /// <see cref="P:System.Collections.Generic.IList`1.Item(``0)"/> was performed.
         /// </summary>
-        IList_this,
+        IListIndexer,
 
         /// <summary>
         /// <see cref="IDictionary{TKey, TValue}.Add(TKey, TValue)"/> was performed.
@@ -69,6 +69,6 @@ namespace DefaultUnDo
         /// <summary>
         /// <see cref="P:System.Collections.Generic.IDictionary`2.Item(``0)"/> was performed.
         /// </summary>
-        IDictionary_this
+        IDictionaryIndexer
     }
 }

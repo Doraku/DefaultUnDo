@@ -34,7 +34,7 @@ namespace DefaultUnDo.Technical
         TValue IDictionary<TKey, TValue>.this[TKey key]
         {
             get => _source[key];
-            set => _manager.Do(_source, key, value, _descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.IDictionary_this)));
+            set => _manager.Do(_source, key, value, _descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.IDictionaryIndexer)));
         }
 
         ICollection<TKey> IDictionary<TKey, TValue>.Keys => _source.Keys;

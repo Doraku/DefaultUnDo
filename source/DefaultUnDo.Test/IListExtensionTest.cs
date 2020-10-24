@@ -175,7 +175,7 @@ namespace DefaultUnDo.Test
 
             Check.That(description.HasValue).IsTrue();
             Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
-            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IList_this);
+            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IListIndexer);
         }
 
         [Fact]
