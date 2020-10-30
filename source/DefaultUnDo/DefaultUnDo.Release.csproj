@@ -1,24 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="DefaultUnDo.targets" />
 
-  <PropertyGroup Label="Sign">
+  <PropertyGroup>
     <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\..\ds.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-
-  <PropertyGroup Label="DefaultDocumentation">
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <DefaultDocumentationFolder>..\..\documentation\api</DefaultDocumentationFolder>
   </PropertyGroup>
-  <ItemGroup Label="Documentation" Condition="'$(TargetFramework)'=='netstandard1.0'">
+
+  <ItemGroup>
     <PackageReference Include="DefaultDocumentation" Version="0.6.13" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
   </ItemGroup>
 
-  <PropertyGroup Label="Package">
-    <Version>0.2.0</Version>
-    <PackageReleaseNotes>
-breaking changes:
-changed description from string to object
-changed AsUnDo extension methods description factory to take an UnDoCollectionOperation
-    </PackageReleaseNotes>
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' != 'true'">
+    <AssemblyOriginatorKeyFile>..\..\..\ds.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <AssemblyOriginatorKeyFile>..\..\ds.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <Target Name="PreparePackageReleaseNotesFromFile" BeforeTargets="GenerateNuspec">
+    <ReadLinesFromFile File="../../documentation/NEXT_RELEASENOTES.txt" >
+      <Output TaskParameter="Lines" ItemName="ReleaseNotesLines"/>
+    </ReadLinesFromFile>
+    <PropertyGroup>
+      <PackageReleaseNotes>@(ReleaseNotesLines, '%0a')</PackageReleaseNotes>
+    </PropertyGroup>
+  </Target>
 </Project>

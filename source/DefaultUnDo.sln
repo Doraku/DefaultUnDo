@@ -11,9 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		DefaultUnDo\DefaultUnDo.Release.csproj = DefaultUnDo\DefaultUnDo.Release.csproj
 		DefaultUnDo\DefaultUnDo.targets = DefaultUnDo\DefaultUnDo.targets
 		..\LICENSE.md = ..\LICENSE.md
+		..\documentation\NEXT_RELEASENOTES.txt = ..\documentation\NEXT_RELEASENOTES.txt
 		..\README.md = ..\README.md
-		..\Release.bat = ..\Release.bat
-		..\documentation\RELEASENOTE.md = ..\documentation\RELEASENOTE.md
+		..\documentation\RELEASENOTES.md = ..\documentation\RELEASENOTES.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{1C194496-09AD-47C3-BE59-1C66146AB694}"
@@ -21,6 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{
 		..\.github\workflows\CodeCoverage.yml = ..\.github\workflows\CodeCoverage.yml
 		..\.github\workflows\ContinuousIntegration.yml = ..\.github\workflows\ContinuousIntegration.yml
 		..\.github\workflows\PullRequest.yml = ..\.github\workflows\PullRequest.yml
+		..\.github\workflows\Release.yml = ..\.github\workflows\Release.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DefaultUnDo.Test", "DefaultUnDo.Test\DefaultUnDo.Test.csproj", "{B13DB434-5B94-415A-81DF-027E6BFED632}"
