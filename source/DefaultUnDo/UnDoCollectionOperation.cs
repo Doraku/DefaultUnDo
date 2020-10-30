@@ -1,7 +1,7 @@
 ﻿namespace DefaultUnDo
 {
     /// <summary>
-    /// Provides data for when an operation is performed on an undo collection.
+    /// Provides data for the operation about to be performed on an undo collection.
     /// </summary>
     public readonly struct UnDoCollectionOperation
     {
