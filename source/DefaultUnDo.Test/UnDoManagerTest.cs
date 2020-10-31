@@ -135,6 +135,15 @@ namespace DefaultUnDo.Test
 
         [Theory]
         [MemberData(nameof(UnDoManagers))]
+        public void Clear_Should_throw_When_a_transaction_is_going_on(IUnDoManager manager)
+        {
+            IUnDoTransaction transaction = manager.BeginTransaction();
+
+            Check.ThatCode(manager.Clear).Throws<InvalidOperationException>();
+        }
+
+        [Theory]
+        [MemberData(nameof(UnDoManagers))]
         public void Do_Should_throw_ArgumentNullException_When_command_is_null(IUnDoManager manager)
         {
             Check
