@@ -185,7 +185,7 @@ namespace DefaultUnDo.Test
             IUnDo undo = Substitute.For<IUnDo>();
             int version = manager.Version;
 
-            using (manager.BeginGroup())
+            using (manager.BeginTransaction())
             {
                 manager.Do(undo);
 
@@ -195,24 +195,27 @@ namespace DefaultUnDo.Test
 
         [Theory]
         [MemberData(nameof(UnDoManagers))]
-        public void BeginGroup_Should_return_an_IDisposable(IUnDoManager manager)
+        public void BeginTransaction_Should_return_an_IDisposable(IUnDoManager manager)
         {
-            Check.That(manager.BeginGroup()).IsNotNull();
+            Check.That(manager.BeginTransaction()).IsNotNull();
         }
 
         [Theory]
         [MemberData(nameof(UnDoManagers))]
-        public void BeginGroup_Should_add_commands_as_one_operation_in_history_once_disposed(IUnDoManager manager)
+        public void BeginTransaction_Should_add_commands_as_one_operation_in_history_once_disposed(IUnDoManager manager)
         {
             IUnDo undo = Substitute.For<IUnDo>();
             undo.Description.Returns("dummy");
             int version = manager.Version;
 
-            using (manager.BeginGroup("first"))
-            using (manager.BeginGroup("second"))
+            using (IUnDoTransaction t1 = manager.BeginTransaction("first"))
+            using (IUnDoTransaction t2 = manager.BeginTransaction("second"))
             {
                 manager.Do(undo);
                 manager.Do(undo);
+
+                t2.Commit();
+                t1.Commit();
             }
 
             Check.That(manager.Version).IsStrictlyGreaterThan(version);
@@ -249,14 +252,14 @@ namespace DefaultUnDo.Test
 
         [Theory]
         [MemberData(nameof(UnDoManagers))]
-        public void Undo_Should_throw_InvalidOperationException_When_a_group_operation_is_going_on(IUnDoManager manager)
+        public void Undo_Should_throw_InvalidOperationException_When_a_transaction_is_going_on(IUnDoManager manager)
         {
-            using (manager.BeginGroup())
+            using (manager.BeginTransaction())
             {
                 Check
                     .ThatCode(() => manager.Undo())
                     .Throws<InvalidOperationException>()
-                    .WithMessage("Cannot perform Undo while a group operation is going on.");
+                    .WithMessage("Cannot perform Undo while a transaction is going on.");
             }
         }
 
@@ -286,14 +289,14 @@ namespace DefaultUnDo.Test
 
         [Theory]
         [MemberData(nameof(UnDoManagers))]
-        public void Redo_Should_throw_InvalidOperationException_When_a_group_operation_is_going_on(IUnDoManager manager)
+        public void Redo_Should_throw_InvalidOperationException_When_a_transaction_is_going_on(IUnDoManager manager)
         {
-            using (manager.BeginGroup())
+            using (manager.BeginTransaction())
             {
                 Check
                     .ThatCode(() => manager.Redo())
                     .Throws<InvalidOperationException>()
-                    .WithMessage("Cannot perform Redo while a group operation is going on.");
+                    .WithMessage("Cannot perform Redo while a transaction is going on.");
             }
         }
 
@@ -425,6 +428,90 @@ namespace DefaultUnDo.Test
 
             Check.That(manager.UndoDescriptions).IsEmpty();
             Check.That(manager.RedoDescriptions).ContainsExactly("lol");
+        }
+
+        [Fact]
+        public void IUnDoTransactionCommit_Should_throw_When_already_disposed()
+        {
+            IUnDoManager manager = new UnDoManager(1);
+
+            IUnDoTransaction transaction = manager.BeginTransaction();
+
+            transaction.Dispose();
+
+            Check.ThatCode(transaction.Commit).Throws<ObjectDisposedException>();
+        }
+
+        [Fact]
+        public void IUnDoTransactionCommit_Should_throw_When_already_committed()
+        {
+            IUnDoManager manager = new UnDoManager(1);
+
+            IUnDoTransaction transaction = manager.BeginTransaction();
+
+            transaction.Commit();
+
+            Check.ThatCode(transaction.Commit).Throws<InvalidOperationException>();
+        }
+
+        [Fact]
+        public void IUnDoTransactionCommit_Should_throw_When_not_the_latest_transaction()
+        {
+            IUnDoManager manager = new UnDoManager(1);
+
+            IUnDoTransaction transaction1 = manager.BeginTransaction();
+            IUnDoTransaction transaction2 = manager.BeginTransaction();
+
+            Check.ThatCode(transaction1.Commit).Throws<InvalidOperationException>();
+        }
+
+        [Fact]
+        public void IUnDoTransactionDispose_Should_throw_When_not_the_latest_transaction()
+        {
+            IUnDoManager manager = new UnDoManager(1);
+
+            IUnDoTransaction transaction1 = manager.BeginTransaction();
+            IUnDoTransaction transaction2 = manager.BeginTransaction();
+
+            Check.ThatCode(transaction1.Dispose).Throws<InvalidOperationException>();
+        }
+
+        [Fact]
+        public void IUnDoTransactionDispose_Should_not_undo_When_committed()
+        {
+            IUnDoManager manager = new UnDoManager(1);
+
+            bool unDone = false;
+
+            using (IUnDoTransaction transaction = manager.BeginTransaction())
+            {
+                IUnDo undo = Substitute.For<IUnDo>();
+                undo.When(u => u.Undo()).Do(_ => unDone = true);
+
+                manager.Do(undo);
+
+                transaction.Commit();
+            }
+
+            Check.That(unDone).IsFalse();
+        }
+
+        [Fact]
+        public void IUnDoTransactionDispose_Should_undo_When_not_committed()
+        {
+            IUnDoManager manager = new UnDoManager(1);
+
+            bool unDone = false;
+
+            using (IUnDoTransaction transaction = manager.BeginTransaction())
+            {
+                IUnDo undo = Substitute.For<IUnDo>();
+                undo.When(u => u.Undo()).Do(_ => unDone = true);
+
+                manager.Do(undo);
+            }
+
+            Check.That(unDone).IsTrue();
         }
 
         #endregion

@@ -148,10 +148,13 @@ It is possible to declare a group scope for your operations so a single undo/red
 ```csharp
 IUnDoManager manager = new UnDoManager();
 
-using (manager.BeginGroup())
+using (IUnDoTransaction transaction = manager.BeginGroup())
 {
     manager.Do(action1, undo1);
     manager.Do(action2, undo2);
+
+    // if you do not commit the transaction, all operations inside the scope will be undone on transaction dispose
+    transaction.Commit();
 }
 
 // both undo2 and undo1 will be called in this order
@@ -165,14 +168,18 @@ If a group scope is declared inside an other group scope, all operations will be
 ```csharp
 IUnDoManager manager = new UnDoManager();
 
-using (manager.BeginGroup())
+using (IUnDoTransaction transaction1 = manager.BeginGroup())
 {
     manager.Do(action1, undo1);
 
-    using (manager.BeginGroup())
+    using (IUnDoTransaction transaction2 = manager.BeginGroup())
     {
         manager.Do(action2, undo2);
+
+        transaction2.Commit();
     }
+
+    transaction1.Commit();
 }
 
 // both undo2 and undo1 will be called in this order
@@ -182,7 +189,7 @@ manager.Undo();
 manager.Redo();
 ```
 
-`IUnDoManager.Undo` and `IUnDoManager.Redo` calls are not supported when inside a group operation. Also the actions recorded by the manager should not generate more operations themselves.
+`IUnDoManager.Undo` and `IUnDoManager.Redo` calls are not supported when inside a transaction. Also the actions recorded by the manager should not generate more operations themselves.
 
 To keep track of the modification, a `Version` property is available on the manager.
 

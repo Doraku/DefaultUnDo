@@ -30,13 +30,14 @@ namespace DefaultUnDo.Technical
         {
             if (_source.Count > 0)
             {
-                using (_manager.BeginGroup(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ISetExceptWith, other))))
+                using IUnDoTransaction transaction = _manager.BeginTransaction(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ISetExceptWith, other)));
+
+                foreach (T item in other)
                 {
-                    foreach (T item in other)
-                    {
-                        _manager.DoRemove(_source, item);
-                    }
+                    _manager.DoRemove(_source, item);
                 }
+
+                transaction.Commit();
             }
         }
 
@@ -46,14 +47,15 @@ namespace DefaultUnDo.Technical
             {
                 List<T> items = other.Where(_source.Contains).ToList();
 
-                using (_manager.BeginGroup(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ISetIntersectWith, other))))
+                using IUnDoTransaction transaction = _manager.BeginTransaction(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ISetIntersectWith, other)));
+
+                _manager.DoClear(_source);
+                foreach (T item in items)
                 {
-                    _manager.DoClear(_source);
-                    foreach (T item in items)
-                    {
-                        _manager.DoAdd(_source, item);
-                    }
+                    _manager.DoAdd(_source, item);
                 }
+
+                transaction.Commit();
             }
         }
 
@@ -71,27 +73,29 @@ namespace DefaultUnDo.Technical
 
         void ISet<T>.SymmetricExceptWith(IEnumerable<T> other)
         {
-            using (_manager.BeginGroup(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ISetSymmetricExceptWith, other))))
-            {
-                foreach (T item in other)
-                {
-                    if (!_manager.DoRemove(_source, item))
-                    {
-                        _manager.DoAdd(_source, item);
-                    }
-                }
-            }
-        }
+            using IUnDoTransaction transaction = _manager.BeginTransaction(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ISetSymmetricExceptWith, other)));
 
-        void ISet<T>.UnionWith(IEnumerable<T> other)
-        {
-            using (_manager.BeginGroup(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ISetUnionWith, other))))
+            foreach (T item in other)
             {
-                foreach (T item in other)
+                if (!_manager.DoRemove(_source, item))
                 {
                     _manager.DoAdd(_source, item);
                 }
             }
+
+            transaction.Commit();
+        }
+
+        void ISet<T>.UnionWith(IEnumerable<T> other)
+        {
+            using IUnDoTransaction transaction = _manager.BeginTransaction(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ISetUnionWith, other)));
+
+            foreach (T item in other)
+            {
+                _manager.DoAdd(_source, item);
+            }
+
+            transaction.Commit();
         }
 
         #endregion

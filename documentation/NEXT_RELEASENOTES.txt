@@ -1,3 +1,4 @@
 breaking changes:  
 changed description from string to object  
 changed AsUnDo extension methods description factory to take an UnDoCollectionOperation  
+changed IUnDoManager.BeginGroup to IUnDoManager.BeginTransaction and require a call to IUnDoTransaction.Commit to validate opeartions

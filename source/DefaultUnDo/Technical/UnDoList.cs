@@ -35,13 +35,14 @@ namespace DefaultUnDo.Technical
             }
             else
             {
-                using (_manager.BeginGroup(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.IListMove, oldIndex, newIndex))))
-                {
-                    T item = _source[oldIndex];
-                    IList<T> list = this;
-                    list.RemoveAt(oldIndex);
-                    list.Insert(newIndex, item);
-                }
+                using IUnDoTransaction transaction = _manager.BeginTransaction(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.IListMove, oldIndex, newIndex)));
+
+                T item = _source[oldIndex];
+                IList<T> list = this;
+                list.RemoveAt(oldIndex);
+                list.Insert(newIndex, item);
+
+                transaction.Commit();
             }
         }
 

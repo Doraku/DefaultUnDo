@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 
@@ -38,12 +37,12 @@ namespace DefaultUnDo
         IEnumerable<object> RedoDescriptions { get; }
 
         /// <summary>
-        /// Starts a group of operation and return an <see cref="IDisposable"/> to stop the group.
-        /// If multiple calls to this method are made, the group will be stoped once each <see cref="IDisposable"/> returned are disposed.
+        /// Starts a group of operation and return an <see cref="IUnDoTransaction"/> to stop the group.
+        /// If <see cref="IUnDoTransaction.Commit"/> is not called, all operations done during the transaction will be undone on <see cref="IDisposable.Dispose"/>.
         /// </summary>
-        /// <param name="description">The description of the group operation.</param>
-        /// <returns>An <see cref="IDisposable"/> to stop the group operation.</returns>
-        IDisposable BeginGroup(object description = null);
+        /// <param name="description">The description of the group of operations.</param>
+        /// <returns>An <see cref="IUnDoTransaction"/> to commit or rollback the transaction of operations.</returns>
+        IUnDoTransaction BeginTransaction(object description = null);
 
         /// <summary>
         /// Clears the history of <see cref="IUnDo"/> operations.

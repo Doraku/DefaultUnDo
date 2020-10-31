@@ -12,27 +12,73 @@ namespace DefaultUnDo
     {
         #region Types
 
-        private sealed class Group : IDisposable
+        private sealed class Transaction : IUnDoTransaction
         {
             #region Fields
 
             private readonly UnDoManager _manager;
+            private readonly object _description;
+            private readonly List<IUnDo> _commands;
 
+            private bool _isCommitted;
             private bool _isDisposed;
 
             #endregion
 
             #region Initialisation
 
-            public Group(UnDoManager manager, object description)
+            public Transaction(UnDoManager manager, object description)
             {
                 _manager = manager;
+                _description = description;
+                _commands = new List<IUnDo>();
+
+                _isCommitted = false;
                 _isDisposed = false;
 
-                if (++_manager._groupCount == 1)
+                _manager._transactions.Push(this);
+            }
+
+            #endregion
+
+            #region Methods
+
+            public void Add(IUnDo command) => _commands.Add(command);
+
+            #endregion
+
+            #region IUnDoTransaction
+
+            public void Commit()
+            {
+                if (_isDisposed)
                 {
-                    manager._groupDescription = description;
+                    throw new ObjectDisposedException(nameof(IUnDoTransaction));
                 }
+                if (_isCommitted)
+                {
+                    throw new InvalidOperationException("Current transaction has already been committed");
+                }
+                if (_manager._transactions.Peek() != this)
+                {
+                    throw new InvalidOperationException("Current transaction is not the highest one on the stack");
+                }
+
+                _manager._transactions.Pop();
+                if (_commands.Count > 0)
+                {
+                    IUnDo group = new GroupUnDo(_description, _commands.ToArray());
+                    if (_manager._transactions.Count > 0)
+                    {
+                        _manager._transactions.Peek().Add(group);
+                    }
+                    else
+                    {
+                        _manager.Push(group);
+                    }
+                }
+
+                _isCommitted = true;
             }
 
             #endregion
@@ -43,10 +89,19 @@ namespace DefaultUnDo
             {
                 if (!_isDisposed)
                 {
-                    if (--_manager._groupCount == 0 && _manager._groupCommands.Count > 0)
+                    if (!_isCommitted)
                     {
-                        _manager.Push(new GroupUnDo(_manager._groupDescription, _manager._groupCommands.ToArray()));
-                        _manager._groupCommands.Clear();
+                        if (_manager._transactions.Peek() != this)
+                        {
+                            throw new InvalidOperationException("Current transaction is not the highest one on the stack");
+                        }
+
+                        _manager._transactions.Pop();
+
+                        for (int i = _commands.Count - 1; i >= 0; --i)
+                        {
+                            _commands[i].Undo();
+                        }
                     }
 
                     _isDisposed = true;
@@ -62,11 +117,10 @@ namespace DefaultUnDo
         #region Fields
 
         private readonly IUnDoStack _stack;
-        private readonly List<IUnDo> _groupCommands;
+        private readonly Stack<Transaction> _transactions;
+
         private int _version;
         private int _lastVersion;
-        private int _groupCount;
-        private object _groupDescription;
 
         #endregion
 
@@ -84,7 +138,7 @@ namespace DefaultUnDo
             }
 
             _stack = maxCapacity == int.MaxValue ? (IUnDoStack)new UnDoStack() : new UnDoBuffer(maxCapacity);
-            _groupCommands = new List<IUnDo>();
+            _transactions = new Stack<Transaction>();
 
             Version = 0;
             _lastVersion = 0;
@@ -147,18 +201,23 @@ namespace DefaultUnDo
         public IEnumerable<object> RedoDescriptions => _stack.RedoDescription;
 
         /// <summary>
-        /// Starts a group of operation and return an <see cref="IDisposable"/> to stop the group.
-        /// If multiple calls to this method are made, the group will be stoped once each <see cref="IDisposable"/> returned are disposed.
+        /// Starts a group of operation and return an <see cref="IUnDoTransaction"/> to stop the group.
+        /// If <see cref="IUnDoTransaction.Commit"/> is not called, all operations done during the transaction will be undone on <see cref="IDisposable.Dispose"/>.
         /// </summary>
-        /// <param name="description">The description of the group operation.</param>
-        /// <returns>An <see cref="IDisposable"/> to stop the group operation.</returns>
-        public IDisposable BeginGroup(object description = null) => new Group(this, description);
+        /// <param name="description">The description of the group of operations.</param>
+        /// <returns>An <see cref="IUnDoTransaction"/> to commit or rollback the transaction of operations.</returns>
+        public IUnDoTransaction BeginTransaction(object description = null) => new Transaction(this, description);
 
         /// <summary>
         /// Clears the history of <see cref="IUnDo"/> operations.
         /// </summary>
         public void Clear()
         {
+            if (_transactions.Count > 0)
+            {
+                throw new InvalidOperationException("Cannot perform Clear while a transaction is going on.");
+            }
+
             _stack.Clear();
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CanUndo)));
@@ -181,9 +240,9 @@ namespace DefaultUnDo
 
             command.Do();
 
-            if (_groupCount > 0)
+            if (_transactions.Count > 0)
             {
-                _groupCommands.Add(command);
+                _transactions.Peek().Add(command);
             }
             else
             {
@@ -198,9 +257,9 @@ namespace DefaultUnDo
         /// <exception cref="InvalidOperationException">There is no action to undo.</exception>
         public void Undo()
         {
-            if (_groupCount > 0)
+            if (_transactions.Count > 0)
             {
-                throw new InvalidOperationException("Cannot perform Undo while a group operation is going on.");
+                throw new InvalidOperationException("Cannot perform Undo while a transaction is going on.");
             }
             if (!CanUndo)
             {
@@ -217,9 +276,9 @@ namespace DefaultUnDo
         /// <exception cref="InvalidOperationException">There is no action to redo.</exception>
         public void Redo()
         {
-            if (_groupCount > 0)
+            if (_transactions.Count > 0)
             {
-                throw new InvalidOperationException("Cannot perform Redo while a group operation is going on.");
+                throw new InvalidOperationException("Cannot perform Redo while a transaction is going on.");
             }
             if (!CanRedo)
             {
