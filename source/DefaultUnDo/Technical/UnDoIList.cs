@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace DefaultUnDo.Technical
 {
-    internal class UnDoList<T> : UnDoCollection<T>, IList<T>
+    internal class UnDoIList<T> : UnDoICollection<T>, IList<T>
     {
         #region Fields
 
@@ -14,7 +14,7 @@ namespace DefaultUnDo.Technical
 
         #region Initialisation
 
-        public UnDoList(IUnDoManager manager, IList<T> source, Func<UnDoCollectionOperation, object> descriptionFactory)
+        public UnDoIList(IUnDoManager manager, IList<T> source, Func<UnDoCollectionOperation, object> descriptionFactory)
             : base(manager, source, descriptionFactory)
         {
             _source = source;

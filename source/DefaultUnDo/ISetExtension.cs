@@ -20,7 +20,7 @@ namespace DefaultUnDo
         /// <param name="descriptionFactory">Factory used to create the description of the generated <see cref="IUnDo"/>.</param>
         /// <returns>A wrapped <see cref="ISet{T}"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="manager"/> is null.</exception>
-        public static ISet<T> AsUnDo<T>(this ISet<T> source, IUnDoManager manager, Func<UnDoCollectionOperation, object> descriptionFactory = null) => new UnDoSet<T>(
+        public static ISet<T> AsUnDo<T>(this ISet<T> source, IUnDoManager manager, Func<UnDoCollectionOperation, object> descriptionFactory = null) => new UnDoISet<T>(
             manager ?? throw new ArgumentNullException(nameof(manager)),
             source ?? throw new ArgumentNullException(nameof(source)),
             descriptionFactory);

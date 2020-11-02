@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace DefaultUnDo.Technical
 {
-    internal class UnDoCollection<T> : ICollection<T>, INotifyCollectionChanged, INotifyPropertyChanged
+    internal class UnDoICollection<T> : ICollection<T>, INotifyCollectionChanged, INotifyPropertyChanged
     {
         #region Fields
 
@@ -19,7 +19,7 @@ namespace DefaultUnDo.Technical
 
         #region Initialisation
 
-        public UnDoCollection(IUnDoManager manager, ICollection<T> source, Func<UnDoCollectionOperation, object> descriptionFactory)
+        public UnDoICollection(IUnDoManager manager, ICollection<T> source, Func<UnDoCollectionOperation, object> descriptionFactory)
         {
             _source = source;
             _manager = manager;

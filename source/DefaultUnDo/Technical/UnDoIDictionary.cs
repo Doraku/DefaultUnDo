@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DefaultUnDo.Technical
 {
-    internal class UnDoDictionary<TKey, TValue> : UnDoCollection<KeyValuePair<TKey, TValue>>, IDictionary<TKey, TValue>
+    internal class UnDoIDictionary<TKey, TValue> : UnDoICollection<KeyValuePair<TKey, TValue>>, IDictionary<TKey, TValue>
     {
         #region Fields
 
@@ -13,7 +13,7 @@ namespace DefaultUnDo.Technical
 
         #region Initialisation
 
-        public UnDoDictionary(IUnDoManager manager, IDictionary<TKey, TValue> source, Func<UnDoCollectionOperation, object> descriptionFactory)
+        public UnDoIDictionary(IUnDoManager manager, IDictionary<TKey, TValue> source, Func<UnDoCollectionOperation, object> descriptionFactory)
             : base(manager, source, descriptionFactory)
         {
             _source = source;
