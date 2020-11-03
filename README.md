@@ -52,19 +52,29 @@ manager.Do(v => field = v, 1337, field);
 // In mvvm we all have some kind of base type
 public abstract class ANotifyPropertyChanged : INotifyPropertyChanged
 {
-    // needed for mergeable action
-    private readonly Dictionary<Delegate, Delegate> _setters = new Dictionary<Delegate, Delegate>();
+    private sealed class UnDoProperty<T> : UnDoField<T>
+    {
+        private readonly ANotifyPropertyChanged _parent;
+        private readonly string _propertyName;
 
-    public delegate ref T FieldGetter<T>();
+        public UnDoProperty(ANotifyPropertyChanged parent, IUnDoManager unDoManager, string propertyName)
+            : base(unDoManager, _ => $"Changed {typeof(T).GetFriendlyShortName()} {propertyName}")
+        {
+            _parent = parent;
+            _propertyName = propertyName;
+        }
+
+        // to call PropertyChanged when changing value
+        protected override void PostSet(T value) => _parent.NotifyPropertyChanged(_propertyName);
+    }
 
     protected void NotifyPropertyChanged([CallerMemberName] string propertyName = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-    protected bool SetProperty<T>(ref T field, T value, [CallerMemberName] string propertyName = null, bool forceSet = false)
+    protected bool SetProperty<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
     {
-        if (!forceSet
-            && ((field is IEquatable<T> equatable && equatable.Equals(value))
-                || (typeof(T).IsValueType && Equals(field, value))
-                || ReferenceEquals(field, value)))
+        if ((field is IEquatable<T> equatable && equatable.Equals(value))
+            || (typeof(T).IsValueType && Equals(field, value))
+            || ReferenceEquals(field, value))
         {
             return false;
         }
@@ -76,26 +86,21 @@ public abstract class ANotifyPropertyChanged : INotifyPropertyChanged
         return true;
     }
 
-    protected bool SetProperty<T>(IUnDoManager unDoManager, FieldGetter<T> fieldGetter, T value, [CallerMemberName] string propertyName = null)
+    // need to pass the unDoManager in case the UnDoField is not initialised, this is mainly to keep the same signature between normal field and UnDoField (ref field, value)
+    // but you can ommit the IUnDoManager and ref if you choose to initialize UnDoField in the constructor
+    protected bool SetProperty<T>(IUnDoManager unDoManager, ref UnDoField<T> field, T value, [CallerMemberName] string propertyName = null)
     {
-        ref T field = ref fieldGetter();
+        field ??= new UnDoProperty<T>(this, unDoManager, propertyName);
+        T oldValue = field;
 
-        if ((field is IEquatable<T> equatable && equatable.Equals(value))
-            || (typeof(T).IsValueType && Equals(field, value))
-            || ReferenceEquals(field, value))
+        if ((oldValue is IEquatable<T> equatable && equatable.Equals(value))
+            || (typeof(T).IsValueType && Equals(oldValue, value))
+            || ReferenceEquals(oldValue, value))
         {
             return false;
         }
 
-        // since the lambda need to capture the fieldGetter parameter the framework can't reuse the same instance on its own so we help him with our own cache
-        // this is needed so ValueUnDo<T> can be merge, else the setter delegate will be different between multiple call on the same property and no merge would be possible 
-        if (!_setters.TryGetValue(fieldGetter, out Delegate setter))
-        {
-            setter = new Action<T>(v => SetProperty(ref fieldGetter(), v, propertyName, true));
-            _setters.Add(fieldGetter, setter);
-        }
-
-        unDoManager.Do(setter as Action<T>, value, fieldGetter(), $"Changed {typeof(T).GetFriendlyShortName()} {propertyName}");
+        field.Value = value;
 
         return true;
     }
@@ -104,12 +109,12 @@ public abstract class ANotifyPropertyChanged : INotifyPropertyChanged
 }
 
 // usage in derrived types
-private string _field;
+private UnDoField<string> _field;
 
 public string Field
 {
     get => _field;
-    set => SetProperty(manager, () => ref _field, value);
+    set => SetProperty(manager, ref _field, value);
 }
 
 // events interraction
@@ -144,11 +149,11 @@ ISet<int> mySet = new HashSet<int>().AsUnDo(manager);
 
 To generate a custom description when changes occure on those undo collection, the `AsUnDo` extension method can take a `Func<UnDoCollectionOperation, object> descriptionFactory` parameter.
 
-It is possible to declare a group scope for your operations so a single undo/redo will execute all the contained operations.
+It is possible to declare a transaction scope for your operations so a single undo/redo will execute all the contained operations.
 ```csharp
 IUnDoManager manager = new UnDoManager();
 
-using (IUnDoTransaction transaction = manager.BeginGroup())
+using (IUnDoTransaction transaction = manager.BeginTransaction())
 {
     manager.Do(action1, undo1);
     manager.Do(action2, undo2);
@@ -168,11 +173,11 @@ If a group scope is declared inside an other group scope, all operations will be
 ```csharp
 IUnDoManager manager = new UnDoManager();
 
-using (IUnDoTransaction transaction1 = manager.BeginGroup())
+using (IUnDoTransaction transaction1 = manager.BeginTransaction())
 {
     manager.Do(action1, undo1);
 
-    using (IUnDoTransaction transaction2 = manager.BeginGroup())
+    using (IUnDoTransaction transaction2 = manager.BeginTransaction())
     {
         manager.Do(action2, undo2);
 

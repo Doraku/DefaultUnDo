@@ -20,7 +20,7 @@
         public object[] Parameters { get; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UnDoCollectionOperation"/> class.
+        /// Initializes a new instance of the <see cref="UnDoCollectionOperation"/> struct.
         /// </summary>
         /// <param name="collection">The collection on which the action is performed.</param>
         /// <param name="action">The action performed.</param>
