@@ -19,6 +19,23 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
+        public void Value_Should_set_value()
+        {
+            IUnDoManager manager = Substitute.For<IUnDoManager>();
+            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+            object value = new object();
+            object newValue = new object();
+            UnDoField<object> field = new UnDoField<object>(manager, value);
+
+            Check.That(field.Value).IsEqualTo(value);
+
+            field.Value = newValue;
+
+            Check.That(field.Value).IsEqualTo(newValue);
+        }
+
+        [Fact]
         public void Value_Should_generate_description()
         {
             IUnDoManager manager = Substitute.For<IUnDoManager>();
@@ -46,6 +63,12 @@ namespace DefaultUnDo.Test
             int currentValue = new UnDoField<int>(manager, value);
 
             Check.That(currentValue).IsEqualTo(value);
+        }
+
+        [Fact]
+        public void Implicit_Should_return_default_When_null()
+        {
+            Check.That(default(int)).IsEqualTo(default(UnDoField<int>));
         }
 
         #endregion
