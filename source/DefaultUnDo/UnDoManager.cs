@@ -119,6 +119,7 @@ namespace DefaultUnDo
         private readonly IUnDoStack _stack;
         private readonly Stack<Transaction> _transactions;
 
+        private int _cyclicDepth;
         private int _version;
         private int _lastVersion;
 
@@ -140,6 +141,7 @@ namespace DefaultUnDo
             _stack = maxCapacity == int.MaxValue ? (IUnDoStack)new UnDoStack() : new UnDoBuffer(maxCapacity);
             _transactions = new Stack<Transaction>();
 
+            _cyclicDepth = 0;
             Version = 0;
             _lastVersion = 0;
         }
@@ -238,15 +240,26 @@ namespace DefaultUnDo
                 throw new ArgumentNullException(nameof(command));
             }
 
-            command.Do();
-
-            if (_transactions.Count > 0)
+            try
             {
-                _transactions.Peek().Add(command);
+                ++_cyclicDepth;
+                command.Do();
             }
-            else
+            finally
             {
-                Push(command);
+                --_cyclicDepth;
+            }
+
+            if (_cyclicDepth is 0)
+            {
+                if (_transactions.Count > 0)
+                {
+                    _transactions.Peek().Add(command);
+                }
+                else
+                {
+                    Push(command);
+                }
             }
         }
 
@@ -266,7 +279,15 @@ namespace DefaultUnDo
                 throw new InvalidOperationException("No operation to undo.");
             }
 
-            Version = _stack.Undo();
+            try
+            {
+                ++_cyclicDepth;
+                Version = _stack.Undo();
+            }
+            finally
+            {
+                --_cyclicDepth;
+            }
         }
 
         /// <summary>
@@ -285,7 +306,15 @@ namespace DefaultUnDo
                 throw new InvalidOperationException("No operation to redo.");
             }
 
-            Version = _stack.Redo();
+            try
+            {
+                ++_cyclicDepth;
+                Version = _stack.Redo();
+            }
+            finally
+            {
+                --_cyclicDepth;
+            }
         }
 
         #endregion

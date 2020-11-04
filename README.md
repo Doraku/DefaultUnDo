@@ -194,7 +194,7 @@ manager.Undo();
 manager.Redo();
 ```
 
-`IUnDoManager.Undo` and `IUnDoManager.Redo` calls are not supported when inside a transaction. Also the actions recorded by the manager should not generate more operations themselves.
+`IUnDoManager.Undo` and `IUnDoManager.Redo` calls are not supported when inside a transaction.
 
 To keep track of the modification, a `Version` property is available on the manager.
 
