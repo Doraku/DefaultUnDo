@@ -1,12 +1,64 @@
-<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="DefaultUnDo.targets" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup Label="Compilation">
+    <LangVersion>latest</LangVersion>
+    <TargetFrameworks>
+      netstandard1.0;
+      netstandard2.0;
+    </TargetFrameworks>
+    <Optimize>true</Optimize>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DefaultDocumentationFolder>..\..\documentation\api</DefaultDocumentationFolder>
+  </PropertyGroup>
 
   <PropertyGroup Label="Debug" Condition="'$(Configuration)'=='Debug'">
     <Optimize>false</Optimize>
     <DefineConstants>DEBUG</DefineConstants>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="..\..\image\logo.png" Pack="true" PackagePath="\" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DefaultDocumentation" Version="0.6.13" PrivateAssets="all" Condition="'$(GITHUB_ACTIONS)' == 'true' AND '$(TEST)' != 'true'" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
   <PropertyGroup Label="Package">
-    <Version>0-ci$([System.DateTime]::UtcNow.ToString("yyyyMMddHHmmss"))</Version>
+    <Authors>Paillat Laszlo</Authors>
+    <AssemblyName>DefaultUnDo</AssemblyName>
+    <AssemblyTitle>DefaultUnDo</AssemblyTitle>
+    <PackageId>DefaultUnDo</PackageId>
+    <Description>Undo/redo library aiming for ease of integration and usage simplicity.</Description>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/Doraku/DefaultUnDo</PackageProjectUrl>
+    <PackageLicenseExpression>MIT-0</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/Doraku/DefaultUnDo.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>command-pattern memento-pattern undo-redo</PackageTags>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(LOCAL_VERSION)' == 'true'">
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\..\ds.snk</AssemblyOriginatorKeyFile>
+    <Version>0-local$([System.DateTime]::UtcNow.ToString("yyyyMMddHHmmss"))</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true' AND '$(TEST)' != 'true'">
+    <SignAssembly>True</SignAssembly>
+    <IncludeSymbols Condition="'$(CI_VERSION)' != 'true'">true</IncludeSymbols>
+    <SymbolPackageFormat Condition="'$(CI_VERSION)' != 'true'">snupkg</SymbolPackageFormat>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <AssemblyOriginatorKeyFile>..\..\ds.snk</AssemblyOriginatorKeyFile>
+    <Version Condition="'$(CI_VERSION)' == 'true'">0-ci$([System.DateTime]::UtcNow.ToString("yyyyMMddHHmmss"))</Version>
+  </PropertyGroup>
+
+  <Target Name="PreparePackageReleaseNotesFromFile" BeforeTargets="GenerateNuspec">
+    <ReadLinesFromFile File="../../documentation/NEXT_RELEASENOTES.txt">
+      <Output TaskParameter="Lines" ItemName="ReleaseNotesLines" />
+    </ReadLinesFromFile>
+    <PropertyGroup>
+      <PackageReleaseNotes>@(ReleaseNotesLines, '%0a')</PackageReleaseNotes>
+    </PropertyGroup>
+  </Target>
 </Project>

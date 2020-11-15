@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using NFluent;
 using NSubstitute;
@@ -92,6 +93,9 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
+#if NET5_0
+        [SuppressMessage("Performance", "CA1825")]
+#endif
         public void UnDoSet_ExceptWith_Should_generate_ExceptWith_description()
         {
             ISet<object> source = Substitute.For<ISet<object>>();
@@ -130,6 +134,9 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
+#if NET5_0
+        [SuppressMessage("Performance", "CA1825")]
+#endif
         public void UnDoSet_IntersectWith_Should_generate_IntersectWith_description()
         {
             ISet<object> source = Substitute.For<ISet<object>>();
@@ -270,6 +277,9 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
+#if NET5_0
+        [SuppressMessage("Performance", "CA1825")]
+#endif
         public void UnDoSet_SymmetricExceptWith_Should_generate_SymmetricExceptWith_description()
         {
             ISet<object> source = Substitute.For<ISet<object>>();
@@ -307,6 +317,9 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
+#if NET5_0
+        [SuppressMessage("Performance", "CA1825")]
+#endif
         public void UnDoSet_UnionWith_Should_generate_UnionWith_description()
         {
             ISet<object> source = Substitute.For<ISet<object>>();

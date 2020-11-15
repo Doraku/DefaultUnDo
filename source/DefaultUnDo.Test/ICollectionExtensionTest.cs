@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using NFluent;
 using NSubstitute;
 using Xunit;
@@ -139,6 +140,9 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
+#if NET5_0
+        [SuppressMessage("Performance", "CA1825")]
+#endif
         public void UnDoCollection_CopyTo_Should_CopyTo()
         {
             ICollection<object> source = Substitute.For<ICollection<object>>();

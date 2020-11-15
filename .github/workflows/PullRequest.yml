@@ -16,13 +16,13 @@ jobs:
     - name: Set up dotnet
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.301
+        dotnet-version: '5.0.100'
 
     - name: Run tests net452
-      run: dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f net452
+      run: dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f net452 /p:TEST=true
 
     - name: Run tests net48
-      run: dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f net48
+      run: dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f net48 /p:TEST=true
 
     - name: Run tests netcoreapp3.0
-      run: dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f netcoreapp3.0
+      run: dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f netcoreapp3.0 /p:TEST=true

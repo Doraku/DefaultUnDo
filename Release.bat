@@ -8,9 +8,6 @@ dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -r packag
 
 IF %ERRORLEVEL% GTR 0 GOTO :end
 
-dotnet clean source\DefaultUnDo\DefaultUnDo.csproj -c Release
-dotnet clean source\DefaultUnDo\DefaultUnDo.Release.csproj -c Release
-
-dotnet pack source\DefaultUnDo\DefaultUnDo.Release.csproj -c Release -o package
+dotnet pack source\DefaultUnDo\DefaultUnDo.csproj -c Release -o package /p:LOCAL_VERSION=true
 
 :end
