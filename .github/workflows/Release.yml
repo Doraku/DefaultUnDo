@@ -16,6 +16,8 @@ jobs:
       with:
         dotnet-version: '5.0.100'
         source-url: https://api.nuget.org/v3/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       
     - name: Decrypte snk file
       env:
