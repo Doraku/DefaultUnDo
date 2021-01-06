@@ -32,7 +32,7 @@
     <Description>Undo/redo library aiming for ease of integration and usage simplicity.</Description>
     <PackageIcon>logo.png</PackageIcon>
     <PackageProjectUrl>https://github.com/Doraku/DefaultUnDo</PackageProjectUrl>
-    <PackageLicenseExpression>MIT-0</PackageLicenseExpression>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/Doraku/DefaultUnDo.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>command-pattern memento-pattern undo-redo</PackageTags>
