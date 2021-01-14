@@ -41,7 +41,7 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       with:
         release_name: DefaultUnDo ${{ github.event.release.tag_name }}
-        body_path: .\package\NEW_RELEASENOTES.txt
+        body_path: ./package/NEW_RELEASENOTES.txt
         
     - name: Update RELEASENOTES.md
       run: |
