@@ -34,6 +34,7 @@ jobs:
         'echo.>> package\NEW_RELEASENOTES.txt'
         'echo.>> package\NEW_RELEASENOTES.txt'
         'echo [nuget package](https://www.nuget.org/packages/DefaultUnDo/${{ github.event.release.tag_name }})>> package\NEW_RELEASENOTES.txt'
+        'type package\NEW_RELEASENOTES.txt'
 
     - name: Update release
       uses: tubone24/update_release@v1.1.0
