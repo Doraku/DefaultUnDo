@@ -15,4 +15,4 @@ The type of element in the [System.Collections.Generic.ICollection&lt;&gt;](http
   
 ### Constructors
 - [CollectionUnDo(System.Collections.Generic.ICollection&lt;T&gt;, T, bool)](./DefaultUnDo-CollectionUnDo-T--CollectionUnDo(System-Collections-Generic-ICollection-T-_T_bool).md 'DefaultUnDo.CollectionUnDo&lt;T&gt;.CollectionUnDo(System.Collections.Generic.ICollection&lt;T&gt;, T, bool)')
-- [CollectionUnDo(string, System.Collections.Generic.ICollection&lt;T&gt;, T, bool)](./DefaultUnDo-CollectionUnDo-T--CollectionUnDo(string_System-Collections-Generic-ICollection-T-_T_bool).md 'DefaultUnDo.CollectionUnDo&lt;T&gt;.CollectionUnDo(string, System.Collections.Generic.ICollection&lt;T&gt;, T, bool)')
+- [CollectionUnDo(object, System.Collections.Generic.ICollection&lt;T&gt;, T, bool)](./DefaultUnDo-CollectionUnDo-T--CollectionUnDo(object_System-Collections-Generic-ICollection-T-_T_bool).md 'DefaultUnDo.CollectionUnDo&lt;T&gt;.CollectionUnDo(object, System.Collections.Generic.ICollection&lt;T&gt;, T, bool)')

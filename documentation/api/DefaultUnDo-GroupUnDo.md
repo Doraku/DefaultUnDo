@@ -11,6 +11,6 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Implements [IMergeableUnDo](./DefaultUnDo-IMergeableUnDo.md 'DefaultUnDo.IMergeableUnDo'), [IUnDo](./DefaultUnDo-IUnDo.md 'DefaultUnDo.IUnDo')  
 ### Constructors
 - [GroupUnDo(DefaultUnDo.IUnDo[])](./DefaultUnDo-GroupUnDo-GroupUnDo(DefaultUnDo-IUnDo--).md 'DefaultUnDo.GroupUnDo.GroupUnDo(DefaultUnDo.IUnDo[])')
-- [GroupUnDo(string, DefaultUnDo.IUnDo[])](./DefaultUnDo-GroupUnDo-GroupUnDo(string_DefaultUnDo-IUnDo--).md 'DefaultUnDo.GroupUnDo.GroupUnDo(string, DefaultUnDo.IUnDo[])')
+- [GroupUnDo(object, DefaultUnDo.IUnDo[])](./DefaultUnDo-GroupUnDo-GroupUnDo(object_DefaultUnDo-IUnDo--).md 'DefaultUnDo.GroupUnDo.GroupUnDo(object, DefaultUnDo.IUnDo[])')
 ### Methods
 - [TryGetSingle&lt;T&gt;(T)](./DefaultUnDo-GroupUnDo-TryGetSingle-T-(T).md 'DefaultUnDo.GroupUnDo.TryGetSingle&lt;T&gt;(T)')

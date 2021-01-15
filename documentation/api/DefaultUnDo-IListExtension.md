@@ -6,5 +6,5 @@ public static class IListExtension
 ```
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; IListExtension  
 ### Methods
-- [AsUnDo&lt;T&gt;(System.Collections.Generic.IList&lt;T&gt;, DefaultUnDo.IUnDoManager, System.Func&lt;string,string&gt;)](./DefaultUnDo-IListExtension-AsUnDo-T-(System-Collections-Generic-IList-T-_DefaultUnDo-IUnDoManager_System-Func-string_string-).md 'DefaultUnDo.IListExtension.AsUnDo&lt;T&gt;(System.Collections.Generic.IList&lt;T&gt;, DefaultUnDo.IUnDoManager, System.Func&lt;string,string&gt;)')
+- [AsUnDo&lt;T&gt;(System.Collections.Generic.IList&lt;T&gt;, DefaultUnDo.IUnDoManager, System.Func&lt;DefaultUnDo.UnDoCollectionOperation,object&gt;)](./DefaultUnDo-IListExtension-AsUnDo-T-(System-Collections-Generic-IList-T-_DefaultUnDo-IUnDoManager_System-Func-DefaultUnDo-UnDoCollectionOperation_object-).md 'DefaultUnDo.IListExtension.AsUnDo&lt;T&gt;(System.Collections.Generic.IList&lt;T&gt;, DefaultUnDo.IUnDoManager, System.Func&lt;DefaultUnDo.UnDoCollectionOperation,object&gt;)')
 - [Move&lt;T&gt;(System.Collections.Generic.IList&lt;T&gt;, int, int)](./DefaultUnDo-IListExtension-Move-T-(System-Collections-Generic-IList-T-_int_int).md 'DefaultUnDo.IListExtension.Move&lt;T&gt;(System.Collections.Generic.IList&lt;T&gt;, int, int)')

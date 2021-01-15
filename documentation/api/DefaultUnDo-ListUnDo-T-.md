@@ -15,4 +15,4 @@ The type of element in the [System.Collections.Generic.IList&lt;&gt;](https://do
   
 ### Constructors
 - [ListUnDo(System.Collections.Generic.IList&lt;T&gt;, int, T, bool)](./DefaultUnDo-ListUnDo-T--ListUnDo(System-Collections-Generic-IList-T-_int_T_bool).md 'DefaultUnDo.ListUnDo&lt;T&gt;.ListUnDo(System.Collections.Generic.IList&lt;T&gt;, int, T, bool)')
-- [ListUnDo(string, System.Collections.Generic.IList&lt;T&gt;, int, T, bool)](./DefaultUnDo-ListUnDo-T--ListUnDo(string_System-Collections-Generic-IList-T-_int_T_bool).md 'DefaultUnDo.ListUnDo&lt;T&gt;.ListUnDo(string, System.Collections.Generic.IList&lt;T&gt;, int, T, bool)')
+- [ListUnDo(object, System.Collections.Generic.IList&lt;T&gt;, int, T, bool)](./DefaultUnDo-ListUnDo-T--ListUnDo(object_System-Collections-Generic-IList-T-_int_T_bool).md 'DefaultUnDo.ListUnDo&lt;T&gt;.ListUnDo(object, System.Collections.Generic.IList&lt;T&gt;, int, T, bool)')

@@ -19,7 +19,7 @@ Implements [IUnDoManager](./DefaultUnDo-IUnDoManager.md 'DefaultUnDo.IUnDoManage
 - [UndoDescriptions](./DefaultUnDo-UnDoManager-UndoDescriptions.md 'DefaultUnDo.UnDoManager.UndoDescriptions')
 - [Version](./DefaultUnDo-UnDoManager-Version.md 'DefaultUnDo.UnDoManager.Version')
 ### Methods
-- [BeginGroup(string)](./DefaultUnDo-UnDoManager-BeginGroup(string).md 'DefaultUnDo.UnDoManager.BeginGroup(string)')
+- [BeginTransaction(object)](./DefaultUnDo-UnDoManager-BeginTransaction(object).md 'DefaultUnDo.UnDoManager.BeginTransaction(object)')
 - [Clear()](./DefaultUnDo-UnDoManager-Clear().md 'DefaultUnDo.UnDoManager.Clear()')
 - [Do(DefaultUnDo.IUnDo)](./DefaultUnDo-UnDoManager-Do(DefaultUnDo-IUnDo).md 'DefaultUnDo.UnDoManager.Do(DefaultUnDo.IUnDo)')
 - [Redo()](./DefaultUnDo-UnDoManager-Redo().md 'DefaultUnDo.UnDoManager.Redo()')

@@ -16,6 +16,6 @@ The type of value.
   
 ### Constructors
 - [ValueUnDo(System.Action&lt;T&gt;, T, T)](./DefaultUnDo-ValueUnDo-T--ValueUnDo(System-Action-T-_T_T).md 'DefaultUnDo.ValueUnDo&lt;T&gt;.ValueUnDo(System.Action&lt;T&gt;, T, T)')
-- [ValueUnDo(string, System.Action&lt;T&gt;, T, T)](./DefaultUnDo-ValueUnDo-T--ValueUnDo(string_System-Action-T-_T_T).md 'DefaultUnDo.ValueUnDo&lt;T&gt;.ValueUnDo(string, System.Action&lt;T&gt;, T, T)')
+- [ValueUnDo(object, System.Action&lt;T&gt;, T, T)](./DefaultUnDo-ValueUnDo-T--ValueUnDo(object_System-Action-T-_T_T).md 'DefaultUnDo.ValueUnDo&lt;T&gt;.ValueUnDo(object, System.Action&lt;T&gt;, T, T)')
 ### Fields
 - [MergeInterval](./DefaultUnDo-ValueUnDo-T--MergeInterval.md 'DefaultUnDo.ValueUnDo&lt;T&gt;.MergeInterval')

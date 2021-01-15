@@ -16,7 +16,7 @@ Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft
 - [UndoDescriptions](./DefaultUnDo-IUnDoManager-UndoDescriptions.md 'DefaultUnDo.IUnDoManager.UndoDescriptions')
 - [Version](./DefaultUnDo-IUnDoManager-Version.md 'DefaultUnDo.IUnDoManager.Version')
 ### Methods
-- [BeginGroup(string)](./DefaultUnDo-IUnDoManager-BeginGroup(string).md 'DefaultUnDo.IUnDoManager.BeginGroup(string)')
+- [BeginTransaction(object)](./DefaultUnDo-IUnDoManager-BeginTransaction(object).md 'DefaultUnDo.IUnDoManager.BeginTransaction(object)')
 - [Clear()](./DefaultUnDo-IUnDoManager-Clear().md 'DefaultUnDo.IUnDoManager.Clear()')
 - [Do(DefaultUnDo.IUnDo)](./DefaultUnDo-IUnDoManager-Do(DefaultUnDo-IUnDo).md 'DefaultUnDo.IUnDoManager.Do(DefaultUnDo.IUnDo)')
 - [Redo()](./DefaultUnDo-IUnDoManager-Redo().md 'DefaultUnDo.IUnDoManager.Redo()')

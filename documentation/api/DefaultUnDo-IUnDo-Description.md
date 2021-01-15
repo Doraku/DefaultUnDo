@@ -2,7 +2,7 @@
 ## IUnDo.Description Property
 Gets a description of what this [IUnDo](./DefaultUnDo-IUnDo.md 'DefaultUnDo.IUnDo') perform.  
 ```csharp
-string Description { get; }
+object Description { get; }
 ```
 #### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+[System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')  
