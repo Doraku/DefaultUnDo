@@ -29,11 +29,11 @@ jobs:
 
     - name: Create NEW_RELEASENOTES.txt
       run: |
-        echo ## DefaultUnDo ${{ github.event.release.tag_name }}> package\NEW_RELEASENOTES.txt
+        echo "## DefaultUnDo ${{ github.event.release.tag_name }}"> package\NEW_RELEASENOTES.txt
         type documentation\NEXT_RELEASENOTES.txt >> package\NEW_RELEASENOTES.txt
         echo.>> package\NEW_RELEASENOTES.txt
         echo.>> package\NEW_RELEASENOTES.txt
-        echo [nuget package](https://www.nuget.org/packages/DefaultUnDo/${{ github.event.release.tag_name }})>> package\NEW_RELEASENOTES.txt
+        echo "[nuget package](https://www.nuget.org/packages/DefaultUnDo/${{ github.event.release.tag_name }})">> package\NEW_RELEASENOTES.txt
         type package\NEW_RELEASENOTES.txt
         echo kikoo
 
@@ -43,7 +43,7 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       with:
         release_name: DefaultUnDo ${{ github.event.release.tag_name }}
-        body_path: ./package/NEW_RELEASENOTES.txt
+        body_path: .\package\NEW_RELEASENOTES.txt
         
     - name: Update RELEASENOTES.md
       run: |
