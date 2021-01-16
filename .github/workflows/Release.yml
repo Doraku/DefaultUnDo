@@ -10,6 +10,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+        ref: master
 
     - name: Set up dotnet
       uses: actions/setup-dotnet@v1
@@ -32,7 +34,6 @@ jobs:
         echo "## DefaultUnDo ${{ github.event.release.tag_name }}" | Out-File package\NEW_RELEASENOTES.txt
         type documentation\NEXT_RELEASENOTES.txt | Out-File package\NEW_RELEASENOTES.txt -Append
         echo "" | Out-File package\NEW_RELEASENOTES.txt -Append
-        echo "" | Out-File package\NEW_RELEASENOTES.txt -Append
         echo "[nuget package](https://www.nuget.org/packages/DefaultUnDo/${{ github.event.release.tag_name }})" | Out-File package\NEW_RELEASENOTES.txt -Append
 
     - name: Update release
@@ -47,7 +48,7 @@ jobs:
       run: |
         echo "" | Out-File package\NEW_RELEASENOTES.txt -Append
         type documentation\RELEASENOTES.md | Out-File package\NEW_RELEASENOTES.txt -Append
-        type package\NEW_RELEASENOTES.txt | Out-File documentation\RELEASENOTES.md -Append
+        type package\NEW_RELEASENOTES.txt | Out-File documentation\RELEASENOTES.md
         echo "" | Out-File documentation\NEXT_RELEASENOTES.txt -NoNewLine
 
     - name: Publish package
