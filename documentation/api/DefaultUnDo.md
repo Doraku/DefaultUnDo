@@ -18,7 +18,7 @@
 - [UnDoFieldChange&lt;T&gt;](./DefaultUnDo-UnDoFieldChange-T-.md 'DefaultUnDo.UnDoFieldChange&lt;T&gt;')
 ### Interfaces
 - [IMergeableUnDo](./DefaultUnDo-IMergeableUnDo.md 'DefaultUnDo.IMergeableUnDo')
-- [IUnDo](./DefaultUnDo-IUnDo.md 'DefaultUnDo.IUnDo')
+- [IUnDo](DefaultUnDo-IUnDo.md 'DefaultUnDo.IUnDo')
 - [IUnDoManager](./DefaultUnDo-IUnDoManager.md 'DefaultUnDo.IUnDoManager')
 - [IUnDoTransaction](./DefaultUnDo-IUnDoTransaction.md 'DefaultUnDo.IUnDoTransaction')
 ### Enums
