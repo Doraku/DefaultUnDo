@@ -330,7 +330,7 @@ namespace DefaultUnDo.Test
         [MemberData(nameof(UnDoManagers))]
         public void PropertyChanged_Should_be_called(IUnDoManager manager)
         {
-            List<string> properties = new List<string>();
+            List<string> properties = new();
             manager.PropertyChanged += (_, e) => properties.Add(e.PropertyName);
 
             manager.Do(() => { }, () => { });

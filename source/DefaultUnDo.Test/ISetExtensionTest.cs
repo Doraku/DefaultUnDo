@@ -67,7 +67,7 @@ namespace DefaultUnDo.Test
 
             ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            object item = new object();
+            object item = new();
             unDoCollection.Add(item);
 
             Check.That(description.HasValue).IsTrue();

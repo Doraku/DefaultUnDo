@@ -50,7 +50,7 @@ namespace DefaultUnDo.Test
         {
             ICollection<object> source = Substitute.For<ICollection<object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
-            object value = new object();
+            object value = new();
 
             bool done = false;
 
@@ -76,7 +76,7 @@ namespace DefaultUnDo.Test
 
             ICollection<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            object item = new object();
+            object item = new();
             unDoCollection.Add(item);
 
             Check.That(description.HasValue).IsTrue();
@@ -130,7 +130,7 @@ namespace DefaultUnDo.Test
         {
             ICollection<object> source = Substitute.For<ICollection<object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
-            object value = new object();
+            object value = new();
 
             source.Contains(value).Returns(true);
 
@@ -192,7 +192,7 @@ namespace DefaultUnDo.Test
         {
             ICollection<object> source = Substitute.For<ICollection<object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
-            object value = new object();
+            object value = new();
 
             source.Remove(value).Returns(true);
             source.Contains(value).Returns(true);
@@ -215,7 +215,7 @@ namespace DefaultUnDo.Test
 
             ICollection<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            object item = new object();
+            object item = new();
             unDoCollection.Remove(item);
 
             Check.That(description.HasValue).IsTrue();

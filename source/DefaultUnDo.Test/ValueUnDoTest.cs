@@ -23,8 +23,8 @@ namespace DefaultUnDo.Test
         public void Do_Should_set_newValue()
         {
             object value = null;
-            object oldValue = new object();
-            object newValue = new object();
+            object oldValue = new();
+            object newValue = new();
             IUnDo undo = new ValueUnDo<object>(v => value = v, newValue, oldValue);
 
             undo.Do();
@@ -36,8 +36,8 @@ namespace DefaultUnDo.Test
         public void Undo_Should_set_oldValue()
         {
             object value = null;
-            object oldValue = new object();
-            object newValue = new object();
+            object oldValue = new();
+            object newValue = new();
             IUnDo undo = new ValueUnDo<object>(v => value = v, newValue, oldValue);
 
             undo.Undo();

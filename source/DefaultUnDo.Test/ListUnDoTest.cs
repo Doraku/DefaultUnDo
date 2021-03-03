@@ -23,7 +23,7 @@ namespace DefaultUnDo.Test
         public void Do_Should_insert_element_to_source_When_isAdd_is_true()
         {
             const int index = 42;
-            object value = new object();
+            object value = new();
             IList<object> source = Substitute.For<IList<object>>();
             IUnDo undo = new ListUnDo<object>(source, index, value, true);
 
@@ -40,7 +40,7 @@ namespace DefaultUnDo.Test
         public void Do_Should_remove_element_from_source_When_isAdd_is_false()
         {
             const int index = 42;
-            object value = new object();
+            object value = new();
             IList<object> source = Substitute.For<IList<object>>();
             IUnDo undo = new ListUnDo<object>(source, index, value, false);
 
@@ -57,7 +57,7 @@ namespace DefaultUnDo.Test
         public void Undo_Should_remove_element_from_source_When_isAdd_is_true()
         {
             const int index = 42;
-            object value = new object();
+            object value = new();
             IList<object> source = Substitute.For<IList<object>>();
             IUnDo undo = new ListUnDo<object>(source, index, value, true);
 
@@ -74,7 +74,7 @@ namespace DefaultUnDo.Test
         public void Undo_Should_insert_element_to_source_When_isAdd_is_false()
         {
             const int index = 42;
-            object value = new object();
+            object value = new();
             IList<object> source = Substitute.For<IList<object>>();
             IUnDo undo = new ListUnDo<object>(source, index, value, false);
 

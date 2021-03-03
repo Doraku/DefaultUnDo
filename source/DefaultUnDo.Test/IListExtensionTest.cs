@@ -38,7 +38,7 @@ namespace DefaultUnDo.Test
         {
             IList<object> source = Substitute.For<IList<object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
-            object value = new object();
+            object value = new();
 
             source.IndexOf(value).Returns(42);
 
@@ -53,7 +53,7 @@ namespace DefaultUnDo.Test
             IList<object> source = Substitute.For<IList<object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
             const int index = 42;
-            object value = new object();
+            object value = new();
 
             bool done = false;
 
@@ -80,7 +80,7 @@ namespace DefaultUnDo.Test
             IList<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
             const int index = 42;
-            object item = new object();
+            object item = new();
             unDoCollection.Insert(index, item);
 
             Check.That(description.HasValue).IsTrue();
@@ -138,7 +138,7 @@ namespace DefaultUnDo.Test
             IList<object> source = Substitute.For<IList<object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
             const int index = 42;
-            object value = new object();
+            object value = new();
 
             source[index].Returns(value);
 
@@ -153,7 +153,7 @@ namespace DefaultUnDo.Test
             IList<object> source = Substitute.For<IList<object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
             const int index = 42;
-            object value = new object();
+            object value = new();
 
             bool done = false;
 
@@ -180,7 +180,7 @@ namespace DefaultUnDo.Test
             IList<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
             const int index = 42;
-            object item = new object();
+            object item = new();
             unDoCollection[index] = item;
 
             Check.That(description.HasValue).IsTrue();
@@ -194,7 +194,7 @@ namespace DefaultUnDo.Test
         [Fact]
         public void Move_Should_move_item()
         {
-            List<int> items = new List<int> { 1, 2 };
+            List<int> items = new() { 1, 2 };
 
             items.Move(0, 1);
 

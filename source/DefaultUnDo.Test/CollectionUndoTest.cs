@@ -22,7 +22,7 @@ namespace DefaultUnDo.Test
         [Fact]
         public void Do_Should_add_element_to_source_When_isAdd_is_true()
         {
-            object value = new object();
+            object value = new();
             ICollection<object> source = Substitute.For<ICollection<object>>();
             IUnDo undo = new CollectionUnDo<object>(source, value, true);
 
@@ -38,7 +38,7 @@ namespace DefaultUnDo.Test
         [Fact]
         public void Do_Should_remove_element_from_source_When_isAdd_is_false()
         {
-            object value = new object();
+            object value = new();
             ICollection<object> source = Substitute.For<ICollection<object>>();
             IUnDo undo = new CollectionUnDo<object>(source, value, false);
 
@@ -54,7 +54,7 @@ namespace DefaultUnDo.Test
         [Fact]
         public void Undo_Should_remove_element_from_source_When_isAdd_is_true()
         {
-            object value = new object();
+            object value = new();
             ICollection<object> source = Substitute.For<ICollection<object>>();
             IUnDo undo = new CollectionUnDo<object>(source, value, true);
 
@@ -70,7 +70,7 @@ namespace DefaultUnDo.Test
         [Fact]
         public void Undo_Should_add_element_to_source_When_isAdd_is_false()
         {
-            object value = new object();
+            object value = new();
             ICollection<object> source = Substitute.For<ICollection<object>>();
             IUnDo undo = new CollectionUnDo<object>(source, value, false);
 

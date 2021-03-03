@@ -24,9 +24,9 @@ namespace DefaultUnDo.Test
             IUnDoManager manager = Substitute.For<IUnDoManager>();
             manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
-            object value = new object();
-            object newValue = new object();
-            UnDoField<object> field = new UnDoField<object>(manager, value);
+            object value = new();
+            object newValue = new();
+            UnDoField<object> field = new(manager, value);
 
             Check.That(field.Value).IsEqualTo(value);
 
@@ -43,8 +43,8 @@ namespace DefaultUnDo.Test
 
             UnDoFieldChange<object>? description = null;
 
-            object value = new object();
-            UnDoField<object> field = new UnDoField<object>(manager, d => description = d)
+            object value = new();
+            UnDoField<object> field = new(manager, d => description = d)
             {
                 Value = value
             };

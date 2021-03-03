@@ -40,7 +40,7 @@ namespace DefaultUnDo.Test
         [Fact]
         public void Do_Should_execute_children_Do()
         {
-            List<IUnDo> done = new List<IUnDo>();
+            List<IUnDo> done = new();
 
             IUnDo undo1 = Substitute.For<IUnDo>();
             undo1.When(u => u.Do()).Do(_ => done.Add(undo1));
@@ -60,7 +60,7 @@ namespace DefaultUnDo.Test
         [Fact]
         public void Undo_Should_execute_children_Undo_in_reverse()
         {
-            List<IUnDo> done = new List<IUnDo>();
+            List<IUnDo> done = new();
 
             IUnDo undo1 = Substitute.For<IUnDo>();
             undo1.When(u => u.Undo()).Do(_ => done.Add(undo1));
@@ -88,7 +88,7 @@ namespace DefaultUnDo.Test
         [Fact]
         public void TryGetSingle_Should_return_false_When_multile_children()
         {
-            GroupUnDo group = new GroupUnDo(
+            GroupUnDo group = new(
                 Substitute.For<IUnDo>(),
                 Substitute.For<IUnDo>());
 
@@ -98,7 +98,7 @@ namespace DefaultUnDo.Test
         [Fact]
         public void TryGetSingle_Should_return_false_When_single_child_is_not_T()
         {
-            GroupUnDo group = new GroupUnDo(Substitute.For<IUnDo>());
+            GroupUnDo group = new(Substitute.For<IUnDo>());
 
             Check.That(group.TryGetSingle<IMergeableUnDo>(out _)).IsFalse();
         }
@@ -107,7 +107,7 @@ namespace DefaultUnDo.Test
         public void TryGetSingle_Should_return_true_When_single_child_is_T()
         {
             IUnDo undo = Substitute.For<IUnDo>();
-            GroupUnDo group = new GroupUnDo(undo);
+            GroupUnDo group = new(undo);
 
             Check.That(group.TryGetSingle(out IUnDo found)).IsTrue();
             Check.That(found).IsEqualTo(undo);

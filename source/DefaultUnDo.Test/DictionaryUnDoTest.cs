@@ -33,8 +33,8 @@ namespace DefaultUnDo.Test
         [Fact]
         public void Do_Should_add_element_to_source_When_isAdd_is_true()
         {
-            object key = new object();
-            object value = new object();
+            object key = new();
+            object value = new();
             IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
             IUnDo undo = new DictionaryUnDo<object, object>(source, key, value, true);
 
@@ -50,8 +50,8 @@ namespace DefaultUnDo.Test
         [Fact]
         public void Do_Should_remove_element_from_source_When_isAdd_is_false()
         {
-            object key = new object();
-            object value = new object();
+            object key = new();
+            object value = new();
             IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
             IUnDo undo = new DictionaryUnDo<object, object>(source, key, value, false);
 
@@ -67,8 +67,8 @@ namespace DefaultUnDo.Test
         [Fact]
         public void Undo_Should_remove_element_from_source_When_isAdd_is_true()
         {
-            object key = new object();
-            object value = new object();
+            object key = new();
+            object value = new();
             IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
             IUnDo undo = new DictionaryUnDo<object, object>(source, key, value, true);
 
@@ -84,8 +84,8 @@ namespace DefaultUnDo.Test
         [Fact]
         public void Undo_Should_add_element_to_source_When_isAdd_is_false()
         {
-            object key = new object();
-            object value = new object();
+            object key = new();
+            object value = new();
             IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
             IUnDo undo = new DictionaryUnDo<object, object>(source, key, value, false);
 
@@ -101,7 +101,7 @@ namespace DefaultUnDo.Test
         [Fact]
         public void Description_Should_return_description()
         {
-            object key = new object();
+            object key = new();
             IUnDo undo = new DictionaryUnDo<object, object>("test", Substitute.For<IDictionary<object, object>>(), key, null, true);
 
             Check.That(undo.Description).IsEqualTo("test");

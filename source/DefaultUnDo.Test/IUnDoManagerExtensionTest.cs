@@ -288,7 +288,7 @@ namespace DefaultUnDo.Test
         [Fact]
         public void Do_IDictionary_Should_remove_element_When_undone()
         {
-            object key = new object();
+            object key = new();
             IDictionary<object, object> source = new Dictionary<object, object>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
             IUnDo undo = null;

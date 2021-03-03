@@ -46,8 +46,8 @@ namespace DefaultUnDo.Test
         {
             IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
-            object key = new object();
-            object value = new object();
+            object key = new();
+            object value = new();
 
             bool done = false;
 
@@ -73,8 +73,8 @@ namespace DefaultUnDo.Test
 
             IDictionary<object, object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            object key = new object();
-            object value = new object();
+            object key = new();
+            object value = new();
             unDoCollection.Add(key, value);
 
             Check.That(description.HasValue).IsTrue();
@@ -90,7 +90,7 @@ namespace DefaultUnDo.Test
         {
             IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
-            object key = new object();
+            object key = new();
 
             source.ContainsKey(key).Returns(true);
 
@@ -104,8 +104,8 @@ namespace DefaultUnDo.Test
         {
             IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
-            object key = new object();
-            object value = new object();
+            object key = new();
+            object value = new();
 
             source.Remove(key).Returns(true);
             source.TryGetValue(key, out value).ReturnsForAnyArgs(true);
@@ -128,7 +128,7 @@ namespace DefaultUnDo.Test
 
             IDictionary<object, object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            object key = new object();
+            object key = new();
             unDoCollection.Remove(key);
 
             Check.That(description.HasValue).IsTrue();
@@ -143,8 +143,8 @@ namespace DefaultUnDo.Test
         {
             IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
-            object key = new object();
-            object value = new object();
+            object key = new();
+            object value = new();
 
             source.TryGetValue(key, out object value2).ReturnsForAnyArgs(c => { c[1] = value; return true; });
 
@@ -160,8 +160,8 @@ namespace DefaultUnDo.Test
         {
             IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
-            object key = new object();
-            object value = new object();
+            object key = new();
+            object value = new();
 
             source[key].Returns(value);
 
@@ -175,8 +175,8 @@ namespace DefaultUnDo.Test
         {
             IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
-            object key = new object();
-            object value = new object();
+            object key = new();
+            object value = new();
 
             bool done = false;
 
@@ -196,8 +196,8 @@ namespace DefaultUnDo.Test
         {
             IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
-            object key = new object();
-            object value = new object();
+            object key = new();
+            object value = new();
 
             bool done = false;
 
@@ -224,8 +224,8 @@ namespace DefaultUnDo.Test
 
             IDictionary<object, object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            object key = new object();
-            object value = new object();
+            object key = new();
+            object value = new();
             unDoCollection[key] = value;
 
             Check.That(description.HasValue).IsTrue();
