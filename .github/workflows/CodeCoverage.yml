@@ -21,16 +21,11 @@ jobs:
       with:
         dotnet-version: '5.0.100'
 
-    - name: Build
-      run: dotnet build source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f net5.0 /p:TEST=true
-
-    - name: Install coverlet tool
-      run: dotnet tool install --tool-path . --version 1.7.2 coverlet.console
-
-    - name: Create coverage file
-      run: dotnet .store\coverlet.console\1.7.2\coverlet.console\1.7.2\tools\netcoreapp2.2\any\coverlet.console.dll source\DefaultUnDo.Test\bin\Release\net5.0\DefaultUnDo.Test.dll -t "dotnet" -a "vstest source\DefaultUnDo.Test\bin\Release\net5.0\DefaultUnDo.Test.dll" -o coverage\lcov.info -f lcov
+    - name: Collect coverage for net5.0
+      run: dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f net5.0 -p:CollectCoverage=true -p:CoverletOutputFormat=lcov -p:CoverletOutput=..\..\build\lcov.info -p:Exclude="[*]DefaultEcs.Technical.Debug*" /p:TEST=true
 
     - name: Upload to coverall
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: 'build\lcov.net5.0.info'

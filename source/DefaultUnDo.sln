@@ -5,14 +5,13 @@ VisualStudioVersion = 16.0.30330.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DefaultUnDo", "DefaultUnDo\DefaultUnDo.csproj", "{0F70E1F5-23EE-4A2C-B948-14E418389C6D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4DDF1652-99A1-48C7-8D5E-BA31CFFAE956}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution Items", "_Solution Items", "{4DDF1652-99A1-48C7-8D5E-BA31CFFAE956}"
 	ProjectSection(SolutionItems) = preProject
 		..\.gitignore = ..\.gitignore
 		..\LICENSE.md = ..\LICENSE.md
 		..\documentation\NEXT_RELEASENOTES.txt = ..\documentation\NEXT_RELEASENOTES.txt
 		..\README.md = ..\README.md
 		..\Release.bat = ..\Release.bat
-		..\documentation\RELEASENOTES.md = ..\documentation\RELEASENOTES.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{1C194496-09AD-47C3-BE59-1C66146AB694}"
@@ -24,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DefaultUnDo.Test", "DefaultUnDo.Test\DefaultUnDo.Test.csproj", "{B13DB434-5B94-415A-81DF-027E6BFED632}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Tests", "_Tests", "{32260D2E-DAB6-4D3A-B2B8-4504CD2EB552}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +46,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1C194496-09AD-47C3-BE59-1C66146AB694} = {4DDF1652-99A1-48C7-8D5E-BA31CFFAE956}
+		{B13DB434-5B94-415A-81DF-027E6BFED632} = {32260D2E-DAB6-4D3A-B2B8-4504CD2EB552}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5878D0D1-1E65-4783-A9A6-8CA3695EA6B8}

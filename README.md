@@ -6,7 +6,6 @@ DefaultUnDo is a simple [Command pattern](https://en.wikipedia.org/wiki/Command_
 ![continuous integration status](https://github.com/doraku/defaultundo/workflows/continuous%20integration/badge.svg)
 [![preview package](https://img.shields.io/badge/preview-package-blue?style=flat&logo=github)](https://github.com/Doraku/DefaultUnDo/packages/26448)
 
-- [Release note](./documentation/RELEASENOTES.md 'Release note')
 - [Api documentation](./documentation/api/DefaultUnDo.md 'Api documentation')
 <a/>
 
