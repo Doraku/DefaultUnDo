@@ -57,8 +57,10 @@ namespace DefaultUnDo
         /// Gets the single <typeparamref name="T"/> of this instance.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="command">When this method returns, the single <typeparamref name="T"/> of this instance, if it was its only command; otherwise, the default value for the type <typeparamref name="T"/>.
-        /// This parameter is passed uninitialized.</param>
+        /// <param name="command">
+        /// When this method returns, the single <typeparamref name="T"/> of this instance, if it was its only command; otherwise, the default value for the type <typeparamref name="T"/>.
+        /// This parameter is passed uninitialized.
+        /// </param>
         /// <returns>true if the current instance contains exactly one <typeparamref name="T"/>; otherwise false.</returns>
         public bool TryGetSingle<T>(out T command)
             where T : IUnDo
@@ -72,6 +74,7 @@ namespace DefaultUnDo
 
         #region IMergeableUnDo
 
+        /// <inheritdoc />
         bool IMergeableUnDo.TryMerge(IUnDo other, out IUnDo mergedCommand)
         {
             mergedCommand =
@@ -88,8 +91,10 @@ namespace DefaultUnDo
 
         #region IUnDo
 
+        /// <inheritdoc />
         object IUnDo.Description => _description;
 
+        /// <inheritdoc />
         void IUnDo.Do()
         {
             foreach (IUnDo command in _commands)
@@ -98,6 +103,7 @@ namespace DefaultUnDo
             }
         }
 
+        /// <inheritdoc />
         void IUnDo.Undo()
         {
             for (int i = _commands.Length - 1; i >= 0; --i)

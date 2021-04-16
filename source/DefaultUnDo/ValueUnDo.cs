@@ -78,10 +78,13 @@ namespace DefaultUnDo
 
         #region IUnDo
 
+        /// <inheritdoc />
         object IUnDo.Description => _description;
 
+        /// <inheritdoc />
         void IUnDo.Do() => _setter.Invoke(_newValue);
 
+        /// <inheritdoc />
         void IUnDo.Undo() => _setter.Invoke(_oldValue);
 
         #endregion

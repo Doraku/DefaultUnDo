@@ -43,10 +43,13 @@ namespace DefaultUnDo
 
         #region IUnDo
 
+        /// <inheritdoc />
         object IUnDo.Description => _description;
 
+        /// <inheritdoc />
         void IUnDo.Do() => _doAction?.Invoke();
 
+        /// <inheritdoc />
         void IUnDo.Undo() => _undoAction?.Invoke();
 
         #endregion

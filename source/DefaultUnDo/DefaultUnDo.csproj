@@ -7,6 +7,9 @@
     </TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DefaultDocumentationFolder>..\..\documentation\api</DefaultDocumentationFolder>
+    <DefaultDocumentationFileNameMode>Name</DefaultDocumentationFileNameMode>
+    <DefaultDocumentationAssemblyPageName>DefaultUnDo</DefaultDocumentationAssemblyPageName>
+    <DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DefaultDocumentation" Version="0.6.13" PrivateAssets="all" Condition="'$(TargetFramework)'=='netstandard1.0' AND '$(GITHUB_ACTIONS)' == 'true' AND '$(TEST)' != 'true' AND '$(CI_VERSION)' != 'true'" />
+    <PackageReference Include="DefaultDocumentation" Version="0.7.2" PrivateAssets="all" Condition="'$(TargetFramework)'=='netstandard1.0' AND '$(GITHUB_ACTIONS)' == 'true' AND '$(TEST)' != 'true' AND '$(CI_VERSION)' != 'true'" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
 

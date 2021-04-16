@@ -71,10 +71,13 @@ namespace DefaultUnDo
 
         #region IUnDo
 
+        /// <inheritdoc />
         object IUnDo.Description => _description;
 
+        /// <inheritdoc />
         void IUnDo.Do() => Action(_isAdd);
 
+        /// <inheritdoc />
         void IUnDo.Undo() => Action(!_isAdd);
 
         #endregion
