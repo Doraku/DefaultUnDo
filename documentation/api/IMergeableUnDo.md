@@ -8,7 +8,7 @@ DefaultUnDo.IUnDo
 ```
 
 Derived  
-&#8627; [GroupUnDo](GroupUnDo.md 'DefaultUnDo.GroupUnDo')
+&#8627; [GroupUnDo](GroupUnDo.md 'DefaultUnDo.GroupUnDo')  
 &#8627; [ValueUnDo&lt;T&gt;](ValueUnDo_T_.md 'DefaultUnDo.ValueUnDo&lt;T&gt;')  
 
 Implements [IUnDo](IUnDo.md 'DefaultUnDo.IUnDo')  

@@ -7,3 +7,5 @@ public bool CanUndo { get; }
 ```
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+Implements [CanUndo](IUnDoManager_CanUndo.md 'DefaultUnDo.IUnDoManager.CanUndo')  

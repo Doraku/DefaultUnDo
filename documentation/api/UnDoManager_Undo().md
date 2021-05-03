@@ -10,3 +10,5 @@ public void Undo();
 Cannot perform [Undo()](UnDoManager_Undo().md 'DefaultUnDo.UnDoManager.Undo()') while a group operation is going on.
 [System.InvalidOperationException](https://docs.microsoft.com/en-us/dotnet/api/System.InvalidOperationException 'System.InvalidOperationException')  
 There is no action to undo.
+
+Implements [Undo()](IUnDoManager_Undo().md 'DefaultUnDo.IUnDoManager.Undo()')  

@@ -7,3 +7,5 @@ public System.Collections.Generic.IEnumerable<object> UndoDescriptions { get; }
 ```
 #### Property Value
 [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+
+Implements [UndoDescriptions](IUnDoManager_UndoDescriptions.md 'DefaultUnDo.IUnDoManager.UndoDescriptions')  

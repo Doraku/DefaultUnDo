@@ -14,3 +14,5 @@ The description of the group of operations.
 #### Returns
 [IUnDoTransaction](IUnDoTransaction.md 'DefaultUnDo.IUnDoTransaction')  
 An [IUnDoTransaction](IUnDoTransaction.md 'DefaultUnDo.IUnDoTransaction') to commit or rollback the transaction of operations.
+
+Implements [BeginTransaction(object)](IUnDoManager_BeginTransaction(object).md 'DefaultUnDo.IUnDoManager.BeginTransaction(object)')  
