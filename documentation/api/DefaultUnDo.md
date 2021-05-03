@@ -106,5 +106,5 @@ Represents a transaction to record multiple undo operations as a single operatio
 ***
 [UnDoCollectionAction](UnDoCollectionAction.md 'DefaultUnDo.UnDoCollectionAction')
 
-Describes the action that will be performed on an [System.Collections.Generic.ICollection&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.ICollection-1 'System.Collections.Generic.ICollection`1') and recorded by an [IUnDoManager](IUnDoManager.md 'DefaultUnDo.IUnDoManager')./>  
+Describes the action that will be performed on an [System.Collections.Generic.ICollection&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.ICollection-1 'System.Collections.Generic.ICollection`1') and recorded by an [IUnDoManager](IUnDoManager.md 'DefaultUnDo.IUnDoManager').  
   

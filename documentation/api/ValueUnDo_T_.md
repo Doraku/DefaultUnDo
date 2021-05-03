@@ -37,6 +37,11 @@ Default value is 500ms.
 ### Explicit Interface Implementations
 
 ***
+[DefaultUnDo.IMergeableUnDo.TryMerge(IUnDo, IUnDo)](ValueUnDo_T__DefaultUnDo_IMergeableUnDo_TryMerge(IUnDo_IUnDo).md 'DefaultUnDo.ValueUnDo&lt;T&gt;.DefaultUnDo.IMergeableUnDo.TryMerge(DefaultUnDo.IUnDo, DefaultUnDo.IUnDo)')
+
+Merges the current instance with the specified [IUnDo](IUnDo.md 'DefaultUnDo.IUnDo').  
+
+***
 [DefaultUnDo.IUnDo.Description](ValueUnDo_T__DefaultUnDo_IUnDo_Description.md 'DefaultUnDo.ValueUnDo&lt;T&gt;.DefaultUnDo.IUnDo.Description')
 
 Gets a description of what this [IUnDo](IUnDo.md 'DefaultUnDo.IUnDo') perform.  

@@ -60,6 +60,7 @@ namespace DefaultUnDo
 
         #region IMergeableUnDo
 
+        /// <inheritdoc />
         bool IMergeableUnDo.TryMerge(IUnDo other, out IUnDo mergedCommand)
         {
             mergedCommand =

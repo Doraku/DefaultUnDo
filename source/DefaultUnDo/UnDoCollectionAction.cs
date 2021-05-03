@@ -3,7 +3,7 @@
 namespace DefaultUnDo
 {
     /// <summary>
-    /// Describes the action that will be performed on an <see cref="ICollection{T}"/> and recorded by an <see cref="IUnDoManager"/>./>
+    /// Describes the action that will be performed on an <see cref="ICollection{T}"/> and recorded by an <see cref="IUnDoManager"/>.
     /// </summary>
     public enum UnDoCollectionAction
     {
