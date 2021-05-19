@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution Items", "_Solution Items", "{4DDF1652-99A1-48C7-8D5E-BA31CFFAE956}"
 	ProjectSection(SolutionItems) = preProject
 		..\.gitignore = ..\.gitignore
+		Directory.Build.props = Directory.Build.props
 		..\LICENSE.md = ..\LICENSE.md
 		..\documentation\NEXT_RELEASENOTES.txt = ..\documentation\NEXT_RELEASENOTES.txt
 		..\README.md = ..\README.md

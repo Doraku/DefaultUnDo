@@ -140,7 +140,7 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
-#if NET5_0
+#if !NET452
         [SuppressMessage("Performance", "CA1825")]
 #endif
         public void UnDoCollection_CopyTo_Should_CopyTo()

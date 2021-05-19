@@ -93,7 +93,7 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
-#if NET5_0
+#if !NET452
         [SuppressMessage("Performance", "CA1825")]
 #endif
         public void UnDoSet_ExceptWith_Should_generate_ExceptWith_description()
@@ -134,7 +134,7 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
-#if NET5_0
+#if !NET452
         [SuppressMessage("Performance", "CA1825")]
 #endif
         public void UnDoSet_IntersectWith_Should_generate_IntersectWith_description()
@@ -277,7 +277,7 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
-#if NET5_0
+#if !NET452
         [SuppressMessage("Performance", "CA1825")]
 #endif
         public void UnDoSet_SymmetricExceptWith_Should_generate_SymmetricExceptWith_description()
@@ -317,7 +317,7 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
-#if NET5_0
+#if !NET452
         [SuppressMessage("Performance", "CA1825")]
 #endif
         public void UnDoSet_UnionWith_Should_generate_UnionWith_description()
