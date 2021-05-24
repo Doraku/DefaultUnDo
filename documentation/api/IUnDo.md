@@ -14,20 +14,12 @@ Derived
 &#8627; [ListUnDo&lt;T&gt;](ListUnDo_T_.md 'DefaultUnDo.ListUnDo&lt;T&gt;')  
 &#8627; [UnDo](UnDo.md 'DefaultUnDo.UnDo')  
 &#8627; [ValueUnDo&lt;T&gt;](ValueUnDo_T_.md 'DefaultUnDo.ValueUnDo&lt;T&gt;')  
-### Properties
 
-***
-[Description](IUnDo_Description.md 'DefaultUnDo.IUnDo.Description')
+| Properties | |
+| :--- | :--- |
+| [Description](IUnDo_Description.md 'DefaultUnDo.IUnDo.Description') | Gets a description of what this [IUnDo](IUnDo.md 'DefaultUnDo.IUnDo') perform.<br/> |
 
-Gets a description of what this [IUnDo](IUnDo.md 'DefaultUnDo.IUnDo') perform.  
-### Methods
-
-***
-[Do()](IUnDo_Do().md 'DefaultUnDo.IUnDo.Do()')
-
-Does an action.  
-
-***
-[Undo()](IUnDo_Undo().md 'DefaultUnDo.IUnDo.Undo()')
-
-Does the opposite of the [Do()](IUnDo_Do().md 'DefaultUnDo.IUnDo.Do()') action.  
+| Methods | |
+| :--- | :--- |
+| [Do()](IUnDo_Do().md 'DefaultUnDo.IUnDo.Do()') | Does an action.<br/> |
+| [Undo()](IUnDo_Undo().md 'DefaultUnDo.IUnDo.Undo()') | Does the opposite of the [Do()](IUnDo_Do().md 'DefaultUnDo.IUnDo.Do()') action.<br/> |

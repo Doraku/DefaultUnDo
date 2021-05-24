@@ -15,30 +15,14 @@ The type of element in the [System.Collections.Generic.IList&lt;&gt;](https://do
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ListUnDo&lt;T&gt;  
 
 Implements [IUnDo](IUnDo.md 'DefaultUnDo.IUnDo')  
-### Constructors
 
-***
-[ListUnDo(object, IList&lt;T&gt;, int, T, bool)](ListUnDo_T__ListUnDo(object_IList_T__int_T_bool).md 'DefaultUnDo.ListUnDo&lt;T&gt;.ListUnDo(object, System.Collections.Generic.IList&lt;T&gt;, int, T, bool)')
+| Constructors | |
+| :--- | :--- |
+| [ListUnDo(object, IList&lt;T&gt;, int, T, bool)](ListUnDo_T__ListUnDo(object_IList_T__int_T_bool).md 'DefaultUnDo.ListUnDo&lt;T&gt;.ListUnDo(object, System.Collections.Generic.IList&lt;T&gt;, int, T, bool)') | Initialises an instance of [ListUnDo&lt;T&gt;](ListUnDo_T_.md 'DefaultUnDo.ListUnDo&lt;T&gt;').<br/> |
+| [ListUnDo(IList&lt;T&gt;, int, T, bool)](ListUnDo_T__ListUnDo(IList_T__int_T_bool).md 'DefaultUnDo.ListUnDo&lt;T&gt;.ListUnDo(System.Collections.Generic.IList&lt;T&gt;, int, T, bool)') | Initialises an instance of [ListUnDo&lt;T&gt;](ListUnDo_T_.md 'DefaultUnDo.ListUnDo&lt;T&gt;').<br/> |
 
-Initialises an instance of [ListUnDo&lt;T&gt;](ListUnDo_T_.md 'DefaultUnDo.ListUnDo&lt;T&gt;').  
-
-***
-[ListUnDo(IList&lt;T&gt;, int, T, bool)](ListUnDo_T__ListUnDo(IList_T__int_T_bool).md 'DefaultUnDo.ListUnDo&lt;T&gt;.ListUnDo(System.Collections.Generic.IList&lt;T&gt;, int, T, bool)')
-
-Initialises an instance of [ListUnDo&lt;T&gt;](ListUnDo_T_.md 'DefaultUnDo.ListUnDo&lt;T&gt;').  
-### Explicit Interface Implementations
-
-***
-[DefaultUnDo.IUnDo.Description](ListUnDo_T__DefaultUnDo_IUnDo_Description.md 'DefaultUnDo.ListUnDo&lt;T&gt;.DefaultUnDo.IUnDo.Description')
-
-Gets a description of what this [IUnDo](IUnDo.md 'DefaultUnDo.IUnDo') perform.  
-
-***
-[DefaultUnDo.IUnDo.Do()](ListUnDo_T__DefaultUnDo_IUnDo_Do().md 'DefaultUnDo.ListUnDo&lt;T&gt;.DefaultUnDo.IUnDo.Do()')
-
-Does an action.  
-
-***
-[DefaultUnDo.IUnDo.Undo()](ListUnDo_T__DefaultUnDo_IUnDo_Undo().md 'DefaultUnDo.ListUnDo&lt;T&gt;.DefaultUnDo.IUnDo.Undo()')
-
-Does the opposite of the [Do()](IUnDo_Do().md 'DefaultUnDo.IUnDo.Do()') action.  
+| Explicit Interface Implementations | |
+| :--- | :--- |
+| [DefaultUnDo.IUnDo.Description](ListUnDo_T__DefaultUnDo_IUnDo_Description.md 'DefaultUnDo.ListUnDo&lt;T&gt;.DefaultUnDo.IUnDo.Description') | Gets a description of what this [IUnDo](IUnDo.md 'DefaultUnDo.IUnDo') perform.<br/> |
+| [DefaultUnDo.IUnDo.Do()](ListUnDo_T__DefaultUnDo_IUnDo_Do().md 'DefaultUnDo.ListUnDo&lt;T&gt;.DefaultUnDo.IUnDo.Do()') | Does an action.<br/> |
+| [DefaultUnDo.IUnDo.Undo()](ListUnDo_T__DefaultUnDo_IUnDo_Undo().md 'DefaultUnDo.ListUnDo&lt;T&gt;.DefaultUnDo.IUnDo.Undo()') | Does the opposite of the [Do()](IUnDo_Do().md 'DefaultUnDo.IUnDo.Do()') action.<br/> |

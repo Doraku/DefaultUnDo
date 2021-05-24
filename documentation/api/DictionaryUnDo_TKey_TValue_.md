@@ -19,30 +19,14 @@ Type of the values.
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; DictionaryUnDo&lt;TKey,TValue&gt;  
 
 Implements [IUnDo](IUnDo.md 'DefaultUnDo.IUnDo')  
-### Constructors
 
-***
-[DictionaryUnDo(object, IDictionary&lt;TKey,TValue&gt;, TKey, TValue, bool)](DictionaryUnDo_TKey_TValue__DictionaryUnDo(object_IDictionary_TKey_TValue__TKey_TValue_bool).md 'DefaultUnDo.DictionaryUnDo&lt;TKey,TValue&gt;.DictionaryUnDo(object, System.Collections.Generic.IDictionary&lt;TKey,TValue&gt;, TKey, TValue, bool)')
+| Constructors | |
+| :--- | :--- |
+| [DictionaryUnDo(object, IDictionary&lt;TKey,TValue&gt;, TKey, TValue, bool)](DictionaryUnDo_TKey_TValue__DictionaryUnDo(object_IDictionary_TKey_TValue__TKey_TValue_bool).md 'DefaultUnDo.DictionaryUnDo&lt;TKey,TValue&gt;.DictionaryUnDo(object, System.Collections.Generic.IDictionary&lt;TKey,TValue&gt;, TKey, TValue, bool)') | Initialise an instance of [DictionaryUnDo&lt;TKey,TValue&gt;](DictionaryUnDo_TKey_TValue_.md 'DefaultUnDo.DictionaryUnDo&lt;TKey,TValue&gt;').<br/> |
+| [DictionaryUnDo(IDictionary&lt;TKey,TValue&gt;, TKey, TValue, bool)](DictionaryUnDo_TKey_TValue__DictionaryUnDo(IDictionary_TKey_TValue__TKey_TValue_bool).md 'DefaultUnDo.DictionaryUnDo&lt;TKey,TValue&gt;.DictionaryUnDo(System.Collections.Generic.IDictionary&lt;TKey,TValue&gt;, TKey, TValue, bool)') | Initialise an instance of [DictionaryUnDo&lt;TKey,TValue&gt;](DictionaryUnDo_TKey_TValue_.md 'DefaultUnDo.DictionaryUnDo&lt;TKey,TValue&gt;').<br/> |
 
-Initialise an instance of [DictionaryUnDo&lt;TKey,TValue&gt;](DictionaryUnDo_TKey_TValue_.md 'DefaultUnDo.DictionaryUnDo&lt;TKey,TValue&gt;').  
-
-***
-[DictionaryUnDo(IDictionary&lt;TKey,TValue&gt;, TKey, TValue, bool)](DictionaryUnDo_TKey_TValue__DictionaryUnDo(IDictionary_TKey_TValue__TKey_TValue_bool).md 'DefaultUnDo.DictionaryUnDo&lt;TKey,TValue&gt;.DictionaryUnDo(System.Collections.Generic.IDictionary&lt;TKey,TValue&gt;, TKey, TValue, bool)')
-
-Initialise an instance of [DictionaryUnDo&lt;TKey,TValue&gt;](DictionaryUnDo_TKey_TValue_.md 'DefaultUnDo.DictionaryUnDo&lt;TKey,TValue&gt;').  
-### Explicit Interface Implementations
-
-***
-[DefaultUnDo.IUnDo.Description](DictionaryUnDo_TKey_TValue__DefaultUnDo_IUnDo_Description.md 'DefaultUnDo.DictionaryUnDo&lt;TKey,TValue&gt;.DefaultUnDo.IUnDo.Description')
-
-Gets a description of what this [IUnDo](IUnDo.md 'DefaultUnDo.IUnDo') perform.  
-
-***
-[DefaultUnDo.IUnDo.Do()](DictionaryUnDo_TKey_TValue__DefaultUnDo_IUnDo_Do().md 'DefaultUnDo.DictionaryUnDo&lt;TKey,TValue&gt;.DefaultUnDo.IUnDo.Do()')
-
-Does an action.  
-
-***
-[DefaultUnDo.IUnDo.Undo()](DictionaryUnDo_TKey_TValue__DefaultUnDo_IUnDo_Undo().md 'DefaultUnDo.DictionaryUnDo&lt;TKey,TValue&gt;.DefaultUnDo.IUnDo.Undo()')
-
-Does the opposite of the [Do()](IUnDo_Do().md 'DefaultUnDo.IUnDo.Do()') action.  
+| Explicit Interface Implementations | |
+| :--- | :--- |
+| [DefaultUnDo.IUnDo.Description](DictionaryUnDo_TKey_TValue__DefaultUnDo_IUnDo_Description.md 'DefaultUnDo.DictionaryUnDo&lt;TKey,TValue&gt;.DefaultUnDo.IUnDo.Description') | Gets a description of what this [IUnDo](IUnDo.md 'DefaultUnDo.IUnDo') perform.<br/> |
+| [DefaultUnDo.IUnDo.Do()](DictionaryUnDo_TKey_TValue__DefaultUnDo_IUnDo_Do().md 'DefaultUnDo.DictionaryUnDo&lt;TKey,TValue&gt;.DefaultUnDo.IUnDo.Do()') | Does an action.<br/> |
+| [DefaultUnDo.IUnDo.Undo()](DictionaryUnDo_TKey_TValue__DefaultUnDo_IUnDo_Undo().md 'DefaultUnDo.DictionaryUnDo&lt;TKey,TValue&gt;.DefaultUnDo.IUnDo.Undo()') | Does the opposite of the [Do()](IUnDo_Do().md 'DefaultUnDo.IUnDo.Do()') action.<br/> |

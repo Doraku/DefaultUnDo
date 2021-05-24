@@ -12,9 +12,7 @@ Derived
 &#8627; [ValueUnDo&lt;T&gt;](ValueUnDo_T_.md 'DefaultUnDo.ValueUnDo&lt;T&gt;')  
 
 Implements [IUnDo](IUnDo.md 'DefaultUnDo.IUnDo')  
-### Methods
 
-***
-[TryMerge(IUnDo, IUnDo)](IMergeableUnDo_TryMerge(IUnDo_IUnDo).md 'DefaultUnDo.IMergeableUnDo.TryMerge(DefaultUnDo.IUnDo, DefaultUnDo.IUnDo)')
-
-Merges the current instance with the specified [IUnDo](IUnDo.md 'DefaultUnDo.IUnDo').  
+| Methods | |
+| :--- | :--- |
+| [TryMerge(IUnDo, IUnDo)](IMergeableUnDo_TryMerge(IUnDo_IUnDo).md 'DefaultUnDo.IMergeableUnDo.TryMerge(DefaultUnDo.IUnDo, DefaultUnDo.IUnDo)') | Merges the current instance with the specified [IUnDo](IUnDo.md 'DefaultUnDo.IUnDo').<br/> |
