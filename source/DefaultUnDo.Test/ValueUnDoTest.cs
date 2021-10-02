@@ -54,16 +54,6 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
-        public void TryMerge_Should_return_false_When_description_are_different()
-        {
-            IMergeableUnDo value = new ValueUnDo<int>("kikoo", _ => { }, 0, 0);
-            IUnDo undo = Substitute.For<IUnDo>();
-            undo.Description.Returns("lol");
-
-            Check.That(value.TryMerge(undo, out _)).IsFalse();
-        }
-
-        [Fact]
         public void TryMerge_Should_return_false_When_other_is_not_ValueUnDo()
         {
             IMergeableUnDo value = new ValueUnDo<int>("test", _ => { }, 0, 0);

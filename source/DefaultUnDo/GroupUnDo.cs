@@ -78,9 +78,7 @@ namespace DefaultUnDo
         bool IMergeableUnDo.TryMerge(IUnDo other, out IUnDo mergedCommand)
         {
             mergedCommand =
-                Equals(_description, other.Description)
-                    && TryGetSingle(out IMergeableUnDo mergeable)
-                    && mergeable.TryMerge(other, out mergedCommand)
+                TryGetSingle(out IMergeableUnDo mergeable) && mergeable.TryMerge(other, out mergedCommand)
                 ? new GroupUnDo(_description, mergedCommand)
                 : null;
 

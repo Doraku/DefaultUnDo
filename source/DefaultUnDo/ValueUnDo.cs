@@ -64,8 +64,7 @@ namespace DefaultUnDo
         bool IMergeableUnDo.TryMerge(IUnDo other, out IUnDo mergedCommand)
         {
             mergedCommand =
-                Equals(_description, other.Description)
-                    && (other is ValueUnDo<T> value || (other is GroupUnDo group && group.TryGetSingle(out value)))
+                (other is ValueUnDo<T> value || (other is GroupUnDo group && group.TryGetSingle(out value)))
                     && _setter == value._setter
                     && Equals(_newValue, value._oldValue)
                     && (value._timeStamp - _timeStamp) < MergeInterval

@@ -114,16 +114,6 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
-        public void TryMerge_Should_return_false_When_description_are_different()
-        {
-            IMergeableUnDo group = new GroupUnDo("kikoo", Substitute.For<IUnDo>());
-            IUnDo undo = Substitute.For<IUnDo>();
-            undo.Description.Returns("lol");
-
-            Check.That(group.TryMerge(undo, out _)).IsFalse();
-        }
-
-        [Fact]
         public void TryMerge_Should_return_false_When_group_is_not_single_IMergeableUnDo()
         {
             IMergeableUnDo group = new GroupUnDo("test", Substitute.For<IUnDo>());
