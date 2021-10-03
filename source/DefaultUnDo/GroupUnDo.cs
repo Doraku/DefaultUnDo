@@ -8,10 +8,28 @@ namespace DefaultUnDo
     /// </summary>
     public sealed class GroupUnDo : IMergeableUnDo
     {
+        /// <summary>
+        /// Represents a method that will be called when merging a <see cref="GroupUnDo"/> and a <see cref="IMergeableUnDo"/> instances to get the resulting description.
+        /// </summary>
+        /// <param name="oldDescription">The description of the previous <see cref="GroupUnDo"/> merged.</param>
+        /// <param name="newDescription">The description of the new <see cref="IMergeableUnDo"/> merged.</param>
+        /// <param name="mergedDescription">The description of the new resulting <see cref="IMergeableUnDo"/> merged.</param>
+        /// <returns></returns>
+        public delegate object MergeDescriptionHandler(object oldDescription, object newDescription, object mergedDescription);
+
         #region Fields
 
         private readonly object _description;
         private readonly IUnDo[] _commands;
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// The <see cref="MergeDescriptionHandler"/> used to merge description between a <see cref="GroupUnDo"/> and a <see cref="IMergeableUnDo"/> instances.
+        /// </summary>
+        public static MergeDescriptionHandler MergeDescriptionAction { get; set; }
 
         #endregion
 
@@ -79,7 +97,9 @@ namespace DefaultUnDo
         {
             mergedCommand =
                 TryGetSingle(out IMergeableUnDo mergeable) && mergeable.TryMerge(other, out mergedCommand)
-                ? new GroupUnDo(_description, mergedCommand)
+                ? new GroupUnDo(
+                    MergeDescriptionAction?.Invoke(_description, mergeable.Description, mergedCommand.Description) ?? _description,
+                    mergedCommand)
                 : null;
 
             return mergedCommand != null;

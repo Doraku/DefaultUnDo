@@ -9,7 +9,7 @@ namespace DefaultUnDo
     public static class ValueUnDo
     {
         /// <summary>
-        /// Represents a method that will be called when merging two <see cref="ValueUnDo{T}"/> instance to get the resulting description.
+        /// Represents a method that will be called when merging two <see cref="ValueUnDo{T}"/> instances to get the resulting description.
         /// </summary>
         /// <param name="oldDescription">The description of the previous <see cref="ValueUnDo{T}"/> merged.</param>
         /// <param name="newDescription">The description of the new <see cref="ValueUnDo{T}"/> merged.</param>
@@ -35,7 +35,7 @@ namespace DefaultUnDo
     public sealed class ValueUnDo<T> : IMergeableUnDo
     {
         /// <summary>
-        /// Represents a method that will be called when merging two <see cref="ValueUnDo{T}"/> instance to get the resulting description.
+        /// Represents a method that will be called when merging two <see cref="ValueUnDo{T}"/> instances to get the resulting description.
         /// </summary>
         /// <param name="oldDescription">The description of the previous <see cref="ValueUnDo{T}"/> merged.</param>
         /// <param name="oldValue">The old value used when undoing the resulting merged <see cref="ValueUnDo{T}"/>.</param>

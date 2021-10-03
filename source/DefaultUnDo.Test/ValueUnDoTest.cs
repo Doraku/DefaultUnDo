@@ -146,7 +146,7 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
-        public void TryMerge_Should_use_new_description_When_Set()
+        public void TryMerge_Should_use_new_description()
         {
             int item = 0;
             void setter(int v) => item = v;

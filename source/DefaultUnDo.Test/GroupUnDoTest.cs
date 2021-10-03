@@ -155,6 +155,42 @@ namespace DefaultUnDo.Test
             Check.That(newUndo).IsEqualTo(undo);
         }
 
+        [Fact]
+        public void TryMerge_Should_use_group_description()
+        {
+            IMergeableUnDo mergeable = Substitute.For<IMergeableUnDo>();
+            IUnDo undo = Substitute.For<IUnDo>();
+            IMergeableUnDo group = new GroupUnDo("test", mergeable);
+            undo.Description.Returns("test1");
+            mergeable.TryMerge(undo, out Arg.Any<IUnDo>()).Returns(x =>
+            {
+                x[1] = undo;
+                return true;
+            });
+            Check.That(group.TryMerge(undo, out IUnDo merged)).IsTrue();
+            Check.That(merged.Description).IsEqualTo(group.Description);
+        }
+
+        [Fact]
+        public void TryMerge_Should_use_MergeDescriptionAction_When_set()
+        {
+            IMergeableUnDo mergeable = Substitute.For<IMergeableUnDo>();
+            IUnDo undo = Substitute.For<IUnDo>();
+            IMergeableUnDo group = new GroupUnDo("test", mergeable);
+            undo.Description.Returns("test");
+            mergeable.TryMerge(undo, out Arg.Any<IUnDo>()).Returns(x =>
+            {
+                x[1] = undo;
+                return true;
+            });
+            GroupUnDo.MergeDescriptionAction = (_, _, _) => "kikoo";
+
+            Check.That(group.TryMerge(undo, out IUnDo merged)).IsTrue();
+            Check.That(merged.Description).IsEqualTo("kikoo");
+
+            GroupUnDo.MergeDescriptionAction = null;
+        }
+
         #endregion
     }
 }
