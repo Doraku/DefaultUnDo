@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using NFluent;
 using NSubstitute;
 using Xunit;
@@ -95,10 +94,11 @@ namespace DefaultUnDo.Test
         {
             Action<int> setter = Substitute.For<Action<int>>();
             IMergeableUnDo value = new ValueUnDo<int>("test", setter, 1, 0);
-
-            Thread.Sleep(1000);
+            ValueUnDo<int>.MergeInterval = TimeSpan.FromSeconds(-1);
 
             Check.That(value.TryMerge(new ValueUnDo<int>("test", setter, 2, 1), out _)).IsFalse();
+
+            ValueUnDo<int>.MergeInterval = default;
         }
 
         [Fact]
