@@ -98,7 +98,7 @@ namespace DefaultUnDo.Test
 
             Check.That(value.TryMerge(new ValueUnDo<int>("test", setter, 2, 1), out _)).IsFalse();
 
-            ValueUnDo<int>.MergeInterval = default;
+            ValueUnDo<int>.MergeInterval = null;
         }
 
         [Fact]
@@ -115,6 +115,45 @@ namespace DefaultUnDo.Test
             Check.That(item).IsEqualTo(2);
             merged.Undo();
             Check.That(item).IsEqualTo(0);
+        }
+
+        [Fact]
+        public void TryMerge_Should_use_MergeDescriptionAction_When_Set()
+        {
+            int item = 0;
+            void setter(int v) => item = v;
+            IMergeableUnDo value = new ValueUnDo<int>("test", setter, 1, 0);
+            ValueUnDo<int>.MergeDescriptionAction = (_, _, _, _) => "kikoo";
+
+            Check.That(value.TryMerge(new ValueUnDo<int>("test", setter, 2, 1), out IUnDo merged)).IsTrue();
+            Check.That(merged.Description).IsEqualTo("kikoo");
+
+            ValueUnDo<int>.MergeDescriptionAction = null;
+        }
+
+        [Fact]
+        public void TryMerge_Should_use_non_generic_MergeDescriptionAction_When_Set()
+        {
+            int item = 0;
+            void setter(int v) => item = v;
+            IMergeableUnDo value = new ValueUnDo<int>("test", setter, 1, 0);
+            ValueUnDo.MergeDescriptionAction = (_, _) => "kikoo";
+
+            Check.That(value.TryMerge(new ValueUnDo<int>("test", setter, 2, 1), out IUnDo merged)).IsTrue();
+            Check.That(merged.Description).IsEqualTo("kikoo");
+
+            ValueUnDo.MergeDescriptionAction = null;
+        }
+
+        [Fact]
+        public void TryMerge_Should_use_new_description_When_Set()
+        {
+            int item = 0;
+            void setter(int v) => item = v;
+            IMergeableUnDo value = new ValueUnDo<int>("test", setter, 1, 0);
+
+            Check.That(value.TryMerge(new ValueUnDo<int>("test2", setter, 2, 1), out IUnDo merged)).IsTrue();
+            Check.That(merged.Description).IsEqualTo("test2");
         }
 
         [Fact]

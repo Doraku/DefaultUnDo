@@ -1,4 +1,5 @@
 added ValueUnDo.MergeInterval property
+added ValueUnDo.MergeDescriptionAction property
 
 ---
 
