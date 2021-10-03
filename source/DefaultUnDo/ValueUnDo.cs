@@ -4,6 +4,18 @@ using System.Diagnostics.CodeAnalysis;
 namespace DefaultUnDo
 {
     /// <summary>
+    /// Provides a global <see cref="TimeSpan"/> to use as default merge interval for all <see cref="ValueUnDo{T}"/>.
+    /// </summary>
+    public static class ValueUnDo
+    {
+        /// <summary>
+        /// The <see cref="TimeSpan"/> interval equivalent <see cref="ValueUnDo{T}"/> instances should respect to be mergeable.
+        /// Default value is 500ms.
+        /// </summary>
+        public static TimeSpan MergeInterval { get; set; } = TimeSpan.FromMilliseconds(500);
+    }
+
+    /// <summary>
     /// Provides an implementation of the <see cref="IUnDo"/> interface for setting value.
     /// </summary>
     /// <typeparam name="T">The type of value.</typeparam>
@@ -11,18 +23,22 @@ namespace DefaultUnDo
     {
         #region Fields
 
-        /// <summary>
-        /// The <see cref="TimeSpan"/> interval equivalent <see cref="ValueUnDo{T}"/> instances should respect to be mergeable.
-        /// Default value is 500ms.
-        /// </summary>
-        [SuppressMessage("Design", "RCS1158:Static member in generic type should use a type parameter.")]
-        public static readonly TimeSpan MergeInterval = TimeSpan.FromMilliseconds(500);
-
         private readonly DateTime _timeStamp;
         private readonly object _description;
         private readonly Action<T> _setter;
         private readonly T _newValue;
         private readonly T _oldValue;
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// The <see cref="TimeSpan"/> interval equivalent <see cref="ValueUnDo{T}"/> instances should respect to be mergeable.
+        /// If not set, <see cref="ValueUnDo.MergeInterval"/> will be used.
+        /// </summary>
+        [SuppressMessage("Design", "RCS1158:Static member in generic type should use a type parameter.")]
+        public static TimeSpan? MergeInterval { get; set; }
 
         #endregion
 
@@ -67,7 +83,7 @@ namespace DefaultUnDo
                 (other is ValueUnDo<T> value || (other is GroupUnDo group && group.TryGetSingle(out value)))
                     && _setter == value._setter
                     && Equals(_newValue, value._oldValue)
-                    && (value._timeStamp - _timeStamp) < MergeInterval
+                    && (value._timeStamp - _timeStamp) < (MergeInterval ?? ValueUnDo.MergeInterval)
                 ? new ValueUnDo<T>(_description, _setter, value._newValue, _oldValue)
                 : null;
 
