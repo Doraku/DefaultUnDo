@@ -17,6 +17,10 @@ Implements [IMergeableUnDo](IMergeableUnDo.md 'DefaultUnDo.IMergeableUnDo'), [IU
 | [GroupUnDo(IUnDo[])](GroupUnDo_GroupUnDo(IUnDo__).md 'DefaultUnDo.GroupUnDo.GroupUnDo(DefaultUnDo.IUnDo[])') | Initialise an instance of [GroupUnDo](GroupUnDo.md 'DefaultUnDo.GroupUnDo').<br/> |
 | [GroupUnDo(object, IUnDo[])](GroupUnDo_GroupUnDo(object_IUnDo__).md 'DefaultUnDo.GroupUnDo.GroupUnDo(object, DefaultUnDo.IUnDo[])') | Initialise an instance of [GroupUnDo](GroupUnDo.md 'DefaultUnDo.GroupUnDo').<br/> |
 
+| Properties | |
+| :--- | :--- |
+| [MergeDescriptionAction](GroupUnDo_MergeDescriptionAction.md 'DefaultUnDo.GroupUnDo.MergeDescriptionAction') | The [MergeDescriptionHandler(object, object, object)](GroupUnDo_MergeDescriptionHandler(object_object_object).md 'DefaultUnDo.GroupUnDo.MergeDescriptionHandler(object, object, object)') used to merge description between a [GroupUnDo](GroupUnDo.md 'DefaultUnDo.GroupUnDo') and a [IMergeableUnDo](IMergeableUnDo.md 'DefaultUnDo.IMergeableUnDo') instances.<br/> |
+
 | Methods | |
 | :--- | :--- |
 | [TryGetSingle&lt;T&gt;(T)](GroupUnDo_TryGetSingle_T_(T).md 'DefaultUnDo.GroupUnDo.TryGetSingle&lt;T&gt;(T)') | Gets the single [T](GroupUnDo_TryGetSingle_T_(T).md#DefaultUnDo_GroupUnDo_TryGetSingle_T_(T)_T 'DefaultUnDo.GroupUnDo.TryGetSingle&lt;T&gt;(T).T') of this instance.<br/> |

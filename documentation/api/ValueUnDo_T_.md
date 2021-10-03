@@ -22,9 +22,10 @@ Implements [IMergeableUnDo](IMergeableUnDo.md 'DefaultUnDo.IMergeableUnDo'), [IU
 | [ValueUnDo(object, Action&lt;T&gt;, T, T)](ValueUnDo_T__ValueUnDo(object_Action_T__T_T).md 'DefaultUnDo.ValueUnDo&lt;T&gt;.ValueUnDo(object, System.Action&lt;T&gt;, T, T)') | Initialises an instance of [ValueUnDo&lt;T&gt;](ValueUnDo_T_.md 'DefaultUnDo.ValueUnDo&lt;T&gt;').<br/> |
 | [ValueUnDo(Action&lt;T&gt;, T, T)](ValueUnDo_T__ValueUnDo(Action_T__T_T).md 'DefaultUnDo.ValueUnDo&lt;T&gt;.ValueUnDo(System.Action&lt;T&gt;, T, T)') | Initialises an instance of [ValueUnDo&lt;T&gt;](ValueUnDo_T_.md 'DefaultUnDo.ValueUnDo&lt;T&gt;').<br/> |
 
-| Fields | |
+| Properties | |
 | :--- | :--- |
-| [MergeInterval](ValueUnDo_T__MergeInterval.md 'DefaultUnDo.ValueUnDo&lt;T&gt;.MergeInterval') | The [System.TimeSpan](https://docs.microsoft.com/en-us/dotnet/api/System.TimeSpan 'System.TimeSpan') interval equivalent [ValueUnDo&lt;T&gt;](ValueUnDo_T_.md 'DefaultUnDo.ValueUnDo&lt;T&gt;') instances should respect to be mergeable.<br/>Default value is 500ms.<br/> |
+| [MergeDescriptionAction](ValueUnDo_T__MergeDescriptionAction.md 'DefaultUnDo.ValueUnDo&lt;T&gt;.MergeDescriptionAction') | The [MergeDescriptionHandler(object, T, object, T)](ValueUnDo_T__MergeDescriptionHandler(object_T_object_T).md 'DefaultUnDo.ValueUnDo&lt;T&gt;.MergeDescriptionHandler(object, T, object, T)') used to merge description between two [ValueUnDo&lt;T&gt;](ValueUnDo_T_.md 'DefaultUnDo.ValueUnDo&lt;T&gt;') instance.<br/> |
+| [MergeInterval](ValueUnDo_T__MergeInterval.md 'DefaultUnDo.ValueUnDo&lt;T&gt;.MergeInterval') | The [System.TimeSpan](https://docs.microsoft.com/en-us/dotnet/api/System.TimeSpan 'System.TimeSpan') interval equivalent [ValueUnDo&lt;T&gt;](ValueUnDo_T_.md 'DefaultUnDo.ValueUnDo&lt;T&gt;') instances should respect to be mergeable.<br/>If not set, [MergeInterval](ValueUnDo_MergeInterval.md 'DefaultUnDo.ValueUnDo.MergeInterval') will be used.<br/> |
 
 | Explicit Interface Implementations | |
 | :--- | :--- |

@@ -1,7 +1,0 @@
-added ValueUnDo.MergeInterval property
-added ValueUnDo.MergeDescriptionAction property
-added GroupUnDo.MergeDescriptionAction property
-
----
-
-removed description comparison for merge in GroupUnDo and ValueUnDo
