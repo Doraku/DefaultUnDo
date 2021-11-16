@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <None Include="..\..\image\logo.png" Pack="true" PackagePath="\" Visible="false" />
-    <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
   <ItemGroup>
