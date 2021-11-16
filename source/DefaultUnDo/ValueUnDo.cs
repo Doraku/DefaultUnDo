@@ -14,7 +14,7 @@ namespace DefaultUnDo
         /// <param name="oldDescription">The description of the previous <see cref="ValueUnDo{T}"/> merged.</param>
         /// <param name="newDescription">The description of the new <see cref="ValueUnDo{T}"/> merged.</param>
         /// <returns></returns>
-        public delegate object MergeDescriptionHandler(object oldDescription, object newDescription);
+        public delegate object? MergeDescriptionHandler(object? oldDescription, object? newDescription);
 
         /// <summary>
         /// The <see cref="TimeSpan"/> interval equivalent <see cref="ValueUnDo{T}"/> instances should respect to be mergeable.
@@ -25,7 +25,7 @@ namespace DefaultUnDo
         /// <summary>
         /// The <see cref="MergeDescriptionHandler"/> used to merge description between two <see cref="ValueUnDo{T}"/> instance.
         /// </summary>
-        public static MergeDescriptionHandler MergeDescriptionAction { get; set; }
+        public static MergeDescriptionHandler? MergeDescriptionAction { get; set; }
     }
 
     /// <summary>
@@ -42,14 +42,16 @@ namespace DefaultUnDo
         /// <param name="newDescription">The description of the new <see cref="ValueUnDo{T}"/> merged.</param>
         /// <param name="newValue">The new value used when redoing the resulting merged <see cref="ValueUnDo{T}"/>.</param>
         /// <returns>The new description that will be using for the resulting merged <see cref="ValueUnDo{T}"/>.</returns>
-        public delegate object MergeDescriptionHandler(object oldDescription, T oldValue, object newDescription, T newValue);
+        public delegate object MergeDescriptionHandler(object? oldDescription, T oldValue, object? newDescription, T newValue);
 
         #region Fields
 
         private readonly DateTime _timeStamp;
-        private readonly object _description;
+        private readonly object? _description;
         private readonly Action<T> _setter;
+        [AllowNull]
         private readonly T _newValue;
+        [AllowNull]
         private readonly T _oldValue;
 
         #endregion
@@ -67,7 +69,7 @@ namespace DefaultUnDo
         /// The <see cref="MergeDescriptionHandler"/> used to merge description between two <see cref="ValueUnDo{T}"/> instance.
         /// </summary>
         [SuppressMessage("Design", "RCS1158:Static member in generic type should use a type parameter.")]
-        public static MergeDescriptionHandler MergeDescriptionAction { get; set; }
+        public static MergeDescriptionHandler? MergeDescriptionAction { get; set; }
 
         #endregion
 
@@ -81,7 +83,7 @@ namespace DefaultUnDo
         /// <param name="newValue">The new value.</param>
         /// <param name="oldValue">The old value.</param>
         /// <exception cref="ArgumentNullException"><paramref name="setter"/> is null.</exception>
-        public ValueUnDo(object description, Action<T> setter, T newValue, T oldValue)
+        public ValueUnDo(object? description, Action<T> setter, [AllowNull] T newValue, [AllowNull] T oldValue)
         {
             _timeStamp = DateTime.Now;
             _description = description;
@@ -106,7 +108,7 @@ namespace DefaultUnDo
         #region IMergeableUnDo
 
         /// <inheritdoc />
-        bool IMergeableUnDo.TryMerge(IUnDo other, out IUnDo mergedCommand)
+        bool IMergeableUnDo.TryMerge(IUnDo other, [NotNullWhen(true)] out IUnDo? mergedCommand)
         {
             mergedCommand =
                 (other is ValueUnDo<T> value || (other is GroupUnDo group && group.TryGetSingle(out value)))
@@ -130,7 +132,7 @@ namespace DefaultUnDo
         #region IUnDo
 
         /// <inheritdoc />
-        object IUnDo.Description => _description;
+        object? IUnDo.Description => _description;
 
         /// <inheritdoc />
         void IUnDo.Do() => _setter.Invoke(_newValue);

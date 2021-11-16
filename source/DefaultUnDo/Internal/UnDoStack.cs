@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace DefaultUnDo.Technical
+namespace DefaultUnDo.Internal
 {
     internal sealed class UnDoStack : IUnDoStack
     {
@@ -20,15 +20,15 @@ namespace DefaultUnDo.Technical
 
         public bool CanRedo => _undoneOperations.Count > 0;
 
-        public IEnumerable<object> UndoDescriptions => _doneOperations.Select(o => o.Command.Description);
+        public IEnumerable<object?> UndoDescriptions => _doneOperations.Select(o => o.Command.Description);
 
-        public IEnumerable<object> RedoDescription => _undoneOperations.Select(o => o.Command.Description);
+        public IEnumerable<object?> RedoDescription => _undoneOperations.Select(o => o.Command.Description);
 
         public int Push(IUnDo command, int doVersion, int undoVersion)
         {
             if (_doneOperations.Count > 0
                 && _doneOperations.Peek().Command is IMergeableUnDo mergeable
-                && mergeable.TryMerge(command, out IUnDo mergedCommand))
+                && mergeable.TryMerge(command, out IUnDo? mergedCommand))
             {
                 command = mergedCommand;
                 undoVersion = _doneOperations.Pop().UndoVersion;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DefaultUnDo
 {
@@ -11,9 +12,10 @@ namespace DefaultUnDo
     {
         #region Fields
 
-        private readonly object _description;
+        private readonly object? _description;
         private readonly IList<T> _source;
         private readonly int _index;
+        [AllowNull]
         private readonly T _item;
         private readonly bool _isAdd;
 
@@ -30,7 +32,7 @@ namespace DefaultUnDo
         /// <param name="item">The argument of the operation.</param>
         /// <param name="isAdd">true if the operation is an <see cref="IList{T}.IndexOf(T)"/>, else false for a <see cref="IList{T}.RemoveAt(int)"/>.</param>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
-        public ListUnDo(object description, IList<T> source, int index, T item, bool isAdd)
+        public ListUnDo(object? description, IList<T> source, int index, [AllowNull] T item, bool isAdd)
         {
             _description = description;
             _source = source ?? throw new ArgumentNullException(nameof(source));
@@ -47,7 +49,7 @@ namespace DefaultUnDo
         /// <param name="item">The argument of the operation.</param>
         /// <param name="isAdd">true if the operation is an <see cref="IList{T}.IndexOf(T)"/>, else false for a <see cref="IList{T}.RemoveAt(int)"/>.</param>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
-        public ListUnDo(IList<T> source, int index, T item, bool isAdd)
+        public ListUnDo(IList<T> source, int index, [AllowNull] T item, bool isAdd)
             : this(null, source, index, item, isAdd)
         { }
 
@@ -72,7 +74,7 @@ namespace DefaultUnDo
         #region IUnDo
 
         /// <inheritdoc />
-        object IUnDo.Description => _description;
+        object? IUnDo.Description => _description;
 
         /// <inheritdoc />
         void IUnDo.Do() => Action(_isAdd);

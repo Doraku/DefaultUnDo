@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DefaultUnDo.Technical
+namespace DefaultUnDo.Internal
 {
     internal interface IUnDoStack
     {
@@ -8,9 +8,9 @@ namespace DefaultUnDo.Technical
 
         bool CanRedo { get; }
 
-        IEnumerable<object> UndoDescriptions { get; }
+        IEnumerable<object?> UndoDescriptions { get; }
 
-        IEnumerable<object> RedoDescription { get; }
+        IEnumerable<object?> RedoDescription { get; }
 
         int Push(IUnDo command, int doVersion, int undoVersion);
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using DefaultUnDo.Technical;
+using DefaultUnDo.Internal;
 
 namespace DefaultUnDo
 {
@@ -21,7 +21,7 @@ namespace DefaultUnDo
         /// <param name="descriptionFactory">Factory used to create the description of the generated <see cref="IUnDo"/>.</param>
         /// <returns>A wrapped <see cref="IList{T}"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="manager"/> is null.</exception>
-        public static IList<T> AsUnDo<T>(this IList<T> source, IUnDoManager manager, Func<UnDoCollectionOperation, object> descriptionFactory = null) => new UnDoIList<T>(
+        public static IList<T> AsUnDo<T>(this IList<T> source, IUnDoManager manager, Func<UnDoCollectionOperation, object?>? descriptionFactory = null) => new UnDoIList<T>(
             manager ?? throw new ArgumentNullException(nameof(manager)),
             source ?? throw new ArgumentNullException(nameof(source)),
             descriptionFactory);
@@ -37,6 +37,11 @@ namespace DefaultUnDo
         /// <param name="newIndex">The zero-based index specifying the new location of the item.</param>
         public static void Move<T>(this IList<T> source, int oldIndex, int newIndex)
         {
+            if (source is null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
             if (source is UnDoIList<T> undo)
             {
                 undo.Move(oldIndex, newIndex);

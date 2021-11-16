@@ -1,4 +1,6 @@
-﻿namespace DefaultUnDo
+﻿using System;
+
+namespace DefaultUnDo
 {
     /// <summary>
     /// Provides data for the operation about to be performed on an undo collection.
@@ -17,7 +19,7 @@
         /// <summary>
         /// Gets the parameters of the action performed.
         /// </summary>
-        public object[] Parameters { get; }
+        public object?[] Parameters { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UnDoCollectionOperation"/> struct.
@@ -25,9 +27,9 @@
         /// <param name="collection">The collection on which the action is performed.</param>
         /// <param name="action">The action performed.</param>
         /// <param name="parameters">The parameters of the action performed.</param>
-        public UnDoCollectionOperation(object collection, UnDoCollectionAction action, params object[] parameters)
+        public UnDoCollectionOperation(object collection, UnDoCollectionAction action, params object?[] parameters)
         {
-            Collection = collection;
+            Collection = collection ?? throw new ArgumentNullException(nameof(collection));
             Action = action;
             Parameters = parameters;
         }

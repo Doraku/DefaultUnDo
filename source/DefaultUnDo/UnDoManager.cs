@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using DefaultUnDo.Technical;
+using DefaultUnDo.Internal;
 
 namespace DefaultUnDo
 {
@@ -17,7 +17,7 @@ namespace DefaultUnDo
             #region Fields
 
             private readonly UnDoManager _manager;
-            private readonly object _description;
+            private readonly object? _description;
             private readonly List<IUnDo> _commands;
 
             private bool _isCommitted;
@@ -27,7 +27,7 @@ namespace DefaultUnDo
 
             #region Initialisation
 
-            public Transaction(UnDoManager manager, object description)
+            public Transaction(UnDoManager manager, object? description)
             {
                 _manager = manager;
                 _description = description;
@@ -138,7 +138,7 @@ namespace DefaultUnDo
                 throw new ArgumentException("maxCapacity must be superior to zero", nameof(maxCapacity));
             }
 
-            _stack = maxCapacity == int.MaxValue ? (IUnDoStack)new UnDoStack() : new UnDoBuffer(maxCapacity);
+            _stack = maxCapacity == int.MaxValue ? new UnDoStack() : new UnDoBuffer(maxCapacity);
             _transactions = new Stack<Transaction>();
 
             _cyclicDepth = 0;
@@ -195,12 +195,12 @@ namespace DefaultUnDo
         /// <summary>
         /// Gets the descriptions in order of all the <see cref="IUnDo"/> which can be undone.
         /// </summary>
-        public IEnumerable<object> UndoDescriptions => _stack.UndoDescriptions;
+        public IEnumerable<object?> UndoDescriptions => _stack.UndoDescriptions;
 
         /// <summary>
         /// Gets the descriptions in order of all the <see cref="IUnDo"/> which can be redone.
         /// </summary>
-        public IEnumerable<object> RedoDescriptions => _stack.RedoDescription;
+        public IEnumerable<object?> RedoDescriptions => _stack.RedoDescription;
 
         /// <summary>
         /// Starts a group of operation and return an <see cref="IUnDoTransaction"/> to stop the group.
@@ -208,7 +208,7 @@ namespace DefaultUnDo
         /// </summary>
         /// <param name="description">The description of the group of operations.</param>
         /// <returns>An <see cref="IUnDoTransaction"/> to commit or rollback the transaction of operations.</returns>
-        public IUnDoTransaction BeginTransaction(object description = null) => new Transaction(this, description);
+        public IUnDoTransaction BeginTransaction(object? description = null) => new Transaction(this, description);
 
         /// <summary>
         /// Clears the history of <see cref="IUnDo"/> operations.
@@ -324,7 +324,7 @@ namespace DefaultUnDo
         /// <summary>
         /// Occurs when a property value changes.
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         #endregion
     }

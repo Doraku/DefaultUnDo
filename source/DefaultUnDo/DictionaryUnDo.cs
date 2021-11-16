@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DefaultUnDo
 {
@@ -12,9 +13,10 @@ namespace DefaultUnDo
     {
         #region Fields
 
-        private readonly object _description;
+        private readonly object? _description;
         private readonly IDictionary<TKey, TValue> _source;
         private readonly TKey _key;
+        [AllowNull]
         private readonly TValue _element;
         private readonly bool _isAdd;
 
@@ -31,7 +33,7 @@ namespace DefaultUnDo
         /// <param name="value">The value of the operation.</param>
         /// <param name="isAdd">true if the operation is <see cref="IDictionary{TKey, TValue}.Add(TKey, TValue)"/>, false for <see cref="IDictionary{TKey, TValue}.Remove(TKey)"/>.</param>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="key"/> is null.</exception>
-        public DictionaryUnDo(object description, IDictionary<TKey, TValue> source, TKey key, TValue value, bool isAdd)
+        public DictionaryUnDo(object? description, IDictionary<TKey, TValue> source, TKey key, [AllowNull] TValue value, bool isAdd)
         {
             _description = description;
             _source = source ?? throw new ArgumentNullException(nameof(source));
@@ -48,7 +50,7 @@ namespace DefaultUnDo
         /// <param name="value">The value of the operation.</param>
         /// <param name="isAdd">true if the operation is <see cref="IDictionary{TKey, TValue}.Add(TKey, TValue)"/>, false for <see cref="IDictionary{TKey, TValue}.Remove(TKey)"/>.</param>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="key"/> is null.</exception>
-        public DictionaryUnDo(IDictionary<TKey, TValue> source, TKey key, TValue value, bool isAdd)
+        public DictionaryUnDo(IDictionary<TKey, TValue> source, TKey key, [AllowNull] TValue value, bool isAdd)
             : this(null, source, key, value, isAdd)
         { }
 
@@ -73,7 +75,7 @@ namespace DefaultUnDo
         #region IUnDo
 
         /// <inheritdoc />
-        object IUnDo.Description => _description;
+        object? IUnDo.Description => _description;
 
         /// <inheritdoc />
         void IUnDo.Do() => Action(_isAdd);

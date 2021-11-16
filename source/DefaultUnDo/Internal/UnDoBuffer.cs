@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DefaultUnDo.Technical
+namespace DefaultUnDo.Internal
 {
     internal sealed class UnDoBuffer : IUnDoStack
     {
@@ -25,7 +25,7 @@ namespace DefaultUnDo.Technical
 
         public bool CanRedo => _hasOperation && (_current != _head || _currentState != true);
 
-        public IEnumerable<object> UndoDescriptions
+        public IEnumerable<object?> UndoDescriptions
         {
             get
             {
@@ -52,7 +52,7 @@ namespace DefaultUnDo.Technical
                 }
             }
         }
-        public IEnumerable<object> RedoDescription
+        public IEnumerable<object?> RedoDescription
         {
             get
             {
@@ -94,7 +94,7 @@ namespace DefaultUnDo.Technical
             if (_hasOperation)
             {
                 if (_buffer[_current].Command is IMergeableUnDo mergeable
-                    && mergeable.TryMerge(command, out IUnDo mergedCommand))
+                    && mergeable.TryMerge(command, out IUnDo? mergedCommand))
                 {
                     command = mergedCommand;
                     undoVersion = _buffer[_current].UndoVersion;

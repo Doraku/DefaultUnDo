@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DefaultUnDo.Technical
+namespace DefaultUnDo.Internal
 {
     internal class UnDoISet<T> : UnDoICollection<T>, ISet<T>
     {
@@ -14,7 +14,7 @@ namespace DefaultUnDo.Technical
 
         #region Initialisation
 
-        public UnDoISet(IUnDoManager manager, ISet<T> source, Func<UnDoCollectionOperation, object> descriptionFactory)
+        public UnDoISet(IUnDoManager manager, ISet<T> source, Func<UnDoCollectionOperation, object?>? descriptionFactory)
             : base(manager, source, descriptionFactory)
         {
             _source = source;

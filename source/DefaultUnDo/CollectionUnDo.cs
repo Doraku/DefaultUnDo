@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DefaultUnDo
 {
@@ -11,8 +12,9 @@ namespace DefaultUnDo
     {
         #region Fields
 
-        private readonly object _description;
+        private readonly object? _description;
         private readonly ICollection<T> _source;
+        [AllowNull]
         private readonly T _item;
         private readonly bool _isAdd;
 
@@ -28,7 +30,7 @@ namespace DefaultUnDo
         /// <param name="item">The argument of the operation.</param>
         /// <param name="isAdd">true if the operation is an <see cref="ICollection{T}.Add(T)"/>, false for a <see cref="ICollection{T}.Remove(T)"/>.</param>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
-        public CollectionUnDo(object description, ICollection<T> source, T item, bool isAdd)
+        public CollectionUnDo(object? description, ICollection<T> source, [AllowNull] T item, bool isAdd)
         {
             _description = description;
             _source = source ?? throw new ArgumentNullException(nameof(source));
@@ -43,7 +45,7 @@ namespace DefaultUnDo
         /// <param name="item">The argument of the operation.</param>
         /// <param name="isAdd">true if the operation is an <see cref="ICollection{T}.Add(T)"/>, false for a <see cref="ICollection{T}.Remove(T)"/>.</param>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
-        public CollectionUnDo(ICollection<T> source, T item, bool isAdd)
+        public CollectionUnDo(ICollection<T> source, [AllowNull] T item, bool isAdd)
             : this(null, source, item, isAdd)
         { }
 
@@ -68,7 +70,7 @@ namespace DefaultUnDo
         #region IUnDo
 
         /// <inheritdoc />
-        object IUnDo.Description => _description;
+        object? IUnDo.Description => _description;
 
         /// <inheritdoc />
         void IUnDo.Undo() => Action(!_isAdd);

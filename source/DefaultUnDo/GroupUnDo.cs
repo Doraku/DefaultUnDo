@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DefaultUnDo
 {
@@ -14,12 +15,12 @@ namespace DefaultUnDo
         /// <param name="oldDescription">The description of the previous <see cref="GroupUnDo"/> merged.</param>
         /// <param name="newDescription">The description of the new <see cref="IMergeableUnDo"/> merged.</param>
         /// <param name="mergedDescription">The description of the new resulting <see cref="IMergeableUnDo"/> merged.</param>
-        /// <returns></returns>
-        public delegate object MergeDescriptionHandler(object oldDescription, object newDescription, object mergedDescription);
+        /// <returns>The final description to use.</returns>
+        public delegate object MergeDescriptionHandler(object? oldDescription, object? newDescription, object? mergedDescription);
 
         #region Fields
 
-        private readonly object _description;
+        private readonly object? _description;
         private readonly IUnDo[] _commands;
 
         #endregion
@@ -29,7 +30,7 @@ namespace DefaultUnDo
         /// <summary>
         /// The <see cref="MergeDescriptionHandler"/> used to merge description between a <see cref="GroupUnDo"/> and a <see cref="IMergeableUnDo"/> instances.
         /// </summary>
-        public static MergeDescriptionHandler MergeDescriptionAction { get; set; }
+        public static MergeDescriptionHandler? MergeDescriptionAction { get; set; }
 
         #endregion
 
@@ -42,7 +43,7 @@ namespace DefaultUnDo
         /// <param name="commands">The sequence of <see cref="IUnDo"/> contained by the instance.</param>
         /// <exception cref="ArgumentNullException"><paramref name="commands"/> is null.</exception>
         /// <exception cref="ArgumentException"><paramref name="commands"/> contains null elements.</exception>
-        public GroupUnDo(object description, params IUnDo[] commands)
+        public GroupUnDo(object? description, params IUnDo[] commands)
         {
             _description = description;
             _commands = commands ?? throw new ArgumentNullException(nameof(commands));
@@ -80,10 +81,10 @@ namespace DefaultUnDo
         /// This parameter is passed uninitialized.
         /// </param>
         /// <returns>true if the current instance contains exactly one <typeparamref name="T"/>; otherwise false.</returns>
-        public bool TryGetSingle<T>(out T command)
+        public bool TryGetSingle<T>([NotNullWhen(true)] out T command)
             where T : IUnDo
         {
-            command = _commands.Length is 1 && _commands[0] is T t ? t : default;
+            command = _commands.Length is 1 && _commands[0] is T t ? t : default!;
 
             return command != null;
         }
@@ -93,12 +94,12 @@ namespace DefaultUnDo
         #region IMergeableUnDo
 
         /// <inheritdoc />
-        bool IMergeableUnDo.TryMerge(IUnDo other, out IUnDo mergedCommand)
+        bool IMergeableUnDo.TryMerge(IUnDo other, [NotNullWhen(true)] out IUnDo? mergedCommand)
         {
             mergedCommand =
                 TryGetSingle(out IMergeableUnDo mergeable) && mergeable.TryMerge(other, out mergedCommand)
                 ? new GroupUnDo(
-                    MergeDescriptionAction?.Invoke(_description, mergeable.Description, mergedCommand.Description) ?? _description,
+                    MergeDescriptionAction?.Invoke(_description, mergeable.Description, mergedCommand!.Description) ?? _description,
                     mergedCommand)
                 : null;
 
@@ -110,7 +111,7 @@ namespace DefaultUnDo
         #region IUnDo
 
         /// <inheritdoc />
-        object IUnDo.Description => _description;
+        object? IUnDo.Description => _description;
 
         /// <inheritdoc />
         void IUnDo.Do()

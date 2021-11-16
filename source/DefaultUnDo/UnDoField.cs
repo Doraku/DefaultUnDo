@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DefaultUnDo
 {
@@ -7,15 +8,18 @@ namespace DefaultUnDo
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class UnDoField<T>
+        where T : notnull
     {
         private readonly IUnDoManager _manager;
-        private readonly Func<UnDoFieldChange<T>, object> _descriptionFactory;
+        private readonly Func<UnDoFieldChange<T>, object?>? _descriptionFactory;
 
+        [AllowNull]
         private T _value;
 
         /// <summary>
         /// Gets or sets the value of the field, generating a <see cref="IUnDo"/> operation on set.
         /// </summary>
+        [AllowNull]
         public T Value
         {
             get => _value;
@@ -29,7 +33,7 @@ namespace DefaultUnDo
         /// <param name="value">The starting value of the <see cref="UnDoField{T}"/></param>
         /// <param name="descriptionFactory">Factory used to create the description of the generated <see cref="IUnDo"/>.</param>
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> is null.</exception>
-        public UnDoField(IUnDoManager manager, T value, Func<UnDoFieldChange<T>, object> descriptionFactory = null)
+        public UnDoField(IUnDoManager manager, [AllowNull] T value, Func<UnDoFieldChange<T>, object?>? descriptionFactory = null)
         {
             _manager = manager ?? throw new ArgumentNullException(nameof(manager));
             _descriptionFactory = descriptionFactory;
@@ -43,11 +47,11 @@ namespace DefaultUnDo
         /// <param name="manager">The <see cref="IUnDoManager"/> used to register the <see cref="IUnDo"/> operations.</param>
         /// <param name="descriptionFactory">Factory used to create the description of the generated <see cref="IUnDo"/>.</param>
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> is null.</exception>
-        public UnDoField(IUnDoManager manager, Func<UnDoFieldChange<T>, object> descriptionFactory = null)
+        public UnDoField(IUnDoManager manager, Func<UnDoFieldChange<T>, object?>? descriptionFactory = null)
             : this(manager, default, descriptionFactory)
         { }
 
-        private void Set(T value)
+        private void Set([AllowNull] T value)
         {
             PreSet(value);
 
@@ -61,20 +65,28 @@ namespace DefaultUnDo
         /// Performs a pre set treatment, included in the <see cref="IUnDo"/> operation.
         /// </summary>
         /// <param name="newValue">The new value.</param>
-        protected virtual void PreSet(T newValue)
+        protected virtual void PreSet([AllowNull] T newValue)
         { }
 
         /// <summary>
         /// performs a post set treatment, included in the <see cref="IUnDo"/> operation.
         /// </summary>
         /// <param name="oldValue">The old value.</param>
-        protected virtual void PostSet(T oldValue)
+        protected virtual void PostSet([AllowNull] T oldValue)
         { }
 
         /// <summary>
         ///Defines an implicit conversion of a <see cref="UnDoField{T}"/> to a <typeparamref name="T"/>.
         /// </summary>
         /// <param name="field"></param>
-        public static implicit operator T(UnDoField<T> field) => field is null ? default : field.Value;
+        [return: MaybeNull]
+        public static implicit operator T(UnDoField<T> field) => field is null ? default : field.ToT();
+
+        /// <summary>
+        /// Returns the underlying <typeparamref name="T"/>.
+        /// </summary>
+        /// <returns>The underlying <typeparamref name="T"/>.</returns>
+        [return: MaybeNull]
+        public T ToT() => Value;
     }
 }

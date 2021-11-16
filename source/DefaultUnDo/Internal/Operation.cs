@@ -1,4 +1,4 @@
-﻿namespace DefaultUnDo.Technical
+﻿namespace DefaultUnDo.Internal
 {
     internal readonly struct Operation
     {

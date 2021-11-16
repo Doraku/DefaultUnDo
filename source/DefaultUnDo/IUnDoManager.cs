@@ -29,12 +29,12 @@ namespace DefaultUnDo
         /// <summary>
         /// Gets the descriptions in order of all the <see cref="IUnDo"/> which can be undone.
         /// </summary>
-        IEnumerable<object> UndoDescriptions { get; }
+        IEnumerable<object?> UndoDescriptions { get; }
 
         /// <summary>
         /// Gets the descriptions in order of all the <see cref="IUnDo"/> which can be redone.
         /// </summary>
-        IEnumerable<object> RedoDescriptions { get; }
+        IEnumerable<object?> RedoDescriptions { get; }
 
         /// <summary>
         /// Starts a group of operation and return an <see cref="IUnDoTransaction"/> to stop the group.
@@ -42,7 +42,7 @@ namespace DefaultUnDo
         /// </summary>
         /// <param name="description">The description of the group of operations.</param>
         /// <returns>An <see cref="IUnDoTransaction"/> to commit or rollback the transaction of operations.</returns>
-        IUnDoTransaction BeginTransaction(object description = null);
+        IUnDoTransaction BeginTransaction(object? description = null);
 
         /// <summary>
         /// Clears the history of <see cref="IUnDo"/> operations.

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 
-namespace DefaultUnDo.Technical
+namespace DefaultUnDo.Internal
 {
     internal class UnDoICollection<T> : ICollection<T>, INotifyCollectionChanged, INotifyPropertyChanged
     {
@@ -13,13 +13,13 @@ namespace DefaultUnDo.Technical
         private readonly ICollection<T> _source;
 
         protected readonly IUnDoManager _manager;
-        protected readonly Func<UnDoCollectionOperation, object> _descriptionFactory;
+        protected readonly Func<UnDoCollectionOperation, object?>? _descriptionFactory;
 
         #endregion
 
         #region Initialisation
 
-        public UnDoICollection(IUnDoManager manager, ICollection<T> source, Func<UnDoCollectionOperation, object> descriptionFactory)
+        public UnDoICollection(IUnDoManager manager, ICollection<T> source, Func<UnDoCollectionOperation, object?>? descriptionFactory)
         {
             _source = source;
             _manager = manager;

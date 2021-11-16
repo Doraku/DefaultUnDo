@@ -192,6 +192,14 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
+        public void Move_Should_throw_When_source_is_null()
+        {
+            IList<int> items = null;
+
+            Check.ThatCode(() => items.Move(0, 1)).Throws<ArgumentNullException>();
+        }
+
+        [Fact]
         public void Move_Should_move_item()
         {
             List<int> items = new() { 1, 2 };
