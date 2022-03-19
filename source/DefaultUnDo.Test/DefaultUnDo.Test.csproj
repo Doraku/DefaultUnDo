@@ -3,7 +3,6 @@
     <TargetFrameworks>
       net452;
       net48;
-      netcoreapp3.1;
       net6.0;
     </TargetFrameworks>
   </PropertyGroup>

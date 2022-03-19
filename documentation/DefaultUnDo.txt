@@ -1,0 +1,140 @@
+https://github.com/Doraku/DefaultUnDo/blob/master/documentation/api/
+P:DefaultUnDo.CollectionUnDo`1.DefaultUnDo#IUnDo#Description|CollectionUnDo_T_.DefaultUnDo.IUnDo.Description.md|DefaultUnDo.IUnDo.Description
+M:DefaultUnDo.CollectionUnDo`1.#ctor(System.Object,System.Collections.Generic.ICollection{`0},`0,System.Boolean)|CollectionUnDo_T_.CollectionUnDo(object,ICollection_T_,T,bool).md|CollectionUnDo(object, ICollection<T>, T, bool)
+M:DefaultUnDo.CollectionUnDo`1.#ctor(System.Collections.Generic.ICollection{`0},`0,System.Boolean)|CollectionUnDo_T_.CollectionUnDo(ICollection_T_,T,bool).md|CollectionUnDo(ICollection<T>, T, bool)
+M:DefaultUnDo.CollectionUnDo`1.DefaultUnDo#IUnDo#Undo|CollectionUnDo_T_.DefaultUnDo.IUnDo.Undo().md|DefaultUnDo.IUnDo.Undo()
+M:DefaultUnDo.CollectionUnDo`1.DefaultUnDo#IUnDo#Do|CollectionUnDo_T_.DefaultUnDo.IUnDo.Do().md|DefaultUnDo.IUnDo.Do()
+N:DefaultUnDo|DefaultUnDo.md#DefaultUnDo|DefaultUnDo
+T:DefaultUnDo.CollectionUnDo`1|CollectionUnDo_T_.md|CollectionUnDo<T>
+P:DefaultUnDo.DictionaryUnDo`2.DefaultUnDo#IUnDo#Description|DictionaryUnDo_TKey,TValue_.DefaultUnDo.IUnDo.Description.md|DefaultUnDo.IUnDo.Description
+M:DefaultUnDo.DictionaryUnDo`2.#ctor(System.Object,System.Collections.Generic.IDictionary{`0,`1},`0,`1,System.Boolean)|DictionaryUnDo_TKey,TValue_.DictionaryUnDo(object,IDictionary_TKey,TValue_,TKey,TValue,bool).md|DictionaryUnDo(object, IDictionary<TKey,TValue>, TKey, TValue, bool)
+M:DefaultUnDo.DictionaryUnDo`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},`0,`1,System.Boolean)|DictionaryUnDo_TKey,TValue_.DictionaryUnDo(IDictionary_TKey,TValue_,TKey,TValue,bool).md|DictionaryUnDo(IDictionary<TKey,TValue>, TKey, TValue, bool)
+M:DefaultUnDo.DictionaryUnDo`2.DefaultUnDo#IUnDo#Do|DictionaryUnDo_TKey,TValue_.DefaultUnDo.IUnDo.Do().md|DefaultUnDo.IUnDo.Do()
+M:DefaultUnDo.DictionaryUnDo`2.DefaultUnDo#IUnDo#Undo|DictionaryUnDo_TKey,TValue_.DefaultUnDo.IUnDo.Undo().md|DefaultUnDo.IUnDo.Undo()
+T:DefaultUnDo.DictionaryUnDo`2|DictionaryUnDo_TKey,TValue_.md|DictionaryUnDo<TKey,TValue>
+P:DefaultUnDo.GroupUnDo.MergeDescriptionAction|GroupUnDo.MergeDescriptionAction.md|MergeDescriptionAction
+P:DefaultUnDo.GroupUnDo.DefaultUnDo#IUnDo#Description|GroupUnDo.DefaultUnDo.IUnDo.Description.md|DefaultUnDo.IUnDo.Description
+M:DefaultUnDo.GroupUnDo.#ctor(System.Object,DefaultUnDo.IUnDo[])|GroupUnDo.GroupUnDo(object,IUnDo[]).md|GroupUnDo(object, IUnDo[])
+M:DefaultUnDo.GroupUnDo.#ctor(DefaultUnDo.IUnDo[])|GroupUnDo.GroupUnDo(IUnDo[]).md|GroupUnDo(IUnDo[])
+M:DefaultUnDo.GroupUnDo.TryGetSingle``1(``0@)|GroupUnDo.TryGetSingle_T_(T).md|TryGetSingle<T>(T)
+M:DefaultUnDo.GroupUnDo.DefaultUnDo#IMergeableUnDo#TryMerge(DefaultUnDo.IUnDo,DefaultUnDo.IUnDo@)|GroupUnDo.DefaultUnDo.IMergeableUnDo.TryMerge(IUnDo,IUnDo).md|DefaultUnDo.IMergeableUnDo.TryMerge(IUnDo, IUnDo)
+M:DefaultUnDo.GroupUnDo.DefaultUnDo#IUnDo#Do|GroupUnDo.DefaultUnDo.IUnDo.Do().md|DefaultUnDo.IUnDo.Do()
+M:DefaultUnDo.GroupUnDo.DefaultUnDo#IUnDo#Undo|GroupUnDo.DefaultUnDo.IUnDo.Undo().md|DefaultUnDo.IUnDo.Undo()
+T:DefaultUnDo.GroupUnDo|GroupUnDo.md|GroupUnDo
+M:DefaultUnDo.ICollectionExtension.AsUnDo``1(System.Collections.Generic.ICollection{``0},DefaultUnDo.IUnDoManager,System.Func{DefaultUnDo.UnDoCollectionOperation,System.Object})|ICollectionExtension.AsUnDo_T_(thisICollection_T_,IUnDoManager,Func_UnDoCollectionOperation,object_).md|AsUnDo<T>(this ICollection<T>, IUnDoManager, Func<UnDoCollectionOperation,object>)
+T:DefaultUnDo.ICollectionExtension|ICollectionExtension.md|ICollectionExtension
+M:DefaultUnDo.IDictionaryExtension.AsUnDo``2(System.Collections.Generic.IDictionary{``0,``1},DefaultUnDo.IUnDoManager,System.Func{DefaultUnDo.UnDoCollectionOperation,System.Object})|IDictionaryExtension.AsUnDo_TKey,TValue_(thisIDictionary_TKey,TValue_,IUnDoManager,Func_UnDoCollectionOperation,object_).md|AsUnDo<TKey,TValue>(this IDictionary<TKey,TValue>, IUnDoManager, Func<UnDoCollectionOperation,object>)
+T:DefaultUnDo.IDictionaryExtension|IDictionaryExtension.md|IDictionaryExtension
+M:DefaultUnDo.IListExtension.AsUnDo``1(System.Collections.Generic.IList{``0},DefaultUnDo.IUnDoManager,System.Func{DefaultUnDo.UnDoCollectionOperation,System.Object})|IListExtension.AsUnDo_T_(thisIList_T_,IUnDoManager,Func_UnDoCollectionOperation,object_).md|AsUnDo<T>(this IList<T>, IUnDoManager, Func<UnDoCollectionOperation,object>)
+M:DefaultUnDo.IListExtension.Move``1(System.Collections.Generic.IList{``0},System.Int32,System.Int32)|IListExtension.Move_T_(thisIList_T_,int,int).md|Move<T>(this IList<T>, int, int)
+T:DefaultUnDo.IListExtension|IListExtension.md|IListExtension
+M:DefaultUnDo.IMergeableUnDo.TryMerge(DefaultUnDo.IUnDo,DefaultUnDo.IUnDo@)|IMergeableUnDo.TryMerge(IUnDo,IUnDo).md|TryMerge(IUnDo, IUnDo)
+T:DefaultUnDo.IMergeableUnDo|IMergeableUnDo.md|IMergeableUnDo
+M:DefaultUnDo.ISetExtension.AsUnDo``1(System.Collections.Generic.ISet{``0},DefaultUnDo.IUnDoManager,System.Func{DefaultUnDo.UnDoCollectionOperation,System.Object})|ISetExtension.AsUnDo_T_(thisISet_T_,IUnDoManager,Func_UnDoCollectionOperation,object_).md|AsUnDo<T>(this ISet<T>, IUnDoManager, Func<UnDoCollectionOperation,object>)
+T:DefaultUnDo.ISetExtension|ISetExtension.md|ISetExtension
+P:DefaultUnDo.IUnDo.Description|IUnDo.Description.md|Description
+M:DefaultUnDo.IUnDo.Do|IUnDo.Do().md|Do()
+M:DefaultUnDo.IUnDo.Undo|IUnDo.Undo().md|Undo()
+T:DefaultUnDo.IUnDo|IUnDo.md|IUnDo
+P:DefaultUnDo.IUnDoManager.Version|IUnDoManager.Version.md|Version
+P:DefaultUnDo.IUnDoManager.CanUndo|IUnDoManager.CanUndo.md|CanUndo
+P:DefaultUnDo.IUnDoManager.CanRedo|IUnDoManager.CanRedo.md|CanRedo
+P:DefaultUnDo.IUnDoManager.UndoDescriptions|IUnDoManager.UndoDescriptions.md|UndoDescriptions
+P:DefaultUnDo.IUnDoManager.RedoDescriptions|IUnDoManager.RedoDescriptions.md|RedoDescriptions
+M:DefaultUnDo.IUnDoManager.BeginTransaction(System.Object)|IUnDoManager.BeginTransaction(object).md|BeginTransaction(object)
+M:DefaultUnDo.IUnDoManager.Clear|IUnDoManager.Clear().md|Clear()
+M:DefaultUnDo.IUnDoManager.Do(DefaultUnDo.IUnDo)|IUnDoManager.Do(IUnDo).md|Do(IUnDo)
+M:DefaultUnDo.IUnDoManager.Redo|IUnDoManager.Redo().md|Redo()
+M:DefaultUnDo.IUnDoManager.Undo|IUnDoManager.Undo().md|Undo()
+T:DefaultUnDo.IUnDoManager|IUnDoManager.md|IUnDoManager
+M:DefaultUnDo.IUnDoManagerExtension.DoAdd``1(DefaultUnDo.IUnDoManager,System.Collections.Generic.ISet{``0},``0,System.Object)|IUnDoManagerExtension.DoAdd_T_(thisIUnDoManager,ISet_T_,T,object).md|DoAdd<T>(this IUnDoManager, ISet<T>, T, object)
+M:DefaultUnDo.IUnDoManagerExtension.DoAdd``1(DefaultUnDo.IUnDoManager,System.Collections.Generic.ICollection{``0},``0,System.Object)|IUnDoManagerExtension.DoAdd_T_(thisIUnDoManager,ICollection_T_,T,object).md|DoAdd<T>(this IUnDoManager, ICollection<T>, T, object)
+M:DefaultUnDo.IUnDoManagerExtension.DoClear``1(DefaultUnDo.IUnDoManager,System.Collections.Generic.ICollection{``0},System.Object)|IUnDoManagerExtension.DoClear_T_(thisIUnDoManager,ICollection_T_,object).md|DoClear<T>(this IUnDoManager, ICollection<T>, object)
+M:DefaultUnDo.IUnDoManagerExtension.DoRemove``1(DefaultUnDo.IUnDoManager,System.Collections.Generic.ICollection{``0},``0,System.Object)|IUnDoManagerExtension.DoRemove_T_(thisIUnDoManager,ICollection_T_,T,object).md|DoRemove<T>(this IUnDoManager, ICollection<T>, T, object)
+M:DefaultUnDo.IUnDoManagerExtension.DoAdd``2(DefaultUnDo.IUnDoManager,System.Collections.Generic.IDictionary{``0,``1},``0,``1,System.Object)|IUnDoManagerExtension.DoAdd_TKey,TValue_(thisIUnDoManager,IDictionary_TKey,TValue_,TKey,TValue,object).md|DoAdd<TKey,TValue>(this IUnDoManager, IDictionary<TKey,TValue>, TKey, TValue, object)
+M:DefaultUnDo.IUnDoManagerExtension.DoRemove``2(DefaultUnDo.IUnDoManager,System.Collections.Generic.IDictionary{``0,``1},``0,System.Object)|IUnDoManagerExtension.DoRemove_TKey,TValue_(thisIUnDoManager,IDictionary_TKey,TValue_,TKey,object).md|DoRemove<TKey,TValue>(this IUnDoManager, IDictionary<TKey,TValue>, TKey, object)
+M:DefaultUnDo.IUnDoManagerExtension.Do``2(DefaultUnDo.IUnDoManager,System.Collections.Generic.IDictionary{``0,``1},``0,``1,System.Object)|IUnDoManagerExtension.Do_TKey,TValue_(thisIUnDoManager,IDictionary_TKey,TValue_,TKey,TValue,object).md|Do<TKey,TValue>(this IUnDoManager, IDictionary<TKey,TValue>, TKey, TValue, object)
+M:DefaultUnDo.IUnDoManagerExtension.DoInsert``1(DefaultUnDo.IUnDoManager,System.Collections.Generic.IList{``0},System.Int32,``0,System.Object)|IUnDoManagerExtension.DoInsert_T_(thisIUnDoManager,IList_T_,int,T,object).md|DoInsert<T>(this IUnDoManager, IList<T>, int, T, object)
+M:DefaultUnDo.IUnDoManagerExtension.DoRemoveAt``1(DefaultUnDo.IUnDoManager,System.Collections.Generic.IList{``0},System.Int32,System.Object)|IUnDoManagerExtension.DoRemoveAt_T_(thisIUnDoManager,IList_T_,int,object).md|DoRemoveAt<T>(this IUnDoManager, IList<T>, int, object)
+M:DefaultUnDo.IUnDoManagerExtension.Do``1(DefaultUnDo.IUnDoManager,System.Collections.Generic.IList{``0},System.Int32,``0,System.Object)|IUnDoManagerExtension.Do_T_(thisIUnDoManager,IList_T_,int,T,object).md|Do<T>(this IUnDoManager, IList<T>, int, T, object)
+M:DefaultUnDo.IUnDoManagerExtension.Do(DefaultUnDo.IUnDoManager,System.Action,System.Action,System.Object)|IUnDoManagerExtension.Do(thisIUnDoManager,Action,Action,object).md|Do(this IUnDoManager, Action, Action, object)
+M:DefaultUnDo.IUnDoManagerExtension.DoOnDo(DefaultUnDo.IUnDoManager,System.Action,System.Object)|IUnDoManagerExtension.DoOnDo(thisIUnDoManager,Action,object).md|DoOnDo(this IUnDoManager, Action, object)
+M:DefaultUnDo.IUnDoManagerExtension.DoOnUndo(DefaultUnDo.IUnDoManager,System.Action,System.Object)|IUnDoManagerExtension.DoOnUndo(thisIUnDoManager,Action,object).md|DoOnUndo(this IUnDoManager, Action, object)
+M:DefaultUnDo.IUnDoManagerExtension.Do``1(DefaultUnDo.IUnDoManager,System.Action{``0},``0,``0,System.Object)|IUnDoManagerExtension.Do_T_(thisIUnDoManager,Action_T_,T,T,object).md|Do<T>(this IUnDoManager, Action<T>, T, T, object)
+T:DefaultUnDo.IUnDoManagerExtension|IUnDoManagerExtension.md|IUnDoManagerExtension
+M:DefaultUnDo.IUnDoTransaction.Commit|IUnDoTransaction.Commit().md|Commit()
+T:DefaultUnDo.IUnDoTransaction|IUnDoTransaction.md|IUnDoTransaction
+P:DefaultUnDo.ListUnDo`1.DefaultUnDo#IUnDo#Description|ListUnDo_T_.DefaultUnDo.IUnDo.Description.md|DefaultUnDo.IUnDo.Description
+M:DefaultUnDo.ListUnDo`1.#ctor(System.Object,System.Collections.Generic.IList{`0},System.Int32,`0,System.Boolean)|ListUnDo_T_.ListUnDo(object,IList_T_,int,T,bool).md|ListUnDo(object, IList<T>, int, T, bool)
+M:DefaultUnDo.ListUnDo`1.#ctor(System.Collections.Generic.IList{`0},System.Int32,`0,System.Boolean)|ListUnDo_T_.ListUnDo(IList_T_,int,T,bool).md|ListUnDo(IList<T>, int, T, bool)
+M:DefaultUnDo.ListUnDo`1.DefaultUnDo#IUnDo#Do|ListUnDo_T_.DefaultUnDo.IUnDo.Do().md|DefaultUnDo.IUnDo.Do()
+M:DefaultUnDo.ListUnDo`1.DefaultUnDo#IUnDo#Undo|ListUnDo_T_.DefaultUnDo.IUnDo.Undo().md|DefaultUnDo.IUnDo.Undo()
+T:DefaultUnDo.ListUnDo`1|ListUnDo_T_.md|ListUnDo<T>
+P:DefaultUnDo.UnDo.DefaultUnDo#IUnDo#Description|UnDo.DefaultUnDo.IUnDo.Description.md|DefaultUnDo.IUnDo.Description
+M:DefaultUnDo.UnDo.#ctor(System.Object,System.Action,System.Action)|UnDo.UnDo(object,Action,Action).md|UnDo(object, Action, Action)
+M:DefaultUnDo.UnDo.#ctor(System.Action,System.Action)|UnDo.UnDo(Action,Action).md|UnDo(Action, Action)
+M:DefaultUnDo.UnDo.DefaultUnDo#IUnDo#Do|UnDo.DefaultUnDo.IUnDo.Do().md|DefaultUnDo.IUnDo.Do()
+M:DefaultUnDo.UnDo.DefaultUnDo#IUnDo#Undo|UnDo.DefaultUnDo.IUnDo.Undo().md|DefaultUnDo.IUnDo.Undo()
+T:DefaultUnDo.UnDo|UnDo.md|UnDo
+F:DefaultUnDo.UnDoCollectionAction.ICollectionAdd|UnDoCollectionAction.md#DefaultUnDo.UnDoCollectionAction.ICollectionAdd|ICollectionAdd
+F:DefaultUnDo.UnDoCollectionAction.ICollectionRemove|UnDoCollectionAction.md#DefaultUnDo.UnDoCollectionAction.ICollectionRemove|ICollectionRemove
+F:DefaultUnDo.UnDoCollectionAction.ICollectionClear|UnDoCollectionAction.md#DefaultUnDo.UnDoCollectionAction.ICollectionClear|ICollectionClear
+F:DefaultUnDo.UnDoCollectionAction.ISetAdd|UnDoCollectionAction.md#DefaultUnDo.UnDoCollectionAction.ISetAdd|ISetAdd
+F:DefaultUnDo.UnDoCollectionAction.ISetExceptWith|UnDoCollectionAction.md#DefaultUnDo.UnDoCollectionAction.ISetExceptWith|ISetExceptWith
+F:DefaultUnDo.UnDoCollectionAction.ISetIntersectWith|UnDoCollectionAction.md#DefaultUnDo.UnDoCollectionAction.ISetIntersectWith|ISetIntersectWith
+F:DefaultUnDo.UnDoCollectionAction.ISetSymmetricExceptWith|UnDoCollectionAction.md#DefaultUnDo.UnDoCollectionAction.ISetSymmetricExceptWith|ISetSymmetricExceptWith
+F:DefaultUnDo.UnDoCollectionAction.ISetUnionWith|UnDoCollectionAction.md#DefaultUnDo.UnDoCollectionAction.ISetUnionWith|ISetUnionWith
+F:DefaultUnDo.UnDoCollectionAction.IListMove|UnDoCollectionAction.md#DefaultUnDo.UnDoCollectionAction.IListMove|IListMove
+F:DefaultUnDo.UnDoCollectionAction.IListInsert|UnDoCollectionAction.md#DefaultUnDo.UnDoCollectionAction.IListInsert|IListInsert
+F:DefaultUnDo.UnDoCollectionAction.IListRemoveAt|UnDoCollectionAction.md#DefaultUnDo.UnDoCollectionAction.IListRemoveAt|IListRemoveAt
+F:DefaultUnDo.UnDoCollectionAction.IListIndexer|UnDoCollectionAction.md#DefaultUnDo.UnDoCollectionAction.IListIndexer|IListIndexer
+F:DefaultUnDo.UnDoCollectionAction.IDictionaryAdd|UnDoCollectionAction.md#DefaultUnDo.UnDoCollectionAction.IDictionaryAdd|IDictionaryAdd
+F:DefaultUnDo.UnDoCollectionAction.IDictionaryRemove|UnDoCollectionAction.md#DefaultUnDo.UnDoCollectionAction.IDictionaryRemove|IDictionaryRemove
+F:DefaultUnDo.UnDoCollectionAction.IDictionaryIndexer|UnDoCollectionAction.md#DefaultUnDo.UnDoCollectionAction.IDictionaryIndexer|IDictionaryIndexer
+T:DefaultUnDo.UnDoCollectionAction|UnDoCollectionAction.md|UnDoCollectionAction
+P:DefaultUnDo.UnDoCollectionOperation.Collection|UnDoCollectionOperation.Collection.md|Collection
+P:DefaultUnDo.UnDoCollectionOperation.Action|UnDoCollectionOperation.Action.md|Action
+P:DefaultUnDo.UnDoCollectionOperation.Parameters|UnDoCollectionOperation.Parameters.md|Parameters
+M:DefaultUnDo.UnDoCollectionOperation.#ctor(System.Object,DefaultUnDo.UnDoCollectionAction,System.Object[])|UnDoCollectionOperation.UnDoCollectionOperation(object,UnDoCollectionAction,object[]).md|UnDoCollectionOperation(object, UnDoCollectionAction, object[])
+T:DefaultUnDo.UnDoCollectionOperation|UnDoCollectionOperation.md|UnDoCollectionOperation
+P:DefaultUnDo.UnDoField`1.Value|UnDoField_T_.Value.md|Value
+M:DefaultUnDo.UnDoField`1.#ctor(DefaultUnDo.IUnDoManager,`0,System.Func{DefaultUnDo.UnDoFieldChange{`0},System.Object})|UnDoField_T_.UnDoField(IUnDoManager,T,Func_UnDoFieldChange_T_,object_).md|UnDoField(IUnDoManager, T, Func<UnDoFieldChange<T>,object>)
+M:DefaultUnDo.UnDoField`1.#ctor(DefaultUnDo.IUnDoManager,System.Func{DefaultUnDo.UnDoFieldChange{`0},System.Object})|UnDoField_T_.UnDoField(IUnDoManager,Func_UnDoFieldChange_T_,object_).md|UnDoField(IUnDoManager, Func<UnDoFieldChange<T>,object>)
+M:DefaultUnDo.UnDoField`1.PreSet(`0)|UnDoField_T_.PreSet(T).md|PreSet(T)
+M:DefaultUnDo.UnDoField`1.PostSet(`0)|UnDoField_T_.PostSet(T).md|PostSet(T)
+M:DefaultUnDo.UnDoField`1.op_Implicit(DefaultUnDo.UnDoField{`0})~`0|UnDoField_T_.implicitoperatorT(UnDoField_T_).md|implicit operator T(UnDoField<T>)
+M:DefaultUnDo.UnDoField`1.ToT|UnDoField_T_.ToT().md|ToT()
+T:DefaultUnDo.UnDoField`1|UnDoField_T_.md|UnDoField<T>
+P:DefaultUnDo.UnDoFieldChange`1.OldValue|UnDoFieldChange_T_.OldValue.md|OldValue
+P:DefaultUnDo.UnDoFieldChange`1.NewValue|UnDoFieldChange_T_.NewValue.md|NewValue
+M:DefaultUnDo.UnDoFieldChange`1.#ctor(`0,`0)|UnDoFieldChange_T_.UnDoFieldChange(T,T).md|UnDoFieldChange(T, T)
+T:DefaultUnDo.UnDoFieldChange`1|UnDoFieldChange_T_.md|UnDoFieldChange<T>
+P:DefaultUnDo.UnDoManager.Version|UnDoManager.Version.md|Version
+P:DefaultUnDo.UnDoManager.CanUndo|UnDoManager.CanUndo.md|CanUndo
+P:DefaultUnDo.UnDoManager.CanRedo|UnDoManager.CanRedo.md|CanRedo
+P:DefaultUnDo.UnDoManager.UndoDescriptions|UnDoManager.UndoDescriptions.md|UndoDescriptions
+P:DefaultUnDo.UnDoManager.RedoDescriptions|UnDoManager.RedoDescriptions.md|RedoDescriptions
+M:DefaultUnDo.UnDoManager.#ctor(System.Int32)|UnDoManager.UnDoManager(int).md|UnDoManager(int)
+M:DefaultUnDo.UnDoManager.#ctor|UnDoManager.UnDoManager().md|UnDoManager()
+M:DefaultUnDo.UnDoManager.BeginTransaction(System.Object)|UnDoManager.BeginTransaction(object).md|BeginTransaction(object)
+M:DefaultUnDo.UnDoManager.Clear|UnDoManager.Clear().md|Clear()
+M:DefaultUnDo.UnDoManager.Do(DefaultUnDo.IUnDo)|UnDoManager.Do(IUnDo).md|Do(IUnDo)
+M:DefaultUnDo.UnDoManager.Undo|UnDoManager.Undo().md|Undo()
+M:DefaultUnDo.UnDoManager.Redo|UnDoManager.Redo().md|Redo()
+E:DefaultUnDo.UnDoManager.PropertyChanged|UnDoManager.PropertyChanged.md|PropertyChanged
+T:DefaultUnDo.UnDoManager|UnDoManager.md|UnDoManager
+P:DefaultUnDo.ValueUnDo.MergeInterval|ValueUnDo.MergeInterval.md|MergeInterval
+P:DefaultUnDo.ValueUnDo.MergeDescriptionAction|ValueUnDo.MergeDescriptionAction.md|MergeDescriptionAction
+T:DefaultUnDo.ValueUnDo|ValueUnDo.md|ValueUnDo
+P:DefaultUnDo.ValueUnDo`1.MergeInterval|ValueUnDo_T_.MergeInterval.md|MergeInterval
+P:DefaultUnDo.ValueUnDo`1.MergeDescriptionAction|ValueUnDo_T_.MergeDescriptionAction.md|MergeDescriptionAction
+P:DefaultUnDo.ValueUnDo`1.DefaultUnDo#IUnDo#Description|ValueUnDo_T_.DefaultUnDo.IUnDo.Description.md|DefaultUnDo.IUnDo.Description
+M:DefaultUnDo.ValueUnDo`1.#ctor(System.Object,System.Action{`0},`0,`0)|ValueUnDo_T_.ValueUnDo(object,Action_T_,T,T).md|ValueUnDo(object, Action<T>, T, T)
+M:DefaultUnDo.ValueUnDo`1.#ctor(System.Action{`0},`0,`0)|ValueUnDo_T_.ValueUnDo(Action_T_,T,T).md|ValueUnDo(Action<T>, T, T)
+M:DefaultUnDo.ValueUnDo`1.DefaultUnDo#IMergeableUnDo#TryMerge(DefaultUnDo.IUnDo,DefaultUnDo.IUnDo@)|ValueUnDo_T_.DefaultUnDo.IMergeableUnDo.TryMerge(IUnDo,IUnDo).md|DefaultUnDo.IMergeableUnDo.TryMerge(IUnDo, IUnDo)
+M:DefaultUnDo.ValueUnDo`1.DefaultUnDo#IUnDo#Do|ValueUnDo_T_.DefaultUnDo.IUnDo.Do().md|DefaultUnDo.IUnDo.Do()
+M:DefaultUnDo.ValueUnDo`1.DefaultUnDo#IUnDo#Undo|ValueUnDo_T_.DefaultUnDo.IUnDo.Undo().md|DefaultUnDo.IUnDo.Undo()
+T:DefaultUnDo.ValueUnDo`1|ValueUnDo_T_.md|ValueUnDo<T>
+T:DefaultUnDo.GroupUnDo.MergeDescriptionHandler|GroupUnDo.MergeDescriptionHandler(object,object,object).md|MergeDescriptionHandler(object, object, object)
+T:DefaultUnDo.ValueUnDo.MergeDescriptionHandler|ValueUnDo.MergeDescriptionHandler(object,object).md|MergeDescriptionHandler(object, object)
+T:DefaultUnDo.ValueUnDo`1.MergeDescriptionHandler|ValueUnDo_T_.MergeDescriptionHandler(object,T,object,T).md|MergeDescriptionHandler(object, T, object, T)
