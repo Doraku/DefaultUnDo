@@ -9,8 +9,6 @@ namespace DefaultUnDo
     /// </summary>
     public static class ICollectionExtension
     {
-        #region Methods
-
         /// <summary>
         ///  Wraps an <see cref="ICollection{T}"/> to an UnDo collection linked to an <see cref="IUnDoManager"/> to automatically generate <see cref="IUnDo"/> operations.
         /// </summary>
@@ -20,11 +18,15 @@ namespace DefaultUnDo
         /// <param name="descriptionFactory">Factory used to create the description of the generated <see cref="IUnDo"/>.</param>
         /// <returns>A wrapped <see cref="ICollection{T}"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="manager"/> is null.</exception>
-        public static ICollection<T> AsUnDo<T>(this ICollection<T> source, IUnDoManager manager, Func<UnDoCollectionOperation, object?>? descriptionFactory = null) => new UnDoICollection<T>(
-            manager ?? throw new ArgumentNullException(nameof(manager)),
-            source ?? throw new ArgumentNullException(nameof(source)),
-            descriptionFactory);
+        public static ICollection<T> AsUnDo<T>(this ICollection<T> source, IUnDoManager manager, Func<UnDoCollectionOperation, object?>? descriptionFactory = null)
+        {
+            ArgumentNullException.ThrowIfNull(manager);
+            ArgumentNullException.ThrowIfNull(source);
 
-        #endregion
+            return new UnDoICollection<T>(
+                manager,
+                source,
+                descriptionFactory);
+        }
     }
 }

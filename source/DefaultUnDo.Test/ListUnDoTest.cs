@@ -8,8 +8,6 @@ namespace DefaultUnDo.Test
 {
     public sealed class ListUnDoTest
     {
-        #region Tests
-
         [Fact]
         public void ListUnDo_Should_throw_ArgumentNullException_When_source_is_null()
         {
@@ -94,7 +92,5 @@ namespace DefaultUnDo.Test
 
             Check.That(undo.Description).IsEqualTo("test");
         }
-
-        #endregion
     }
 }

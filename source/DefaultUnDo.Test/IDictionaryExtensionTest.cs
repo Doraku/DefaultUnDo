@@ -8,8 +8,6 @@ namespace DefaultUnDo.Test
 {
     public sealed class IDictionaryExtensionTest
     {
-        #region Methods
-
         [Fact]
         public void AsUnDo_Should_throw_ArgumentNullException_When_source_is_null()
         {
@@ -263,7 +261,5 @@ namespace DefaultUnDo.Test
 
             Check.That(unDoDictionary.Values).IsEqualTo(source.Values);
         }
-
-        #endregion
     }
 }

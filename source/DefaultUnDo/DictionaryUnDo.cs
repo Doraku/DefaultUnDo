@@ -11,18 +11,12 @@ namespace DefaultUnDo
     /// <typeparam name="TValue">Type of the values.</typeparam>
     public sealed class DictionaryUnDo<TKey, TValue> : IUnDo
     {
-        #region Fields
-
         private readonly object? _description;
         private readonly IDictionary<TKey, TValue> _source;
         private readonly TKey _key;
         [AllowNull]
         private readonly TValue _element;
         private readonly bool _isAdd;
-
-        #endregion
-
-        #region Initialisation
 
         /// <summary>
         /// Initialise an instance of <see cref="DictionaryUnDo{TKey, TValue}"/>.
@@ -35,9 +29,12 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="key"/> is null.</exception>
         public DictionaryUnDo(object? description, IDictionary<TKey, TValue> source, TKey key, [AllowNull] TValue value, bool isAdd)
         {
+            ArgumentNullException.ThrowIfNull(source);
+            ArgumentNullException.ThrowIfNull(key);
+
             _description = description;
-            _source = source ?? throw new ArgumentNullException(nameof(source));
-            _key = key ?? throw new ArgumentNullException(nameof(key));
+            _source = source;
+            _key = key;
             _element = value;
             _isAdd = isAdd;
         }
@@ -54,10 +51,6 @@ namespace DefaultUnDo
             : this(null, source, key, value, isAdd)
         { }
 
-        #endregion
-
-        #region Methods
-
         private void Action(bool isAdd)
         {
             if (isAdd)
@@ -69,8 +62,6 @@ namespace DefaultUnDo
                 _source.Remove(_key);
             }
         }
-
-        #endregion
 
         #region IUnDo
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using NFluent;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
@@ -10,8 +9,6 @@ namespace DefaultUnDo.Test
 {
     public sealed class IUnDoManagerExtensionTest
     {
-        #region Tests
-
         [Fact]
         public void DoAdd_ISet_Should_throw_ArgumentNullException_When_manager_is_null()
         {
@@ -64,7 +61,7 @@ namespace DefaultUnDo.Test
         public void DoAdd_ICollection_Should_keep_index_When_source_is_IList()
         {
             IUnDoManager manager = new UnDoManager();
-            ICollection<int> source = new List<int> { 0, 1 };
+            ICollection<int> source = [0, 1];
 
             manager.DoAdd(source, 2);
 
@@ -106,15 +103,14 @@ namespace DefaultUnDo.Test
         [Fact]
         public void DoClear_Should_add_old_elements_When_undone()
         {
-            ICollection<object> source = new List<object>
-            {
-                new object(),
-                new object(),
-                new object()
-            };
+            ICollection<object> source = [
+                new(),
+                new(),
+                new()
+            ];
             IUnDoManager manager = Substitute.For<IUnDoManager>();
             IUnDo undo = null;
-            List<object> sourceCopy = source.ToList();
+            List<object> sourceCopy = [.. source];
 
             manager.Do(Arg.Do<IUnDo>(i => undo = i));
 
@@ -159,7 +155,7 @@ namespace DefaultUnDo.Test
         public void DoRemove_ICollection_Should_keep_index_When_source_is_IList()
         {
             IUnDoManager manager = new UnDoManager();
-            ICollection<int> source = new List<int> { 0, 1 };
+            ICollection<int> source = [0, 1];
 
             manager.DoRemove(source, 0);
 
@@ -460,7 +456,5 @@ namespace DefaultUnDo.Test
                 .Throws<ArgumentNullException>()
                 .WithProperty("ParamName", "setter");
         }
-
-        #endregion
     }
 }

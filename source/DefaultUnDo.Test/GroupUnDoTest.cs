@@ -8,8 +8,6 @@ namespace DefaultUnDo.Test
 {
     public sealed class GroupUnDoTest
     {
-        #region Tests
-
         [Fact]
         public void GroupUnDo_Should_throw_ArgumentNullException_When_commands_is_null()
         {
@@ -40,7 +38,7 @@ namespace DefaultUnDo.Test
         [Fact]
         public void Do_Should_execute_children_Do()
         {
-            List<IUnDo> done = new();
+            List<IUnDo> done = [];
 
             IUnDo undo1 = Substitute.For<IUnDo>();
             undo1.When(u => u.Do()).Do(_ => done.Add(undo1));
@@ -60,7 +58,7 @@ namespace DefaultUnDo.Test
         [Fact]
         public void Undo_Should_execute_children_Undo_in_reverse()
         {
-            List<IUnDo> done = new();
+            List<IUnDo> done = [];
 
             IUnDo undo1 = Substitute.For<IUnDo>();
             undo1.When(u => u.Undo()).Do(_ => done.Add(undo1));
@@ -190,7 +188,5 @@ namespace DefaultUnDo.Test
 
             GroupUnDo.MergeDescriptionAction = null;
         }
-
-        #endregion
     }
 }

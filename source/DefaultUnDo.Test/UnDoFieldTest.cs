@@ -7,8 +7,6 @@ namespace DefaultUnDo.Test
 {
     public sealed class UnDoFieldTest
     {
-        #region Tests
-
         [Fact]
         public void UnDoField_Should_throw_ArgumentNullException_When_manager_is_null()
         {
@@ -68,9 +66,7 @@ namespace DefaultUnDo.Test
         [Fact]
         public void Implicit_Should_return_default_When_null()
         {
-            Check.That(default(int)).IsEqualTo(default(UnDoField<int>));
+            Check.That<int>(default).IsEqualTo((int)default(UnDoField<int>));
         }
-
-        #endregion
     }
 }

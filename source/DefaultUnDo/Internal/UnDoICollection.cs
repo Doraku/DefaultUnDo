@@ -8,16 +8,10 @@ namespace DefaultUnDo.Internal
 {
     internal class UnDoICollection<T> : ICollection<T>, INotifyCollectionChanged, INotifyPropertyChanged
     {
-        #region Fields
-
         private readonly ICollection<T> _source;
 
         protected readonly IUnDoManager _manager;
         protected readonly Func<UnDoCollectionOperation, object?>? _descriptionFactory;
-
-        #endregion
-
-        #region Initialisation
 
         public UnDoICollection(IUnDoManager manager, ICollection<T> source, Func<UnDoCollectionOperation, object?>? descriptionFactory)
         {
@@ -25,8 +19,6 @@ namespace DefaultUnDo.Internal
             _manager = manager;
             _descriptionFactory = descriptionFactory;
         }
-
-        #endregion
 
         #region ICollection
 
@@ -56,7 +48,7 @@ namespace DefaultUnDo.Internal
 
         #region INotifyCollectionChanged
 
-        event NotifyCollectionChangedEventHandler INotifyCollectionChanged.CollectionChanged
+        event NotifyCollectionChangedEventHandler? INotifyCollectionChanged.CollectionChanged
         {
             add
             {
@@ -78,7 +70,7 @@ namespace DefaultUnDo.Internal
 
         #region INotifyPropertyChanged
 
-        event PropertyChangedEventHandler INotifyPropertyChanged.PropertyChanged
+        event PropertyChangedEventHandler? INotifyPropertyChanged.PropertyChanged
         {
             add
             {

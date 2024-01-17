@@ -7,8 +7,6 @@ namespace DefaultUnDo.Test
 {
     public sealed class ValueUnDoTest
     {
-        #region Tests
-
         [Fact]
         public void ValueUnDo_Should_throw_ArgumentNullException_When_setter_is_null()
         {
@@ -171,7 +169,5 @@ namespace DefaultUnDo.Test
             merged.Undo();
             Check.That(item).IsEqualTo(0);
         }
-
-        #endregion
     }
 }

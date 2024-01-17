@@ -10,18 +10,12 @@ namespace DefaultUnDo
     /// <typeparam name="T">The type of element in the <see cref="IList{T}"/>.</typeparam>
     public sealed class ListUnDo<T> : IUnDo
     {
-        #region Fields
-
         private readonly object? _description;
         private readonly IList<T> _source;
         private readonly int _index;
         [AllowNull]
         private readonly T _item;
         private readonly bool _isAdd;
-
-        #endregion
-
-        #region Initialisation
 
         /// <summary>
         /// Initialises an instance of <see cref="ListUnDo{T}"/>.
@@ -34,8 +28,10 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
         public ListUnDo(object? description, IList<T> source, int index, [AllowNull] T item, bool isAdd)
         {
+            ArgumentNullException.ThrowIfNull(source);
+
             _description = description;
-            _source = source ?? throw new ArgumentNullException(nameof(source));
+            _source = source;
             _index = index;
             _item = item;
             _isAdd = isAdd;
@@ -53,10 +49,6 @@ namespace DefaultUnDo
             : this(null, source, index, item, isAdd)
         { }
 
-        #endregion
-
-        #region Methods
-
         private void Action(bool isAdd)
         {
             if (isAdd)
@@ -68,8 +60,6 @@ namespace DefaultUnDo
                 _source.RemoveAt(_index);
             }
         }
-
-        #endregion
 
         #region IUnDo
 

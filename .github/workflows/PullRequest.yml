@@ -16,13 +16,13 @@ jobs:
     - name: Set up dotnet
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '6.0.x'
+        dotnet-version: '8.0.x'
 
-    - name: Run tests net452
-      run: dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f net452 /p:TEST=true
+    - name: Run tests net462
+      run: dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f net462 /p:TEST=true
 
     - name: Run tests net48
       run: dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f net48 /p:TEST=true
 
-    - name: Run tests net6.0
-      run: dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f net6.0 /p:TEST=true
+    - name: Run tests net8.0
+      run: dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f net8.0 /p:TEST=true

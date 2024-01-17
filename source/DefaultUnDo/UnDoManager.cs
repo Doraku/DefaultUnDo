@@ -10,12 +10,8 @@ namespace DefaultUnDo
     /// </summary>
     public sealed class UnDoManager : IUnDoManager
     {
-        #region Types
-
         private sealed class Transaction : IUnDoTransaction
         {
-            #region Fields
-
             private readonly UnDoManager _manager;
             private readonly object? _description;
             private readonly List<IUnDo> _commands;
@@ -23,15 +19,11 @@ namespace DefaultUnDo
             private bool _isCommitted;
             private bool _isDisposed;
 
-            #endregion
-
-            #region Initialisation
-
             public Transaction(UnDoManager manager, object? description)
             {
                 _manager = manager;
                 _description = description;
-                _commands = new List<IUnDo>();
+                _commands = [];
 
                 _isCommitted = false;
                 _isDisposed = false;
@@ -39,26 +31,19 @@ namespace DefaultUnDo
                 _manager._transactions.Push(this);
             }
 
-            #endregion
-
-            #region Methods
-
             public void Add(IUnDo command) => _commands.Add(command);
-
-            #endregion
 
             #region IUnDoTransaction
 
             public void Commit()
             {
-                if (_isDisposed)
-                {
-                    throw new ObjectDisposedException(nameof(IUnDoTransaction));
-                }
+                ObjectDisposedException.ThrowIf(_isDisposed, this);
+
                 if (_isCommitted)
                 {
                     throw new InvalidOperationException("Current transaction has already been committed");
                 }
+
                 if (_manager._transactions.Peek() != this)
                 {
                     throw new InvalidOperationException("Current transaction is not the highest one on the stack");
@@ -67,7 +52,7 @@ namespace DefaultUnDo
                 _manager._transactions.Pop();
                 if (_commands.Count > 0)
                 {
-                    IUnDo group = new GroupUnDo(_description, _commands.ToArray());
+                    IUnDo group = new GroupUnDo(_description, [.. _commands]);
                     if (_manager._transactions.Count > 0)
                     {
                         _manager._transactions.Peek().Add(group);
@@ -112,20 +97,12 @@ namespace DefaultUnDo
             #endregion
         }
 
-        #endregion
-
-        #region Fields
-
         private readonly IUnDoStack _stack;
         private readonly Stack<Transaction> _transactions;
 
         private int _cyclicDepth;
         private int _version;
         private int _lastVersion;
-
-        #endregion
-
-        #region Initialisation
 
         /// <summary>
         /// Initialises an instance of <see cref="UnDoManager"/>.
@@ -153,13 +130,7 @@ namespace DefaultUnDo
             : this(int.MaxValue)
         { }
 
-        #endregion
-
-        #region Methods
-
         private void Push(IUnDo command) => Version = _stack.Push(command, ++_lastVersion, Version);
-
-        #endregion
 
         #region IUnDoManager
 
@@ -213,6 +184,7 @@ namespace DefaultUnDo
         /// <summary>
         /// Clears the history of <see cref="IUnDo"/> operations.
         /// </summary>
+        /// <exception cref="InvalidOperationException">Cannot perform Clear while a transaction is going on.</exception>
         public void Clear()
         {
             if (_transactions.Count > 0)
@@ -235,10 +207,7 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentNullException"><paramref name="command"/> is null.</exception>
         public void Do(IUnDo command)
         {
-            if (command is null)
-            {
-                throw new ArgumentNullException(nameof(command));
-            }
+            ArgumentNullException.ThrowIfNull(command);
 
             try
             {
@@ -274,6 +243,7 @@ namespace DefaultUnDo
             {
                 throw new InvalidOperationException("Cannot perform Undo while a transaction is going on.");
             }
+
             if (!CanUndo)
             {
                 throw new InvalidOperationException("No operation to undo.");
@@ -301,6 +271,7 @@ namespace DefaultUnDo
             {
                 throw new InvalidOperationException("Cannot perform Redo while a transaction is going on.");
             }
+
             if (!CanRedo)
             {
                 throw new InvalidOperationException("No operation to redo.");

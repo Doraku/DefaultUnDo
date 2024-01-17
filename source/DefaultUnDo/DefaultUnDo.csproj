@@ -2,8 +2,8 @@
   <PropertyGroup Label="Compilation">
     <TargetFrameworks>
 	  netstandard1.0;
-	  netstandard2.0;
 	  netstandard2.1;
+	  net8.0;
 	</TargetFrameworks>
 	<Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="DefaultDocumentation" Version="0.8.0" PrivateAssets="all" Condition="'$(GITHUB_ACTIONS)' == 'true' AND '$(TEST)' != 'true' AND '$(CI_VERSION)' != 'true'" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
   </ItemGroup>
 
   <PropertyGroup Label="Package">

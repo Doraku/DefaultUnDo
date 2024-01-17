@@ -6,7 +6,7 @@ namespace DefaultUnDo
     /// <summary>
     /// Provides a simple wrapper for a field to automatically generate <see cref="IUnDo"/> operations.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type of the filed.</typeparam>
     public class UnDoField<T>
         where T : notnull
     {
@@ -35,7 +35,9 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> is null.</exception>
         public UnDoField(IUnDoManager manager, [AllowNull] T value, Func<UnDoFieldChange<T>, object?>? descriptionFactory = null)
         {
-            _manager = manager ?? throw new ArgumentNullException(nameof(manager));
+            ArgumentNullException.ThrowIfNull(manager);
+
+            _manager = manager;
             _descriptionFactory = descriptionFactory;
 
             _value = value;
@@ -78,15 +80,9 @@ namespace DefaultUnDo
         /// <summary>
         ///Defines an implicit conversion of a <see cref="UnDoField{T}"/> to a <typeparamref name="T"/>.
         /// </summary>
-        /// <param name="field"></param>
+        /// <param name="field">The field to implicitely convert.</param>
         [return: MaybeNull]
-        public static implicit operator T(UnDoField<T> field) => field is null ? default : field.ToT();
-
-        /// <summary>
-        /// Returns the underlying <typeparamref name="T"/>.
-        /// </summary>
-        /// <returns>The underlying <typeparamref name="T"/>.</returns>
-        [return: MaybeNull]
-        public T ToT() => Value;
+        [SuppressMessage("Usage", "CA2225:Operator overloads have named alternates", Justification = "Value property")]
+        public static implicit operator T(UnDoField<T> field) => field is null ? default : field.Value;
     }
 }

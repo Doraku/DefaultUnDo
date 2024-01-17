@@ -9,8 +9,6 @@ namespace DefaultUnDo.Test
 {
     public sealed class IListExtensionTest
     {
-        #region Tests
-
         [Fact]
         public void AsUnDo_Should_throw_ArgumentNullException_When_source_is_null()
         {
@@ -202,7 +200,7 @@ namespace DefaultUnDo.Test
         [Fact]
         public void Move_Should_move_item()
         {
-            List<int> items = new() { 1, 2 };
+            List<int> items = [1, 2];
 
             items.Move(0, 1);
 
@@ -265,7 +263,5 @@ namespace DefaultUnDo.Test
             Check.That(description.Value.Parameters[0]).IsEqualTo(42);
             Check.That(description.Value.Parameters[1]).IsEqualTo(43);
         }
-
-        #endregion
     }
 }

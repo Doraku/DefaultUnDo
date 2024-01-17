@@ -4,23 +4,15 @@ using System.Linq;
 
 namespace DefaultUnDo.Internal
 {
-    internal class UnDoISet<T> : UnDoICollection<T>, ISet<T>
+    internal sealed class UnDoISet<T> : UnDoICollection<T>, ISet<T>
     {
-        #region Fields
-
         private readonly ISet<T> _source;
-
-        #endregion
-
-        #region Initialisation
 
         public UnDoISet(IUnDoManager manager, ISet<T> source, Func<UnDoCollectionOperation, object?>? descriptionFactory)
             : base(manager, source, descriptionFactory)
         {
             _source = source;
         }
-
-        #endregion
 
         #region ISet
 

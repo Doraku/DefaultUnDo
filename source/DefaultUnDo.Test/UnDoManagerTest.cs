@@ -8,16 +8,7 @@ namespace DefaultUnDo.Test
 {
     public sealed class UnDoManagerTest
     {
-        #region Methods
-
-        public static IEnumerable<object[]> UnDoManagers
-        {
-            get
-            {
-                yield return new object[] { new UnDoManager() };
-                yield return new object[] { new UnDoManager(10) };
-            }
-        }
+        public static TheoryData<IUnDoManager> UnDoManagers => new(new UnDoManager(), new UnDoManager(10));
 
         [Fact]
         public void UnDoManager_maxCapacity_Should_throw_ArgumentException_When_maxCapacity_is_inferior_or_equal_to_zero()
@@ -255,7 +246,7 @@ namespace DefaultUnDo.Test
         public void Undo_Should_throw_InvalidOperationException_When_CanUndo_is_false(IUnDoManager manager)
         {
             Check
-                .ThatCode(() => manager.Undo())
+                .ThatCode(manager.Undo)
                 .Throws<InvalidOperationException>();
         }
 
@@ -266,7 +257,7 @@ namespace DefaultUnDo.Test
             using (manager.BeginTransaction())
             {
                 Check
-                    .ThatCode(() => manager.Undo())
+                    .ThatCode(manager.Undo)
                     .Throws<InvalidOperationException>()
                     .WithMessage("Cannot perform Undo while a transaction is going on.");
             }
@@ -292,7 +283,7 @@ namespace DefaultUnDo.Test
         public void Redo_Should_throw_InvalidOperationException_When_CanRedo_is_false(IUnDoManager manager)
         {
             Check
-                .ThatCode(() => manager.Redo())
+                .ThatCode(manager.Redo)
                 .Throws<InvalidOperationException>();
         }
 
@@ -303,7 +294,7 @@ namespace DefaultUnDo.Test
             using (manager.BeginTransaction())
             {
                 Check
-                    .ThatCode(() => manager.Redo())
+                    .ThatCode(manager.Redo)
                     .Throws<InvalidOperationException>()
                     .WithMessage("Cannot perform Redo while a transaction is going on.");
             }
@@ -330,7 +321,7 @@ namespace DefaultUnDo.Test
         [MemberData(nameof(UnDoManagers))]
         public void PropertyChanged_Should_be_called(IUnDoManager manager)
         {
-            List<string> properties = new();
+            List<string> properties = [];
             manager.PropertyChanged += (_, e) => properties.Add(e.PropertyName);
 
             manager.Do(() => { }, () => { });
@@ -522,7 +513,5 @@ namespace DefaultUnDo.Test
 
             Check.That(unDone).IsTrue();
         }
-
-        #endregion
     }
 }

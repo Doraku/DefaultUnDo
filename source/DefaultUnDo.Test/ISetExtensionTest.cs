@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using NFluent;
 using NSubstitute;
@@ -10,8 +9,6 @@ namespace DefaultUnDo.Test
 {
     public sealed class ISetExtensionTest
     {
-        #region Tests
-
         [Fact]
         public void AsUnDo_Should_throw_ArgumentNullException_When_source_is_null()
         {
@@ -83,7 +80,7 @@ namespace DefaultUnDo.Test
             IUnDoManager manager = new UnDoManager();
             ISet<int> unDoSet = new HashSet<int> { 1, 2, 3 }.AsUnDo(manager);
 
-            unDoSet.ExceptWith(new[] { 2 });
+            unDoSet.ExceptWith([2]);
 
             Check.That(unDoSet.OrderBy(i => i)).ContainsExactly(1, 3);
 
@@ -93,9 +90,6 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
-#if !NET452
-        [SuppressMessage("Performance", "CA1825")]
-#endif
         public void UnDoSet_ExceptWith_Should_generate_ExceptWith_description()
         {
             ISet<object> source = Substitute.For<ISet<object>>();
@@ -108,7 +102,7 @@ namespace DefaultUnDo.Test
 
             ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            IEnumerable<object> other = new object[0];
+            IEnumerable<object> other = [];
             unDoCollection.ExceptWith(other);
 
             Check.That(description.HasValue).IsTrue();
@@ -124,7 +118,7 @@ namespace DefaultUnDo.Test
             IUnDoManager manager = new UnDoManager();
             ISet<int> unDoSet = new HashSet<int> { 1, 2, 3 }.AsUnDo(manager);
 
-            unDoSet.IntersectWith(new[] { 2 });
+            unDoSet.IntersectWith([2]);
 
             Check.That(unDoSet.OrderBy(i => i)).ContainsExactly(2);
 
@@ -134,9 +128,6 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
-#if !NET452
-        [SuppressMessage("Performance", "CA1825")]
-#endif
         public void UnDoSet_IntersectWith_Should_generate_IntersectWith_description()
         {
             ISet<object> source = Substitute.For<ISet<object>>();
@@ -149,7 +140,7 @@ namespace DefaultUnDo.Test
 
             ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            IEnumerable<object> other = new object[0];
+            IEnumerable<object> other = [];
             unDoCollection.IntersectWith(Enumerable.Empty<object>());
 
             Check.That(description.HasValue).IsTrue();
@@ -267,7 +258,7 @@ namespace DefaultUnDo.Test
             IUnDoManager manager = new UnDoManager();
             ISet<int> unDoSet = new HashSet<int> { 1, 2, 3 }.AsUnDo(manager);
 
-            unDoSet.SymmetricExceptWith(new[] { 2, 3, 4 });
+            unDoSet.SymmetricExceptWith([2, 3, 4]);
 
             Check.That(unDoSet.OrderBy(i => i)).ContainsExactly(1, 4);
 
@@ -277,9 +268,6 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
-#if !NET452
-        [SuppressMessage("Performance", "CA1825")]
-#endif
         public void UnDoSet_SymmetricExceptWith_Should_generate_SymmetricExceptWith_description()
         {
             ISet<object> source = Substitute.For<ISet<object>>();
@@ -291,7 +279,7 @@ namespace DefaultUnDo.Test
 
             ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            IEnumerable<object> other = new object[0];
+            IEnumerable<object> other = [];
             unDoCollection.SymmetricExceptWith(other);
 
             Check.That(description.HasValue).IsTrue();
@@ -307,7 +295,7 @@ namespace DefaultUnDo.Test
             IUnDoManager manager = new UnDoManager();
             ISet<int> unDoSet = new HashSet<int> { 1, 2, 3 }.AsUnDo(manager);
 
-            unDoSet.UnionWith(new[] { 2, 3, 4 });
+            unDoSet.UnionWith([2, 3, 4]);
 
             Check.That(unDoSet.OrderBy(i => i)).ContainsExactly(1, 2, 3, 4);
 
@@ -317,9 +305,6 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
-#if !NET452
-        [SuppressMessage("Performance", "CA1825")]
-#endif
         public void UnDoSet_UnionWith_Should_generate_UnionWith_description()
         {
             ISet<object> source = Substitute.For<ISet<object>>();
@@ -331,7 +316,7 @@ namespace DefaultUnDo.Test
 
             ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            IEnumerable<object> other = new object[0];
+            IEnumerable<object> other = [];
             unDoCollection.UnionWith(other);
 
             Check.That(description.HasValue).IsTrue();
@@ -340,7 +325,5 @@ namespace DefaultUnDo.Test
             Check.That(description.Value.Parameters.Length).IsEqualTo(1);
             Check.That(description.Value.Parameters[0]).IsEqualTo(other);
         }
-
-        #endregion
     }
 }

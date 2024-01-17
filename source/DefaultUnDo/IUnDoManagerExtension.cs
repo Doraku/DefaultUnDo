@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 
 namespace DefaultUnDo
 {
@@ -10,8 +9,6 @@ namespace DefaultUnDo
     /// </summary>
     public static class IUnDoManagerExtension
     {
-        #region Methods
-
         /// <summary>
         /// Adds an item from a <see cref="ISet{T}"/> as a <see cref="IUnDo"/> operation.
         /// </summary>
@@ -24,14 +21,8 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> or <paramref name="source"/> is null.</exception>
         public static bool DoAdd<T>(this IUnDoManager manager, ISet<T> source, [AllowNull] T item, object? description = null)
         {
-            if (manager is null)
-            {
-                throw new ArgumentNullException(nameof(manager));
-            }
-            if (source is null)
-            {
-                throw new ArgumentNullException(nameof(source));
-            }
+            ArgumentNullException.ThrowIfNull(manager);
+            ArgumentNullException.ThrowIfNull(source);
 
             bool result = !source.Contains(item!);
 
@@ -54,14 +45,8 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> or <paramref name="source"/> is null.</exception>
         public static void DoAdd<T>(this IUnDoManager manager, ICollection<T> source, [AllowNull] T item, object? description = null)
         {
-            if (manager is null)
-            {
-                throw new ArgumentNullException(nameof(manager));
-            }
-            if (source is null)
-            {
-                throw new ArgumentNullException(nameof(source));
-            }
+            ArgumentNullException.ThrowIfNull(manager);
+            ArgumentNullException.ThrowIfNull(source);
 
             if (source is IList<T> list)
             {
@@ -83,18 +68,12 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> or <paramref name="source"/> is null.</exception>
         public static void DoClear<T>(this IUnDoManager manager, ICollection<T> source, object? description = null)
         {
-            if (manager is null)
-            {
-                throw new ArgumentNullException(nameof(manager));
-            }
-            if (source is null)
-            {
-                throw new ArgumentNullException(nameof(source));
-            }
+            ArgumentNullException.ThrowIfNull(manager);
+            ArgumentNullException.ThrowIfNull(source);
 
             if (source.Count > 0)
             {
-                T[] oldValues = source.ToArray();
+                T[] oldValues = [.. source];
 
                 manager.Do(source.Clear, () => { foreach (T oldValue in oldValues) { source.Add(oldValue); } }, description);
             }
@@ -112,14 +91,8 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> or <paramref name="source"/> is null.</exception>
         public static bool DoRemove<T>(this IUnDoManager manager, ICollection<T> source, [AllowNull] T item, object? description = null)
         {
-            if (manager is null)
-            {
-                throw new ArgumentNullException(nameof(manager));
-            }
-            if (source is null)
-            {
-                throw new ArgumentNullException(nameof(source));
-            }
+            ArgumentNullException.ThrowIfNull(manager);
+            ArgumentNullException.ThrowIfNull(source);
 
             bool result = false;
 
@@ -154,18 +127,9 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentNullException"><paramref name="manager"/>, <paramref name="source"/> or <paramref name="key"/> is null.</exception>
         public static void DoAdd<TKey, TValue>(this IUnDoManager manager, IDictionary<TKey, TValue> source, TKey key, [AllowNull] TValue value, object? description = null)
         {
-            if (manager is null)
-            {
-                throw new ArgumentNullException(nameof(manager));
-            }
-            if (source is null)
-            {
-                throw new ArgumentNullException(nameof(source));
-            }
-            if (key is null)
-            {
-                throw new ArgumentNullException(nameof(key));
-            }
+            ArgumentNullException.ThrowIfNull(manager);
+            ArgumentNullException.ThrowIfNull(source);
+            ArgumentNullException.ThrowIfNull(key);
 
             manager.Do(new DictionaryUnDo<TKey, TValue>(description, source, key, value, true));
         }
@@ -183,21 +147,12 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentNullException"><paramref name="manager"/>, <paramref name="source"/> or <paramref name="key"/> is null.</exception>
         public static bool DoRemove<TKey, TValue>(this IUnDoManager manager, IDictionary<TKey, TValue> source, TKey key, object? description = null)
         {
-            if (manager is null)
-            {
-                throw new ArgumentNullException(nameof(manager));
-            }
-            if (source is null)
-            {
-                throw new ArgumentNullException(nameof(source));
-            }
-            if (key is null)
-            {
-                throw new ArgumentNullException(nameof(key));
-            }
+            ArgumentNullException.ThrowIfNull(manager);
+            ArgumentNullException.ThrowIfNull(source);
+            ArgumentNullException.ThrowIfNull(key);
 
             bool result = false;
-            if (source.TryGetValue(key, out TValue value))
+            if (source.TryGetValue(key, out TValue? value))
             {
                 manager.Do(new DictionaryUnDo<TKey, TValue>(description, source, key, value, false));
                 result = true;
@@ -219,20 +174,11 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentNullException"><paramref name="manager"/>, <paramref name="source"/> or <paramref name="key"/> is null.</exception>
         public static void Do<TKey, TValue>(this IUnDoManager manager, IDictionary<TKey, TValue> source, TKey key, [AllowNull] TValue value, object? description = null)
         {
-            if (manager is null)
-            {
-                throw new ArgumentNullException(nameof(manager));
-            }
-            if (source is null)
-            {
-                throw new ArgumentNullException(nameof(source));
-            }
-            if (key is null)
-            {
-                throw new ArgumentNullException(nameof(key));
-            }
+            ArgumentNullException.ThrowIfNull(manager);
+            ArgumentNullException.ThrowIfNull(source);
+            ArgumentNullException.ThrowIfNull(key);
 
-            if (source.TryGetValue(key, out TValue oldValue))
+            if (source.TryGetValue(key, out TValue? oldValue))
             {
                 manager.Do(v => source[key] = v!, value, oldValue, description);
             }
@@ -254,14 +200,8 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> or <paramref name="source"/> is null.</exception>
         public static void DoInsert<T>(this IUnDoManager manager, IList<T> source, int index, [AllowNull] T item, object? description = null)
         {
-            if (manager is null)
-            {
-                throw new ArgumentNullException(nameof(manager));
-            }
-            if (source is null)
-            {
-                throw new ArgumentNullException(nameof(source));
-            }
+            ArgumentNullException.ThrowIfNull(manager);
+            ArgumentNullException.ThrowIfNull(source);
 
             manager.Do(new ListUnDo<T>(description, source, index, item, true));
         }
@@ -277,14 +217,8 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> or <paramref name="source"/> is null.</exception>
         public static void DoRemoveAt<T>(this IUnDoManager manager, IList<T> source, int index, object? description = null)
         {
-            if (manager is null)
-            {
-                throw new ArgumentNullException(nameof(manager));
-            }
-            if (source is null)
-            {
-                throw new ArgumentNullException(nameof(source));
-            }
+            ArgumentNullException.ThrowIfNull(manager);
+            ArgumentNullException.ThrowIfNull(source);
 
             manager.Do(new ListUnDo<T>(description, source, index, source[index], false));
         }
@@ -301,14 +235,8 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> or <paramref name="source"/> is null.</exception>
         public static void Do<T>(this IUnDoManager manager, IList<T> source, int index, [AllowNull] T item, object? description = null)
         {
-            if (manager is null)
-            {
-                throw new ArgumentNullException(nameof(manager));
-            }
-            if (source is null)
-            {
-                throw new ArgumentNullException(nameof(source));
-            }
+            ArgumentNullException.ThrowIfNull(manager);
+            ArgumentNullException.ThrowIfNull(source);
 
             manager.Do(v => source[index] = v!, item, source[index], description);
         }
@@ -323,10 +251,7 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> is null.</exception>
         public static void Do(this IUnDoManager manager, Action? doAction, Action? undoAction, object? description = null)
         {
-            if (manager is null)
-            {
-                throw new ArgumentNullException(nameof(manager));
-            }
+            ArgumentNullException.ThrowIfNull(manager);
 
             if (doAction != null || undoAction != null)
             {
@@ -364,18 +289,10 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentNullException"><paramref name="manager"/> or <paramref name="setter"/> is null.</exception>
         public static void Do<T>(this IUnDoManager manager, Action<T> setter, [AllowNull] T newValue, [AllowNull] T oldValue, object? description = null)
         {
-            if (manager is null)
-            {
-                throw new ArgumentNullException(nameof(manager));
-            }
-            if (setter is null)
-            {
-                throw new ArgumentNullException(nameof(setter));
-            }
+            ArgumentNullException.ThrowIfNull(manager);
+            ArgumentNullException.ThrowIfNull(setter);
 
             manager.Do(new ValueUnDo<T>(description, setter, newValue, oldValue));
         }
-
-        #endregion
     }
 }

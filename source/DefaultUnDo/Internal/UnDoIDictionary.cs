@@ -1,25 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DefaultUnDo.Internal
 {
-    internal class UnDoIDictionary<TKey, TValue> : UnDoICollection<KeyValuePair<TKey, TValue>>, IDictionary<TKey, TValue>
+    internal sealed class UnDoIDictionary<TKey, TValue> : UnDoICollection<KeyValuePair<TKey, TValue>>, IDictionary<TKey, TValue>
     {
-        #region Fields
-
         private readonly IDictionary<TKey, TValue> _source;
-
-        #endregion
-
-        #region Initialisation
 
         public UnDoIDictionary(IUnDoManager manager, IDictionary<TKey, TValue> source, Func<UnDoCollectionOperation, object?>? descriptionFactory)
             : base(manager, source, descriptionFactory)
         {
             _source = source;
         }
-
-        #endregion
 
         #region IDictionary
 
@@ -29,7 +22,13 @@ namespace DefaultUnDo.Internal
 
         bool IDictionary<TKey, TValue>.Remove(TKey key) => _manager.DoRemove(_source, key, _descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.IDictionaryRemove, key)));
 
-        bool IDictionary<TKey, TValue>.TryGetValue(TKey key, out TValue value) => _source.TryGetValue(key, out value);
+        bool IDictionary<TKey, TValue>.TryGetValue(
+            TKey key,
+#if NET5_0_OR_GREATER
+            [MaybeNullWhen(false)]
+#endif
+            out TValue value)
+            => _source.TryGetValue(key, out value);
 
         TValue IDictionary<TKey, TValue>.this[TKey key]
         {

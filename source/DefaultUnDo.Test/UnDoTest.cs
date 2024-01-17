@@ -5,8 +5,6 @@ namespace DefaultUnDo.Test
 {
     public sealed class UnDoTest
     {
-        #region Tests
-
         [Fact]
         public void Do_Should_not_throw_When_doAction_is_null()
         {
@@ -56,7 +54,5 @@ namespace DefaultUnDo.Test
 
             Check.That(undo.Description).IsEqualTo("test");
         }
-
-        #endregion
     }
 }

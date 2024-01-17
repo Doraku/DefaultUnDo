@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
 using NFluent;
 using NSubstitute;
 using Xunit;
@@ -12,8 +11,6 @@ namespace DefaultUnDo.Test
 {
     public sealed class ICollectionExtensionTest
     {
-        #region Methods
-
         [Fact]
         public void AsUnDo_Should_throw_ArgumentNullException_When_source_is_null()
         {
@@ -140,14 +137,11 @@ namespace DefaultUnDo.Test
         }
 
         [Fact]
-#if !NET452
-        [SuppressMessage("Performance", "CA1825")]
-#endif
         public void UnDoCollection_CopyTo_Should_CopyTo()
         {
             ICollection<object> source = Substitute.For<ICollection<object>>();
             IUnDoManager manager = Substitute.For<IUnDoManager>();
-            object[] values = new object[0];
+            object[] values = [];
             const int index = 42;
 
             bool done = false;
@@ -328,7 +322,5 @@ namespace DefaultUnDo.Test
 
             Check.That(done).IsTrue();
         }
-
-        #endregion
     }
 }

@@ -4,25 +4,15 @@ using System.Collections.ObjectModel;
 
 namespace DefaultUnDo.Internal
 {
-    internal class UnDoIList<T> : UnDoICollection<T>, IList<T>
+    internal sealed class UnDoIList<T> : UnDoICollection<T>, IList<T>
     {
-        #region Fields
-
         private readonly IList<T> _source;
-
-        #endregion
-
-        #region Initialisation
 
         public UnDoIList(IUnDoManager manager, IList<T> source, Func<UnDoCollectionOperation, object?>? descriptionFactory)
             : base(manager, source, descriptionFactory)
         {
             _source = source;
         }
-
-        #endregion
-
-        #region Methods
 
         public void Move(int oldIndex, int newIndex)
         {
@@ -45,8 +35,6 @@ namespace DefaultUnDo.Internal
                 transaction.Commit();
             }
         }
-
-        #endregion
 
         #region IList
 

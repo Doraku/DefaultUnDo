@@ -9,8 +9,6 @@ namespace DefaultUnDo
     /// </summary>
     public static class IDictionaryExtension
     {
-        #region Methods
-
         /// <summary>
         ///  Wraps an <see cref="IDictionary{TKey, TValue}"/> to an UnDo dictionary linked to an <see cref="IUnDoManager"/> to automatically generate <see cref="IUnDo"/> operations.
         /// </summary>
@@ -21,11 +19,15 @@ namespace DefaultUnDo
         /// <param name="descriptionFactory">Factory used to create the description of the generated <see cref="IUnDo"/>.</param>
         /// <returns>A wrapped <see cref="IDictionary{TKey, TValue}"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="manager"/> is null.</exception>
-        public static IDictionary<TKey, TValue> AsUnDo<TKey, TValue>(this IDictionary<TKey, TValue> source, IUnDoManager manager, Func<UnDoCollectionOperation, object?>? descriptionFactory = null) => new UnDoIDictionary<TKey, TValue>(
-            manager ?? throw new ArgumentNullException(nameof(manager)),
-            source ?? throw new ArgumentNullException(nameof(source)),
-            descriptionFactory);
+        public static IDictionary<TKey, TValue> AsUnDo<TKey, TValue>(this IDictionary<TKey, TValue> source, IUnDoManager manager, Func<UnDoCollectionOperation, object?>? descriptionFactory = null)
+        {
+            ArgumentNullException.ThrowIfNull(source);
+            ArgumentNullException.ThrowIfNull(manager);
 
-        #endregion
+            return new UnDoIDictionary<TKey, TValue>(
+                manager,
+                source,
+                descriptionFactory);
+        }
     }
 }

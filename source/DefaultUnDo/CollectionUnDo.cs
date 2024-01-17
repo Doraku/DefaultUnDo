@@ -10,17 +10,11 @@ namespace DefaultUnDo
     /// <typeparam name="T">The type of element in the <see cref="ICollection{T}"/>.</typeparam>
     public sealed class CollectionUnDo<T> : IUnDo
     {
-        #region Fields
-
         private readonly object? _description;
         private readonly ICollection<T> _source;
         [AllowNull]
         private readonly T _item;
         private readonly bool _isAdd;
-
-        #endregion
-
-        #region Initialisation
 
         /// <summary>
         /// Initialise an instance of <see cref="CollectionUnDo{T}"/>.
@@ -32,8 +26,10 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
         public CollectionUnDo(object? description, ICollection<T> source, [AllowNull] T item, bool isAdd)
         {
+            ArgumentNullException.ThrowIfNull(source);
+
             _description = description;
-            _source = source ?? throw new ArgumentNullException(nameof(source));
+            _source = source;
             _item = item;
             _isAdd = isAdd;
         }
@@ -49,10 +45,6 @@ namespace DefaultUnDo
             : this(null, source, item, isAdd)
         { }
 
-        #endregion
-
-        #region Methods
-
         private void Action(bool isAdd)
         {
             if (isAdd)
@@ -64,8 +56,6 @@ namespace DefaultUnDo
                 _source.Remove(_item);
             }
         }
-
-        #endregion
 
         #region IUnDo
 

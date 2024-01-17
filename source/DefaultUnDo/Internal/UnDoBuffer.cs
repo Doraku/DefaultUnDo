@@ -37,6 +37,7 @@ namespace DefaultUnDo.Internal
                         {
                             i += _buffer.Length;
                         }
+
                         if (i == _tail)
                         {
                             if (_currentState is true)
@@ -64,6 +65,7 @@ namespace DefaultUnDo.Internal
                         {
                             i = 0;
                         }
+
                         if (i == _head)
                         {
                             if (_currentState is false)

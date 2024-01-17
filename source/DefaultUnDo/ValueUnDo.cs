@@ -44,8 +44,6 @@ namespace DefaultUnDo
         /// <returns>The new description that will be using for the resulting merged <see cref="ValueUnDo{T}"/>.</returns>
         public delegate object MergeDescriptionHandler(object? oldDescription, T oldValue, object? newDescription, T newValue);
 
-        #region Fields
-
         private readonly DateTime _timeStamp;
         private readonly object? _description;
         private readonly Action<T> _setter;
@@ -54,26 +52,16 @@ namespace DefaultUnDo
         [AllowNull]
         private readonly T _oldValue;
 
-        #endregion
-
-        #region Properties
-
         /// <summary>
         /// The <see cref="TimeSpan"/> interval equivalent <see cref="ValueUnDo{T}"/> instances should respect to be mergeable.
         /// If not set, <see cref="ValueUnDo.MergeInterval"/> will be used.
         /// </summary>
-        [SuppressMessage("Design", "RCS1158:Static member in generic type should use a type parameter.")]
         public static TimeSpan? MergeInterval { get; set; }
 
         /// <summary>
         /// The <see cref="MergeDescriptionHandler"/> used to merge description between two <see cref="ValueUnDo{T}"/> instance.
         /// </summary>
-        [SuppressMessage("Design", "RCS1158:Static member in generic type should use a type parameter.")]
         public static MergeDescriptionHandler? MergeDescriptionAction { get; set; }
-
-        #endregion
-
-        #region Initialisation
 
         /// <summary>
         /// Initialises an instance of <see cref="ValueUnDo{T}"/>.
@@ -85,9 +73,11 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentNullException"><paramref name="setter"/> is null.</exception>
         public ValueUnDo(object? description, Action<T> setter, [AllowNull] T newValue, [AllowNull] T oldValue)
         {
+            ArgumentNullException.ThrowIfNull(setter);
+
             _timeStamp = DateTime.Now;
             _description = description;
-            _setter = setter ?? throw new ArgumentNullException(nameof(setter));
+            _setter = setter;
             _newValue = newValue;
             _oldValue = oldValue;
         }
@@ -102,8 +92,6 @@ namespace DefaultUnDo
         public ValueUnDo(Action<T> setter, T newValue, T oldValue)
             : this(null, setter, newValue, oldValue)
         { }
-
-        #endregion
 
         #region IMergeableUnDo
 

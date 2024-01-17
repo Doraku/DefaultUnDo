@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace DefaultUnDo
 {
@@ -18,23 +18,13 @@ namespace DefaultUnDo
         /// <returns>The final description to use.</returns>
         public delegate object MergeDescriptionHandler(object? oldDescription, object? newDescription, object? mergedDescription);
 
-        #region Fields
-
         private readonly object? _description;
         private readonly IUnDo[] _commands;
-
-        #endregion
-
-        #region Properties
 
         /// <summary>
         /// The <see cref="MergeDescriptionHandler"/> used to merge description between a <see cref="GroupUnDo"/> and a <see cref="IMergeableUnDo"/> instances.
         /// </summary>
         public static MergeDescriptionHandler? MergeDescriptionAction { get; set; }
-
-        #endregion
-
-        #region Initialisation
 
         /// <summary>
         /// Initialise an instance of <see cref="GroupUnDo"/>.
@@ -45,13 +35,16 @@ namespace DefaultUnDo
         /// <exception cref="ArgumentException"><paramref name="commands"/> contains null elements.</exception>
         public GroupUnDo(object? description, params IUnDo[] commands)
         {
+            ArgumentNullException.ThrowIfNull(commands);
+
             _description = description;
-            _commands = commands ?? throw new ArgumentNullException(nameof(commands));
+            _commands = commands;
 
             if (_commands.Length is 0)
             {
                 throw new ArgumentException("IUnDo sequence contains no elements.", nameof(commands));
             }
+
             if (_commands.Any(i => i is null))
             {
                 throw new ArgumentException("IUnDo sequence contains null elements.", nameof(commands));
@@ -67,10 +60,6 @@ namespace DefaultUnDo
         public GroupUnDo(params IUnDo[] commands)
             : this(null, commands)
         { }
-
-        #endregion
-
-        #region Method
 
         /// <summary>
         /// Gets the single <typeparamref name="T"/> of this instance.
@@ -88,8 +77,6 @@ namespace DefaultUnDo
 
             return command != null;
         }
-
-        #endregion
 
         #region IMergeableUnDo
 

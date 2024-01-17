@@ -7,15 +7,9 @@ namespace DefaultUnDo
     /// </summary>
     public sealed class UnDo : IUnDo
     {
-        #region Fields
-
         private readonly object? _description;
         private readonly Action? _doAction;
         private readonly Action? _undoAction;
-
-        #endregion
-
-        #region Initialisation
 
         /// <summary>
         /// Initialises an instance of <see cref="UnDo"/>.
@@ -38,8 +32,6 @@ namespace DefaultUnDo
         public UnDo(Action? doAction, Action? undoAction)
             : this(null, doAction, undoAction)
         { }
-
-        #endregion
 
         #region IUnDo
 
