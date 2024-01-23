@@ -1,11 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup Label="Compilation">
     <TargetFrameworks>
-	  netstandard1.0;
-	  netstandard2.1;
-	  net8.0;
-	</TargetFrameworks>
-	<Nullable>enable</Nullable>
+      netstandard1.0;
+      netstandard2.1;
+      net8.0;
+    </TargetFrameworks>
+    <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
@@ -55,4 +56,5 @@
       <PackageReleaseNotes>@(ReleaseNotesLines, '%0a')</PackageReleaseNotes>
     </PropertyGroup>
   </Target>
+  
 </Project>
