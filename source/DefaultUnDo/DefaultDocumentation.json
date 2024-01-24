@@ -13,5 +13,6 @@
 			"TableOfContents"
 		],
 		"Markdown.TableOfContentsModes": "IncludeKind,IncludeSummary"
-	}
+	},
+	"LogLevel":  "Trace"
 }
