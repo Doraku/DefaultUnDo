@@ -8,7 +8,6 @@ namespace DefaultUnDo
     /// </summary>
     /// <typeparam name="T">The type of the filed.</typeparam>
     public class UnDoField<T>
-        where T : notnull
     {
         private readonly IUnDoManager _manager;
         private readonly Func<UnDoFieldChange<T>, object?>? _descriptionFactory;
