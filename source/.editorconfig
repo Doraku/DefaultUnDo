@@ -264,7 +264,7 @@ dotnet_diagnostic.IDE0290.severity = none
 # RCS1189: Add or remove region name
 dotnet_diagnostic.RCS1189.severity = none
 
-[**/{CSharpFeatures,Extensions}/**.cs]
+[**/{MissingAPIs,Extensions}/**.cs]
 
 # IDE0130: Namespace does not match folder structure
 dotnet_diagnostic.IDE0130.severity = none
