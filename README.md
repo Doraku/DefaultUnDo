@@ -1,21 +1,22 @@
 # DefaultUnDo
 DefaultUnDo is a simple [Command pattern](https://en.wikipedia.org/wiki/Command_pattern) implementation to ease the addition of an undo/redo feature.
 
-[![NuGet](https://buildstats.info/nuget/DefaultUnDo)](https://www.nuget.org/packages/DefaultUnDo)
-[![Coverage Status](https://coveralls.io/repos/github/Doraku/DefaultUnDo/badge.svg?branch=master)](https://coveralls.io/github/Doraku/DefaultUnDo?branch=master)
+[![NuGet](https://img.shields.io/nuget/v/DefaultUnDo)](https://www.nuget.org/packages/DefaultUnDo)
+[![preview package](https://img.shields.io/badge/preview-package-blue?style=flat&logo=github)](https://github.com/Doraku/DefaultUnDo/pkgs/nuget/DefaultUnDo)
 ![continuous integration status](https://github.com/doraku/defaultundo/workflows/continuous%20integration/badge.svg)
-[![preview package](https://img.shields.io/badge/preview-package-blue?style=flat&logo=github)](https://github.com/Doraku/DefaultUnDo/packages/26448)
+[![Coverage Status](https://coveralls.io/repos/github/Doraku/DefaultUnDo/badge.svg?branch=master)](https://coveralls.io/github/Doraku/DefaultUnDo?branch=master)
 
-- [Api documentation](./documentation/api/DefaultUnDo.md 'Api documentation')
+- [Api documentation](./documentation/api/index.md 'Api documentation')
 <a/>
 
 - [Requirement](#Requirement)
 - [Overview](#Overview)
+- [Dependencies](#Dependencies)
 
 <a name='Requirement'></a>
 # Requirement
-Compatible from .NETStandard 1.0.  
-For development, a C#8.0 compatible environment, net framework 4.8, net core 1.0 and netcore 3.0 are required to build and run all tests (it is possible to disable some target in the test project if needed).
+Compatible from .NETStandard 2.0.  
+For development, net framework 4.8 and net8.0 are required to build and run all tests.
 
 <a name='Overview'></a>
 # Overview
@@ -198,3 +199,10 @@ manager.Redo();
 To keep track of the modification, a `Version` property is available on the manager.
 
 Missing something? you can easily extend what you need by creating your own implementations of the `IUnDo` interface and extension methods to ease the usage. Feel free to open an issue or send a pull request.
+
+<a name='Dependencies'></a>
+Relies on these awesome projects:
+- [Coverlet](https://github.com/coverlet-coverage/coverlet)
+- [Polyfill](https://github.com/SimonCropp/Polyfill)
+- [Roslynator](https://github.com/JosefPihrt/Roslynator)
+- [XUnit](https://github.com/xunit/xunit)

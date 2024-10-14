@@ -3,7 +3,6 @@
 	"GeneratedAccessModifiers": "Public,Protected,ProtectedInternal",
 	"GeneratedPages": "Assembly,Types,Members",
 	"FileNameFactory": "Name",
-	"AssemblyPageName": "DefaultUnDo",
 	"LinksOutputFilePath": "..\\..\\documentation\\DefaultUnDo.txt",
 	"LinksBaseUrl": "https://github.com/Doraku/DefaultUnDo/blob/master/documentation/api/",
 	"NamespaceDocItem": {
@@ -13,6 +12,5 @@
 			"TableOfContents"
 		],
 		"Markdown.TableOfContentsModes": "IncludeKind,IncludeSummary"
-	},
-	"LogLevel":  "Trace"
+	}
 }

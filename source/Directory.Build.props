@@ -15,10 +15,12 @@
     <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)..\..\ds.snk</AssemblyOriginatorKeyFile>
     <AssemblyOriginatorKeyFile Condition="'$(GITHUB_ACTIONS)' == 'true'">$(MSBuildThisFileDirectory)..\ds.snk</AssemblyOriginatorKeyFile>
 
+    <Version>0.0.0</Version>
+
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DefaultCSharp" Version="1.0.0-test06" PrivateAssets="all" />
+    <PackageReference Include="DefaultCSharp" Version="1.0.0-test07" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>
