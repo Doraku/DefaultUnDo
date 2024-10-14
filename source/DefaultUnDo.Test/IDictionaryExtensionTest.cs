@@ -4,262 +4,261 @@ using NFluent;
 using NSubstitute;
 using Xunit;
 
-namespace DefaultUnDo.Test
+namespace DefaultUnDo;
+
+public sealed class IDictionaryExtensionTest
 {
-    public sealed class IDictionaryExtensionTest
+    [Fact]
+    public void AsUnDo_Should_throw_ArgumentNullException_When_source_is_null()
     {
-        [Fact]
-        public void AsUnDo_Should_throw_ArgumentNullException_When_source_is_null()
-        {
-            IDictionary<object, object> source = null;
-
-            Check
-                .ThatCode(() => source.AsUnDo(Substitute.For<IUnDoManager>()))
-                .Throws<ArgumentNullException>()
-                .WithProperty("ParamName", "source");
-        }
-
-        [Fact]
-        public void AsUnDo_Should_throw_ArgumentNullException_When_manager_is_null()
-        {
-            IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
-
-            Check
-                .ThatCode(() => source.AsUnDo(null))
-                .Throws<ArgumentNullException>()
-                .WithProperty("ParamName", "manager");
-        }
+        IDictionary<object, object> source = null;
+
+        Check
+            .ThatCode(() => source.AsUnDo(Substitute.For<IUnDoManager>()))
+            .Throws<ArgumentNullException>()
+            .WithProperty("ParamName", "source");
+    }
+
+    [Fact]
+    public void AsUnDo_Should_throw_ArgumentNullException_When_manager_is_null()
+    {
+        IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
 
-        [Fact]
-        public void AsUnDo_Should_return_an_IDictionary()
-        {
-            IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-
-            Check.That(source.AsUnDo(manager)).IsNotNull();
-        }
-
-        [Fact]
-        public void UnDoDictionary_Add_key_Should_Add_key()
-        {
-            IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-            object key = new();
-            object value = new();
-
-            bool done = false;
+        Check
+            .ThatCode(() => source.AsUnDo(null))
+            .Throws<ArgumentNullException>()
+            .WithProperty("ParamName", "manager");
+    }
 
-            source.When(s => s.Add(key, value)).Do(_ => done = true);
-            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
-
-            IDictionary<object, object> unDoDictionary = source.AsUnDo(manager);
-
-            unDoDictionary.Add(key, value);
-
-            Check.That(done).IsTrue();
-        }
-
-        [Fact]
-        public void UnDoDictionary_Add_Should_generate_Add_description()
-        {
-            IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-
-            UnDoCollectionOperation? description = null;
-
-            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+    [Fact]
+    public void AsUnDo_Should_return_an_IDictionary()
+    {
+        IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
 
-            IDictionary<object, object> unDoCollection = source.AsUnDo(manager, d => description = d);
-
-            object key = new();
-            object value = new();
-            unDoCollection.Add(key, value);
-
-            Check.That(description.HasValue).IsTrue();
-            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
-            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IDictionaryAdd);
-            Check.That(description.Value.Parameters.Length).IsEqualTo(2);
-            Check.That(description.Value.Parameters[0]).IsEqualTo(key);
-            Check.That(description.Value.Parameters[1]).IsEqualTo(value);
-        }
-
-        [Fact]
-        public void UnDoDictionary_ContainsKey_Should_return_ContainsKey()
-        {
-            IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-            object key = new();
+        Check.That(source.AsUnDo(manager)).IsNotNull();
+    }
 
-            source.ContainsKey(key).Returns(true);
+    [Fact]
+    public void UnDoDictionary_Add_key_Should_Add_key()
+    {
+        IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+        object key = new();
+        object value = new();
 
-            IDictionary<object, object> unDoDictionary = source.AsUnDo(manager);
-
-            Check.That(unDoDictionary.ContainsKey(key)).IsEqualTo(source.ContainsKey(key));
-        }
-
-        [Fact]
-        public void UnDoDictionary_Remove_key_Should_return_Remove_key()
-        {
-            IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-            object key = new();
-            object value = new();
+        bool done = false;
 
-            source.Remove(key).Returns(true);
-            source.TryGetValue(key, out value).ReturnsForAnyArgs(true);
-            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+        source.When(s => s.Add(key, value)).Do(_ => done = true);
+        manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
-            IDictionary<object, object> unDoDictionary = source.AsUnDo(manager);
+        IDictionary<object, object> unDoDictionary = source.AsUnDo(manager);
 
-            Check.That(unDoDictionary.Remove(key)).IsEqualTo(source.Remove(key));
-        }
+        unDoDictionary.Add(key, value);
 
-        [Fact]
-        public void UnDoDictionary_Remove_Should_generate_Remove_description()
-        {
-            IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
+        Check.That(done).IsTrue();
+    }
+
+    [Fact]
+    public void UnDoDictionary_Add_Should_generate_Add_description()
+    {
+        IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+
+        UnDoCollectionOperation? description = null;
 
-            UnDoCollectionOperation? description = null;
+        manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
-            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+        IDictionary<object, object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            IDictionary<object, object> unDoCollection = source.AsUnDo(manager, d => description = d);
+        object key = new();
+        object value = new();
+        unDoCollection.Add(key, value);
+
+        Check.That(description.HasValue).IsTrue();
+        Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+        Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IDictionaryAdd);
+        Check.That(description.Value.Parameters.Length).IsEqualTo(2);
+        Check.That(description.Value.Parameters[0]).IsEqualTo(key);
+        Check.That(description.Value.Parameters[1]).IsEqualTo(value);
+    }
 
-            object key = new();
-            unDoCollection.Remove(key);
+    [Fact]
+    public void UnDoDictionary_ContainsKey_Should_return_ContainsKey()
+    {
+        IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+        object key = new();
 
-            Check.That(description.HasValue).IsTrue();
-            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
-            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IDictionaryRemove);
-            Check.That(description.Value.Parameters.Length).IsEqualTo(1);
-            Check.That(description.Value.Parameters[0]).IsEqualTo(key);
-        }
+        source.ContainsKey(key).Returns(true);
 
-        [Fact]
-        public void UnDoDictionary_TryGetValue_Should_return_TryGetValue()
-        {
-            IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-            object key = new();
-            object value = new();
+        IDictionary<object, object> unDoDictionary = source.AsUnDo(manager);
 
-            source.TryGetValue(key, out object value2).ReturnsForAnyArgs(c => { c[1] = value; return true; });
+        Check.That(unDoDictionary.ContainsKey(key)).IsEqualTo(source.ContainsKey(key));
+    }
+
+    [Fact]
+    public void UnDoDictionary_Remove_key_Should_return_Remove_key()
+    {
+        IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+        object key = new();
+        object value = new();
 
-            IDictionary<object, object> unDoDictionary = source.AsUnDo(manager);
+        source.Remove(key).Returns(true);
+        source.TryGetValue(key, out value).ReturnsForAnyArgs(true);
+        manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
-            Check.That(unDoDictionary.TryGetValue(key, out object value1)).IsEqualTo(source.TryGetValue(key, out value2));
-            Check.That(value1).IsEqualTo(value);
-            Check.That(value1).IsEqualTo(value2);
-        }
+        IDictionary<object, object> unDoDictionary = source.AsUnDo(manager);
 
-        [Fact]
-        public void UnDoDictionary_this_key_get_Should_return_this_key_get()
-        {
-            IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-            object key = new();
-            object value = new();
+        Check.That(unDoDictionary.Remove(key)).IsEqualTo(source.Remove(key));
+    }
 
-            source[key].Returns(value);
+    [Fact]
+    public void UnDoDictionary_Remove_Should_generate_Remove_description()
+    {
+        IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
 
-            IDictionary<object, object> unDoDictionary = source.AsUnDo(manager);
+        UnDoCollectionOperation? description = null;
 
-            Check.That(unDoDictionary[key]).IsEqualTo(source[key]);
-        }
+        manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
-        [Fact]
-        public void UnDoDictionary_this_key_set_Should_set_this_key_When_TryGetValue_is_true()
-        {
-            IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-            object key = new();
-            object value = new();
+        IDictionary<object, object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            bool done = false;
+        object key = new();
+        unDoCollection.Remove(key);
 
-            source.TryGetValue(key, out value).ReturnsForAnyArgs(true);
-            source.When(s => s[key] = value).Do(_ => done = true);
-            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+        Check.That(description.HasValue).IsTrue();
+        Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+        Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IDictionaryRemove);
+        Check.That(description.Value.Parameters.Length).IsEqualTo(1);
+        Check.That(description.Value.Parameters[0]).IsEqualTo(key);
+    }
 
-            IDictionary<object, object> unDoDictionary = source.AsUnDo(manager);
+    [Fact]
+    public void UnDoDictionary_TryGetValue_Should_return_TryGetValue()
+    {
+        IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+        object key = new();
+        object value = new();
 
-            unDoDictionary[key] = value;
+        source.TryGetValue(key, out object value2).ReturnsForAnyArgs(c => { c[1] = value; return true; });
 
-            Check.That(done).IsTrue();
-        }
+        IDictionary<object, object> unDoDictionary = source.AsUnDo(manager);
 
-        [Fact]
-        public void UnDoDictionary_this_key_set_Should_set_this_key_When_TryGetValue_is_false()
-        {
-            IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-            object key = new();
-            object value = new();
+        Check.That(unDoDictionary.TryGetValue(key, out object value1)).IsEqualTo(source.TryGetValue(key, out value2));
+        Check.That(value1).IsEqualTo(value);
+        Check.That(value1).IsEqualTo(value2);
+    }
 
-            bool done = false;
+    [Fact]
+    public void UnDoDictionary_this_key_get_Should_return_this_key_get()
+    {
+        IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+        object key = new();
+        object value = new();
 
-            source.TryGetValue(key, out value).ReturnsForAnyArgs(false);
-            source.When(s => s[key] = value).Do(_ => done = true);
-            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+        source[key].Returns(value);
 
-            IDictionary<object, object> unDoDictionary = source.AsUnDo(manager);
+        IDictionary<object, object> unDoDictionary = source.AsUnDo(manager);
 
-            unDoDictionary[key] = value;
+        Check.That(unDoDictionary[key]).IsEqualTo(source[key]);
+    }
 
-            Check.That(done).IsTrue();
-        }
+    [Fact]
+    public void UnDoDictionary_this_key_set_Should_set_this_key_When_TryGetValue_is_true()
+    {
+        IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+        object key = new();
+        object value = new();
 
-        [Fact]
-        public void UnDoDictionary_this_key_set_Should_generate_this_description()
-        {
-            IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
+        bool done = false;
 
-            UnDoCollectionOperation? description = null;
+        source.TryGetValue(key, out value).ReturnsForAnyArgs(true);
+        source.When(s => s[key] = value).Do(_ => done = true);
+        manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
-            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+        IDictionary<object, object> unDoDictionary = source.AsUnDo(manager);
 
-            IDictionary<object, object> unDoCollection = source.AsUnDo(manager, d => description = d);
+        unDoDictionary[key] = value;
 
-            object key = new();
-            object value = new();
-            unDoCollection[key] = value;
+        Check.That(done).IsTrue();
+    }
 
-            Check.That(description.HasValue).IsTrue();
-            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
-            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IDictionaryIndexer);
-            Check.That(description.Value.Parameters.Length).IsEqualTo(2);
-            Check.That(description.Value.Parameters[0]).IsEqualTo(key);
-            Check.That(description.Value.Parameters[1]).IsEqualTo(value);
-        }
+    [Fact]
+    public void UnDoDictionary_this_key_set_Should_set_this_key_When_TryGetValue_is_false()
+    {
+        IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+        object key = new();
+        object value = new();
 
-        [Fact]
-        public void UnDoDictionary_Keys_Should_return_Keys()
-        {
-            IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-            ICollection<object> keys = Substitute.For<ICollection<object>>();
+        bool done = false;
 
-            source.Keys.Returns(keys);
+        source.TryGetValue(key, out value).ReturnsForAnyArgs(false);
+        source.When(s => s[key] = value).Do(_ => done = true);
+        manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
-            IDictionary<object, object> unDoDictionary = source.AsUnDo(manager);
+        IDictionary<object, object> unDoDictionary = source.AsUnDo(manager);
 
-            Check.That(unDoDictionary.Keys).IsEqualTo(source.Keys);
-        }
+        unDoDictionary[key] = value;
 
-        [Fact]
-        public void UnDoDictionary_Values_Should_return_Values()
-        {
-            IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-            ICollection<object> values = Substitute.For<ICollection<object>>();
+        Check.That(done).IsTrue();
+    }
 
-            source.Values.Returns(values);
+    [Fact]
+    public void UnDoDictionary_this_key_set_Should_generate_this_description()
+    {
+        IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
 
-            IDictionary<object, object> unDoDictionary = source.AsUnDo(manager);
+        UnDoCollectionOperation? description = null;
 
-            Check.That(unDoDictionary.Values).IsEqualTo(source.Values);
-        }
+        manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+        IDictionary<object, object> unDoCollection = source.AsUnDo(manager, d => description = d);
+
+        object key = new();
+        object value = new();
+        unDoCollection[key] = value;
+
+        Check.That(description.HasValue).IsTrue();
+        Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+        Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.IDictionaryIndexer);
+        Check.That(description.Value.Parameters.Length).IsEqualTo(2);
+        Check.That(description.Value.Parameters[0]).IsEqualTo(key);
+        Check.That(description.Value.Parameters[1]).IsEqualTo(value);
+    }
+
+    [Fact]
+    public void UnDoDictionary_Keys_Should_return_Keys()
+    {
+        IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+        ICollection<object> keys = Substitute.For<ICollection<object>>();
+
+        source.Keys.Returns(keys);
+
+        IDictionary<object, object> unDoDictionary = source.AsUnDo(manager);
+
+        Check.That(unDoDictionary.Keys).IsEqualTo(source.Keys);
+    }
+
+    [Fact]
+    public void UnDoDictionary_Values_Should_return_Values()
+    {
+        IDictionary<object, object> source = Substitute.For<IDictionary<object, object>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+        ICollection<object> values = Substitute.For<ICollection<object>>();
+
+        source.Values.Returns(values);
+
+        IDictionary<object, object> unDoDictionary = source.AsUnDo(manager);
+
+        Check.That(unDoDictionary.Values).IsEqualTo(source.Values);
     }
 }

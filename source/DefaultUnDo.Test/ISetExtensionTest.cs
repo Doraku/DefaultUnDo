@@ -5,325 +5,324 @@ using NFluent;
 using NSubstitute;
 using Xunit;
 
-namespace DefaultUnDo.Test
+namespace DefaultUnDo;
+
+public sealed class ISetExtensionTest
 {
-    public sealed class ISetExtensionTest
+    [Fact]
+    public void AsUnDo_Should_throw_ArgumentNullException_When_source_is_null()
     {
-        [Fact]
-        public void AsUnDo_Should_throw_ArgumentNullException_When_source_is_null()
-        {
-            ISet<int> source = null;
-
-            Check
-                .ThatCode(() => source.AsUnDo(Substitute.For<IUnDoManager>()))
-                .Throws<ArgumentNullException>()
-                .WithProperty("ParamName", "source");
-        }
-
-        [Fact]
-        public void AsUnDo_Should_throw_ArgumentNullException_When_manager_is_null()
-        {
-            ISet<int> source = Substitute.For<ISet<int>>();
+        ISet<int> source = null;
+
+        Check
+            .ThatCode(() => source.AsUnDo(Substitute.For<IUnDoManager>()))
+            .Throws<ArgumentNullException>()
+            .WithProperty("ParamName", "source");
+    }
+
+    [Fact]
+    public void AsUnDo_Should_throw_ArgumentNullException_When_manager_is_null()
+    {
+        ISet<int> source = Substitute.For<ISet<int>>();
 
-            Check
-                .ThatCode(() => source.AsUnDo(null))
-                .Throws<ArgumentNullException>()
-                .WithProperty("ParamName", "manager");
-        }
-
-        [Fact]
-        public void UnDoSet_Add_Should_return_true_When_added()
-        {
-            ISet<int> source = Substitute.For<ISet<int>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-            ISet<int> unDoSet = source.AsUnDo(manager);
-            bool done = false;
+        Check
+            .ThatCode(() => source.AsUnDo(null))
+            .Throws<ArgumentNullException>()
+            .WithProperty("ParamName", "manager");
+    }
 
-            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
-            source.When(s => ((ICollection<int>)s).Add(42)).Do(_ => done = true);
+    [Fact]
+    public void UnDoSet_Add_Should_return_true_When_added()
+    {
+        ISet<int> source = Substitute.For<ISet<int>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+        ISet<int> unDoSet = source.AsUnDo(manager);
+        bool done = false;
 
-            source.Contains(42).Returns(false);
-            Check.That(unDoSet.Add(42)).IsTrue();
-            Check.That(done).IsTrue();
+        manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+        source.When(s => ((ICollection<int>)s).Add(42)).Do(_ => done = true);
 
-            done = false;
-            source.Contains(42).Returns(true);
-            Check.That(unDoSet.Add(42)).IsFalse();
-            Check.That(done).IsFalse();
-        }
+        source.Contains(42).Returns(false);
+        Check.That(unDoSet.Add(42)).IsTrue();
+        Check.That(done).IsTrue();
 
-        [Fact]
-        public void UnDoSet_Add_Should_generate_Add_description()
-        {
-            ISet<object> source = Substitute.For<ISet<object>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-
-            UnDoCollectionOperation? description = null;
-
-            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
-
-            ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
-
-            object item = new();
-            unDoCollection.Add(item);
-
-            Check.That(description.HasValue).IsTrue();
-            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
-            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetAdd);
-            Check.That(description.Value.Parameters.Length).IsEqualTo(1);
-            Check.That(description.Value.Parameters[0]).IsEqualTo(item);
-        }
-
-        [Fact]
-        public void UnDoSet_ExceptWith_Should_work()
-        {
-            IUnDoManager manager = new UnDoManager();
-            ISet<int> unDoSet = new HashSet<int> { 1, 2, 3 }.AsUnDo(manager);
-
-            unDoSet.ExceptWith([2]);
+        done = false;
+        source.Contains(42).Returns(true);
+        Check.That(unDoSet.Add(42)).IsFalse();
+        Check.That(done).IsFalse();
+    }
 
-            Check.That(unDoSet.OrderBy(i => i)).ContainsExactly(1, 3);
-
-            manager.Undo();
+    [Fact]
+    public void UnDoSet_Add_Should_generate_Add_description()
+    {
+        ISet<object> source = Substitute.For<ISet<object>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+
+        UnDoCollectionOperation? description = null;
 
-            Check.That(unDoSet.OrderBy(i => i)).ContainsExactly(1, 2, 3);
-        }
-
-        [Fact]
-        public void UnDoSet_ExceptWith_Should_generate_ExceptWith_description()
-        {
-            ISet<object> source = Substitute.For<ISet<object>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-
-            UnDoCollectionOperation? description = null;
-
-            source.Count.Returns(42);
-            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
-
-            ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
+        manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+        ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            IEnumerable<object> other = [];
-            unDoCollection.ExceptWith(other);
-
-            Check.That(description.HasValue).IsTrue();
-            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
-            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetExceptWith);
-            Check.That(description.Value.Parameters.Length).IsEqualTo(1);
-            Check.That(description.Value.Parameters[0]).IsEqualTo(other);
-        }
-
-        [Fact]
-        public void UnDoSet_IntersectWith_Should_work()
-        {
-            IUnDoManager manager = new UnDoManager();
-            ISet<int> unDoSet = new HashSet<int> { 1, 2, 3 }.AsUnDo(manager);
+        object item = new();
+        unDoCollection.Add(item);
 
-            unDoSet.IntersectWith([2]);
+        Check.That(description.HasValue).IsTrue();
+        Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+        Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetAdd);
+        Check.That(description.Value.Parameters.Length).IsEqualTo(1);
+        Check.That(description.Value.Parameters[0]).IsEqualTo(item);
+    }
+
+    [Fact]
+    public void UnDoSet_ExceptWith_Should_work()
+    {
+        IUnDoManager manager = new UnDoManager();
+        ISet<int> unDoSet = new HashSet<int> { 1, 2, 3 }.AsUnDo(manager);
 
-            Check.That(unDoSet.OrderBy(i => i)).ContainsExactly(2);
+        unDoSet.ExceptWith([2]);
 
-            manager.Undo();
-
-            Check.That(unDoSet.OrderBy(i => i)).ContainsExactly(1, 2, 3);
-        }
-
-        [Fact]
-        public void UnDoSet_IntersectWith_Should_generate_IntersectWith_description()
-        {
-            ISet<object> source = Substitute.For<ISet<object>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
+        Check.That(unDoSet.Order()).ContainsExactly(1, 3);
 
-            UnDoCollectionOperation? description = null;
-
-            source.Count.Returns(42);
-            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+        manager.Undo();
 
-            ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
-
-            IEnumerable<object> other = [];
-            unDoCollection.IntersectWith(Enumerable.Empty<object>());
-
-            Check.That(description.HasValue).IsTrue();
-            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
-            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetIntersectWith);
-            Check.That(description.Value.Parameters.Length).IsEqualTo(1);
-            Check.That(description.Value.Parameters[0]).IsEqualTo(other);
-        }
+        Check.That(unDoSet.Order()).ContainsExactly(1, 2, 3);
+    }
 
-        [Fact]
-        public void UnDoSet_IsProperSubsetOf_Should_call_IsProperSubsetOf()
-        {
-            ISet<int> source = Substitute.For<ISet<int>>();
-            IEnumerable<int> other = Substitute.For<IEnumerable<int>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-            ISet<int> unDoSet = source.AsUnDo(manager);
-            bool done = false;
-
-            source.When(s => s.IsProperSubsetOf(other)).Do(_ => done = true);
-            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+    [Fact]
+    public void UnDoSet_ExceptWith_Should_generate_ExceptWith_description()
+    {
+        ISet<object> source = Substitute.For<ISet<object>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+
+        UnDoCollectionOperation? description = null;
 
-            unDoSet.IsProperSubsetOf(other);
+        source.Count.Returns(42);
+        manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
-            Check.That(done).IsTrue();
-        }
+        ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-        [Fact]
-        public void UnDoSet_IsProperSupersetOf_Should_call_IsProperSupersetOf()
-        {
-            ISet<int> source = Substitute.For<ISet<int>>();
-            IEnumerable<int> other = Substitute.For<IEnumerable<int>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-            ISet<int> unDoSet = source.AsUnDo(manager);
-            bool done = false;
+        IEnumerable<object> other = [];
+        unDoCollection.ExceptWith(other);
 
-            source.When(s => s.IsProperSupersetOf(other)).Do(_ => done = true);
-            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+        Check.That(description.HasValue).IsTrue();
+        Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+        Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetExceptWith);
+        Check.That(description.Value.Parameters.Length).IsEqualTo(1);
+        Check.That(description.Value.Parameters[0]).IsEqualTo(other);
+    }
+
+    [Fact]
+    public void UnDoSet_IntersectWith_Should_work()
+    {
+        IUnDoManager manager = new UnDoManager();
+        ISet<int> unDoSet = new HashSet<int> { 1, 2, 3 }.AsUnDo(manager);
+
+        unDoSet.IntersectWith([2]);
 
-            unDoSet.IsProperSupersetOf(other);
+        Check.That(unDoSet.Order()).ContainsExactly(2);
+
+        manager.Undo();
+
+        Check.That(unDoSet.Order()).ContainsExactly(1, 2, 3);
+    }
+
+    [Fact]
+    public void UnDoSet_IntersectWith_Should_generate_IntersectWith_description()
+    {
+        ISet<object> source = Substitute.For<ISet<object>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
 
-            Check.That(done).IsTrue();
-        }
+        UnDoCollectionOperation? description = null;
+
+        source.Count.Returns(42);
+        manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+        ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
+
+        IEnumerable<object> other = [];
+        unDoCollection.IntersectWith([]);
+
+        Check.That(description.HasValue).IsTrue();
+        Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+        Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetIntersectWith);
+        Check.That(description.Value.Parameters.Length).IsEqualTo(1);
+        Check.That(description.Value.Parameters[0]).IsEqualTo(other);
+    }
+
+    [Fact]
+    public void UnDoSet_IsProperSubsetOf_Should_call_IsProperSubsetOf()
+    {
+        ISet<int> source = Substitute.For<ISet<int>>();
+        IEnumerable<int> other = Substitute.For<IEnumerable<int>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+        ISet<int> unDoSet = source.AsUnDo(manager);
+        bool done = false;
+
+        source.When(s => s.IsProperSubsetOf(other)).Do(_ => done = true);
+        manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+        unDoSet.IsProperSubsetOf(other);
 
-        [Fact]
-        public void UnDoSet_IsSubsetOf_Should_call_IsSubsetOf()
-        {
-            ISet<int> source = Substitute.For<ISet<int>>();
-            IEnumerable<int> other = Substitute.For<IEnumerable<int>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-            ISet<int> unDoSet = source.AsUnDo(manager);
-            bool done = false;
+        Check.That(done).IsTrue();
+    }
 
-            source.When(s => s.IsSubsetOf(other)).Do(_ => done = true);
-            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+    [Fact]
+    public void UnDoSet_IsProperSupersetOf_Should_call_IsProperSupersetOf()
+    {
+        ISet<int> source = Substitute.For<ISet<int>>();
+        IEnumerable<int> other = Substitute.For<IEnumerable<int>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+        ISet<int> unDoSet = source.AsUnDo(manager);
+        bool done = false;
 
-            unDoSet.IsSubsetOf(other);
+        source.When(s => s.IsProperSupersetOf(other)).Do(_ => done = true);
+        manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
-            Check.That(done).IsTrue();
-        }
+        unDoSet.IsProperSupersetOf(other);
 
-        [Fact]
-        public void UnDoSet_IsSupersetOf_Should_call_IsSupersetOf()
-        {
-            ISet<int> source = Substitute.For<ISet<int>>();
-            IEnumerable<int> other = Substitute.For<IEnumerable<int>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-            ISet<int> unDoSet = source.AsUnDo(manager);
-            bool done = false;
+        Check.That(done).IsTrue();
+    }
 
-            source.When(s => s.IsSupersetOf(other)).Do(_ => done = true);
-            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+    [Fact]
+    public void UnDoSet_IsSubsetOf_Should_call_IsSubsetOf()
+    {
+        ISet<int> source = Substitute.For<ISet<int>>();
+        IEnumerable<int> other = Substitute.For<IEnumerable<int>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+        ISet<int> unDoSet = source.AsUnDo(manager);
+        bool done = false;
 
-            unDoSet.IsSupersetOf(other);
+        source.When(s => s.IsSubsetOf(other)).Do(_ => done = true);
+        manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
-            Check.That(done).IsTrue();
-        }
+        unDoSet.IsSubsetOf(other);
 
-        [Fact]
-        public void UnDoSet_Overlaps_Should_call_Overlaps()
-        {
-            ISet<int> source = Substitute.For<ISet<int>>();
-            IEnumerable<int> other = Substitute.For<IEnumerable<int>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-            ISet<int> unDoSet = source.AsUnDo(manager);
-            bool done = false;
+        Check.That(done).IsTrue();
+    }
 
-            source.When(s => s.Overlaps(other)).Do(_ => done = true);
-            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+    [Fact]
+    public void UnDoSet_IsSupersetOf_Should_call_IsSupersetOf()
+    {
+        ISet<int> source = Substitute.For<ISet<int>>();
+        IEnumerable<int> other = Substitute.For<IEnumerable<int>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+        ISet<int> unDoSet = source.AsUnDo(manager);
+        bool done = false;
 
-            unDoSet.Overlaps(other);
+        source.When(s => s.IsSupersetOf(other)).Do(_ => done = true);
+        manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
-            Check.That(done).IsTrue();
-        }
+        unDoSet.IsSupersetOf(other);
 
-        [Fact]
-        public void UnDoSet_SetEquals_Should_call_SetEquals()
-        {
-            ISet<int> source = Substitute.For<ISet<int>>();
-            IEnumerable<int> other = Substitute.For<IEnumerable<int>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
-            ISet<int> unDoSet = source.AsUnDo(manager);
-            bool done = false;
+        Check.That(done).IsTrue();
+    }
 
-            source.When(s => s.SetEquals(other)).Do(_ => done = true);
-            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+    [Fact]
+    public void UnDoSet_Overlaps_Should_call_Overlaps()
+    {
+        ISet<int> source = Substitute.For<ISet<int>>();
+        IEnumerable<int> other = Substitute.For<IEnumerable<int>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+        ISet<int> unDoSet = source.AsUnDo(manager);
+        bool done = false;
 
-            unDoSet.SetEquals(other);
+        source.When(s => s.Overlaps(other)).Do(_ => done = true);
+        manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
-            Check.That(done).IsTrue();
-        }
+        unDoSet.Overlaps(other);
 
-        [Fact]
-        public void UnDoSet_SymmetricExceptWith_Should_work()
-        {
-            IUnDoManager manager = new UnDoManager();
-            ISet<int> unDoSet = new HashSet<int> { 1, 2, 3 }.AsUnDo(manager);
+        Check.That(done).IsTrue();
+    }
 
-            unDoSet.SymmetricExceptWith([2, 3, 4]);
+    [Fact]
+    public void UnDoSet_SetEquals_Should_call_SetEquals()
+    {
+        ISet<int> source = Substitute.For<ISet<int>>();
+        IEnumerable<int> other = Substitute.For<IEnumerable<int>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+        ISet<int> unDoSet = source.AsUnDo(manager);
+        bool done = false;
 
-            Check.That(unDoSet.OrderBy(i => i)).ContainsExactly(1, 4);
+        source.When(s => s.SetEquals(other)).Do(_ => done = true);
+        manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
-            manager.Undo();
+        unDoSet.SetEquals(other);
 
-            Check.That(unDoSet.OrderBy(i => i)).ContainsExactly(1, 2, 3);
-        }
+        Check.That(done).IsTrue();
+    }
 
-        [Fact]
-        public void UnDoSet_SymmetricExceptWith_Should_generate_SymmetricExceptWith_description()
-        {
-            ISet<object> source = Substitute.For<ISet<object>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
+    [Fact]
+    public void UnDoSet_SymmetricExceptWith_Should_work()
+    {
+        IUnDoManager manager = new UnDoManager();
+        ISet<int> unDoSet = new HashSet<int> { 1, 2, 3 }.AsUnDo(manager);
 
-            UnDoCollectionOperation? description = null;
+        unDoSet.SymmetricExceptWith([2, 3, 4]);
 
-            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+        Check.That(unDoSet.Order()).ContainsExactly(1, 4);
 
-            ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
+        manager.Undo();
 
-            IEnumerable<object> other = [];
-            unDoCollection.SymmetricExceptWith(other);
+        Check.That(unDoSet.Order()).ContainsExactly(1, 2, 3);
+    }
 
-            Check.That(description.HasValue).IsTrue();
-            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
-            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetSymmetricExceptWith);
-            Check.That(description.Value.Parameters.Length).IsEqualTo(1);
-            Check.That(description.Value.Parameters[0]).IsEqualTo(other);
-        }
+    [Fact]
+    public void UnDoSet_SymmetricExceptWith_Should_generate_SymmetricExceptWith_description()
+    {
+        ISet<object> source = Substitute.For<ISet<object>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
 
-        [Fact]
-        public void UnDoSet_UnionWith_Should_work()
-        {
-            IUnDoManager manager = new UnDoManager();
-            ISet<int> unDoSet = new HashSet<int> { 1, 2, 3 }.AsUnDo(manager);
+        UnDoCollectionOperation? description = null;
 
-            unDoSet.UnionWith([2, 3, 4]);
+        manager.Do(Arg.Do<IUnDo>(i => i.Do()));
 
-            Check.That(unDoSet.OrderBy(i => i)).ContainsExactly(1, 2, 3, 4);
+        ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
 
-            manager.Undo();
+        IEnumerable<object> other = [];
+        unDoCollection.SymmetricExceptWith(other);
 
-            Check.That(unDoSet.OrderBy(i => i)).ContainsExactly(1, 2, 3);
-        }
+        Check.That(description.HasValue).IsTrue();
+        Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+        Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetSymmetricExceptWith);
+        Check.That(description.Value.Parameters.Length).IsEqualTo(1);
+        Check.That(description.Value.Parameters[0]).IsEqualTo(other);
+    }
 
-        [Fact]
-        public void UnDoSet_UnionWith_Should_generate_UnionWith_description()
-        {
-            ISet<object> source = Substitute.For<ISet<object>>();
-            IUnDoManager manager = Substitute.For<IUnDoManager>();
+    [Fact]
+    public void UnDoSet_UnionWith_Should_work()
+    {
+        IUnDoManager manager = new UnDoManager();
+        ISet<int> unDoSet = new HashSet<int> { 1, 2, 3 }.AsUnDo(manager);
 
-            UnDoCollectionOperation? description = null;
+        unDoSet.UnionWith([2, 3, 4]);
 
-            manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+        Check.That(unDoSet.Order()).ContainsExactly(1, 2, 3, 4);
 
-            ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
+        manager.Undo();
 
-            IEnumerable<object> other = [];
-            unDoCollection.UnionWith(other);
+        Check.That(unDoSet.Order()).ContainsExactly(1, 2, 3);
+    }
 
-            Check.That(description.HasValue).IsTrue();
-            Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
-            Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetUnionWith);
-            Check.That(description.Value.Parameters.Length).IsEqualTo(1);
-            Check.That(description.Value.Parameters[0]).IsEqualTo(other);
-        }
+    [Fact]
+    public void UnDoSet_UnionWith_Should_generate_UnionWith_description()
+    {
+        ISet<object> source = Substitute.For<ISet<object>>();
+        IUnDoManager manager = Substitute.For<IUnDoManager>();
+
+        UnDoCollectionOperation? description = null;
+
+        manager.Do(Arg.Do<IUnDo>(i => i.Do()));
+
+        ISet<object> unDoCollection = source.AsUnDo(manager, d => description = d);
+
+        IEnumerable<object> other = [];
+        unDoCollection.UnionWith(other);
+
+        Check.That(description.HasValue).IsTrue();
+        Check.That(description.Value.Collection).IsEqualTo(unDoCollection);
+        Check.That(description.Value.Action).IsEqualTo(UnDoCollectionAction.ISetUnionWith);
+        Check.That(description.Value.Parameters.Length).IsEqualTo(1);
+        Check.That(description.Value.Parameters[0]).IsEqualTo(other);
     }
 }

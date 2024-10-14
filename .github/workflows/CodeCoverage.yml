@@ -8,24 +8,26 @@ on:
       - '.github/workflows/CodeCoverage.yml'
       - 'source/DefaultUnDo/**'
       - 'source/DefaultUnDo.Test/**'
-
+      
 jobs:
   code_coverage:
     runs-on: windows-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
-    - name: Set up dotnet
-      uses: actions/setup-dotnet@v1
+    - uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
 
-    - name: Collect coverage for net8.0
-      run: dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f net8.0 -p:CollectCoverage=true -p:CoverletOutputFormat=lcov -p:CoverletOutput=..\..\build\lcov.info -p:Exclude="[*]DefaultEcs.Technical.Debug*" /p:TEST=true
+    - name: Collect coverage
+      run: dotnet test source -c Release -f net8.0
+      env:
+        CollectCoverage: true
+        CoverletOutputFormat: lcov
+        CoverletOutput: ..\..\build\lcov.info
 
     - name: Upload to coverall
-      uses: coverallsapp/github-action@master
+      uses: coverallsapp/github-action@v2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: 'build\lcov.net8.0.info'

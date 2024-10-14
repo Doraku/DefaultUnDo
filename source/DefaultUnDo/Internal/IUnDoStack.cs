@@ -1,23 +1,22 @@
 ﻿using System.Collections.Generic;
 
-namespace DefaultUnDo.Internal
+namespace DefaultUnDo.Internal;
+
+internal interface IUnDoStack
 {
-    internal interface IUnDoStack
-    {
-        bool CanUndo { get; }
+    bool CanUndo { get; }
 
-        bool CanRedo { get; }
+    bool CanRedo { get; }
 
-        IEnumerable<object?> UndoDescriptions { get; }
+    IEnumerable<object?> UndoDescriptions { get; }
 
-        IEnumerable<object?> RedoDescription { get; }
+    IEnumerable<object?> RedoDescription { get; }
 
-        int Push(IUnDo command, int doVersion, int undoVersion);
+    int Push(IUnDo command, int doVersion, int undoVersion);
 
-        int Undo();
+    int Undo();
 
-        int Redo();
+    int Redo();
 
-        void Clear();
-    }
+    void Clear();
 }

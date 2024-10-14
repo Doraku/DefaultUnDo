@@ -3,29 +3,26 @@ name: pull request
 on:
   pull_request:
     paths:
-      - 'source/DefaultUnDo/**'
-      - 'source/DefaultUnDo.Test/**'
+      - 'source/**'
 
 jobs:
   pull_request:
     runs-on: windows-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
-    - name: Set up dotnet
-      uses: actions/setup-dotnet@v1
+    - uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
-
+        
     - name: Build
-      run: dotnet build source\DefaultUnDo\DefaultUnDo.csproj -c Release /warnaserror
+      run: dotnet build source -c Release -p:TreatWarningsAsErrors=true
 
     - name: Run tests net462
-      run: dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f net462 /p:TEST=true
+      run: dotnet test source -c Release -f net462 --no-build
 
     - name: Run tests net48
-      run: dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f net48 /p:TEST=true
+      run: dotnet test source -c Release -f net48 --no-build
 
     - name: Run tests net8.0
-      run: dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f net8.0 /p:TEST=true
+      run: dotnet test source -c Release -f net8.0 --no-build

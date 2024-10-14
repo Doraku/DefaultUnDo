@@ -7,30 +7,31 @@ on:
     paths:
       - '.github/workflows/ContinuousIntegration.yml'
       - 'source/DefaultUnDo/**'
-
+      
 jobs:
   continuous_integration:
     runs-on: windows-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
-    - name: Set up dotnet
-      uses: actions/setup-dotnet@v1
+    - uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
         source-url: https://nuget.pkg.github.com/Doraku/index.json
       env:
-        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Build
+      run: dotnet build source -c Release -p:TreatWarningsAsErrors=true
 
     - name: Run tests net462
-      run: dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f net462 /p:TEST=true
+      run: dotnet test source -c Release -f net462 --no-build
 
     - name: Run tests net48
-      run: dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f net48 /p:TEST=true
+      run: dotnet test source -c Release -f net48 --no-build
 
     - name: Run tests net8.0
-      run: dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -f net8.0 /p:TEST=true
+      run: dotnet test source -c Release -f net8.0 --no-build
       
     - name: Decrypte snk file
       env:
@@ -38,7 +39,7 @@ jobs:
       run: gpg --quiet --batch --yes --decrypt --passphrase="$env:SNK_KEY" --output ds.snk ds.snk.gpg
 
     - name: Create package
-      run: dotnet pack source\DefaultUnDo\DefaultUnDo.csproj -c Release -o build /p:CI_VERSION=true
+      run: dotnet pack source -c Release -o build /p:Version=0-ci$(date +'%Y%m%d%H%M%S') /p:SignAssembly=true
 
-    - name: Publish package
-      run: nuget push build\*.nupkg
+    - name: Publish packages
+      run: dotnet nuget push build\*.nupkg

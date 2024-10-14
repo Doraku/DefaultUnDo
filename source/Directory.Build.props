@@ -1,20 +1,24 @@
 <Project>
-  
+
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
-    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    <AnalysisLevel>latest</AnalysisLevel>
-    <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
-    <RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
+
+    <Authors>Paillat Laszlo</Authors>
+
+    <PackageLicenseExpression>MIT-0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Doraku/DefaultUnDo</PackageProjectUrl>
+    <PackageTags>command-pattern memento-pattern undo-redo</PackageTags>
+
+    <DefaultCSharpPackageIconFile>$(MSBuildThisFileDirectory)..\image\logo.png</DefaultCSharpPackageIconFile>
+    <DefaultCSharpPackageReadmeFile>$(MSBuildThisFileDirectory)..\README.md</DefaultCSharpPackageReadmeFile>
+    <DefaultCSharpPackageReleaseNotesFile>$(MSBuildThisFileDirectory)../documentation/NEXT_RELEASENOTES.txt</DefaultCSharpPackageReleaseNotesFile>
+
+    <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)..\..\ds.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile Condition="'$(GITHUB_ACTIONS)' == 'true'">$(MSBuildThisFileDirectory)..\ds.snk</AssemblyOriginatorKeyFile>
+
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0" PrivateAssets="all" />
-    <PackageReference Include="Roslynator.Analyzers" Version="4.10.0" PrivateAssets="all" />
-    <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.10.0" PrivateAssets="all" />
-    <PackageReference Include="Roslynator.Formatting.Analyzers" Version="4.10.0" PrivateAssets="all" />
+    <PackageReference Include="DefaultCSharp" Version="1.0.0-test06" PrivateAssets="all" />
   </ItemGroup>
-  
+
 </Project>

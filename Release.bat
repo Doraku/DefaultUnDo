@@ -1,13 +1,12 @@
 @ECHO off
 
 DEL /q build
-dotnet clean source\DefaultUnDo\DefaultUnDo.csproj -c Release
-dotnet clean source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release
+dotnet clean source -c Release
 
-dotnet test source\DefaultUnDo.Test\DefaultUnDo.Test.csproj -c Release -r build -l trx
+dotnet test source -c Release
 
 IF %ERRORLEVEL% GTR 0 GOTO :end
 
-dotnet pack source\DefaultUnDo\DefaultUnDo.csproj -c Release -o build /p:LOCAL_VERSION=true
+dotnet pack source -c Release -o build /p:Version=0-local%Date:~6,4%%Date:~3,2%%Date:~0,2%%Time:~0,2%%Time:~3,2%%Time:~6,2% /p:SignAssembly=true
 
 :end

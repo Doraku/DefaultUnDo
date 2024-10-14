@@ -1,62 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup Label="Compilation">
+  <PropertyGroup>
+    
     <TargetFrameworks>
-      netstandard1.0;
       netstandard2.0;
       netstandard2.1;
       net8.0;
     </TargetFrameworks>
     <Nullable>enable</Nullable>
+
+    <Description>Undo/redo library aiming for ease of integration and usage simplicity.</Description>
+    
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\image\logo.png" Pack="true" PackagePath="\" Visible="false" />
-    <None Include="..\..\README.md" Pack="true" PackagePath="\" Visible="false" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="DefaultDocumentation" Version="0.8.1" PrivateAssets="all" Condition="'$(TargetFramework)'=='net8.0' AND '$(GITHUB_ACTIONS)' == 'true' AND '$(TEST)' != 'true' AND '$(CI_VERSION)' != 'true'" />
+    <PackageReference Include="DefaultDocumentation" Version="0.9.0-beta01" PrivateAssets="all" Condition="'$(TargetFramework)'=='net8.0'" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
   </ItemGroup>
-
-  <PropertyGroup Label="Package">
-    <Authors>Paillat Laszlo</Authors>
-    <AssemblyName>DefaultUnDo</AssemblyName>
-    <AssemblyTitle>DefaultUnDo</AssemblyTitle>
-    <PackageId>DefaultUnDo</PackageId>
-    <Description>Undo/redo library aiming for ease of integration and usage simplicity.</Description>
-    <PackageIcon>logo.png</PackageIcon>
-    <PackageProjectUrl>https://github.com/Doraku/DefaultUnDo</PackageProjectUrl>
-    <PackageLicenseExpression>MIT-0</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/Doraku/DefaultUnDo.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageTags>command-pattern memento-pattern undo-redo</PackageTags>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(LOCAL_VERSION)' == 'true'">
-    <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\..\ds.snk</AssemblyOriginatorKeyFile>
-    <Version>0-local$([System.DateTime]::UtcNow.ToString("yyyyMMddHHmmss"))</Version>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true' AND '$(TEST)' != 'true'">
-    <SignAssembly>True</SignAssembly>
-    <IncludeSymbols Condition="'$(CI_VERSION)' != 'true'">true</IncludeSymbols>
-    <SymbolPackageFormat Condition="'$(CI_VERSION)' != 'true'">snupkg</SymbolPackageFormat>
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-    <AssemblyOriginatorKeyFile>..\..\ds.snk</AssemblyOriginatorKeyFile>
-    <Version Condition="'$(CI_VERSION)' == 'true'">0-ci$([System.DateTime]::UtcNow.ToString("yyyyMMddHHmmss"))</Version>
-  </PropertyGroup>
-
-  <Target Name="PreparePackageReleaseNotesFromFile" BeforeTargets="GenerateNuspec">
-    <ReadLinesFromFile File="../../documentation/NEXT_RELEASENOTES.txt">
-      <Output TaskParameter="Lines" ItemName="ReleaseNotesLines" />
-    </ReadLinesFromFile>
-    <PropertyGroup>
-      <PackageReleaseNotes>@(ReleaseNotesLines, '%0a')</PackageReleaseNotes>
-    </PropertyGroup>
-  </Target>
   
 </Project>

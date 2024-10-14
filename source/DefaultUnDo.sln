@@ -5,28 +5,37 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DefaultUnDo", "DefaultUnDo\DefaultUnDo.csproj", "{0F70E1F5-23EE-4A2C-B948-14E418389C6D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution Items", "_Solution Items", "{4DDF1652-99A1-48C7-8D5E-BA31CFFAE956}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution items", ".solution items", "{4DDF1652-99A1-48C7-8D5E-BA31CFFAE956}"
 	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-		..\.gitignore = ..\.gitignore
 		Directory.Build.props = Directory.Build.props
-		..\LICENSE.md = ..\LICENSE.md
 		..\documentation\NEXT_RELEASENOTES.txt = ..\documentation\NEXT_RELEASENOTES.txt
-		..\README.md = ..\README.md
-		..\Release.bat = ..\Release.bat
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{1C194496-09AD-47C3-BE59-1C66146AB694}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".workflows", ".workflows", "{1C194496-09AD-47C3-BE59-1C66146AB694}"
 	ProjectSection(SolutionItems) = preProject
 		..\.github\workflows\CodeCoverage.yml = ..\.github\workflows\CodeCoverage.yml
 		..\.github\workflows\ContinuousIntegration.yml = ..\.github\workflows\ContinuousIntegration.yml
+		..\.github\dependabot.yml = ..\.github\dependabot.yml
 		..\.github\workflows\PullRequest.yml = ..\.github\workflows\PullRequest.yml
+		..\Release.bat = ..\Release.bat
 		..\.github\workflows\Release.yml = ..\.github\workflows\Release.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DefaultUnDo.Test", "DefaultUnDo.Test\DefaultUnDo.Test.csproj", "{B13DB434-5B94-415A-81DF-027E6BFED632}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Tests", "_Tests", "{32260D2E-DAB6-4D3A-B2B8-4504CD2EB552}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".git", ".git", "{F4426EAE-ECE3-49E9-8FC1-0A09E1BC54B9}"
+	ProjectSection(SolutionItems) = preProject
+		..\.gitignore = ..\.gitignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{616EF587-6E94-4F80-8621-A2DAFD11A46B}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\FUNDING.yml = ..\.github\FUNDING.yml
+		..\LICENSE.md = ..\LICENSE.md
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +58,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1C194496-09AD-47C3-BE59-1C66146AB694} = {4DDF1652-99A1-48C7-8D5E-BA31CFFAE956}
 		{B13DB434-5B94-415A-81DF-027E6BFED632} = {32260D2E-DAB6-4D3A-B2B8-4504CD2EB552}
+		{F4426EAE-ECE3-49E9-8FC1-0A09E1BC54B9} = {4DDF1652-99A1-48C7-8D5E-BA31CFFAE956}
+		{616EF587-6E94-4F80-8621-A2DAFD11A46B} = {4DDF1652-99A1-48C7-8D5E-BA31CFFAE956}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5878D0D1-1E65-4783-A9A6-8CA3695EA6B8}
