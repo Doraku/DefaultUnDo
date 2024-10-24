@@ -2,9 +2,16 @@
 	"OutputDirectoryPath": "..\\..\\documentation\\api",
 	"GeneratedAccessModifiers": "Public,Protected,ProtectedInternal",
 	"GeneratedPages": "Assembly,Types,Members",
-	"FileNameFactory": "Name",
+	"FileNameFactory": "DirectoryName",
 	"LinksOutputFilePath": "..\\..\\documentation\\DefaultUnDo.txt",
 	"LinksBaseUrl": "https://github.com/Doraku/DefaultUnDo/blob/master/documentation/api/",
+	"AssemblyDocItem": {
+		"Sections": [
+			"Header",
+			"Default",
+			"Footer"
+		]
+	},
 	"NamespaceDocItem": {
 		"Sections": [
 			"Title",

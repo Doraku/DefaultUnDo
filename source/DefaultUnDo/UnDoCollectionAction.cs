@@ -42,7 +42,7 @@ public enum UnDoCollectionAction
     ISetUnionWith,
 
     /// <summary>
-    /// <see cref="IListExtension.Move{T}(IList{T}, int, int)"/> will be performed.
+    /// <see cref="IListExtensions.Move{T}(IList{T}, int, int)"/> will be performed.
     /// </summary>
     IListMove,
     /// <summary>
