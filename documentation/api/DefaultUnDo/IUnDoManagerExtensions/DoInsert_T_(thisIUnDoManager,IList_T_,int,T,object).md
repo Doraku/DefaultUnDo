@@ -25,7 +25,7 @@ The [IUnDoManager](../IUnDoManager/index.md 'DefaultUnDo\.IUnDoManager')\.
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.DoInsert_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object).source'></a>
 
-`source` [System\.Collections\.Generic\.IList&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IList-1 'System\.Collections\.Generic\.IList\`1')[T](DefaultUnDo/IUnDoManagerExtensions/DoInsert_T_(thisIUnDoManager,IList_T_,int,T,object).md#DefaultUnDo.IUnDoManagerExtensions.DoInsert_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object).T 'DefaultUnDo\.IUnDoManagerExtensions\.DoInsert\<T\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IList\<T\>, int, T, object\)\.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IList-1 'System\.Collections\.Generic\.IList\`1')
+`source` [System\.Collections\.Generic\.IList&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IList-1 'System\.Collections\.Generic\.IList\`1')[T](DoInsert_T_(thisIUnDoManager,IList_T_,int,T,object).md#DefaultUnDo.IUnDoManagerExtensions.DoInsert_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object).T 'DefaultUnDo\.IUnDoManagerExtensions\.DoInsert\<T\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IList\<T\>, int, T, object\)\.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IList-1 'System\.Collections\.Generic\.IList\`1')
 
 The [System\.Collections\.Generic\.IList&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IList-1 'System\.Collections\.Generic\.IList\`1')\.
 
@@ -37,7 +37,7 @@ The zero\-based index at which item should be inserted\.
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.DoInsert_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object).item'></a>
 
-`item` [T](DefaultUnDo/IUnDoManagerExtensions/DoInsert_T_(thisIUnDoManager,IList_T_,int,T,object).md#DefaultUnDo.IUnDoManagerExtensions.DoInsert_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object).T 'DefaultUnDo\.IUnDoManagerExtensions\.DoInsert\<T\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IList\<T\>, int, T, object\)\.T')
+`item` [T](DoInsert_T_(thisIUnDoManager,IList_T_,int,T,object).md#DefaultUnDo.IUnDoManagerExtensions.DoInsert_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object).T 'DefaultUnDo\.IUnDoManagerExtensions\.DoInsert\<T\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IList\<T\>, int, T, object\)\.T')
 
 The item to insert into the [System\.Collections\.Generic\.IList&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IList-1 'System\.Collections\.Generic\.IList\`1')\.
 
@@ -50,4 +50,4 @@ The description of the operation\.
 #### Exceptions
 
 [System\.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System\.ArgumentNullException')  
-[manager](DefaultUnDo/IUnDoManagerExtensions/DoInsert_T_(thisIUnDoManager,IList_T_,int,T,object).md#DefaultUnDo.IUnDoManagerExtensions.DoInsert_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object).manager 'DefaultUnDo\.IUnDoManagerExtensions\.DoInsert\<T\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IList\<T\>, int, T, object\)\.manager') or [source](DefaultUnDo/IUnDoManagerExtensions/DoInsert_T_(thisIUnDoManager,IList_T_,int,T,object).md#DefaultUnDo.IUnDoManagerExtensions.DoInsert_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object).source 'DefaultUnDo\.IUnDoManagerExtensions\.DoInsert\<T\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IList\<T\>, int, T, object\)\.source') is null\.
+[manager](DoInsert_T_(thisIUnDoManager,IList_T_,int,T,object).md#DefaultUnDo.IUnDoManagerExtensions.DoInsert_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object).manager 'DefaultUnDo\.IUnDoManagerExtensions\.DoInsert\<T\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IList\<T\>, int, T, object\)\.manager') or [source](DoInsert_T_(thisIUnDoManager,IList_T_,int,T,object).md#DefaultUnDo.IUnDoManagerExtensions.DoInsert_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object).source 'DefaultUnDo\.IUnDoManagerExtensions\.DoInsert\<T\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IList\<T\>, int, T, object\)\.source') is null\.

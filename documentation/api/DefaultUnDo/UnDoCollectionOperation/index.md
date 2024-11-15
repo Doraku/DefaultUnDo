@@ -9,7 +9,7 @@ Provides data for the operation about to be performed on an undo collection\.
 public readonly record struct UnDoCollectionOperation : System.IEquatable<DefaultUnDo.UnDoCollectionOperation>
 ```
 
-Implements [System\.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System\.IEquatable\`1')[UnDoCollectionOperation](DefaultUnDo/UnDoCollectionOperation/index.md 'DefaultUnDo\.UnDoCollectionOperation')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System\.IEquatable\`1')
+Implements [System\.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System\.IEquatable\`1')[UnDoCollectionOperation](index.md 'DefaultUnDo\.UnDoCollectionOperation')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System\.IEquatable\`1')
 
 | Constructors | |
 | :--- | :--- |

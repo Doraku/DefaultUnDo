@@ -15,8 +15,8 @@ Implements [IUnDoManager](../IUnDoManager/index.md 'DefaultUnDo\.IUnDoManager'),
 
 | Constructors | |
 | :--- | :--- |
-| [UnDoManager\(\)](UnDoManager.md#DefaultUnDo.UnDoManager.UnDoManager() 'DefaultUnDo\.UnDoManager\.UnDoManager\(\)') | Initialises an instance of [UnDoManager](DefaultUnDo/UnDoManager/index.md 'DefaultUnDo\.UnDoManager')\. |
-| [UnDoManager\(int\)](UnDoManager.md#DefaultUnDo.UnDoManager.UnDoManager(int) 'DefaultUnDo\.UnDoManager\.UnDoManager\(int\)') | Initialises an instance of [UnDoManager](DefaultUnDo/UnDoManager/index.md 'DefaultUnDo\.UnDoManager')\. |
+| [UnDoManager\(\)](UnDoManager.md#DefaultUnDo.UnDoManager.UnDoManager() 'DefaultUnDo\.UnDoManager\.UnDoManager\(\)') | Initialises an instance of [UnDoManager](index.md 'DefaultUnDo\.UnDoManager')\. |
+| [UnDoManager\(int\)](UnDoManager.md#DefaultUnDo.UnDoManager.UnDoManager(int) 'DefaultUnDo\.UnDoManager\.UnDoManager\(int\)') | Initialises an instance of [UnDoManager](index.md 'DefaultUnDo\.UnDoManager')\. |
 
 | Properties | |
 | :--- | :--- |

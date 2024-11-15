@@ -5,8 +5,8 @@
 
 | Overloads | |
 | :--- | :--- |
-| [CollectionUnDo\(object, ICollection&lt;T&gt;, T, bool\)](DefaultUnDo/CollectionUnDo_T_/CollectionUnDo_T_.md#DefaultUnDo.CollectionUnDo_T_.CollectionUnDo(object,System.Collections.Generic.ICollection_T_,T,bool) 'DefaultUnDo\.CollectionUnDo\<T\>\.CollectionUnDo\(object, System\.Collections\.Generic\.ICollection\<T\>, T, bool\)') | Initialise an instance of [CollectionUnDo&lt;T&gt;](index.md 'DefaultUnDo\.CollectionUnDo\<T\>')\. |
-| [CollectionUnDo\(ICollection&lt;T&gt;, T, bool\)](DefaultUnDo/CollectionUnDo_T_/CollectionUnDo_T_.md#DefaultUnDo.CollectionUnDo_T_.CollectionUnDo(System.Collections.Generic.ICollection_T_,T,bool) 'DefaultUnDo\.CollectionUnDo\<T\>\.CollectionUnDo\(System\.Collections\.Generic\.ICollection\<T\>, T, bool\)') | Initialise an instance of [CollectionUnDo&lt;T&gt;](index.md 'DefaultUnDo\.CollectionUnDo\<T\>')\. |
+| [CollectionUnDo\(object, ICollection&lt;T&gt;, T, bool\)](CollectionUnDo_T_.md#DefaultUnDo.CollectionUnDo_T_.CollectionUnDo(object,System.Collections.Generic.ICollection_T_,T,bool) 'DefaultUnDo\.CollectionUnDo\<T\>\.CollectionUnDo\(object, System\.Collections\.Generic\.ICollection\<T\>, T, bool\)') | Initialise an instance of [CollectionUnDo&lt;T&gt;](index.md 'DefaultUnDo\.CollectionUnDo\<T\>')\. |
+| [CollectionUnDo\(ICollection&lt;T&gt;, T, bool\)](CollectionUnDo_T_.md#DefaultUnDo.CollectionUnDo_T_.CollectionUnDo(System.Collections.Generic.ICollection_T_,T,bool) 'DefaultUnDo\.CollectionUnDo\<T\>\.CollectionUnDo\(System\.Collections\.Generic\.ICollection\<T\>, T, bool\)') | Initialise an instance of [CollectionUnDo&lt;T&gt;](index.md 'DefaultUnDo\.CollectionUnDo\<T\>')\. |
 
 <a name='DefaultUnDo.CollectionUnDo_T_.CollectionUnDo(object,System.Collections.Generic.ICollection_T_,T,bool)'></a>
 

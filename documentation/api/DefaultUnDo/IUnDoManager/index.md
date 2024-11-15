@@ -20,7 +20,7 @@ Implements [System\.ComponentModel\.INotifyPropertyChanged](https://docs.microso
 | [CanUndo](CanUndo.md 'DefaultUnDo\.IUnDoManager\.CanUndo') | Returns a boolean to express if the method [Undo\(\)](Undo().md 'DefaultUnDo\.IUnDoManager\.Undo\(\)') can be executed\. |
 | [RedoDescriptions](RedoDescriptions.md 'DefaultUnDo\.IUnDoManager\.RedoDescriptions') | Gets the descriptions in order of all the [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') which can be redone\. |
 | [UndoDescriptions](UndoDescriptions.md 'DefaultUnDo\.IUnDoManager\.UndoDescriptions') | Gets the descriptions in order of all the [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') which can be undone\. |
-| [Version](Version.md 'DefaultUnDo\.IUnDoManager\.Version') | Gets an [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32') representing the state of the [IUnDoManager](DefaultUnDo/IUnDoManager/index.md 'DefaultUnDo\.IUnDoManager')\. |
+| [Version](Version.md 'DefaultUnDo\.IUnDoManager\.Version') | Gets an [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32') representing the state of the [IUnDoManager](index.md 'DefaultUnDo\.IUnDoManager')\. |
 
 | Methods | |
 | :--- | :--- |

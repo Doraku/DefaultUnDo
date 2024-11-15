@@ -22,8 +22,8 @@ Implements [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo')
 
 | Constructors | |
 | :--- | :--- |
-| [CollectionUnDo\(object, ICollection&lt;T&gt;, T, bool\)](CollectionUnDo_T_.md#DefaultUnDo.CollectionUnDo_T_.CollectionUnDo(object,System.Collections.Generic.ICollection_T_,T,bool) 'DefaultUnDo\.CollectionUnDo\<T\>\.CollectionUnDo\(object, System\.Collections\.Generic\.ICollection\<T\>, T, bool\)') | Initialise an instance of [CollectionUnDo&lt;T&gt;](DefaultUnDo/CollectionUnDo_T_/index.md 'DefaultUnDo\.CollectionUnDo\<T\>')\. |
-| [CollectionUnDo\(ICollection&lt;T&gt;, T, bool\)](CollectionUnDo_T_.md#DefaultUnDo.CollectionUnDo_T_.CollectionUnDo(System.Collections.Generic.ICollection_T_,T,bool) 'DefaultUnDo\.CollectionUnDo\<T\>\.CollectionUnDo\(System\.Collections\.Generic\.ICollection\<T\>, T, bool\)') | Initialise an instance of [CollectionUnDo&lt;T&gt;](DefaultUnDo/CollectionUnDo_T_/index.md 'DefaultUnDo\.CollectionUnDo\<T\>')\. |
+| [CollectionUnDo\(object, ICollection&lt;T&gt;, T, bool\)](CollectionUnDo_T_.md#DefaultUnDo.CollectionUnDo_T_.CollectionUnDo(object,System.Collections.Generic.ICollection_T_,T,bool) 'DefaultUnDo\.CollectionUnDo\<T\>\.CollectionUnDo\(object, System\.Collections\.Generic\.ICollection\<T\>, T, bool\)') | Initialise an instance of [CollectionUnDo&lt;T&gt;](index.md 'DefaultUnDo\.CollectionUnDo\<T\>')\. |
+| [CollectionUnDo\(ICollection&lt;T&gt;, T, bool\)](CollectionUnDo_T_.md#DefaultUnDo.CollectionUnDo_T_.CollectionUnDo(System.Collections.Generic.ICollection_T_,T,bool) 'DefaultUnDo\.CollectionUnDo\<T\>\.CollectionUnDo\(System\.Collections\.Generic\.ICollection\<T\>, T, bool\)') | Initialise an instance of [CollectionUnDo&lt;T&gt;](index.md 'DefaultUnDo\.CollectionUnDo\<T\>')\. |
 
 | Explicit Interface Implementations | |
 | :--- | :--- |

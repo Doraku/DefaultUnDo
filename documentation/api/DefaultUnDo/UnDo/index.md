@@ -15,8 +15,8 @@ Implements [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo')
 
 | Constructors | |
 | :--- | :--- |
-| [UnDo\(object, Action, Action\)](UnDo.md#DefaultUnDo.UnDo.UnDo(object,System.Action,System.Action) 'DefaultUnDo\.UnDo\.UnDo\(object, System\.Action, System\.Action\)') | Initialises an instance of [UnDo](DefaultUnDo/UnDo/index.md 'DefaultUnDo\.UnDo')\. |
-| [UnDo\(Action, Action\)](UnDo.md#DefaultUnDo.UnDo.UnDo(System.Action,System.Action) 'DefaultUnDo\.UnDo\.UnDo\(System\.Action, System\.Action\)') | Initialises an instance of [UnDo](DefaultUnDo/UnDo/index.md 'DefaultUnDo\.UnDo')\. |
+| [UnDo\(object, Action, Action\)](UnDo.md#DefaultUnDo.UnDo.UnDo(object,System.Action,System.Action) 'DefaultUnDo\.UnDo\.UnDo\(object, System\.Action, System\.Action\)') | Initialises an instance of [UnDo](index.md 'DefaultUnDo\.UnDo')\. |
+| [UnDo\(Action, Action\)](UnDo.md#DefaultUnDo.UnDo.UnDo(System.Action,System.Action) 'DefaultUnDo\.UnDo\.UnDo\(System\.Action, System\.Action\)') | Initialises an instance of [UnDo](index.md 'DefaultUnDo\.UnDo')\. |
 
 | Explicit Interface Implementations | |
 | :--- | :--- |

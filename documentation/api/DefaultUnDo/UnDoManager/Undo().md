@@ -14,7 +14,7 @@ Implements [Undo\(\)](../IUnDoManager/Undo().md 'DefaultUnDo\.IUnDoManager\.Undo
 #### Exceptions
 
 [System\.InvalidOperationException](https://docs.microsoft.com/en-us/dotnet/api/System.InvalidOperationException 'System\.InvalidOperationException')  
-Cannot perform [Undo\(\)](DefaultUnDo/UnDoManager/Undo().md 'DefaultUnDo\.UnDoManager\.Undo\(\)') while a group operation is going on\.
+Cannot perform [Undo\(\)](Undo().md 'DefaultUnDo\.UnDoManager\.Undo\(\)') while a group operation is going on\.
 
 [System\.InvalidOperationException](https://docs.microsoft.com/en-us/dotnet/api/System.InvalidOperationException 'System\.InvalidOperationException')  
 There is no action to undo\.

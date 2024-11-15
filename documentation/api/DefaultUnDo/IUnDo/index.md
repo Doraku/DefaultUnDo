@@ -20,7 +20,7 @@ Derived
 
 | Properties | |
 | :--- | :--- |
-| [Description](Description.md 'DefaultUnDo\.IUnDo\.Description') | Gets a description of what this [IUnDo](DefaultUnDo/IUnDo/index.md 'DefaultUnDo\.IUnDo') perform\. |
+| [Description](Description.md 'DefaultUnDo\.IUnDo\.Description') | Gets a description of what this [IUnDo](index.md 'DefaultUnDo\.IUnDo') perform\. |
 
 | Methods | |
 | :--- | :--- |

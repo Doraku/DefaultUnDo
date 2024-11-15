@@ -5,8 +5,8 @@
 
 | Overloads | |
 | :--- | :--- |
-| [UnDoManager\(\)](DefaultUnDo/UnDoManager/UnDoManager.md#DefaultUnDo.UnDoManager.UnDoManager() 'DefaultUnDo\.UnDoManager\.UnDoManager\(\)') | Initialises an instance of [UnDoManager](index.md 'DefaultUnDo\.UnDoManager')\. |
-| [UnDoManager\(int\)](DefaultUnDo/UnDoManager/UnDoManager.md#DefaultUnDo.UnDoManager.UnDoManager(int) 'DefaultUnDo\.UnDoManager\.UnDoManager\(int\)') | Initialises an instance of [UnDoManager](index.md 'DefaultUnDo\.UnDoManager')\. |
+| [UnDoManager\(\)](UnDoManager.md#DefaultUnDo.UnDoManager.UnDoManager() 'DefaultUnDo\.UnDoManager\.UnDoManager\(\)') | Initialises an instance of [UnDoManager](index.md 'DefaultUnDo\.UnDoManager')\. |
+| [UnDoManager\(int\)](UnDoManager.md#DefaultUnDo.UnDoManager.UnDoManager(int) 'DefaultUnDo\.UnDoManager\.UnDoManager\(int\)') | Initialises an instance of [UnDoManager](index.md 'DefaultUnDo\.UnDoManager')\. |
 
 <a name='DefaultUnDo.UnDoManager.UnDoManager()'></a>
 

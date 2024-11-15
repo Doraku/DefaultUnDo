@@ -22,13 +22,13 @@ Implements [IMergeableUnDo](../IMergeableUnDo/index.md 'DefaultUnDo\.IMergeableU
 
 | Constructors | |
 | :--- | :--- |
-| [ValueUnDo\(object, Action&lt;T&gt;, T, T\)](ValueUnDo_T_.md#DefaultUnDo.ValueUnDo_T_.ValueUnDo(object,System.Action_T_,T,T) 'DefaultUnDo\.ValueUnDo\<T\>\.ValueUnDo\(object, System\.Action\<T\>, T, T\)') | Initialises an instance of [ValueUnDo&lt;T&gt;](DefaultUnDo/ValueUnDo_T_/index.md 'DefaultUnDo\.ValueUnDo\<T\>')\. |
-| [ValueUnDo\(Action&lt;T&gt;, T, T\)](ValueUnDo_T_.md#DefaultUnDo.ValueUnDo_T_.ValueUnDo(System.Action_T_,T,T) 'DefaultUnDo\.ValueUnDo\<T\>\.ValueUnDo\(System\.Action\<T\>, T, T\)') | Initialises an instance of [ValueUnDo&lt;T&gt;](DefaultUnDo/ValueUnDo_T_/index.md 'DefaultUnDo\.ValueUnDo\<T\>')\. |
+| [ValueUnDo\(object, Action&lt;T&gt;, T, T\)](ValueUnDo_T_.md#DefaultUnDo.ValueUnDo_T_.ValueUnDo(object,System.Action_T_,T,T) 'DefaultUnDo\.ValueUnDo\<T\>\.ValueUnDo\(object, System\.Action\<T\>, T, T\)') | Initialises an instance of [ValueUnDo&lt;T&gt;](index.md 'DefaultUnDo\.ValueUnDo\<T\>')\. |
+| [ValueUnDo\(Action&lt;T&gt;, T, T\)](ValueUnDo_T_.md#DefaultUnDo.ValueUnDo_T_.ValueUnDo(System.Action_T_,T,T) 'DefaultUnDo\.ValueUnDo\<T\>\.ValueUnDo\(System\.Action\<T\>, T, T\)') | Initialises an instance of [ValueUnDo&lt;T&gt;](index.md 'DefaultUnDo\.ValueUnDo\<T\>')\. |
 
 | Properties | |
 | :--- | :--- |
-| [MergeDescriptionAction](MergeDescriptionAction.md 'DefaultUnDo\.ValueUnDo\<T\>\.MergeDescriptionAction') | The [MergeDescriptionHandler\(object, T, object, T\)](MergeDescriptionHandler(object,T,object,T)/index.md 'DefaultUnDo\.ValueUnDo\<T\>\.MergeDescriptionHandler\(object, T, object, T\)') used to merge description between two [ValueUnDo&lt;T&gt;](DefaultUnDo/ValueUnDo_T_/index.md 'DefaultUnDo\.ValueUnDo\<T\>') instance\. |
-| [MergeInterval](MergeInterval.md 'DefaultUnDo\.ValueUnDo\<T\>\.MergeInterval') | The [System\.TimeSpan](https://docs.microsoft.com/en-us/dotnet/api/System.TimeSpan 'System\.TimeSpan') interval equivalent [ValueUnDo&lt;T&gt;](DefaultUnDo/ValueUnDo_T_/index.md 'DefaultUnDo\.ValueUnDo\<T\>') instances should respect to be mergeable\. If not set, [MergeInterval](../ValueUnDo/MergeInterval.md 'DefaultUnDo\.ValueUnDo\.MergeInterval') will be used\. |
+| [MergeDescriptionAction](MergeDescriptionAction.md 'DefaultUnDo\.ValueUnDo\<T\>\.MergeDescriptionAction') | The [MergeDescriptionHandler\(object, T, object, T\)](MergeDescriptionHandler(object,T,object,T)/index.md 'DefaultUnDo\.ValueUnDo\<T\>\.MergeDescriptionHandler\(object, T, object, T\)') used to merge description between two [ValueUnDo&lt;T&gt;](index.md 'DefaultUnDo\.ValueUnDo\<T\>') instance\. |
+| [MergeInterval](MergeInterval.md 'DefaultUnDo\.ValueUnDo\<T\>\.MergeInterval') | The [System\.TimeSpan](https://docs.microsoft.com/en-us/dotnet/api/System.TimeSpan 'System\.TimeSpan') interval equivalent [ValueUnDo&lt;T&gt;](index.md 'DefaultUnDo\.ValueUnDo\<T\>') instances should respect to be mergeable\. If not set, [MergeInterval](../ValueUnDo/MergeInterval.md 'DefaultUnDo\.ValueUnDo\.MergeInterval') will be used\. |
 
 | Explicit Interface Implementations | |
 | :--- | :--- |

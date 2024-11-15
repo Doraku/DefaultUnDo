@@ -23,7 +23,7 @@ The description of the previous [ValueUnDo&lt;T&gt;](../index.md 'DefaultUnDo\.V
 
 <a name='DefaultUnDo.ValueUnDo_T_.MergeDescriptionHandler(object,T,object,T).oldValue'></a>
 
-`oldValue` [T](DefaultUnDo/ValueUnDo_T_/MergeDescriptionHandler(object,T,object,T)/index.md#DefaultUnDo.ValueUnDo_T_.MergeDescriptionHandler(object,T,object,T).T 'DefaultUnDo\.ValueUnDo\<T\>\.MergeDescriptionHandler\(object, T, object, T\)\.T')
+`oldValue` [T](index.md#DefaultUnDo.ValueUnDo_T_.MergeDescriptionHandler(object,T,object,T).T 'DefaultUnDo\.ValueUnDo\<T\>\.MergeDescriptionHandler\(object, T, object, T\)\.T')
 
 The old value used when undoing the resulting merged [ValueUnDo&lt;T&gt;](../index.md 'DefaultUnDo\.ValueUnDo\<T\>')\.
 
@@ -35,7 +35,7 @@ The description of the new [ValueUnDo&lt;T&gt;](../index.md 'DefaultUnDo\.ValueU
 
 <a name='DefaultUnDo.ValueUnDo_T_.MergeDescriptionHandler(object,T,object,T).newValue'></a>
 
-`newValue` [T](DefaultUnDo/ValueUnDo_T_/MergeDescriptionHandler(object,T,object,T)/index.md#DefaultUnDo.ValueUnDo_T_.MergeDescriptionHandler(object,T,object,T).T 'DefaultUnDo\.ValueUnDo\<T\>\.MergeDescriptionHandler\(object, T, object, T\)\.T')
+`newValue` [T](index.md#DefaultUnDo.ValueUnDo_T_.MergeDescriptionHandler(object,T,object,T).T 'DefaultUnDo\.ValueUnDo\<T\>\.MergeDescriptionHandler\(object, T, object, T\)\.T')
 
 The new value used when redoing the resulting merged [ValueUnDo&lt;T&gt;](../index.md 'DefaultUnDo\.ValueUnDo\<T\>')\.
 

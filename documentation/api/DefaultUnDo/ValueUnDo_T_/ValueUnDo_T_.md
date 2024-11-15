@@ -5,8 +5,8 @@
 
 | Overloads | |
 | :--- | :--- |
-| [ValueUnDo\(object, Action&lt;T&gt;, T, T\)](DefaultUnDo/ValueUnDo_T_/ValueUnDo_T_.md#DefaultUnDo.ValueUnDo_T_.ValueUnDo(object,System.Action_T_,T,T) 'DefaultUnDo\.ValueUnDo\<T\>\.ValueUnDo\(object, System\.Action\<T\>, T, T\)') | Initialises an instance of [ValueUnDo&lt;T&gt;](index.md 'DefaultUnDo\.ValueUnDo\<T\>')\. |
-| [ValueUnDo\(Action&lt;T&gt;, T, T\)](DefaultUnDo/ValueUnDo_T_/ValueUnDo_T_.md#DefaultUnDo.ValueUnDo_T_.ValueUnDo(System.Action_T_,T,T) 'DefaultUnDo\.ValueUnDo\<T\>\.ValueUnDo\(System\.Action\<T\>, T, T\)') | Initialises an instance of [ValueUnDo&lt;T&gt;](index.md 'DefaultUnDo\.ValueUnDo\<T\>')\. |
+| [ValueUnDo\(object, Action&lt;T&gt;, T, T\)](ValueUnDo_T_.md#DefaultUnDo.ValueUnDo_T_.ValueUnDo(object,System.Action_T_,T,T) 'DefaultUnDo\.ValueUnDo\<T\>\.ValueUnDo\(object, System\.Action\<T\>, T, T\)') | Initialises an instance of [ValueUnDo&lt;T&gt;](index.md 'DefaultUnDo\.ValueUnDo\<T\>')\. |
+| [ValueUnDo\(Action&lt;T&gt;, T, T\)](ValueUnDo_T_.md#DefaultUnDo.ValueUnDo_T_.ValueUnDo(System.Action_T_,T,T) 'DefaultUnDo\.ValueUnDo\<T\>\.ValueUnDo\(System\.Action\<T\>, T, T\)') | Initialises an instance of [ValueUnDo&lt;T&gt;](index.md 'DefaultUnDo\.ValueUnDo\<T\>')\. |
 
 <a name='DefaultUnDo.ValueUnDo_T_.ValueUnDo(object,System.Action_T_,T,T)'></a>
 

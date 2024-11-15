@@ -21,4 +21,4 @@ Implements [Do\(IUnDo\)](../IUnDoManager/Do(IUnDo).md 'DefaultUnDo\.IUnDoManager
 #### Exceptions
 
 [System\.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System\.ArgumentNullException')  
-[command](DefaultUnDo/UnDoManager/Do(IUnDo).md#DefaultUnDo.UnDoManager.Do(DefaultUnDo.IUnDo).command 'DefaultUnDo\.UnDoManager\.Do\(DefaultUnDo\.IUnDo\)\.command') is null\.
+[command](Do(IUnDo).md#DefaultUnDo.UnDoManager.Do(DefaultUnDo.IUnDo).command 'DefaultUnDo\.UnDoManager\.Do\(DefaultUnDo\.IUnDo\)\.command') is null\.

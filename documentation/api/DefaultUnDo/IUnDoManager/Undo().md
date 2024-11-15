@@ -12,7 +12,7 @@ void Undo();
 #### Exceptions
 
 [System\.InvalidOperationException](https://docs.microsoft.com/en-us/dotnet/api/System.InvalidOperationException 'System\.InvalidOperationException')  
-Cannot perform [Undo\(\)](DefaultUnDo/IUnDoManager/Undo().md 'DefaultUnDo\.IUnDoManager\.Undo\(\)') while a group operation is going on\.
+Cannot perform [Undo\(\)](Undo().md 'DefaultUnDo\.IUnDoManager\.Undo\(\)') while a group operation is going on\.
 
 [System\.InvalidOperationException](https://docs.microsoft.com/en-us/dotnet/api/System.InvalidOperationException 'System\.InvalidOperationException')  
 There is no action to undo\.

@@ -38,8 +38,8 @@ M:DefaultUnDo.IUnDoManagerExtensions.Do``1(DefaultUnDo.IUnDoManager,System.Actio
 T:DefaultUnDo.IUnDoManagerExtensions|DefaultUnDo/IUnDoManagerExtensions/index.md|IUnDoManagerExtensions
 P:DefaultUnDo.GroupUnDo.MergeDescriptionAction|DefaultUnDo/GroupUnDo/MergeDescriptionAction.md|MergeDescriptionAction
 P:DefaultUnDo.GroupUnDo.DefaultUnDo#IUnDo#Description|DefaultUnDo/GroupUnDo/DefaultUnDo.IUnDo.Description.md|DefaultUnDo.IUnDo.Description
-M:DefaultUnDo.GroupUnDo.#ctor(System.Object,DefaultUnDo.IUnDo[])|DefaultUnDo/GroupUnDo/GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(object,DefaultUnDo.IUnDo[])|GroupUnDo(object, IUnDo[])
-M:DefaultUnDo.GroupUnDo.#ctor(DefaultUnDo.IUnDo[])|DefaultUnDo/GroupUnDo/GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(DefaultUnDo.IUnDo[])|GroupUnDo(IUnDo[])
+M:DefaultUnDo.GroupUnDo.#ctor(System.Object,System.ReadOnlySpan{DefaultUnDo.IUnDo})|DefaultUnDo/GroupUnDo/GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(object,scopedSystem.ReadOnlySpan_DefaultUnDo.IUnDo_)|GroupUnDo(object, scoped ReadOnlySpan<IUnDo>)
+M:DefaultUnDo.GroupUnDo.#ctor(System.ReadOnlySpan{DefaultUnDo.IUnDo})|DefaultUnDo/GroupUnDo/GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(scopedSystem.ReadOnlySpan_DefaultUnDo.IUnDo_)|GroupUnDo(scoped ReadOnlySpan<IUnDo>)
 M:DefaultUnDo.GroupUnDo.TryGetSingle``1(``0@)|DefaultUnDo/GroupUnDo/TryGetSingle_T_(T).md|TryGetSingle<T>(T)
 M:DefaultUnDo.GroupUnDo.DefaultUnDo#IMergeableUnDo#TryMerge(DefaultUnDo.IUnDo,DefaultUnDo.IUnDo@)|DefaultUnDo/GroupUnDo/DefaultUnDo.IMergeableUnDo.TryMerge(IUnDo,IUnDo).md|DefaultUnDo.IMergeableUnDo.TryMerge(IUnDo, IUnDo)
 M:DefaultUnDo.GroupUnDo.DefaultUnDo#IUnDo#Do|DefaultUnDo/GroupUnDo/DefaultUnDo.IUnDo.Do().md|DefaultUnDo.IUnDo.Do()

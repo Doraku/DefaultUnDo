@@ -15,12 +15,12 @@ Implements [IMergeableUnDo](../IMergeableUnDo/index.md 'DefaultUnDo\.IMergeableU
 
 | Constructors | |
 | :--- | :--- |
-| [GroupUnDo\(IUnDo\[\]\)](GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(DefaultUnDo.IUnDo[]) 'DefaultUnDo\.GroupUnDo\.GroupUnDo\(DefaultUnDo\.IUnDo\[\]\)') | Initialise an instance of [GroupUnDo](DefaultUnDo/GroupUnDo/index.md 'DefaultUnDo\.GroupUnDo')\. |
-| [GroupUnDo\(object, IUnDo\[\]\)](GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(object,DefaultUnDo.IUnDo[]) 'DefaultUnDo\.GroupUnDo\.GroupUnDo\(object, DefaultUnDo\.IUnDo\[\]\)') | Initialise an instance of [GroupUnDo](DefaultUnDo/GroupUnDo/index.md 'DefaultUnDo\.GroupUnDo')\. |
+| [GroupUnDo\(object, scoped ReadOnlySpan&lt;IUnDo&gt;\)](GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(object,scopedSystem.ReadOnlySpan_DefaultUnDo.IUnDo_) 'DefaultUnDo\.GroupUnDo\.GroupUnDo\(object, scoped System\.ReadOnlySpan\<DefaultUnDo\.IUnDo\>\)') | Initialise an instance of [GroupUnDo](index.md 'DefaultUnDo\.GroupUnDo')\. |
+| [GroupUnDo\(scoped ReadOnlySpan&lt;IUnDo&gt;\)](GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(scopedSystem.ReadOnlySpan_DefaultUnDo.IUnDo_) 'DefaultUnDo\.GroupUnDo\.GroupUnDo\(scoped System\.ReadOnlySpan\<DefaultUnDo\.IUnDo\>\)') | Initialise an instance of [GroupUnDo](index.md 'DefaultUnDo\.GroupUnDo')\. |
 
 | Properties | |
 | :--- | :--- |
-| [MergeDescriptionAction](MergeDescriptionAction.md 'DefaultUnDo\.GroupUnDo\.MergeDescriptionAction') | The [MergeDescriptionHandler\(object, object, object\)](MergeDescriptionHandler(object,object,object)/index.md 'DefaultUnDo\.GroupUnDo\.MergeDescriptionHandler\(object, object, object\)') used to merge description between a [GroupUnDo](DefaultUnDo/GroupUnDo/index.md 'DefaultUnDo\.GroupUnDo') and a [IMergeableUnDo](../IMergeableUnDo/index.md 'DefaultUnDo\.IMergeableUnDo') instances\. |
+| [MergeDescriptionAction](MergeDescriptionAction.md 'DefaultUnDo\.GroupUnDo\.MergeDescriptionAction') | The [MergeDescriptionHandler\(object, object, object\)](MergeDescriptionHandler(object,object,object)/index.md 'DefaultUnDo\.GroupUnDo\.MergeDescriptionHandler\(object, object, object\)') used to merge description between a [GroupUnDo](index.md 'DefaultUnDo\.GroupUnDo') and a [IMergeableUnDo](../IMergeableUnDo/index.md 'DefaultUnDo\.IMergeableUnDo') instances\. |
 
 | Methods | |
 | :--- | :--- |

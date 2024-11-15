@@ -12,7 +12,7 @@ void Redo();
 #### Exceptions
 
 [System\.InvalidOperationException](https://docs.microsoft.com/en-us/dotnet/api/System.InvalidOperationException 'System\.InvalidOperationException')  
-Cannot perform [Redo\(\)](DefaultUnDo/IUnDoManager/Redo().md 'DefaultUnDo\.IUnDoManager\.Redo\(\)') while a group operation is going on\.
+Cannot perform [Redo\(\)](Redo().md 'DefaultUnDo\.IUnDoManager\.Redo\(\)') while a group operation is going on\.
 
 [System\.InvalidOperationException](https://docs.microsoft.com/en-us/dotnet/api/System.InvalidOperationException 'System\.InvalidOperationException')  
 There is no action to redo\.

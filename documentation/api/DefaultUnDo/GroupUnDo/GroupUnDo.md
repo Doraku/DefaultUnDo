@@ -5,61 +5,58 @@
 
 | Overloads | |
 | :--- | :--- |
-| [GroupUnDo\(IUnDo\[\]\)](DefaultUnDo/GroupUnDo/GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(DefaultUnDo.IUnDo[]) 'DefaultUnDo\.GroupUnDo\.GroupUnDo\(DefaultUnDo\.IUnDo\[\]\)') | Initialise an instance of [GroupUnDo](index.md 'DefaultUnDo\.GroupUnDo')\. |
-| [GroupUnDo\(object, IUnDo\[\]\)](DefaultUnDo/GroupUnDo/GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(object,DefaultUnDo.IUnDo[]) 'DefaultUnDo\.GroupUnDo\.GroupUnDo\(object, DefaultUnDo\.IUnDo\[\]\)') | Initialise an instance of [GroupUnDo](index.md 'DefaultUnDo\.GroupUnDo')\. |
+| [GroupUnDo\(object, scoped ReadOnlySpan&lt;IUnDo&gt;\)](GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(object,scopedSystem.ReadOnlySpan_DefaultUnDo.IUnDo_) 'DefaultUnDo\.GroupUnDo\.GroupUnDo\(object, scoped System\.ReadOnlySpan\<DefaultUnDo\.IUnDo\>\)') | Initialise an instance of [GroupUnDo](index.md 'DefaultUnDo\.GroupUnDo')\. |
+| [GroupUnDo\(scoped ReadOnlySpan&lt;IUnDo&gt;\)](GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(scopedSystem.ReadOnlySpan_DefaultUnDo.IUnDo_) 'DefaultUnDo\.GroupUnDo\.GroupUnDo\(scoped System\.ReadOnlySpan\<DefaultUnDo\.IUnDo\>\)') | Initialise an instance of [GroupUnDo](index.md 'DefaultUnDo\.GroupUnDo')\. |
 
-<a name='DefaultUnDo.GroupUnDo.GroupUnDo(DefaultUnDo.IUnDo[])'></a>
+<a name='DefaultUnDo.GroupUnDo.GroupUnDo(object,scopedSystem.ReadOnlySpan_DefaultUnDo.IUnDo_)'></a>
 
-## GroupUnDo\(IUnDo\[\]\) Constructor
-
-Initialise an instance of [GroupUnDo](index.md 'DefaultUnDo\.GroupUnDo')\.
-
-```csharp
-public GroupUnDo(params DefaultUnDo.IUnDo[] commands);
-```
-#### Parameters
-
-<a name='DefaultUnDo.GroupUnDo.GroupUnDo(DefaultUnDo.IUnDo[]).commands'></a>
-
-`commands` [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
-
-The sequence of [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') contained by the instance\.
-
-#### Exceptions
-
-[System\.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System\.ArgumentNullException')  
-[commands](index.md#DefaultUnDo.GroupUnDo.GroupUnDo(DefaultUnDo.IUnDo[]).commands 'DefaultUnDo\.GroupUnDo\.GroupUnDo\(DefaultUnDo\.IUnDo\[\]\)\.commands') is null\.
-
-[System\.ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentException 'System\.ArgumentException')  
-[commands](index.md#DefaultUnDo.GroupUnDo.GroupUnDo(DefaultUnDo.IUnDo[]).commands 'DefaultUnDo\.GroupUnDo\.GroupUnDo\(DefaultUnDo\.IUnDo\[\]\)\.commands') contains null elements\.
-
-<a name='DefaultUnDo.GroupUnDo.GroupUnDo(object,DefaultUnDo.IUnDo[])'></a>
-
-## GroupUnDo\(object, IUnDo\[\]\) Constructor
+## GroupUnDo\(object, scoped ReadOnlySpan\<IUnDo\>\) Constructor
 
 Initialise an instance of [GroupUnDo](index.md 'DefaultUnDo\.GroupUnDo')\.
 
 ```csharp
-public GroupUnDo(object? description, params DefaultUnDo.IUnDo[] commands);
+public GroupUnDo(object? description, scoped System.ReadOnlySpan<DefaultUnDo.IUnDo> commands);
 ```
 #### Parameters
 
-<a name='DefaultUnDo.GroupUnDo.GroupUnDo(object,DefaultUnDo.IUnDo[]).description'></a>
+<a name='DefaultUnDo.GroupUnDo.GroupUnDo(object,scopedSystem.ReadOnlySpan_DefaultUnDo.IUnDo_).description'></a>
 
 `description` [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')
 
 The description of this [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo')
 
-<a name='DefaultUnDo.GroupUnDo.GroupUnDo(object,DefaultUnDo.IUnDo[]).commands'></a>
+<a name='DefaultUnDo.GroupUnDo.GroupUnDo(object,scopedSystem.ReadOnlySpan_DefaultUnDo.IUnDo_).commands'></a>
 
-`commands` [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`commands` [System\.ReadOnlySpan&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.ReadOnlySpan-1 'System\.ReadOnlySpan\`1')[IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.ReadOnlySpan-1 'System\.ReadOnlySpan\`1')
+
+The sequence of [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') contained by the instance\.
+
+#### Exceptions
+
+[System\.ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentException 'System\.ArgumentException')  
+[commands](index.md#DefaultUnDo.GroupUnDo.GroupUnDo(object,scopedSystem.ReadOnlySpan_DefaultUnDo.IUnDo_).commands 'DefaultUnDo\.GroupUnDo\.GroupUnDo\(object, scoped System\.ReadOnlySpan\<DefaultUnDo\.IUnDo\>\)\.commands') contains null elements\.
+
+<a name='DefaultUnDo.GroupUnDo.GroupUnDo(scopedSystem.ReadOnlySpan_DefaultUnDo.IUnDo_)'></a>
+
+## GroupUnDo\(scoped ReadOnlySpan\<IUnDo\>\) Constructor
+
+Initialise an instance of [GroupUnDo](index.md 'DefaultUnDo\.GroupUnDo')\.
+
+```csharp
+public GroupUnDo(scoped System.ReadOnlySpan<DefaultUnDo.IUnDo> commands);
+```
+#### Parameters
+
+<a name='DefaultUnDo.GroupUnDo.GroupUnDo(scopedSystem.ReadOnlySpan_DefaultUnDo.IUnDo_).commands'></a>
+
+`commands` [System\.ReadOnlySpan&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.ReadOnlySpan-1 'System\.ReadOnlySpan\`1')[IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.ReadOnlySpan-1 'System\.ReadOnlySpan\`1')
 
 The sequence of [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') contained by the instance\.
 
 #### Exceptions
 
 [System\.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System\.ArgumentNullException')  
-[commands](index.md#DefaultUnDo.GroupUnDo.GroupUnDo(object,DefaultUnDo.IUnDo[]).commands 'DefaultUnDo\.GroupUnDo\.GroupUnDo\(object, DefaultUnDo\.IUnDo\[\]\)\.commands') is null\.
+[commands](index.md#DefaultUnDo.GroupUnDo.GroupUnDo(scopedSystem.ReadOnlySpan_DefaultUnDo.IUnDo_).commands 'DefaultUnDo\.GroupUnDo\.GroupUnDo\(scoped System\.ReadOnlySpan\<DefaultUnDo\.IUnDo\>\)\.commands') is null\.
 
 [System\.ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentException 'System\.ArgumentException')  
-[commands](index.md#DefaultUnDo.GroupUnDo.GroupUnDo(object,DefaultUnDo.IUnDo[]).commands 'DefaultUnDo\.GroupUnDo\.GroupUnDo\(object, DefaultUnDo\.IUnDo\[\]\)\.commands') contains null elements\.
+[commands](index.md#DefaultUnDo.GroupUnDo.GroupUnDo(scopedSystem.ReadOnlySpan_DefaultUnDo.IUnDo_).commands 'DefaultUnDo\.GroupUnDo\.GroupUnDo\(scoped System\.ReadOnlySpan\<DefaultUnDo\.IUnDo\>\)\.commands') contains null elements\.

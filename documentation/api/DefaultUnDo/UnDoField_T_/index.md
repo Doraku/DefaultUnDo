@@ -20,8 +20,8 @@ Inheritance [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.
 
 | Constructors | |
 | :--- | :--- |
-| [UnDoField\(IUnDoManager, Func&lt;UnDoFieldChange&lt;T&gt;,object&gt;\)](UnDoField_T_.md#DefaultUnDo.UnDoField_T_.UnDoField(DefaultUnDo.IUnDoManager,System.Func_DefaultUnDo.UnDoFieldChange_T_,object_) 'DefaultUnDo\.UnDoField\<T\>\.UnDoField\(DefaultUnDo\.IUnDoManager, System\.Func\<DefaultUnDo\.UnDoFieldChange\<T\>,object\>\)') | Creates a new instance of [UnDoField&lt;T&gt;](DefaultUnDo/UnDoField_T_/index.md 'DefaultUnDo\.UnDoField\<T\>')\. |
-| [UnDoField\(IUnDoManager, T, Func&lt;UnDoFieldChange&lt;T&gt;,object&gt;\)](UnDoField_T_.md#DefaultUnDo.UnDoField_T_.UnDoField(DefaultUnDo.IUnDoManager,T,System.Func_DefaultUnDo.UnDoFieldChange_T_,object_) 'DefaultUnDo\.UnDoField\<T\>\.UnDoField\(DefaultUnDo\.IUnDoManager, T, System\.Func\<DefaultUnDo\.UnDoFieldChange\<T\>,object\>\)') | Creates a new instance of [UnDoField&lt;T&gt;](DefaultUnDo/UnDoField_T_/index.md 'DefaultUnDo\.UnDoField\<T\>')\. |
+| [UnDoField\(IUnDoManager, Func&lt;UnDoFieldChange&lt;T&gt;,object&gt;\)](UnDoField_T_.md#DefaultUnDo.UnDoField_T_.UnDoField(DefaultUnDo.IUnDoManager,System.Func_DefaultUnDo.UnDoFieldChange_T_,object_) 'DefaultUnDo\.UnDoField\<T\>\.UnDoField\(DefaultUnDo\.IUnDoManager, System\.Func\<DefaultUnDo\.UnDoFieldChange\<T\>,object\>\)') | Creates a new instance of [UnDoField&lt;T&gt;](index.md 'DefaultUnDo\.UnDoField\<T\>')\. |
+| [UnDoField\(IUnDoManager, T, Func&lt;UnDoFieldChange&lt;T&gt;,object&gt;\)](UnDoField_T_.md#DefaultUnDo.UnDoField_T_.UnDoField(DefaultUnDo.IUnDoManager,T,System.Func_DefaultUnDo.UnDoFieldChange_T_,object_) 'DefaultUnDo\.UnDoField\<T\>\.UnDoField\(DefaultUnDo\.IUnDoManager, T, System\.Func\<DefaultUnDo\.UnDoFieldChange\<T\>,object\>\)') | Creates a new instance of [UnDoField&lt;T&gt;](index.md 'DefaultUnDo\.UnDoField\<T\>')\. |
 
 | Properties | |
 | :--- | :--- |
@@ -34,4 +34,4 @@ Inheritance [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.
 
 | Operators | |
 | :--- | :--- |
-| [implicit operator T\(UnDoField&lt;T&gt;\)](implicitoperatorT(UnDoField_T_).md 'DefaultUnDo\.UnDoField\<T\>\.op\_Implicit T\(DefaultUnDo\.UnDoField\<T\>\)') | Defines an implicit conversion of a [UnDoField&lt;T&gt;](DefaultUnDo/UnDoField_T_/index.md 'DefaultUnDo\.UnDoField\<T\>') to a [T](DefaultUnDo/UnDoField_T_/index.md#DefaultUnDo.UnDoField_T_.T 'DefaultUnDo\.UnDoField\<T\>\.T')\. |
+| [implicit operator T\(UnDoField&lt;T&gt;\)](implicitoperatorT(UnDoField_T_).md 'DefaultUnDo\.UnDoField\<T\>\.op\_Implicit T\(DefaultUnDo\.UnDoField\<T\>\)') | Defines an implicit conversion of a [UnDoField&lt;T&gt;](index.md 'DefaultUnDo\.UnDoField\<T\>') to a [T](index.md#DefaultUnDo.UnDoField_T_.T 'DefaultUnDo\.UnDoField\<T\>\.T')\. |

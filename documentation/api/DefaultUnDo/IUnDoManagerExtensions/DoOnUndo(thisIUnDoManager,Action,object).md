@@ -31,4 +31,4 @@ The description of the operation\.
 #### Exceptions
 
 [System\.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System\.ArgumentNullException')  
-[manager](DefaultUnDo/IUnDoManagerExtensions/DoOnUndo(thisIUnDoManager,Action,object).md#DefaultUnDo.IUnDoManagerExtensions.DoOnUndo(thisDefaultUnDo.IUnDoManager,System.Action,object).manager 'DefaultUnDo\.IUnDoManagerExtensions\.DoOnUndo\(this DefaultUnDo\.IUnDoManager, System\.Action, object\)\.manager') is null\.
+[manager](DoOnUndo(thisIUnDoManager,Action,object).md#DefaultUnDo.IUnDoManagerExtensions.DoOnUndo(thisDefaultUnDo.IUnDoManager,System.Action,object).manager 'DefaultUnDo\.IUnDoManagerExtensions\.DoOnUndo\(this DefaultUnDo\.IUnDoManager, System\.Action, object\)\.manager') is null\.

@@ -5,8 +5,8 @@
 
 | Overloads | |
 | :--- | :--- |
-| [UnDo\(object, Action, Action\)](DefaultUnDo/UnDo/UnDo.md#DefaultUnDo.UnDo.UnDo(object,System.Action,System.Action) 'DefaultUnDo\.UnDo\.UnDo\(object, System\.Action, System\.Action\)') | Initialises an instance of [UnDo](index.md 'DefaultUnDo\.UnDo')\. |
-| [UnDo\(Action, Action\)](DefaultUnDo/UnDo/UnDo.md#DefaultUnDo.UnDo.UnDo(System.Action,System.Action) 'DefaultUnDo\.UnDo\.UnDo\(System\.Action, System\.Action\)') | Initialises an instance of [UnDo](index.md 'DefaultUnDo\.UnDo')\. |
+| [UnDo\(object, Action, Action\)](UnDo.md#DefaultUnDo.UnDo.UnDo(object,System.Action,System.Action) 'DefaultUnDo\.UnDo\.UnDo\(object, System\.Action, System\.Action\)') | Initialises an instance of [UnDo](index.md 'DefaultUnDo\.UnDo')\. |
+| [UnDo\(Action, Action\)](UnDo.md#DefaultUnDo.UnDo.UnDo(System.Action,System.Action) 'DefaultUnDo\.UnDo\.UnDo\(System\.Action, System\.Action\)') | Initialises an instance of [UnDo](index.md 'DefaultUnDo\.UnDo')\. |
 
 <a name='DefaultUnDo.UnDo.UnDo(object,System.Action,System.Action)'></a>
 
