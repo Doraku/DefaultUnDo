@@ -20,7 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DefaultCSharp" Version="1.0.0-test07" PrivateAssets="all" />
+    <PackageReference Include="DefaultCSharp" Version="1.0.0" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>

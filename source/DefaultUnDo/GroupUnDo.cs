@@ -31,24 +31,21 @@ public sealed class GroupUnDo : IMergeableUnDo
     /// </summary>
     /// <param name="description">The description of this <see cref="IUnDo"/></param>
     /// <param name="commands">The sequence of <see cref="IUnDo"/> contained by the instance.</param>
-    /// <exception cref="ArgumentNullException"><paramref name="commands"/> is null.</exception>
     /// <exception cref="ArgumentException"><paramref name="commands"/> contains null elements.</exception>
-    public GroupUnDo(object? description, params IUnDo[] commands)
+    public GroupUnDo(object? description, params ReadOnlySpan<IUnDo> commands)
     {
-        ArgumentNullException.ThrowIfNull(commands);
-
-        _description = description;
-        _commands = commands;
-
-        if (_commands.Length is 0)
+        if (commands.Length is 0)
         {
             throw new ArgumentException("IUnDo sequence contains no elements.", nameof(commands));
         }
 
-        if (_commands.Any(i => i is null))
+        if (commands.Any(i => i is null))
         {
             throw new ArgumentException("IUnDo sequence contains null elements.", nameof(commands));
         }
+
+        _description = description;
+        _commands = [.. commands];
     }
 
     /// <summary>
@@ -57,7 +54,7 @@ public sealed class GroupUnDo : IMergeableUnDo
     /// <param name="commands">The sequence of <see cref="IUnDo"/> contained by the instance.</param>
     /// <exception cref="ArgumentNullException"><paramref name="commands"/> is null.</exception>
     /// <exception cref="ArgumentException"><paramref name="commands"/> contains null elements.</exception>
-    public GroupUnDo(params IUnDo[] commands)
+    public GroupUnDo(params ReadOnlySpan<IUnDo> commands)
         : this(null, commands)
     { }
 

@@ -7,15 +7,6 @@ namespace DefaultUnDo.GroupUnDoTests;
 public sealed class ConstructorShould
 {
     [Fact]
-    public void ThrowArgumentNullExceptionWhenCommandsIsNull()
-    {
-        Check
-            .ThatCode(() => new GroupUnDo(default))
-            .Throws<ArgumentNullException>()
-            .WithProperty("ParamName", "commands");
-    }
-
-    [Fact]
     public void ThrowArgumentNullExceptionWhenCommandsEmpty()
     {
         Check

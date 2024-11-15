@@ -17,10 +17,10 @@ jobs:
 
     - uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '8.0.x'
+        dotnet-version: '9.0.x'
 
     - name: Collect coverage
-      run: dotnet test source -c Release -f net8.0
+      run: dotnet test source -c Release -f net9.0
       env:
         CollectCoverage: true
         CoverletOutputFormat: lcov
@@ -30,4 +30,4 @@ jobs:
       uses: coverallsapp/github-action@v2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: 'build\lcov.net8.0.info'
+        path-to-lcov: 'build\lcov.net9.0.info'
