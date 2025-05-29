@@ -37,7 +37,7 @@ internal sealed class UnDoISet<T> : UnDoICollection<T>, ISet<T>
     {
         if (_source.Count > 0)
         {
-            List<T> items = other.Where(_source.Contains).ToList();
+            List<T> items = [.. other.Where(_source.Contains)];
 
             using IUnDoTransaction transaction = _manager.BeginTransaction(_descriptionFactory?.Invoke(new UnDoCollectionOperation(this, UnDoCollectionAction.ISetIntersectWith, other)));
 

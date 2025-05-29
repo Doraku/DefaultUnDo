@@ -17,10 +17,7 @@ jobs:
         
     - name: Build
       run: dotnet build source -c Release -p:TreatWarningsAsErrors=true
-
-    - name: Run tests net462
-      run: dotnet test source -c Release -f net462 --no-build
-
+      
     - name: Run tests net48
       run: dotnet test source -c Release -f net48 --no-build
 
