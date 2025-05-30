@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".workflows", ".workflows", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DefaultUnDo.Test", "DefaultUnDo.Test\DefaultUnDo.Test.csproj", "{B13DB434-5B94-415A-81DF-027E6BFED632}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Tests", "_Tests", "{32260D2E-DAB6-4D3A-B2B8-4504CD2EB552}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{32260D2E-DAB6-4D3A-B2B8-4504CD2EB552}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".git", ".git", "{F4426EAE-ECE3-49E9-8FC1-0A09E1BC54B9}"
 	ProjectSection(SolutionItems) = preProject
