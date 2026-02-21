@@ -83,7 +83,7 @@ public sealed class GroupUnDo : IMergeableUnDo
         mergedCommand =
             TryGetSingle(out IMergeableUnDo mergeable) && mergeable.TryMerge(other, out mergedCommand)
             ? new GroupUnDo(
-                MergeDescriptionAction?.Invoke(_description, mergeable.Description, mergedCommand!.Description) ?? _description,
+                MergeDescriptionAction?.Invoke(_description, mergeable.Description, mergedCommand.Description) ?? _description,
                 mergedCommand)
             : null;
 

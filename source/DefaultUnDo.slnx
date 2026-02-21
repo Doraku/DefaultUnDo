@@ -1,0 +1,26 @@
+<Solution>
+  <Folder Name="/.solution items/">
+    <File Path="../documentation/NEXT_RELEASENOTES.txt" />
+    <File Path="Directory.Build.props" />
+  </Folder>
+  <Folder Name="/.solution items/.git/">
+    <File Path="../.gitignore" />
+  </Folder>
+  <Folder Name="/.solution items/.github/">
+    <File Path="../.github/FUNDING.yml" />
+    <File Path="../LICENSE.md" />
+    <File Path="../README.md" />
+  </Folder>
+  <Folder Name="/.solution items/.workflows/">
+    <File Path="../.github/dependabot.yml" />
+    <File Path="../.github/workflows/CodeCoverage.yml" />
+    <File Path="../.github/workflows/ContinuousIntegration.yml" />
+    <File Path="../.github/workflows/PullRequest.yml" />
+    <File Path="../.github/workflows/Release.yml" />
+    <File Path="../Release.bat" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="DefaultUnDo.Test/DefaultUnDo.Test.csproj" />
+  </Folder>
+  <Project Path="DefaultUnDo/DefaultUnDo.csproj" />
+</Solution>

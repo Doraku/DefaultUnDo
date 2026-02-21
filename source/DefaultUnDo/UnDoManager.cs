@@ -101,7 +101,6 @@ public sealed class UnDoManager : IUnDoManager
     private readonly Stack<Transaction> _transactions;
 
     private int _cyclicDepth;
-    private int _version;
     private int _lastVersion;
 
     /// <summary>
@@ -139,10 +138,10 @@ public sealed class UnDoManager : IUnDoManager
     /// </summary>
     public int Version
     {
-        get => _version;
+        get;
         private set
         {
-            _version = value;
+            field = value;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Version)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CanUndo)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CanRedo)));

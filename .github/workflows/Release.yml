@@ -3,6 +3,10 @@ name: release
 on:
   release:
     types: [published]
+    
+permissions:
+  id-token: write
+  contents: write
 
 jobs:
   release:
@@ -12,7 +16,7 @@ jobs:
 
     - uses: actions/setup-dotnet@v5
       with:
-        dotnet-version: '9.0.x'
+        dotnet-version: '10.0.x'
       
     - name: Decrypte snk file
       env:
@@ -40,9 +44,15 @@ jobs:
         
     - name: Clear NEXT_RELEASENOTES.txt
       run: echo "" | Out-File documentation\NEXT_RELEASENOTES.txt -NoNewLine
+      
+    - name: Retrieve NuGet temp API key
+      uses: NuGet/login@v1
+      id: login
+      with:
+        user: Doraku
 
     - name: Publish package
-      run: dotnet nuget push build\*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push build\*.nupkg --api-key ${{ steps.login.outputs.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
 
     - name: Commit RELEASENOTES and documentation api
       run: |
