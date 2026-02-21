@@ -3,7 +3,7 @@ DefaultUnDo is a simple [Command pattern](https://en.wikipedia.org/wiki/Command_
 
 [![NuGet](https://img.shields.io/nuget/v/DefaultUnDo)](https://www.nuget.org/packages/DefaultUnDo)
 [![preview package](https://img.shields.io/badge/preview-package-blue?style=flat&logo=github)](https://github.com/Doraku/DefaultUnDo/pkgs/nuget/DefaultUnDo)
-![continuous integration status](https://github.com/doraku/defaultundo/workflows/continuous%20integration/badge.svg)
+[![continuous integration](https://github.com/Doraku/DefaultUnDo/actions/workflows/ContinuousIntegration.yml/badge.svg)](https://github.com/Doraku/DefaultUnDo/actions/workflows/ContinuousIntegration.yml)
 [![Coverage Status](https://coveralls.io/repos/github/Doraku/DefaultUnDo/badge.svg?branch=master)](https://coveralls.io/github/Doraku/DefaultUnDo?branch=master)
 
 - [Api documentation](./documentation/api/index.md 'Api documentation')
