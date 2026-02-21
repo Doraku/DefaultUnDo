@@ -7,7 +7,7 @@ namespace DefaultUnDo.UnDoManagerTests.TransactionTests;
 
 public sealed class DisposeShould
 {
-    public static TheoryData<IUnDoManager> UnDoManagers => new(new UnDoManager(), new UnDoManager(10));
+    public static TheoryData<IUnDoManager> UnDoManagers => [new UnDoManager(), new UnDoManager(10)];
 
     [Fact]
     public void ThrowWhenNotTheLatestTransaction()

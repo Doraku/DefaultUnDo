@@ -2,6 +2,7 @@
   <Folder Name="/.solution items/">
     <File Path="../documentation/NEXT_RELEASENOTES.txt" />
     <File Path="Directory.Build.props" />
+    <File Path="NuGet.Config" />
   </Folder>
   <Folder Name="/.solution items/.git/">
     <File Path="../.gitignore" />

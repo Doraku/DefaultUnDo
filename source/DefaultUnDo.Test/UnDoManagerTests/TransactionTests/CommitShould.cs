@@ -7,7 +7,7 @@ namespace DefaultUnDo.UnDoManagerTests.TransactionTests;
 
 public sealed class CommitShould
 {
-    public static TheoryData<IUnDoManager> UnDoManagers => new(new UnDoManager(), new UnDoManager(10));
+    public static TheoryData<IUnDoManager> UnDoManagers => [new UnDoManager(), new UnDoManager(10)];
 
     [Theory]
     [MemberData(nameof(UnDoManagers))]
