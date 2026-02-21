@@ -3,7 +3,7 @@
 
 ## DictionaryUnDo\<TKey,TValue\> Class
 
-Provides an implementation of the [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') interface for [System\.Collections\.Generic\.IDictionary&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2 'System\.Collections\.Generic\.IDictionary\`2') operation\.
+Provides an implementation of the [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') interface for [System\.Collections\.Generic\.IDictionary&lt;&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2 'System\.Collections\.Generic\.IDictionary\`2') operation\.
 
 ```csharp
 public sealed class DictionaryUnDo<TKey,TValue> : DefaultUnDo.IUnDo
@@ -22,7 +22,7 @@ Type of the keys\.
 
 Type of the values\.
 
-Inheritance [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object') &#129106; DictionaryUnDo<TKey,TValue>
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; DictionaryUnDo\<TKey,TValue\>
 
 Implements [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo')
 

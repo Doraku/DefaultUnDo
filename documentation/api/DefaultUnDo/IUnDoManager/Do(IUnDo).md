@@ -18,5 +18,5 @@ The [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') to execute\.
 
 #### Exceptions
 
-[System\.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System\.ArgumentNullException')  
+[System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
 [command](Do(IUnDo).md#DefaultUnDo.IUnDoManager.Do(DefaultUnDo.IUnDo).command 'DefaultUnDo\.IUnDoManager\.Do\(DefaultUnDo\.IUnDo\)\.command') is null\.

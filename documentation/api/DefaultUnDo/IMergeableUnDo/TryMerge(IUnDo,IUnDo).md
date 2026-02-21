@@ -23,5 +23,5 @@ The other [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') instance the current o
 The resulting merged [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') instance if the operation was successful\.
 
 #### Returns
-[System\.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System\.Boolean')  
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 true if the merge was successful; otherwise false\.

@@ -16,7 +16,7 @@ public readonly record struct UnDoFieldChange<T> : System.IEquatable<DefaultUnDo
 
 The type of the field\.
 
-Implements [System\.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System\.IEquatable\`1')[DefaultUnDo\.UnDoFieldChange&lt;](index.md 'DefaultUnDo\.UnDoFieldChange\<T\>')[T](index.md#DefaultUnDo.UnDoFieldChange_T_.T 'DefaultUnDo\.UnDoFieldChange\<T\>\.T')[&gt;](index.md 'DefaultUnDo\.UnDoFieldChange\<T\>')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System\.IEquatable\`1')
+Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[DefaultUnDo\.UnDoFieldChange&lt;](index.md 'DefaultUnDo\.UnDoFieldChange\<T\>')[T](index.md#DefaultUnDo.UnDoFieldChange_T_.T 'DefaultUnDo\.UnDoFieldChange\<T\>\.T')[&gt;](index.md 'DefaultUnDo\.UnDoFieldChange\<T\>')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 
 | Constructors | |
 | :--- | :--- |

@@ -9,7 +9,7 @@ Provides an implementation of the [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo'
 public sealed class UnDo : DefaultUnDo.IUnDo
 ```
 
-Inheritance [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object') &#129106; UnDo
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; UnDo
 
 Implements [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo')
 

@@ -7,8 +7,8 @@
 | :--- | :--- |
 | [Do\(this IUnDoManager, Action, Action, object\)](Do.md#DefaultUnDo.IUnDoManagerExtensions.Do(thisDefaultUnDo.IUnDoManager,System.Action,System.Action,object) 'DefaultUnDo\.IUnDoManagerExtensions\.Do\(this DefaultUnDo\.IUnDoManager, System\.Action, System\.Action, object\)') | Does a [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') operation on the manager with the specified doAction and undoAction\. |
 | [Do&lt;T&gt;\(this IUnDoManager, Action&lt;T&gt;, T, T, object\)](Do.md#DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Action_T_,T,T,object) 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<T\>\(this DefaultUnDo\.IUnDoManager, System\.Action\<T\>, T, T, object\)') | Sets a value as a [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') operation\. |
-| [Do&lt;T&gt;\(this IUnDoManager, IList&lt;T&gt;, int, T, object\)](Do.md#DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object) 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<T\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IList\<T\>, int, T, object\)') | Sets the element at the specified index on a [System\.Collections\.Generic\.IList&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IList-1 'System\.Collections\.Generic\.IList\`1') as a [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') operation\. |
-| [Do&lt;TKey,TValue&gt;\(this IUnDoManager, IDictionary&lt;TKey,TValue&gt;, TKey, TValue, object\)](Do.md#DefaultUnDo.IUnDoManagerExtensions.Do_TKey,TValue_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,object) 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<TKey,TValue\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IDictionary\<TKey,TValue\>, TKey, TValue, object\)') | Sets the element with the specified key on a [System\.Collections\.Generic\.IDictionary&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2 'System\.Collections\.Generic\.IDictionary\`2') as a [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') operation\. |
+| [Do&lt;T&gt;\(this IUnDoManager, IList&lt;T&gt;, int, T, object\)](Do.md#DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object) 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<T\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IList\<T\>, int, T, object\)') | Sets the element at the specified index on a [System\.Collections\.Generic\.IList&lt;&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ilist-1 'System\.Collections\.Generic\.IList\`1') as a [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') operation\. |
+| [Do&lt;TKey,TValue&gt;\(this IUnDoManager, IDictionary&lt;TKey,TValue&gt;, TKey, TValue, object\)](Do.md#DefaultUnDo.IUnDoManagerExtensions.Do_TKey,TValue_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,object) 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<TKey,TValue\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IDictionary\<TKey,TValue\>, TKey, TValue, object\)') | Sets the element with the specified key on a [System\.Collections\.Generic\.IDictionary&lt;&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2 'System\.Collections\.Generic\.IDictionary\`2') as a [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') operation\. |
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.Do(thisDefaultUnDo.IUnDoManager,System.Action,System.Action,object)'></a>
 
@@ -29,25 +29,25 @@ The [IUnDoManager](../IUnDoManager/index.md 'DefaultUnDo\.IUnDoManager')\.
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.Do(thisDefaultUnDo.IUnDoManager,System.Action,System.Action,object).doAction'></a>
 
-`doAction` [System\.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System\.Action')
+`doAction` [System\.Action](https://learn.microsoft.com/en-us/dotnet/api/system.action 'System\.Action')
 
-The [System\.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System\.Action') performed by [Do\(\)](../IUnDo/Do().md 'DefaultUnDo\.IUnDo\.Do\(\)')\.
+The [System\.Action](https://learn.microsoft.com/en-us/dotnet/api/system.action 'System\.Action') performed by [Do\(\)](../IUnDo/Do().md 'DefaultUnDo\.IUnDo\.Do\(\)')\.
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.Do(thisDefaultUnDo.IUnDoManager,System.Action,System.Action,object).undoAction'></a>
 
-`undoAction` [System\.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System\.Action')
+`undoAction` [System\.Action](https://learn.microsoft.com/en-us/dotnet/api/system.action 'System\.Action')
 
-The [System\.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System\.Action') performed by the [Undo\(\)](../IUnDo/Undo().md 'DefaultUnDo\.IUnDo\.Undo\(\)')\.
+The [System\.Action](https://learn.microsoft.com/en-us/dotnet/api/system.action 'System\.Action') performed by the [Undo\(\)](../IUnDo/Undo().md 'DefaultUnDo\.IUnDo\.Undo\(\)')\.
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.Do(thisDefaultUnDo.IUnDoManager,System.Action,System.Action,object).description'></a>
 
-`description` [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')
+`description` [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')
 
 The description of the operation\.
 
 #### Exceptions
 
-[System\.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System\.ArgumentNullException')  
+[System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
 [manager](index.md#DefaultUnDo.IUnDoManagerExtensions.Do(thisDefaultUnDo.IUnDoManager,System.Action,System.Action,object).manager 'DefaultUnDo\.IUnDoManagerExtensions\.Do\(this DefaultUnDo\.IUnDoManager, System\.Action, System\.Action, object\)\.manager') is null\.
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Action_T_,T,T,object)'></a>
@@ -76,9 +76,9 @@ The [IUnDoManager](../IUnDoManager/index.md 'DefaultUnDo\.IUnDoManager')\.
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Action_T_,T,T,object).setter'></a>
 
-`setter` [System\.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System\.Action\`1')[T](index.md#DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Action_T_,T,T,object).T 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<T\>\(this DefaultUnDo\.IUnDoManager, System\.Action\<T\>, T, T, object\)\.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System\.Action\`1')
+`setter` [System\.Action&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.action-1 'System\.Action\`1')[T](index.md#DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Action_T_,T,T,object).T 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<T\>\(this DefaultUnDo\.IUnDoManager, System\.Action\<T\>, T, T, object\)\.T')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.action-1 'System\.Action\`1')
 
-The [System\.Action&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System\.Action\`1') used to change the value\.
+The [System\.Action&lt;&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.action-1 'System\.Action\`1') used to change the value\.
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Action_T_,T,T,object).newValue'></a>
 
@@ -94,20 +94,20 @@ The old value\.
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Action_T_,T,T,object).description'></a>
 
-`description` [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')
+`description` [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')
 
 The description of the operation\.
 
 #### Exceptions
 
-[System\.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System\.ArgumentNullException')  
+[System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
 [manager](index.md#DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Action_T_,T,T,object).manager 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<T\>\(this DefaultUnDo\.IUnDoManager, System\.Action\<T\>, T, T, object\)\.manager') or [setter](index.md#DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Action_T_,T,T,object).setter 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<T\>\(this DefaultUnDo\.IUnDoManager, System\.Action\<T\>, T, T, object\)\.setter') is null\.
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object)'></a>
 
 ## IUnDoManagerExtensions\.Do\<T\>\(this IUnDoManager, IList\<T\>, int, T, object\) Method
 
-Sets the element at the specified index on a [System\.Collections\.Generic\.IList&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IList-1 'System\.Collections\.Generic\.IList\`1') as a [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') operation\.
+Sets the element at the specified index on a [System\.Collections\.Generic\.IList&lt;&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ilist-1 'System\.Collections\.Generic\.IList\`1') as a [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') operation\.
 
 ```csharp
 public static void Do<T>(this DefaultUnDo.IUnDoManager manager, System.Collections.Generic.IList<T> source, int index, T item, object? description=null);
@@ -118,7 +118,7 @@ public static void Do<T>(this DefaultUnDo.IUnDoManager manager, System.Collectio
 
 `T`
 
-The type of element in the [System\.Collections\.Generic\.IList&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IList-1 'System\.Collections\.Generic\.IList\`1')\.
+The type of element in the [System\.Collections\.Generic\.IList&lt;&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ilist-1 'System\.Collections\.Generic\.IList\`1')\.
 #### Parameters
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object).manager'></a>
@@ -129,13 +129,13 @@ The [IUnDoManager](../IUnDoManager/index.md 'DefaultUnDo\.IUnDoManager')\.
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object).source'></a>
 
-`source` [System\.Collections\.Generic\.IList&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IList-1 'System\.Collections\.Generic\.IList\`1')[T](index.md#DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object).T 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<T\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IList\<T\>, int, T, object\)\.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IList-1 'System\.Collections\.Generic\.IList\`1')
+`source` [System\.Collections\.Generic\.IList&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ilist-1 'System\.Collections\.Generic\.IList\`1')[T](index.md#DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object).T 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<T\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IList\<T\>, int, T, object\)\.T')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ilist-1 'System\.Collections\.Generic\.IList\`1')
 
-The [System\.Collections\.Generic\.IList&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IList-1 'System\.Collections\.Generic\.IList\`1')\.
+The [System\.Collections\.Generic\.IList&lt;&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ilist-1 'System\.Collections\.Generic\.IList\`1')\.
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object).index'></a>
 
-`index` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`index` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The zero\-based index of the element to get or set\.
 
@@ -147,20 +147,20 @@ The new item\.
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object).description'></a>
 
-`description` [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')
+`description` [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')
 
 The description of the operation\.
 
 #### Exceptions
 
-[System\.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System\.ArgumentNullException')  
+[System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
 [manager](index.md#DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object).manager 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<T\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IList\<T\>, int, T, object\)\.manager') or [source](index.md#DefaultUnDo.IUnDoManagerExtensions.Do_T_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IList_T_,int,T,object).source 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<T\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IList\<T\>, int, T, object\)\.source') is null\.
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.Do_TKey,TValue_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,object)'></a>
 
 ## IUnDoManagerExtensions\.Do\<TKey,TValue\>\(this IUnDoManager, IDictionary\<TKey,TValue\>, TKey, TValue, object\) Method
 
-Sets the element with the specified key on a [System\.Collections\.Generic\.IDictionary&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2 'System\.Collections\.Generic\.IDictionary\`2') as a [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') operation\.
+Sets the element with the specified key on a [System\.Collections\.Generic\.IDictionary&lt;&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2 'System\.Collections\.Generic\.IDictionary\`2') as a [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo') operation\.
 
 ```csharp
 public static void Do<TKey,TValue>(this DefaultUnDo.IUnDoManager manager, System.Collections.Generic.IDictionary<TKey,TValue> source, TKey key, TValue value, object? description=null);
@@ -188,9 +188,9 @@ The [IUnDoManager](../IUnDoManager/index.md 'DefaultUnDo\.IUnDoManager')\.
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.Do_TKey,TValue_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,object).source'></a>
 
-`source` [System\.Collections\.Generic\.IDictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2 'System\.Collections\.Generic\.IDictionary\`2')[TKey](index.md#DefaultUnDo.IUnDoManagerExtensions.Do_TKey,TValue_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,object).TKey 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<TKey,TValue\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IDictionary\<TKey,TValue\>, TKey, TValue, object\)\.TKey')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2 'System\.Collections\.Generic\.IDictionary\`2')[TValue](index.md#DefaultUnDo.IUnDoManagerExtensions.Do_TKey,TValue_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,object).TValue 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<TKey,TValue\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IDictionary\<TKey,TValue\>, TKey, TValue, object\)\.TValue')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2 'System\.Collections\.Generic\.IDictionary\`2')
+`source` [System\.Collections\.Generic\.IDictionary&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2 'System\.Collections\.Generic\.IDictionary\`2')[TKey](index.md#DefaultUnDo.IUnDoManagerExtensions.Do_TKey,TValue_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,object).TKey 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<TKey,TValue\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IDictionary\<TKey,TValue\>, TKey, TValue, object\)\.TKey')[,](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2 'System\.Collections\.Generic\.IDictionary\`2')[TValue](index.md#DefaultUnDo.IUnDoManagerExtensions.Do_TKey,TValue_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,object).TValue 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<TKey,TValue\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IDictionary\<TKey,TValue\>, TKey, TValue, object\)\.TValue')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2 'System\.Collections\.Generic\.IDictionary\`2')
 
-The [System\.Collections\.Generic\.IDictionary&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2 'System\.Collections\.Generic\.IDictionary\`2')\.
+The [System\.Collections\.Generic\.IDictionary&lt;&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2 'System\.Collections\.Generic\.IDictionary\`2')\.
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.Do_TKey,TValue_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,object).key'></a>
 
@@ -206,11 +206,11 @@ The value to add\.
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.Do_TKey,TValue_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,object).description'></a>
 
-`description` [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')
+`description` [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')
 
 The description of the operation\.
 
 #### Exceptions
 
-[System\.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System\.ArgumentNullException')  
+[System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
 [manager](index.md#DefaultUnDo.IUnDoManagerExtensions.Do_TKey,TValue_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,object).manager 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<TKey,TValue\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IDictionary\<TKey,TValue\>, TKey, TValue, object\)\.manager'), [source](index.md#DefaultUnDo.IUnDoManagerExtensions.Do_TKey,TValue_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,object).source 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<TKey,TValue\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IDictionary\<TKey,TValue\>, TKey, TValue, object\)\.source') or [key](index.md#DefaultUnDo.IUnDoManagerExtensions.Do_TKey,TValue_(thisDefaultUnDo.IUnDoManager,System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,object).key 'DefaultUnDo\.IUnDoManagerExtensions\.Do\<TKey,TValue\>\(this DefaultUnDo\.IUnDoManager, System\.Collections\.Generic\.IDictionary\<TKey,TValue\>, TKey, TValue, object\)\.key') is null\.

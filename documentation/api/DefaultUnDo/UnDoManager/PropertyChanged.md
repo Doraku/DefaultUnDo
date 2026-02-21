@@ -9,7 +9,7 @@ Occurs when a property value changes\.
 public event PropertyChangedEventHandler? PropertyChanged;
 ```
 
-Implements [PropertyChanged](https://docs.microsoft.com/en-us/dotnet/api/System.ComponentModel.INotifyPropertyChanged.PropertyChanged 'System\.ComponentModel\.INotifyPropertyChanged\.PropertyChanged')
+Implements [PropertyChanged](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged 'System\.ComponentModel\.INotifyPropertyChanged\.PropertyChanged')
 
 #### Event Type
-[System\.ComponentModel\.PropertyChangedEventHandler](https://docs.microsoft.com/en-us/dotnet/api/System.ComponentModel.PropertyChangedEventHandler 'System\.ComponentModel\.PropertyChangedEventHandler')
+[System\.ComponentModel\.PropertyChangedEventHandler](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.propertychangedeventhandler 'System\.ComponentModel\.PropertyChangedEventHandler')

@@ -12,4 +12,4 @@ public bool CanRedo { get; }
 Implements [CanRedo](../IUnDoManager/CanRedo.md 'DefaultUnDo\.IUnDoManager\.CanRedo')
 
 #### Property Value
-[System\.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System\.Boolean')
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')

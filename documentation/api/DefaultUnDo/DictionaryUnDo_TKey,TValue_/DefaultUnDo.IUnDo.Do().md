@@ -1,7 +1,7 @@
 #### [DefaultUnDo](../../index.md 'index')
 ### [DefaultUnDo](../../index.md#DefaultUnDo 'DefaultUnDo').[DictionaryUnDo&lt;TKey,TValue&gt;](index.md 'DefaultUnDo\.DictionaryUnDo\<TKey,TValue\>')
 
-## DictionaryUnDo\<TKey,TValue\>\.DefaultUnDo\.IUnDo\.Do\(\) Method
+## DefaultUnDo\.IUnDo\.Do\(\) Method
 
 Does an action\.
 

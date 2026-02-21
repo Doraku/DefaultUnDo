@@ -1,7 +1,7 @@
 #### [DefaultUnDo](../../index.md 'index')
 ### [DefaultUnDo](../../index.md#DefaultUnDo 'DefaultUnDo').[ValueUnDo&lt;T&gt;](index.md 'DefaultUnDo\.ValueUnDo\<T\>')
 
-## ValueUnDo\<T\>\.DefaultUnDo\.IMergeableUnDo\.TryMerge\(IUnDo, IUnDo\) Method
+## DefaultUnDo\.IMergeableUnDo\.TryMerge\(IUnDo, IUnDo\) Method
 
 Merges the current instance with the specified [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo')\.
 

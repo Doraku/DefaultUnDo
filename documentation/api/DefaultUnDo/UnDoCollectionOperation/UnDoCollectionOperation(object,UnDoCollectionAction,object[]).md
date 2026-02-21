@@ -12,7 +12,7 @@ public UnDoCollectionOperation(object Collection, DefaultUnDo.UnDoCollectionActi
 
 <a name='DefaultUnDo.UnDoCollectionOperation.UnDoCollectionOperation(object,DefaultUnDo.UnDoCollectionAction,object[]).Collection'></a>
 
-`Collection` [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')
+`Collection` [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')
 
 The collection on which the action is performed\.
 
@@ -24,6 +24,6 @@ The action performed\.
 
 <a name='DefaultUnDo.UnDoCollectionOperation.UnDoCollectionOperation(object,DefaultUnDo.UnDoCollectionAction,object[]).Parameters'></a>
 
-`Parameters` [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`Parameters` [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 The parameters of the action performed\.

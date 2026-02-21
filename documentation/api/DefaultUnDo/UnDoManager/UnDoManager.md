@@ -31,6 +31,6 @@ public UnDoManager(int maxCapacity);
 
 <a name='DefaultUnDo.UnDoManager.UnDoManager(int).maxCapacity'></a>
 
-`maxCapacity` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`maxCapacity` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The maximum number of operation this [UnDoManager](index.md 'DefaultUnDo\.UnDoManager') can record before errasing oldest ones\.

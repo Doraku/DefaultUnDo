@@ -16,7 +16,7 @@ public sealed class ValueUnDo<T> : DefaultUnDo.IMergeableUnDo, DefaultUnDo.IUnDo
 
 The type of value\.
 
-Inheritance [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object') &#129106; ValueUnDo<T>
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; ValueUnDo\<T\>
 
 Implements [IMergeableUnDo](../IMergeableUnDo/index.md 'DefaultUnDo\.IMergeableUnDo'), [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo')
 
@@ -28,7 +28,7 @@ Implements [IMergeableUnDo](../IMergeableUnDo/index.md 'DefaultUnDo\.IMergeableU
 | Properties | |
 | :--- | :--- |
 | [MergeDescriptionAction](MergeDescriptionAction.md 'DefaultUnDo\.ValueUnDo\<T\>\.MergeDescriptionAction') | The [MergeDescriptionHandler\(object, T, object, T\)](MergeDescriptionHandler(object,T,object,T)/index.md 'DefaultUnDo\.ValueUnDo\<T\>\.MergeDescriptionHandler\(object, T, object, T\)') used to merge description between two [ValueUnDo&lt;T&gt;](index.md 'DefaultUnDo\.ValueUnDo\<T\>') instance\. |
-| [MergeInterval](MergeInterval.md 'DefaultUnDo\.ValueUnDo\<T\>\.MergeInterval') | The [System\.TimeSpan](https://docs.microsoft.com/en-us/dotnet/api/System.TimeSpan 'System\.TimeSpan') interval equivalent [ValueUnDo&lt;T&gt;](index.md 'DefaultUnDo\.ValueUnDo\<T\>') instances should respect to be mergeable\. If not set, [MergeInterval](../ValueUnDo/MergeInterval.md 'DefaultUnDo\.ValueUnDo\.MergeInterval') will be used\. |
+| [MergeInterval](MergeInterval.md 'DefaultUnDo\.ValueUnDo\<T\>\.MergeInterval') | The [System\.TimeSpan](https://learn.microsoft.com/en-us/dotnet/api/system.timespan 'System\.TimeSpan') interval equivalent [ValueUnDo&lt;T&gt;](index.md 'DefaultUnDo\.ValueUnDo\<T\>') instances should respect to be mergeable\. If not set, [MergeInterval](../ValueUnDo/MergeInterval.md 'DefaultUnDo\.ValueUnDo\.MergeInterval') will be used\. |
 
 | Explicit Interface Implementations | |
 | :--- | :--- |

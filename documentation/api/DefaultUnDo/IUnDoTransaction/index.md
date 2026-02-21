@@ -9,7 +9,7 @@ Represents a transaction to record multiple undo operations as a single operatio
 public interface IUnDoTransaction : System.IDisposable
 ```
 
-Implements [System\.IDisposable](https://docs.microsoft.com/en-us/dotnet/api/System.IDisposable 'System\.IDisposable')
+Implements [System\.IDisposable](https://learn.microsoft.com/en-us/dotnet/api/system.idisposable 'System\.IDisposable')
 
 | Methods | |
 | :--- | :--- |

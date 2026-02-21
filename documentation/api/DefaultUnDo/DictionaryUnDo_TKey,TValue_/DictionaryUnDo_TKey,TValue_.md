@@ -21,15 +21,15 @@ public DictionaryUnDo(object? description, System.Collections.Generic.IDictionar
 
 <a name='DefaultUnDo.DictionaryUnDo_TKey,TValue_.DictionaryUnDo(object,System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,bool).description'></a>
 
-`description` [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')
+`description` [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')
 
 The description of this [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo')
 
 <a name='DefaultUnDo.DictionaryUnDo_TKey,TValue_.DictionaryUnDo(object,System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,bool).source'></a>
 
-`source` [System\.Collections\.Generic\.IDictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2 'System\.Collections\.Generic\.IDictionary\`2')[TKey](index.md#DefaultUnDo.DictionaryUnDo_TKey,TValue_.TKey 'DefaultUnDo\.DictionaryUnDo\<TKey,TValue\>\.TKey')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2 'System\.Collections\.Generic\.IDictionary\`2')[TValue](index.md#DefaultUnDo.DictionaryUnDo_TKey,TValue_.TValue 'DefaultUnDo\.DictionaryUnDo\<TKey,TValue\>\.TValue')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2 'System\.Collections\.Generic\.IDictionary\`2')
+`source` [System\.Collections\.Generic\.IDictionary&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2 'System\.Collections\.Generic\.IDictionary\`2')[TKey](index.md#DefaultUnDo.DictionaryUnDo_TKey,TValue_.TKey 'DefaultUnDo\.DictionaryUnDo\<TKey,TValue\>\.TKey')[,](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2 'System\.Collections\.Generic\.IDictionary\`2')[TValue](index.md#DefaultUnDo.DictionaryUnDo_TKey,TValue_.TValue 'DefaultUnDo\.DictionaryUnDo\<TKey,TValue\>\.TValue')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2 'System\.Collections\.Generic\.IDictionary\`2')
 
-The [System\.Collections\.Generic\.IDictionary&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2 'System\.Collections\.Generic\.IDictionary\`2') on which to perform operation\.
+The [System\.Collections\.Generic\.IDictionary&lt;&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2 'System\.Collections\.Generic\.IDictionary\`2') on which to perform operation\.
 
 <a name='DefaultUnDo.DictionaryUnDo_TKey,TValue_.DictionaryUnDo(object,System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,bool).key'></a>
 
@@ -45,13 +45,13 @@ The value of the operation\.
 
 <a name='DefaultUnDo.DictionaryUnDo_TKey,TValue_.DictionaryUnDo(object,System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,bool).isAdd'></a>
 
-`isAdd` [System\.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System\.Boolean')
+`isAdd` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
 
-true if the operation is [System\.Collections\.Generic\.IDictionary&lt;&gt;\.Add\(@0,@1\)](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2.Add#System_Collections_Generic_IDictionary_2_Add__0,_1_ 'System\.Collections\.Generic\.IDictionary\`2\.Add\(\`0,\`1\)'), false for [System\.Collections\.Generic\.IDictionary&lt;&gt;\.Remove\(@0\)](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2.Remove#System_Collections_Generic_IDictionary_2_Remove__0_ 'System\.Collections\.Generic\.IDictionary\`2\.Remove\(\`0\)')\.
+true if the operation is [System\.Collections\.Generic\.IDictionary&lt;&gt;\.Add\(@0,@1\)](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2.add#system-collections-generic-idictionary-2-add(-0--1) 'System\.Collections\.Generic\.IDictionary\`2\.Add\(\`0,\`1\)'), false for [System\.Collections\.Generic\.IDictionary&lt;&gt;\.Remove\(@0\)](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2.remove#system-collections-generic-idictionary-2-remove(-0) 'System\.Collections\.Generic\.IDictionary\`2\.Remove\(\`0\)')\.
 
 #### Exceptions
 
-[System\.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System\.ArgumentNullException')  
+[System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
 [source](index.md#DefaultUnDo.DictionaryUnDo_TKey,TValue_.DictionaryUnDo(object,System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,bool).source 'DefaultUnDo\.DictionaryUnDo\<TKey,TValue\>\.DictionaryUnDo\(object, System\.Collections\.Generic\.IDictionary\<TKey,TValue\>, TKey, TValue, bool\)\.source') or [key](index.md#DefaultUnDo.DictionaryUnDo_TKey,TValue_.DictionaryUnDo(object,System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,bool).key 'DefaultUnDo\.DictionaryUnDo\<TKey,TValue\>\.DictionaryUnDo\(object, System\.Collections\.Generic\.IDictionary\<TKey,TValue\>, TKey, TValue, bool\)\.key') is null\.
 
 <a name='DefaultUnDo.DictionaryUnDo_TKey,TValue_.DictionaryUnDo(System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,bool)'></a>
@@ -67,9 +67,9 @@ public DictionaryUnDo(System.Collections.Generic.IDictionary<TKey,TValue> source
 
 <a name='DefaultUnDo.DictionaryUnDo_TKey,TValue_.DictionaryUnDo(System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,bool).source'></a>
 
-`source` [System\.Collections\.Generic\.IDictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2 'System\.Collections\.Generic\.IDictionary\`2')[TKey](index.md#DefaultUnDo.DictionaryUnDo_TKey,TValue_.TKey 'DefaultUnDo\.DictionaryUnDo\<TKey,TValue\>\.TKey')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2 'System\.Collections\.Generic\.IDictionary\`2')[TValue](index.md#DefaultUnDo.DictionaryUnDo_TKey,TValue_.TValue 'DefaultUnDo\.DictionaryUnDo\<TKey,TValue\>\.TValue')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2 'System\.Collections\.Generic\.IDictionary\`2')
+`source` [System\.Collections\.Generic\.IDictionary&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2 'System\.Collections\.Generic\.IDictionary\`2')[TKey](index.md#DefaultUnDo.DictionaryUnDo_TKey,TValue_.TKey 'DefaultUnDo\.DictionaryUnDo\<TKey,TValue\>\.TKey')[,](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2 'System\.Collections\.Generic\.IDictionary\`2')[TValue](index.md#DefaultUnDo.DictionaryUnDo_TKey,TValue_.TValue 'DefaultUnDo\.DictionaryUnDo\<TKey,TValue\>\.TValue')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2 'System\.Collections\.Generic\.IDictionary\`2')
 
-The [System\.Collections\.Generic\.IDictionary&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2 'System\.Collections\.Generic\.IDictionary\`2') on which to perform operation\.
+The [System\.Collections\.Generic\.IDictionary&lt;&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2 'System\.Collections\.Generic\.IDictionary\`2') on which to perform operation\.
 
 <a name='DefaultUnDo.DictionaryUnDo_TKey,TValue_.DictionaryUnDo(System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,bool).key'></a>
 
@@ -85,11 +85,11 @@ The value of the operation\.
 
 <a name='DefaultUnDo.DictionaryUnDo_TKey,TValue_.DictionaryUnDo(System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,bool).isAdd'></a>
 
-`isAdd` [System\.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System\.Boolean')
+`isAdd` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
 
-true if the operation is [System\.Collections\.Generic\.IDictionary&lt;&gt;\.Add\(@0,@1\)](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2.Add#System_Collections_Generic_IDictionary_2_Add__0,_1_ 'System\.Collections\.Generic\.IDictionary\`2\.Add\(\`0,\`1\)'), false for [System\.Collections\.Generic\.IDictionary&lt;&gt;\.Remove\(@0\)](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IDictionary-2.Remove#System_Collections_Generic_IDictionary_2_Remove__0_ 'System\.Collections\.Generic\.IDictionary\`2\.Remove\(\`0\)')\.
+true if the operation is [System\.Collections\.Generic\.IDictionary&lt;&gt;\.Add\(@0,@1\)](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2.add#system-collections-generic-idictionary-2-add(-0--1) 'System\.Collections\.Generic\.IDictionary\`2\.Add\(\`0,\`1\)'), false for [System\.Collections\.Generic\.IDictionary&lt;&gt;\.Remove\(@0\)](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2.remove#system-collections-generic-idictionary-2-remove(-0) 'System\.Collections\.Generic\.IDictionary\`2\.Remove\(\`0\)')\.
 
 #### Exceptions
 
-[System\.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System\.ArgumentNullException')  
+[System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
 [source](index.md#DefaultUnDo.DictionaryUnDo_TKey,TValue_.DictionaryUnDo(System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,bool).source 'DefaultUnDo\.DictionaryUnDo\<TKey,TValue\>\.DictionaryUnDo\(System\.Collections\.Generic\.IDictionary\<TKey,TValue\>, TKey, TValue, bool\)\.source') or [key](index.md#DefaultUnDo.DictionaryUnDo_TKey,TValue_.DictionaryUnDo(System.Collections.Generic.IDictionary_TKey,TValue_,TKey,TValue,bool).key 'DefaultUnDo\.DictionaryUnDo\<TKey,TValue\>\.DictionaryUnDo\(System\.Collections\.Generic\.IDictionary\<TKey,TValue\>, TKey, TValue, bool\)\.key') is null\.

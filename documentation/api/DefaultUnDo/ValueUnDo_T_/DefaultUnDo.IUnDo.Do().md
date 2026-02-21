@@ -1,7 +1,7 @@
 #### [DefaultUnDo](../../index.md 'index')
 ### [DefaultUnDo](../../index.md#DefaultUnDo 'DefaultUnDo').[ValueUnDo&lt;T&gt;](index.md 'DefaultUnDo\.ValueUnDo\<T\>')
 
-## ValueUnDo\<T\>\.DefaultUnDo\.IUnDo\.Do\(\) Method
+## DefaultUnDo\.IUnDo\.Do\(\) Method
 
 Does an action\.
 

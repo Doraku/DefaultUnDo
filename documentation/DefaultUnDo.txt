@@ -38,8 +38,8 @@ M:DefaultUnDo.IUnDoManagerExtensions.Do``1(DefaultUnDo.IUnDoManager,System.Actio
 T:DefaultUnDo.IUnDoManagerExtensions|DefaultUnDo/IUnDoManagerExtensions/index.md|IUnDoManagerExtensions
 P:DefaultUnDo.GroupUnDo.MergeDescriptionAction|DefaultUnDo/GroupUnDo/MergeDescriptionAction.md|MergeDescriptionAction
 P:DefaultUnDo.GroupUnDo.DefaultUnDo#IUnDo#Description|DefaultUnDo/GroupUnDo/DefaultUnDo.IUnDo.Description.md|DefaultUnDo.IUnDo.Description
-M:DefaultUnDo.GroupUnDo.#ctor(System.Object,System.ReadOnlySpan{DefaultUnDo.IUnDo})|DefaultUnDo/GroupUnDo/GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(object,scopedSystem.ReadOnlySpan_DefaultUnDo.IUnDo_)|GroupUnDo(object, scoped ReadOnlySpan<IUnDo>)
-M:DefaultUnDo.GroupUnDo.#ctor(System.ReadOnlySpan{DefaultUnDo.IUnDo})|DefaultUnDo/GroupUnDo/GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(scopedSystem.ReadOnlySpan_DefaultUnDo.IUnDo_)|GroupUnDo(scoped ReadOnlySpan<IUnDo>)
+M:DefaultUnDo.GroupUnDo.#ctor(System.Object,System.ReadOnlySpan{DefaultUnDo.IUnDo})|DefaultUnDo/GroupUnDo/GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(object,System.ReadOnlySpan_DefaultUnDo.IUnDo_)|GroupUnDo(object, ReadOnlySpan<IUnDo>)
+M:DefaultUnDo.GroupUnDo.#ctor(System.ReadOnlySpan{DefaultUnDo.IUnDo})|DefaultUnDo/GroupUnDo/GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(System.ReadOnlySpan_DefaultUnDo.IUnDo_)|GroupUnDo(ReadOnlySpan<IUnDo>)
 M:DefaultUnDo.GroupUnDo.TryGetSingle``1(``0@)|DefaultUnDo/GroupUnDo/TryGetSingle_T_(T).md|TryGetSingle<T>(T)
 M:DefaultUnDo.GroupUnDo.DefaultUnDo#IMergeableUnDo#TryMerge(DefaultUnDo.IUnDo,DefaultUnDo.IUnDo@)|DefaultUnDo/GroupUnDo/DefaultUnDo.IMergeableUnDo.TryMerge(IUnDo,IUnDo).md|DefaultUnDo.IMergeableUnDo.TryMerge(IUnDo, IUnDo)
 M:DefaultUnDo.GroupUnDo.DefaultUnDo#IUnDo#Do|DefaultUnDo/GroupUnDo/DefaultUnDo.IUnDo.Do().md|DefaultUnDo.IUnDo.Do()
@@ -137,14 +137,14 @@ T:DefaultUnDo.ValueUnDo`1|DefaultUnDo/ValueUnDo_T_/index.md|ValueUnDo<T>
 T:DefaultUnDo.GroupUnDo.MergeDescriptionHandler|DefaultUnDo/GroupUnDo/MergeDescriptionHandler(object,object,object)/index.md|MergeDescriptionHandler(object, object, object)
 T:DefaultUnDo.ValueUnDo.MergeDescriptionHandler|DefaultUnDo/ValueUnDo/MergeDescriptionHandler(object,object)/index.md|MergeDescriptionHandler(object, object)
 T:DefaultUnDo.ValueUnDo`1.MergeDescriptionHandler|DefaultUnDo/ValueUnDo_T_/MergeDescriptionHandler(object,T,object,T)/index.md|MergeDescriptionHandler(object, T, object, T)
-M:DefaultUnDo.CollectionUnDo`1.CollectionUnDo<T>|DefaultUnDo/CollectionUnDo_T_/CollectionUnDo_T_.md|CollectionUnDo<T>
-M:DefaultUnDo.DictionaryUnDo`2.DictionaryUnDo<TKey,TValue>|DefaultUnDo/DictionaryUnDo_TKey,TValue_/DictionaryUnDo_TKey,TValue_.md|DictionaryUnDo<TKey,TValue>
-M:DefaultUnDo.GroupUnDo.GroupUnDo|DefaultUnDo/GroupUnDo/GroupUnDo.md|GroupUnDo
-M:DefaultUnDo.ListUnDo`1.ListUnDo<T>|DefaultUnDo/ListUnDo_T_/ListUnDo_T_.md|ListUnDo<T>
-M:DefaultUnDo.UnDo.UnDo|DefaultUnDo/UnDo/UnDo.md|UnDo
-M:DefaultUnDo.UnDoField`1.UnDoField<T>|DefaultUnDo/UnDoField_T_/UnDoField_T_.md|UnDoField<T>
-M:DefaultUnDo.UnDoManager.UnDoManager|DefaultUnDo/UnDoManager/UnDoManager.md|UnDoManager
-M:DefaultUnDo.ValueUnDo`1.ValueUnDo<T>|DefaultUnDo/ValueUnDo_T_/ValueUnDo_T_.md|ValueUnDo<T>
-M:DefaultUnDo.IUnDoManagerExtensions.DoAdd|DefaultUnDo/IUnDoManagerExtensions/DoAdd.md|DoAdd
-M:DefaultUnDo.IUnDoManagerExtensions.DoRemove|DefaultUnDo/IUnDoManagerExtensions/DoRemove.md|DoRemove
-M:DefaultUnDo.IUnDoManagerExtensions.Do|DefaultUnDo/IUnDoManagerExtensions/Do.md|Do
+?:DefaultUnDo.CollectionUnDo`1.#ctor|DefaultUnDo/CollectionUnDo_T_/CollectionUnDo_T_.md|CollectionUnDo<T>
+?:DefaultUnDo.DictionaryUnDo`2.#ctor|DefaultUnDo/DictionaryUnDo_TKey,TValue_/DictionaryUnDo_TKey,TValue_.md|DictionaryUnDo<TKey,TValue>
+?:DefaultUnDo.GroupUnDo.#ctor|DefaultUnDo/GroupUnDo/GroupUnDo.md|GroupUnDo
+?:DefaultUnDo.ListUnDo`1.#ctor|DefaultUnDo/ListUnDo_T_/ListUnDo_T_.md|ListUnDo<T>
+?:DefaultUnDo.UnDo.#ctor|DefaultUnDo/UnDo/UnDo.md|UnDo
+?:DefaultUnDo.UnDoField`1.#ctor|DefaultUnDo/UnDoField_T_/UnDoField_T_.md|UnDoField<T>
+?:DefaultUnDo.UnDoManager.#ctor|DefaultUnDo/UnDoManager/UnDoManager.md|UnDoManager
+?:DefaultUnDo.ValueUnDo`1.#ctor|DefaultUnDo/ValueUnDo_T_/ValueUnDo_T_.md|ValueUnDo<T>
+?:DefaultUnDo.IUnDoManagerExtensions.DoAdd|DefaultUnDo/IUnDoManagerExtensions/DoAdd.md|DoAdd
+?:DefaultUnDo.IUnDoManagerExtensions.DoRemove|DefaultUnDo/IUnDoManagerExtensions/DoRemove.md|DoRemove
+?:DefaultUnDo.IUnDoManagerExtensions.Do|DefaultUnDo/IUnDoManagerExtensions/Do.md|Do

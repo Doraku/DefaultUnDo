@@ -12,22 +12,22 @@ public delegate object GroupUnDo.MergeDescriptionHandler(object? oldDescription,
 
 <a name='DefaultUnDo.GroupUnDo.MergeDescriptionHandler(object,object,object).oldDescription'></a>
 
-`oldDescription` [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')
+`oldDescription` [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')
 
 The description of the previous [GroupUnDo](../index.md 'DefaultUnDo\.GroupUnDo') merged\.
 
 <a name='DefaultUnDo.GroupUnDo.MergeDescriptionHandler(object,object,object).newDescription'></a>
 
-`newDescription` [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')
+`newDescription` [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')
 
 The description of the new [IMergeableUnDo](../../IMergeableUnDo/index.md 'DefaultUnDo\.IMergeableUnDo') merged\.
 
 <a name='DefaultUnDo.GroupUnDo.MergeDescriptionHandler(object,object,object).mergedDescription'></a>
 
-`mergedDescription` [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')
+`mergedDescription` [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')
 
 The description of the new resulting [IMergeableUnDo](../../IMergeableUnDo/index.md 'DefaultUnDo\.IMergeableUnDo') merged\.
 
 #### Returns
-[System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')  
+[System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')  
 The final description to use\.

@@ -10,4 +10,4 @@ object? Description { get; }
 ```
 
 #### Property Value
-[System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')
+[System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')

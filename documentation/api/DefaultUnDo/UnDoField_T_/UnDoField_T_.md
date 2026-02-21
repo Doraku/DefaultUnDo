@@ -27,13 +27,13 @@ The [IUnDoManager](../IUnDoManager/index.md 'DefaultUnDo\.IUnDoManager') used to
 
 <a name='DefaultUnDo.UnDoField_T_.UnDoField(DefaultUnDo.IUnDoManager,System.Func_DefaultUnDo.UnDoFieldChange_T_,object_).descriptionFactory'></a>
 
-`descriptionFactory` [System\.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System\.Func\`2')[DefaultUnDo\.UnDoFieldChange&lt;](../UnDoFieldChange_T_/index.md 'DefaultUnDo\.UnDoFieldChange\<T\>')[T](index.md#DefaultUnDo.UnDoField_T_.T 'DefaultUnDo\.UnDoField\<T\>\.T')[&gt;](../UnDoFieldChange_T_/index.md 'DefaultUnDo\.UnDoFieldChange\<T\>')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System\.Func\`2')[System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System\.Func\`2')
+`descriptionFactory` [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-2 'System\.Func\`2')[DefaultUnDo\.UnDoFieldChange&lt;](../UnDoFieldChange_T_/index.md 'DefaultUnDo\.UnDoFieldChange\<T\>')[T](index.md#DefaultUnDo.UnDoField_T_.T 'DefaultUnDo\.UnDoField\<T\>\.T')[&gt;](../UnDoFieldChange_T_/index.md 'DefaultUnDo\.UnDoFieldChange\<T\>')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-2 'System\.Func\`2')[System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-2 'System\.Func\`2')
 
 Factory used to create the description of the generated [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo')\.
 
 #### Exceptions
 
-[System\.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System\.ArgumentNullException')  
+[System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
 [manager](index.md#DefaultUnDo.UnDoField_T_.UnDoField(DefaultUnDo.IUnDoManager,System.Func_DefaultUnDo.UnDoFieldChange_T_,object_).manager 'DefaultUnDo\.UnDoField\<T\>\.UnDoField\(DefaultUnDo\.IUnDoManager, System\.Func\<DefaultUnDo\.UnDoFieldChange\<T\>,object\>\)\.manager') is null\.
 
 <a name='DefaultUnDo.UnDoField_T_.UnDoField(DefaultUnDo.IUnDoManager,T,System.Func_DefaultUnDo.UnDoFieldChange_T_,object_)'></a>
@@ -61,11 +61,11 @@ The starting value of the [UnDoField&lt;T&gt;](index.md 'DefaultUnDo\.UnDoField\
 
 <a name='DefaultUnDo.UnDoField_T_.UnDoField(DefaultUnDo.IUnDoManager,T,System.Func_DefaultUnDo.UnDoFieldChange_T_,object_).descriptionFactory'></a>
 
-`descriptionFactory` [System\.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System\.Func\`2')[DefaultUnDo\.UnDoFieldChange&lt;](../UnDoFieldChange_T_/index.md 'DefaultUnDo\.UnDoFieldChange\<T\>')[T](index.md#DefaultUnDo.UnDoField_T_.T 'DefaultUnDo\.UnDoField\<T\>\.T')[&gt;](../UnDoFieldChange_T_/index.md 'DefaultUnDo\.UnDoFieldChange\<T\>')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System\.Func\`2')[System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System\.Func\`2')
+`descriptionFactory` [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-2 'System\.Func\`2')[DefaultUnDo\.UnDoFieldChange&lt;](../UnDoFieldChange_T_/index.md 'DefaultUnDo\.UnDoFieldChange\<T\>')[T](index.md#DefaultUnDo.UnDoField_T_.T 'DefaultUnDo\.UnDoField\<T\>\.T')[&gt;](../UnDoFieldChange_T_/index.md 'DefaultUnDo\.UnDoFieldChange\<T\>')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-2 'System\.Func\`2')[System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-2 'System\.Func\`2')
 
 Factory used to create the description of the generated [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo')\.
 
 #### Exceptions
 
-[System\.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System\.ArgumentNullException')  
+[System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
 [manager](index.md#DefaultUnDo.UnDoField_T_.UnDoField(DefaultUnDo.IUnDoManager,T,System.Func_DefaultUnDo.UnDoFieldChange_T_,object_).manager 'DefaultUnDo\.UnDoField\<T\>\.UnDoField\(DefaultUnDo\.IUnDoManager, T, System\.Func\<DefaultUnDo\.UnDoFieldChange\<T\>,object\>\)\.manager') is null\.

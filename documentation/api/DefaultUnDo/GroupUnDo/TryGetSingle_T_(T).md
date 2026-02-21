@@ -26,5 +26,5 @@ When this method returns, the single [T](TryGetSingle_T_(T).md#DefaultUnDo.Group
 This parameter is passed uninitialized\.
 
 #### Returns
-[System\.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System\.Boolean')  
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 true if the current instance contains exactly one [T](TryGetSingle_T_(T).md#DefaultUnDo.GroupUnDo.TryGetSingle_T_(T).T 'DefaultUnDo\.GroupUnDo\.TryGetSingle\<T\>\(T\)\.T'); otherwise false\.

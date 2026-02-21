@@ -21,13 +21,13 @@ public ValueUnDo(object? description, System.Action<T> setter, T newValue, T old
 
 <a name='DefaultUnDo.ValueUnDo_T_.ValueUnDo(object,System.Action_T_,T,T).description'></a>
 
-`description` [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')
+`description` [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')
 
 The description of this [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo')
 
 <a name='DefaultUnDo.ValueUnDo_T_.ValueUnDo(object,System.Action_T_,T,T).setter'></a>
 
-`setter` [System\.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System\.Action\`1')[T](index.md#DefaultUnDo.ValueUnDo_T_.T 'DefaultUnDo\.ValueUnDo\<T\>\.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System\.Action\`1')
+`setter` [System\.Action&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.action-1 'System\.Action\`1')[T](index.md#DefaultUnDo.ValueUnDo_T_.T 'DefaultUnDo\.ValueUnDo\<T\>\.T')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.action-1 'System\.Action\`1')
 
 The action called to set the value\.
 
@@ -45,7 +45,7 @@ The old value\.
 
 #### Exceptions
 
-[System\.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System\.ArgumentNullException')  
+[System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
 [setter](index.md#DefaultUnDo.ValueUnDo_T_.ValueUnDo(object,System.Action_T_,T,T).setter 'DefaultUnDo\.ValueUnDo\<T\>\.ValueUnDo\(object, System\.Action\<T\>, T, T\)\.setter') is null\.
 
 <a name='DefaultUnDo.ValueUnDo_T_.ValueUnDo(System.Action_T_,T,T)'></a>
@@ -61,7 +61,7 @@ public ValueUnDo(System.Action<T> setter, T newValue, T oldValue);
 
 <a name='DefaultUnDo.ValueUnDo_T_.ValueUnDo(System.Action_T_,T,T).setter'></a>
 
-`setter` [System\.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System\.Action\`1')[T](index.md#DefaultUnDo.ValueUnDo_T_.T 'DefaultUnDo\.ValueUnDo\<T\>\.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System\.Action\`1')
+`setter` [System\.Action&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.action-1 'System\.Action\`1')[T](index.md#DefaultUnDo.ValueUnDo_T_.T 'DefaultUnDo\.ValueUnDo\<T\>\.T')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.action-1 'System\.Action\`1')
 
 The action called to set the value\.
 
@@ -79,5 +79,5 @@ The old value\.
 
 #### Exceptions
 
-[System\.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System\.ArgumentNullException')  
+[System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
 [setter](index.md#DefaultUnDo.ValueUnDo_T_.ValueUnDo(System.Action_T_,T,T).setter 'DefaultUnDo\.ValueUnDo\<T\>\.ValueUnDo\(System\.Action\<T\>, T, T\)\.setter') is null\.

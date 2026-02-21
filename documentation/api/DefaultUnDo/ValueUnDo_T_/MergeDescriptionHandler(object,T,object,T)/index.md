@@ -17,7 +17,7 @@ public delegate object ValueUnDo<T>.MergeDescriptionHandler(object? oldDescripti
 
 <a name='DefaultUnDo.ValueUnDo_T_.MergeDescriptionHandler(object,T,object,T).oldDescription'></a>
 
-`oldDescription` [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')
+`oldDescription` [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')
 
 The description of the previous [ValueUnDo&lt;T&gt;](../index.md 'DefaultUnDo\.ValueUnDo\<T\>') merged\.
 
@@ -29,7 +29,7 @@ The old value used when undoing the resulting merged [ValueUnDo&lt;T&gt;](../ind
 
 <a name='DefaultUnDo.ValueUnDo_T_.MergeDescriptionHandler(object,T,object,T).newDescription'></a>
 
-`newDescription` [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')
+`newDescription` [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')
 
 The description of the new [ValueUnDo&lt;T&gt;](../index.md 'DefaultUnDo\.ValueUnDo\<T\>') merged\.
 
@@ -40,5 +40,5 @@ The description of the new [ValueUnDo&lt;T&gt;](../index.md 'DefaultUnDo\.ValueU
 The new value used when redoing the resulting merged [ValueUnDo&lt;T&gt;](../index.md 'DefaultUnDo\.ValueUnDo\<T\>')\.
 
 #### Returns
-[System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')  
+[System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')  
 The new description that will be using for the resulting merged [ValueUnDo&lt;T&gt;](../index.md 'DefaultUnDo\.ValueUnDo\<T\>')\.

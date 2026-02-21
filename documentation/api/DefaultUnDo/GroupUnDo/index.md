@@ -9,14 +9,14 @@ Provides an implementation of the [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo'
 public sealed class GroupUnDo : DefaultUnDo.IMergeableUnDo, DefaultUnDo.IUnDo
 ```
 
-Inheritance [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object') &#129106; GroupUnDo
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; GroupUnDo
 
 Implements [IMergeableUnDo](../IMergeableUnDo/index.md 'DefaultUnDo\.IMergeableUnDo'), [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo')
 
 | Constructors | |
 | :--- | :--- |
-| [GroupUnDo\(object, scoped ReadOnlySpan&lt;IUnDo&gt;\)](GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(object,scopedSystem.ReadOnlySpan_DefaultUnDo.IUnDo_) 'DefaultUnDo\.GroupUnDo\.GroupUnDo\(object, scoped System\.ReadOnlySpan\<DefaultUnDo\.IUnDo\>\)') | Initialise an instance of [GroupUnDo](index.md 'DefaultUnDo\.GroupUnDo')\. |
-| [GroupUnDo\(scoped ReadOnlySpan&lt;IUnDo&gt;\)](GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(scopedSystem.ReadOnlySpan_DefaultUnDo.IUnDo_) 'DefaultUnDo\.GroupUnDo\.GroupUnDo\(scoped System\.ReadOnlySpan\<DefaultUnDo\.IUnDo\>\)') | Initialise an instance of [GroupUnDo](index.md 'DefaultUnDo\.GroupUnDo')\. |
+| [GroupUnDo\(object, ReadOnlySpan&lt;IUnDo&gt;\)](GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(object,System.ReadOnlySpan_DefaultUnDo.IUnDo_) 'DefaultUnDo\.GroupUnDo\.GroupUnDo\(object, System\.ReadOnlySpan\<DefaultUnDo\.IUnDo\>\)') | Initialise an instance of [GroupUnDo](index.md 'DefaultUnDo\.GroupUnDo')\. |
+| [GroupUnDo\(ReadOnlySpan&lt;IUnDo&gt;\)](GroupUnDo.md#DefaultUnDo.GroupUnDo.GroupUnDo(System.ReadOnlySpan_DefaultUnDo.IUnDo_) 'DefaultUnDo\.GroupUnDo\.GroupUnDo\(System\.ReadOnlySpan\<DefaultUnDo\.IUnDo\>\)') | Initialise an instance of [GroupUnDo](index.md 'DefaultUnDo\.GroupUnDo')\. |
 
 | Properties | |
 | :--- | :--- |

@@ -10,4 +10,4 @@ public object?[] Parameters { get; init; }
 ```
 
 #### Property Value
-[System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+[System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')

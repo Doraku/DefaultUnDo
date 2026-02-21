@@ -12,15 +12,15 @@ public delegate object? ValueUnDo.MergeDescriptionHandler(object? oldDescription
 
 <a name='DefaultUnDo.ValueUnDo.MergeDescriptionHandler(object,object).oldDescription'></a>
 
-`oldDescription` [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')
+`oldDescription` [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')
 
 The description of the previous [ValueUnDo&lt;T&gt;](../../ValueUnDo_T_/index.md 'DefaultUnDo\.ValueUnDo\<T\>') merged\.
 
 <a name='DefaultUnDo.ValueUnDo.MergeDescriptionHandler(object,object).newDescription'></a>
 
-`newDescription` [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')
+`newDescription` [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')
 
 The description of the new [ValueUnDo&lt;T&gt;](../../ValueUnDo_T_/index.md 'DefaultUnDo\.ValueUnDo\<T\>') merged\.
 
 #### Returns
-[System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')
+[System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')

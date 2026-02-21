@@ -18,17 +18,17 @@ The [IUnDoManager](../IUnDoManager/index.md 'DefaultUnDo\.IUnDoManager')\.
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.DoOnUndo(thisDefaultUnDo.IUnDoManager,System.Action,object).action'></a>
 
-`action` [System\.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System\.Action')
+`action` [System\.Action](https://learn.microsoft.com/en-us/dotnet/api/system.action 'System\.Action')
 
-The [System\.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System\.Action') performed by [Undo\(\)](../IUnDo/Undo().md 'DefaultUnDo\.IUnDo\.Undo\(\)')\.
+The [System\.Action](https://learn.microsoft.com/en-us/dotnet/api/system.action 'System\.Action') performed by [Undo\(\)](../IUnDo/Undo().md 'DefaultUnDo\.IUnDo\.Undo\(\)')\.
 
 <a name='DefaultUnDo.IUnDoManagerExtensions.DoOnUndo(thisDefaultUnDo.IUnDoManager,System.Action,object).description'></a>
 
-`description` [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')
+`description` [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')
 
 The description of the operation\.
 
 #### Exceptions
 
-[System\.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System\.ArgumentNullException')  
+[System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
 [manager](DoOnUndo(thisIUnDoManager,Action,object).md#DefaultUnDo.IUnDoManagerExtensions.DoOnUndo(thisDefaultUnDo.IUnDoManager,System.Action,object).manager 'DefaultUnDo\.IUnDoManagerExtensions\.DoOnUndo\(this DefaultUnDo\.IUnDoManager, System\.Action, object\)\.manager') is null\.

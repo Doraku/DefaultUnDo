@@ -21,19 +21,19 @@ public UnDo(object? description, System.Action? doAction, System.Action? undoAct
 
 <a name='DefaultUnDo.UnDo.UnDo(object,System.Action,System.Action).description'></a>
 
-`description` [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object')
+`description` [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')
 
 The description of this [IUnDo](../IUnDo/index.md 'DefaultUnDo\.IUnDo')
 
 <a name='DefaultUnDo.UnDo.UnDo(object,System.Action,System.Action).doAction'></a>
 
-`doAction` [System\.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System\.Action')
+`doAction` [System\.Action](https://learn.microsoft.com/en-us/dotnet/api/system.action 'System\.Action')
 
 The action called by [Do\(\)](../IUnDo/Do().md 'DefaultUnDo\.IUnDo\.Do\(\)')\.
 
 <a name='DefaultUnDo.UnDo.UnDo(object,System.Action,System.Action).undoAction'></a>
 
-`undoAction` [System\.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System\.Action')
+`undoAction` [System\.Action](https://learn.microsoft.com/en-us/dotnet/api/system.action 'System\.Action')
 
 The action called by [Undo\(\)](../IUnDo/Undo().md 'DefaultUnDo\.IUnDo\.Undo\(\)')\.
 
@@ -50,12 +50,12 @@ public UnDo(System.Action? doAction, System.Action? undoAction);
 
 <a name='DefaultUnDo.UnDo.UnDo(System.Action,System.Action).doAction'></a>
 
-`doAction` [System\.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System\.Action')
+`doAction` [System\.Action](https://learn.microsoft.com/en-us/dotnet/api/system.action 'System\.Action')
 
 The action called by [Do\(\)](../IUnDo/Do().md 'DefaultUnDo\.IUnDo\.Do\(\)')\.
 
 <a name='DefaultUnDo.UnDo.UnDo(System.Action,System.Action).undoAction'></a>
 
-`undoAction` [System\.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System\.Action')
+`undoAction` [System\.Action](https://learn.microsoft.com/en-us/dotnet/api/system.action 'System\.Action')
 
 The action called by [Undo\(\)](../IUnDo/Undo().md 'DefaultUnDo\.IUnDo\.Undo\(\)')\.
