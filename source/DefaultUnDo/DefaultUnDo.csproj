@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="DefaultDocumentation" Version="1.2.2" PrivateAssets="all" Condition="'$(Version)' != '0.0.0' AND '$(TargetFramework)' == 'net10.0'" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.201" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.202" PrivateAssets="All" />
     <PackageReference Include="System.Memory" Version="4.6.3" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
   </ItemGroup>
 
