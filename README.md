@@ -202,7 +202,6 @@ Missing something? you can easily extend what you need by creating your own impl
 
 <a name='Dependencies'></a>
 Relies on these awesome projects:
-- [Coverlet](https://github.com/coverlet-coverage/coverlet)
 - [Polyfill](https://github.com/SimonCropp/Polyfill)
 - [Roslynator](https://github.com/JosefPihrt/Roslynator)
 - [XUnit](https://github.com/xunit/xunit)

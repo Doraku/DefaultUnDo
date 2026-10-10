@@ -16,15 +16,15 @@
   <ItemGroup>
 
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.10.1" />
+    <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.12.0" />
     <PackageReference Include="NFluent" Version="3.1.0" />
     <PackageReference Include="NSubstitute" Version="6.2.0" />
-    <PackageReference Include="xunit.v3" Version="3.2.2" />
+    <PackageReference Include="xunit.v3" Version="4.0.2" />
 
     <PackageReference Include="System.ValueTuple" Version="4.6.2" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.6.3" />
     
-    <PackageReference Include="coverlet.msbuild" Version="10.1.0" PrivateAssets="all" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="4.0.0" PrivateAssets="all" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="4.0.1" PrivateAssets="all" />
     
   </ItemGroup>
 
